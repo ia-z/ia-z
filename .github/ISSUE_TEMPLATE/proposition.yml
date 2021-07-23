@@ -1,0 +1,34 @@
+name: Proposition de cours
+description: Propose un nouveau cours à intégrer.
+title: "[PROP] Numéro de section + titre"
+labels: [prop]
+body:  
+  - type: input
+    id: sous-partie
+    attributes:
+      label: Sous-partie concernée
+      description: Suggérer la sous-partie dans laquelle intégrer ce cours. Préciser si elle existe déjà ou bien où la créer.
+    validations:
+      required: true
+  - type: input
+    id: titre
+    attributes:
+      label: Proposition de titre
+      description: Titre clair et concis pour le cours proposé.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description du cours
+      description: Description de l'objectif, du contenu et de la structure. N'est pas fixe et peut émerger avec la discussion qui s'en suit.
+    validations:
+      required: true
+  - type: checkboxes
+    id: infos
+    attributes:
+      label: Informations supplémentaires
+      options:
+        - label: Je peux l'écrire
+        - label: J'ai déjà du matériel
+        - label: Je recherche un-une co-auteur
