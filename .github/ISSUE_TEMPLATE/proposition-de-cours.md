@@ -17,6 +17,6 @@ Titre clair et concis pour le cours proposé.
 Description de l'objectif, du contenu et de la structure. N'est pas fixe et peut émerger avec la discussion qui s'en suit.
 
 **Informations supplémentaires (cocher)**
-[ ] Je peux l'écrire
-[ ] J'ai déjà du matériel
-[ ] Je recherche un-une co-auteur
+- [ ] Je peux l'écrire
+- [ ] J'ai déjà du matériel
+- [ ] Je recherche un-une co-auteur
