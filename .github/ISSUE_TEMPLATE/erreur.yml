@@ -4,8 +4,9 @@ title: "[BUG] Cours + courte description"
 labels: [bug]
 body:
   - type: markdown
-    value: |
-      *Si l'erreur est minime: si vous pouvez la corriger vous-même -> PR directement, sinon, flag dans le fichier concerné directement. Si l'erreur est plus importante, ouvrez ce ticket.*
+    attributes:
+      value: |
+        *Si l'erreur est minime: si vous pouvez la corriger vous-même -> PR directement, sinon, flag dans le fichier concerné directement. Si l'erreur est plus importante, ouvrez ce ticket.*
   - type: input
     id: cours
     attributes:
