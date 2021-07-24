@@ -54,12 +54,7 @@ Commencez par accepter le réglement et vous présenter dans le channel [#prése
 
 ## Equipe
 
-|**Intervenant principaux**|<p>**Design**</p><p>**Front**</p>|**Python**|**Data Analyse**|<p>**ML**</p><p>**NLP**</p>|**Maths**|**Rédaction**|**Relecture**|
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-|[DefendIntelligence](https://www.github.com/anisayari)  |||x|||||
-|Studio.axs|x|x|||x||x|
-|[Amine](https://www.github.com/aminenaim)|x|x|||x|x|x|
-|[Boudh](https://www.github.com/Boudh)||||||||
-|[Acucro](https://www.github.com/Acucro)||x|||x|x|x|
-|[Emmanuel](https://www.github.com/EHadoux)||x||x|x|x||
-|Byakko24||x||x|x|||
+- [Anis Ayari](https://www.github.com/anisayari) (fondateur de la communauté DefendIntelligence)
+- [Admins](https://github.com/orgs/ia-z/teams/admins/members) (team pour tout ce qui est management)
+- [Reviewers](https://github.com/orgs/ia-z/teams/reviewers/members) (décident du plan, contenu et valident les PRs)
+- [Contributors](https://github.com/ia-z/ia-z/graphs/contributors)
