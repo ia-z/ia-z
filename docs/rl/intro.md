@@ -20,12 +20,12 @@ Lorsqu'il est difficile de donner un algorithme précis pour résoudre une tâch
 de se pencher vers les techniques de machine learning, et c'est ce que nous allons faire !
 
 Un premier angle d'attaque intuitif pour apprendre à un agent les coups optimaux serait d'utiliser une méthode
-de `supervised learning`. Il nous faudrait alors un ensemble de de couples (état du plateau d'échec, mouvement d'une pièce).
+de `supervised learning`. Il nous faudrait alors un ensemble de couples de données (état du plateau d'échec, mouvement d'une pièce).
 Mais alors survient un deuxième problème : comment récolter un tel jeu de données ? On pourrait récolter des
 coups de joueurs professionnels. Cette façon de procéder se nomme `imitation learning`. Elle a cependant quelques défauts:
 
 * Les coups des professionnels ne sont pas forcément optimaux
-* Il existe des environnements pour lesquels aucun coup optimal (ou plus simplement bons) est connu
+* Il existe des environnements pour lesquels aucun coup optimal (ou plus simplement bons) n'est connu
 
 Pour illustrer le dernier point, imaginons que vous voulez que votre agent apprenne à marcher.
 Votre environnement ici est simplement une liste d'informations sur la disposition de ses membres,
@@ -47,11 +47,11 @@ Les enjeux principaux deviennent alors:
 Le problème peut alors être bien plus simple à modéliser. Simuler une partie d'échec n'est pas trop compliqué.
 Donner une récompense de +1 lorsque l'agent gagne la partie, et -1 lorsque l'agent perds la partie est simple.
 D'autres challenges apparaissent, mais ce paradigme a eu le temps de maturer et il existe maintenant des
-algorithmes d'entraînement solides permettant de faire faces à ces challenges.
+algorithmes d'entraînement solides permettant de faire face à ces challenges.
 
 Comment entraîner un agent à partir de ses intéractions ? Quelles sont les limites de ce mode d'entraînement ?
 Comment choisir les récompenses ? Quels sont les challenges auxquels il faut faire face ?
-L'étude de ses questions est exactement le sujet du reinforcement learning !
+L'étude de ces questions est exactement le sujet du reinforcement learning !
 
 ### Prérequis
 Statistiques, optimisation, algèbre (pour les NNs).
