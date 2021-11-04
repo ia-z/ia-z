@@ -49,7 +49,7 @@ iA-Z est conçue pour fournir des enseignements destinés à un public déjà se
 ## Communauté
 
 - Nous communiquons sur le serveur de la communauté [![discord](https://img.shields.io/discord/638695942786121758?label=DefendIntelligence&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/nmnuf6USVT). 
-Commencez par accepter le réglement et vous présenter dans le channel [#présentation](https://discord.gg/v4nKnCcEqF).
+Commencez par accepter le réglement et vous présenter dans le channel [#présentation](https://discord.gg/v4nKnCcEqF) pour accéder aux autres salons.
 
 
 ## Equipe
