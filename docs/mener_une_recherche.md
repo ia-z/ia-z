@@ -12,11 +12,13 @@ Une recherche doit permettre de trouver rapidement un résultat fiable et à jou
 ## Méthodes de recherche
 
 * Cherchez par mots-clé, éliminer les mots superflus
-  * _Ne cherchez pas “pourquoi mon message ne s’affiche-t-il pas dans la console” mais “problème affichage console”, les résultats seront plus nombreux et plus pertinents car aucun autre mot ne vient perturber la recherche_
+  * _Ne cherchez pas “pourquoi mon message ne s’affiche-t-il pas dans la console” mais “problème affichage console”, les résultats seront plus nombreux et plus pertinents car aucun mot ne vient perturber la recherche._
 
 * Si les résultats sont peu nombreux, il ne faut pas hésiter à reformuler, réutiliser les expressions que vous pouvez lire sur les sites que vous avez trouvés. Cela permet d'élargir le champ de la recherche sans vous éloigner de l’information que vous cherchez.
 
 * N’hésitez pas à passer par l’anglais. Les résultats seront très nombreux (Pour ceux qui auraient du mal avec la langue, les services de traduction automatique sont très performants de nos jours, pensez-y !).
+
+* Utilisez les outils de votre navigateur : Sur une longue page, vous pouvez chercher les occurences d'une expréssion en utilisant le raccourci 'Ctrl+F'.
 
 * Pensez toujours à chercher plusieurs sources différentes pour recouper et affiner les informations.
 
