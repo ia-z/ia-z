@@ -35,9 +35,22 @@ Une recherche doit permettre de trouver rapidement un résultat fiable et à jou
   * _Mendeley …_
   * _Research Rabbit …_
 
+## Outils pratiques
+Vous allez mener des recherches fin de dresser un état de l'art autour d'un projet, pour apprendre à utiliser un outil ... Pour vous aider dans votre tâche nous allons découvrir ensemble quelques outils très pratiques qui vont vous faciliter la vie.
 
+# Outils de recherche
+ * Google scholar : Lancé par Google en 2004, c'est un moteur de recherche spécialisé qui regroupe un immense base de données de livres et d'articles scientifiques dont la plupart sont gratuitement accessibles. Le service permet de rechercher dans expressions dans ces ouvrages mais permet liste aussi par exemple le citations d'un article. Il permet aussi d'enregistrer des articles ou de recevoir une notification par mail lorsqu'une publication paraît.
+ NB : A noter que les ouvrages répertoriés par Google scholar ne sont pas seulement scientifiques, mais aussi historiques par ecemple. 
 
+ * ArXiv : Moteur de recherche regroupant également de nombreux articles scientifiques. On y retrouve notamment beaucoup de publications en intelligence artificielle. Il faut toutefois noter que ces publications ne sont pas soumises à une révision par les pairs, mais que lorsqu'un article est publié dans un journal scientifique qui l'impose, cela est généralement précisé sur la page de l'article.
 
+ * StackOverflow : ...
+
+# Outils de gestion des ressources
+Lors de vos recherches il peut être utile d'enregistrer et d'organiser des ressources pour les retrouver facilement ou les consulter plus tard par exemple. C'est ce que proposent les outils suivants.
+ * Zotero : Logiciel installé en local sur votre machine. Il permet d'enregistrer des articles, des vidéos, des pages webs et des les organiser dans une bibliothèque pour vous aider à gérer vos ressources. Le logiciel est capable de détecter le titre et les auteurs des articles enregistrés (il peut y avoir quelques problèmes avec des articles anciens). Il existe également une extension web pour enregistrer vos ressources depuis votre navigateur sans avoir à ouvrir l'application. Nous reviendrons sur cet outil plus en détail dans la suite de ce cours.
+ * Researchrabbit : Un site web qui propose les mêmes fonctionnalités que zotero directement dans un navugateur web. Votre compte vous permet de vous connecter à votre bibliothèque depuis une autre machine que votre pc. L'application propose également des fonctions supplémentaires très utiles comme la recherche les citations des articles et la création de graphes de relations entre ces derniers. N'hésitez pas à aller jeter un oeil par vous même. Cette application étant plus complexe à prendre en main que Zotero, qui est tout de même relativement complet et polyvalent, nous ne nous y attarderons pas.
+ * Mendeley : Un logiciel équivalent à Zotero, qui propose cependant des outils facilitant l'annotation d'articles dans l'application, un peu à la manière d'Acrobat Reader(lecteur de pdf). Etant moins polyvalent que Zotero, nous ne nous y attarderons pas non-plus, mais n'hésitez pas à aller le tester.
 
 ## En résumé
 
@@ -51,23 +64,30 @@ Une recherche doit permettre de trouver rapidement un résultat fiable et à jou
 
 ### Outils pratiques :
 
-* Stackoverflow : Regroupe une immense base de solutions à la majorité des problèmes que l’on peut rencontrer en informatique, quelque soit le langage
-* Les documentations officielles
-* Github
-* Wikipédia
-* Openclassroom : le forum et les cours
-* W3School : Cours, extraits de documentation avec des exemples et la possibilité de tester sur le site
-* Zotero : Sauvegarder des articles intéressants sur son pc et les classer
-* Research Rabbit
-* Mendeley
-* Google Scholar : recherchez des articles ou des livres dans une large base de données
-* arXiv : Cherchez des articles scientifiques parmi des archives de différentes disciplines scientifiques
+* Problèmes de programmation :
+  * StackOverflow;
+  * GitHub (exemples, librairies, ...)
+  * Les documentations officielles
+  * Openclassroom : le forum et les cours
+  * W3School : Cours, extraits de documentation avec des exemples et la possibilité de tester sur le site
+  
+* Recherche d'informations générales :
+  * Wikipédia
+
+* Recherche d'informations spécifiques :
+  * Google Scholar : recherchez des articles ou des livres dans une large base de données
+  * arXiv : Cherchez des articles scientifiques parmi des archives de différentes disciplines scientifiques
+
+* Sauvegarder vos recherches :
+  * Zotero : Sauvegarder des articles intéressants sur son pc et les classer
+  * Research Rabbit
+  * Mendeley
 
 
 ### Les tips utiles :
 
 * Pour obtenir la bonne traduction d’un terme technique, cherchez le dans une langue sur Wikipédia et changez la langue de l’article
-* Avant de vous intéresser à une information très précise, il est bien de comprendre le contexte qui l’entoure. Soyez curieux lors de vos recherches,
+* Avant de vous intéresser à une information très précise, il est bien de comprendre le contexte qui l’entoure. Soyez curieux lors de vos recherches !
 
 
 ### Cas de recherches classiques :
