@@ -38,13 +38,18 @@ Une recherche doit permettre de trouver rapidement un résultat fiable et à jou
 ## Outils pratiques
 Vous allez mener des recherches fin de dresser un état de l'art autour d'un projet, pour apprendre à utiliser un outil ... Pour vous aider dans votre tâche nous allons découvrir ensemble quelques outils très pratiques qui vont vous faciliter la vie.
 
+# Bien utiliser son navigateur:
+Les navigateurs internet offrent un certain nombre d'outils et de fonctionnalités qui aident à caractériser précisément les termes d'une recherche. Par exemple, il est possible de spécifier le type de fichier que l'on veut chercher (pdf ...). Bien connaître ces outils et savoir les utiliser vous permettra de diminuer le nombre de résultat en ne filtrant que les ressources les plus pertinentes.
+
+ * Les mots clés dans la requête : Il est possible dans plusieurs navigateur (Google, Duckduckgo, ...) d'ajouter des mots clés aux termes de sa requête. Cela permet de restreindre les résultats aux page d'un seul site, spécifier un type de fichier particulier ou encore de n'avoir que des résultats parus avant une date donnée. Nous verrons plus loin dans ce cours comment utiliser les mots-clé les plus utiles.
+
 # Outils de recherche
  * Google scholar : Lancé par Google en 2004, c'est un moteur de recherche spécialisé qui regroupe un immense base de données de livres et d'articles scientifiques dont la plupart sont gratuitement accessibles. Le service permet de rechercher dans expressions dans ces ouvrages mais permet liste aussi par exemple le citations d'un article. Il permet aussi d'enregistrer des articles ou de recevoir une notification par mail lorsqu'une publication paraît.
  NB : A noter que les ouvrages répertoriés par Google scholar ne sont pas seulement scientifiques, mais aussi historiques par ecemple. 
 
  * ArXiv : Moteur de recherche regroupant également de nombreux articles scientifiques. On y retrouve notamment beaucoup de publications en intelligence artificielle. Il faut toutefois noter que ces publications ne sont pas soumises à une révision par les pairs, mais que lorsqu'un article est publié dans un journal scientifique qui l'impose, cela est généralement précisé sur la page de l'article.
 
- * StackOverflow : ...
+ * StackOverflow : Forum sur le thème de l'informatique qui est majoritairement connu pour regrouper une immense base de données de questions/réponses en informatique. Pour faire simple, l'intégralité des erreurs ou problèmes que vous pourriez rencontrer en programmation ont déjà été posté sur ce site, et bien souvent il y a une solution fonctionnelle parmi les réponses. Attention toutefois aux dates des posts. De vieux posts peuvent proposer des solutions qui ne sont plus valables aujourd'hui. Ce site est généralement référencé parmi les premiers résultats, parfois même avant les documentations officielles. Pour l'utiliser, il suffit de copier/coller votre erreur ou l'énoncé de votre problème dans la barre de recherche. Le site tombera parmi les premiers résultats.
 
 # Outils de gestion des ressources
 Lors de vos recherches il peut être utile d'enregistrer et d'organiser des ressources pour les retrouver facilement ou les consulter plus tard par exemple. C'est ce que proposent les outils suivants.
@@ -62,7 +67,7 @@ Lors de vos recherches il peut être utile d'enregistrer et d'organiser des ress
 * Une bonne information est une information à jour !
 * Sauvegardez les ressources dignes d’intérêt !
 
-### Outils pratiques :
+### Liste des outils pratiques :
 
 * Problèmes de programmation :
   * StackOverflow;
@@ -83,36 +88,36 @@ Lors de vos recherches il peut être utile d'enregistrer et d'organiser des ress
   * Research Rabbit
   * Mendeley
 
-
 ### Les tips utiles :
 
 * Pour obtenir la bonne traduction d’un terme technique, cherchez le dans une langue sur Wikipédia et changez la langue de l’article
 * Avant de vous intéresser à une information très précise, il est bien de comprendre le contexte qui l’entoure. Soyez curieux lors de vos recherches !
 
+######################## Suite du cours
+### 1-Un point rapide sur Google Scholar et ArXiv
+### 2- Apprendre à utiliser Zotero pour enregistrer et organiser des ressources (+BONUS : rapide tour d'horizon de Rabbit Research)
 
-### Cas de recherches classiques :
+### 3-Cas de recherches classiques 
 
 Voici quelques conseils pour réaliser deux types de recherches que vous aurez souvent l’occasion de mener au long de votre apprentissage des sciences de la donnée et de votre parcours de programmeur
 
-1. L’état de l’art :
+#### 1. L’état de l’art 
+ Vous voulez une information globale et générale à propos d’un sujet. Vous ne désirez pas rentrer dans le détail tout en acquérant une base de connaissances et de vocabulaire nécessaires à la compréhension globale du sujet. Voici quelques conseils pour orienter vos recherches :
 
-    Vous voulez une information globale et générale à propos d’un sujet. Vous ne désirez pas rentrer dans le détail tout en acquérant une base de connaissances et de vocabulaire nécessaires à la compréhension globale du sujet. Voici quelques conseils pour orienter vos recherches :
+ * Cherchez le nom du sujet sur internet.
+ * Wikipédia apporte une vision d’ensemble du sujet et une base de vocabulaire. C’est bien de commencer par là. N’hésitez pas à aller lire les pages connexes ou relatives aux mots de vocabulaire de la page.
+ * Si les ressources sont peu nombreuses, n'hésitez pas à aller chercher des sources en anglais (Si vous n’êtes pas bilingues, les traductions automatiques sont plutôt efficaces). Pour être sûr d’avoir la bonne traduction pour des termes techniques, vous pouvez chercher l’article français sur wikipédia puis sélectionner la version anglaise.
 
-    * Cherchez le nom du sujet sur internet.
-    * Wikipédia apporte une vision d’ensemble du sujet et une base de vocabulaire. C’est bien de commencer par là. N’hésitez pas à aller lire les pages connexes ou relatives aux mots de vocabulaire de la page.
-    * Si les ressources sont peu nombreuses, n'hésitez pas à aller chercher des sources en anglais (Si vous n’êtes pas bilingues, les traductions automatiques sont plutôt efficaces). Pour être sûr d’avoir la bonne traduction pour des termes techniques, vous pouvez chercher l’article français sur wikipédia puis sélectionner la version anglaise.
+ Il peut être utile de garder les résultats de vos recherches dans un coin. Pour cela il existe des outils comme **Zotero** qui permet d’enregistrer des articles depuis le web sur votre pc et de classer vos articles.
 
-    Il peut être utile de garder les résultats de vos recherches dans un coin. Pour cela il existe des outils comme **Zotero** qui permet d’enregistrer des articles depuis le web sur votre pc et de classer vos articles.
+#### 2. Pour des recherches liées à une notion d’un langage de programmation
+ * Pour comprendre comment utiliser une fonction/librairie :
+ * Pour chercher la documentation relative à une librairie, tapez :  < nom du module > documentation (éventuellement < nom du langage >)
+ * Pour chercher la documentation relative à une fonction, tapez : < nom de la fonction > (< nom du module > si la fonction provient d’une librairie externe) < nom du langage >
+ * Certains sites regroupent des documentations non officielles avec des exemples, voire dans certains cas proposent la possibilité de tester une fonction sur le site ou des exercices d’entraînement. A titre d’exemple, on peut citer W3School ou geekforgeeks.org.
+ * Cherchez des exemples d’utilisation de la fonction, pour cela, tapez : < nom de la fonction > exemples (ou “examples” pour une recherche en anglais). N’hésitez pas à consulter les sites suivants qui regorgent d’exemples et d’explications : Stackoverflow, Github, pythonexamples.org
+ * Pour résoudre les erreurs (si la lecture de l’erreur ne vous permet pas de résoudre le problème) :
+ * copier coller l’erreur dans la barre de recherche
+ * Cherchez des solutions soit dans la documentation du langage ou de la librairie, soit sur les forums comme Stackoverflow.
 
-2. Pour des recherches liées à une notion d’un langage de programmation :
-
-    * Pour comprendre comment utiliser une fonction/librairie :
-    * Pour chercher la documentation relative à une librairie, tapez :  < nom du module > documentation (éventuellement < nom du langage >)
-    * Pour chercher la documentation relative à une fonction, tapez : < nom de la fonction > (< nom du module > si la fonction provient d’une librairie externe) < nom du langage >
-    * Certains sites regroupent des documentations non officielles avec des exemples, voire dans certains cas proposent la possibilité de tester une fonction sur le site ou des exercices d’entraînement. A titre d’exemple, on peut citer W3School ou geekforgeeks.org.
-    * Cherchez des exemples d’utilisation de la fonction, pour cela, tapez : < nom de la fonction > exemples (ou “examples” pour une recherche en anglais). N’hésitez pas à consulter les sites suivants qui regorgent d’exemples et d’explications : Stackoverflow, Github, pythonexamples.org
-    * Pour résoudre les erreurs (si la lecture de l’erreur ne vous permet pas de résoudre le problème) :
-    * copier coller l’erreur dans la barre de recherche
-    * Cherchez des solutions soit dans la documentation du langage ou de la librairie, soit sur les forums comme Stackoverflow.
-
-    Le plus important ici est de vérifier que la version dont il est question est la même que celle que vous utilisez. Vérifiez également les dates des posts sur les forums, si la solution proposée ne fonctionne pas, cela peut venir du fait qu’il s’agit d’une ancienne version.
+ Le plus important ici est de vérifier que la version dont il est question est la même que celle que vous utilisez. Vérifiez également les dates des posts sur les forums, si la solution proposée ne fonctionne pas, cela peut venir du fait qu’il s’agit d’une ancienne version.
