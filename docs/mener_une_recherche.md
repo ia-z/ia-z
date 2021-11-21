@@ -1,50 +1,74 @@
 
 # Mener une recherche internet efficacement
 
-Au cours de votre apprentissage et de votre carrière de data scientist, vous aurez souvent besoin d’effectuer des recherches internet pour élargir votre culture générale, acquérir de nouvelles connaissances ou compétences, résoudre des erreurs dans vos programmes ou encore chercher de l’aide pour la réalisation de vos projets. Il est donc primordial de savoir mener correctement une recherche pour trouver rapidement un résultat pertinent et correct. Nous allons nous efforcer dans la suite de cette rubrique de rassembler les points clés importants pour une bonne recherche. Il sera par ailleurs considéré que vous savez déjà mener une recherche internet basique, et que vous êtes ici pour apprendre à améliorer vos méthodes de recherche.
+Au cours de votre apprentissage et de votre carrière de data scientist, vous aurez souvent besoin d’effectuer des recherches internet pour élargir votre culture générale, acquérir de nouvelles connaissances ou compétences, résoudre des erreurs dans vos programmes ou encore chercher de l’aide pour la réalisation de vos projets. Internet est en effet 'outil parfait pour cela, c'est une vraie mine d'or qui regorge d'informations.
+Mais c'est là son principal défaut : pour n'importe quelle recherche, il y aura toujours trop de résultats. Essayez, par exemple, de chercher 'chocolat' sur Google: 1 580 000 000 résultats vous seront proposés. Vous ne pourrez jamais consulter toutes ces pages web dans un temps raisonnable. Il est donc primordial de savoir cibler ses recherches et filtrer les résultats. Il peut être aussi pratique de sauvegarder certain d'entre eux pour les consulter plus tard ou les intégrer dans une synthèse par exemple. 
+Nous aborderons en premier lieu dans la suite de cette rubrique les points clés importants pour mener une bonne recherche. Ensuite, nous verrons les outils pratiques pour restreindre le champ d'une recherche. Nous vous présenterons ensuite des solutions pour sauvegarder et organiser des résultats.
+--
+ 
+ 
+## 1 - Méthodes de recherche
+Voici une liste (non-exhaustive) rassemblant les conseils qu'il faut respecter pour otbenir des informations pertinentes, complètes et fiables. 
 
-
-## Attendus d’une recherche internet
-
-Une recherche doit permettre de trouver rapidement un résultat fiable et à jour.
-
-
-## Méthodes de recherche
-
-* Cherchez par mots-clé, éliminer les mots superflus
+* Evitez de polluer vos recherches : Cherchez par mots-clé, éliminer les mots superflus
   * _Ne cherchez pas “pourquoi mon message ne s’affiche-t-il pas dans la console” mais “problème affichage console”, les résultats seront plus nombreux et plus pertinents car aucun mot ne vient perturber la recherche._
 
-* Si les résultats sont peu nombreux, il ne faut pas hésiter à reformuler, réutiliser les expressions que vous pouvez lire sur les sites que vous avez trouvés. Cela permet d'élargir le champ de la recherche sans vous éloigner de l’information que vous cherchez.
+* Si les résultats sont peu satisfaisants, ne pas hésiter à reformuler, réutiliser les expressions que vous pouvez lire sur les sites que vous avez trouvés. Cela permet d'élargir le champ de la recherche sans vous éloigner de l’information que vous cherchez.
 
-* N’hésitez pas à passer par l’anglais. Les résultats seront très nombreux (Pour ceux qui auraient du mal avec la langue, les services de traduction automatique sont très performants de nos jours, pensez-y !).
+* Utilisez la langue de Shakespear : n’hésitez pas à passer par l’anglais, les résultats seront très nombreux (Pour ceux qui auraient du mal avec la langue, les services de traduction automatique sont très performants de nos jours, pensez-y !).
 
-* Utilisez les outils de votre navigateur : Sur une longue page, vous pouvez chercher les occurences d'une expréssion en utilisant le raccourci 'Ctrl+F'.
+* Vérifiez la qualité de l'information :
+ * Pensez toujours à chercher plusieurs sources différentes pour recouper et affiner les informations.
+ * Pensez également à vérifier la date des articles que vous lisez. Une information n’est utile que si elle est encore à jour. Pour les conventions de codage ou documentations, vérifiez que la version dont il est question est la même que celle que vous devez utiliser
 
-* Pensez toujours à chercher plusieurs sources différentes pour recouper et affiner les informations.
-
-* Pensez également à vérifier la date des articles que vous lisez. Une information n’est utile que si elle est encore à jour. Pour les conventions de codage ou documentations, vérifiez que la version dont il est question est la même que celle que vous devez utiliser
+* Utilisez les outils de votre navigateur : 
+ * Sur une longue page, vous pouvez chercher les occurences d'une expréssion en utilisant le raccourci 'Ctrl+F'.
+ * Mots-clés réservés (nous aborderons cela dans la partie suivante)
 
 * Pour des recherches orientées sciences, vous pouvez utiliser des moteurs de recherche spécialisé comme :
   * _Google Scholar qui permet de rechercher des expression parmi un grand nombre de livres et articles scientifiques;_
   * _arXiv qui permet de chercher des articles scientifiques parmi des archives de différents domaines des sciences._
   * _Elsevier qui permet de chercher des ressources parmi une large base de livres et pages web entre autres. Ce site est axé plutôt sur la biologie._
 
-* Pensez à enregistrer les résultats les plus pertinents que vous avez pu trouver. Enregistrez les et organisez les de manière à facilement retrouver les informations importantes. Pour cela, vous pouvez vous aider d’outils spécialisés, par exemple :
+* Pensez à enregistrer les résultats les plus pertinents que vous avez pu trouver. Enregistrez les et organisez les de manière à facilement retrouver les informations importantes. Pour cela, vous pouvez vous aider d’outils spécialisés :
   * _Les favoris dans votre navigateur de recherche : vous pouvez créer des dossiers et organiser vos favoris. C’est la manière la plus rapide de sauvegarder les résultats de vos recherches._
-  * _Zotero vous propose de télécharger les articles scientifiques sur votre pc et de les classer facilement_
-  * _Mendeley …_
-  * _Research Rabbit …_
+  * _[Zotero](https://www.zotero.org/) vous propose de télécharger les articles scientifiques sur votre pc et de les classer facilement._
+  * _[Mendeley …](https://www.mendeley.com/download-reference-manager/windows) est un service semblable à Zotero._
+  * _[Research Rabbit](https://www.researchrabbit.ai/) propose en plus de visualiser le lien entre les articles enregistrés et d'autres fonctionnalités avancées._
 
-## Outils pratiques
-Vous allez mener des recherches fin de dresser un état de l'art autour d'un projet, pour apprendre à utiliser un outil ... Pour vous aider dans votre tâche nous allons découvrir ensemble quelques outils très pratiques qui vont vous faciliter la vie.
+## 2 - Outils pratiques
+Nous allons développer dans cette partie les 3 derniers points de la liste précédente. Nous allons découvrir quelques outils très pratiques pour vous assister dans vos recherches.
 
-# Bien utiliser son navigateur:
-Les navigateurs internet offrent un certain nombre d'outils et de fonctionnalités qui aident à caractériser précisément les termes d'une recherche. Par exemple, il est possible de spécifier le type de fichier que l'on veut chercher (pdf ...). Bien connaître ces outils et savoir les utiliser vous permettra de diminuer le nombre de résultat en ne filtrant que les ressources les plus pertinentes.
+### Bien utiliser son navigateur:
+Utilisez les outils offerts par votre navigateur pour restreindre le champ de recherche et filtrer les résultats pour ne garder que les plus pertinents.
+Nous allons découvrir maintenant les mots-clés réservés. Les navigateurs de recherche modernes (Google, Duckduckgo, ...) proposent de cibler votre recherche grâce à des mots clés ou des opérateurs spécifiques. Vous pouvez ainsi sélectionner les résultats suivant leur date de publication, le type de fichier qu'il contient (html, pdf, ...), filtrer par nom de domaine. Nous allons vous présenter dans la suite les mots-clé les plus utiles.
 
- * Les mots clés dans la requête : Il est possible dans plusieurs navigateur (Google, Duckduckgo, ...) d'ajouter des mots clés aux termes de sa requête. Cela permet de restreindre les résultats aux page d'un seul site, spécifier un type de fichier particulier ou encore de n'avoir que des résultats parus avant une date donnée. Nous verrons plus loin dans ce cours comment utiliser les mots-clé les plus utiles.
+#### Les opérateurs:
+ - "" : Pour rechercher une expression exacte, par exemple une citation, mettez cette requête entre guillemets.
+ - AND / OR : Opérateurs bouléens qui permettent de renvoyer les résultats qui contiennent les expressions X ET Y (AND) ou X OU Y (OR). Vous pouvez combiner les expressions
+ - () : Vous permet de rassembler des termes ensemble pour former des expressions (comme en maths). Cela vous permet de combiner les opérateurs logiques vus ci-dessus
+    - _'(X AND Y) OR Z' sélectionnera à la fois les résultats contenant X ET Y, et les résultats contenant Z._
+ - .. : Permet de chercher sur une plage de nombres.
+    - _'voiture 2000..2010' vous retournera des résultats à propos des voitures des années 2000 à 2010._
+ - * : Remplacer des mots manquants. Si vous cherchez une phrase particulière mais qu'il vous manque certains mots, vous pouvez combler les trous avec "*"
+    - _'En * te décourvre pas d'un fil' vous retournera directement le fameux dicton 'En avril ne te découvre pas d'un fil'._
+ - - : Vous pouvez exclure certains termes avec '-'(moins).
+    - _'Lyon -ville' vous renverra des résultats sur les clubs de sport lyonnais par exemple, mais rien qui ne contienne le terme ville._
+  
+#### Les mots-clé :
+Pour utiliser les mots-clé, il suffit de les placer à la fin de votre requête et suivis de ":" : `ce que je recherche <mot-clé>:<valeur mot-clé> <autre mot-clé>:<valeuyr autre mot-clé>
+ - 'filetype:<extension>' : Spécifiez un type de fichier. Le navigateur ne vous retournera que des résultats contenant ce type de fichier.
+ - 'site:<nom de domaine>' : Ne sélectionnez que les résultats provenant d'un nom de domaine spécifique.
+ - 'before/after:<date>' : Sélectionnez les résultats publiés avant/après une certaine date.
+   - _'before:21/12/2012' ne vous renverra que des résultats antérieurs à la fin du monde._
+ - 'related:<url>' : Cherchez les résultats en lien avec une url.
+   - _'related:google.fr' vous permettra de chercher les principaux moteurs de recherche._
+ - 'inURL:<mot-clé>' : Permet de chercher les résultats contenant <mot-clé> dans leur url.
+ - 'intitle:<mot-clé>' : Même principe avec le titre du résultat.
+ - 'intext:<mot-clé>' : Idem mais dans le corps de la page.
 
-# Outils de recherche
- * Google scholar : Lancé par Google en 2004, c'est un moteur de recherche spécialisé qui regroupe un immense base de données de livres et d'articles scientifiques dont la plupart sont gratuitement accessibles. Le service permet de rechercher dans expressions dans ces ouvrages mais permet liste aussi par exemple le citations d'un article. Il permet aussi d'enregistrer des articles ou de recevoir une notification par mail lorsqu'une publication paraît.
+### Outils de recherche
+ * Google scholar : Lancé par Google en 2004, c'est un moteur de recherche spécialisé qui regroupe un immense base de données de livres et d'articles scientifiques dont la plupart sont gratuitement accessibles. Lçe service permet de rechercher dans expressions dans ces ouvrages mais permet liste aussi par exemple le citations d'un article. Il permet aussi d'enregistrer des articles ou de recevoir une notification par mail lorsqu'une publication paraît.
  NB : A noter que les ouvrages répertoriés par Google scholar ne sont pas seulement scientifiques, mais aussi historiques par ecemple. 
 
  * ArXiv : Moteur de recherche regroupant également de nombreux articles scientifiques. On y retrouve notamment beaucoup de publications en intelligence artificielle. Il faut toutefois noter que ces publications ne sont pas soumises à une révision par les pairs, mais que lorsqu'un article est publié dans un journal scientifique qui l'impose, cela est généralement précisé sur la page de l'article.
