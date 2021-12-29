@@ -1,12 +1,12 @@
 # Introduction
 
-Le NLP "Natural Language Processing" t'intéresses ? Tu as entendu parler de BERT, de modèles Transformers, Cedille, tf-idf, skip-gram, cbow, de modèles de langues ou de différents termes mais tu ne sais guère par où débuter ? Tu aimerais pouvoir exploiter des données textuelles pour tes projets perso ?
+Le NLP "Natural Language Processing" t'intéresse ? Tu as entendu parler de BERT, de modèles Transformers, Cedille, tf-idf, skip-gram, cbow, de modèles de langues ou de différents termes mais tu ne sais guère par où débuter ? Tu aimerais pouvoir exploiter des données textuelles pour tes projets perso ?
 
-Cette série de blogs/cours est là pour t'accompagner. Celle-ci te permettra de familiariser avec à ces différentes notions et t'apporter un socle de connaissance solides pour bien débuter en NLP.
+Cette série de blogs/cours est là pour t'accompagner. Celle-ci te permettra de te familiariser avec ces différentes notions et t'apporter un socle de connaissance solides pour bien débuter en NLP.
 
 Avant de débuter cette aventure, attardons-nous sur des points essentiels relatifs au NLP à avoir en tête tout au long de cette série de cours.
 
-## Les principales caractéristiques du NLP
+## Les principales caractéristiques du langage
 
 - Ambiguïté
 
@@ -41,7 +41,7 @@ Le TAL (traitement automatique du langage) est à la frontière entre la linguis
 - Moteurs de recherche
 - Analyse de sentiments
 
-## Keywords important en NLP
+## Mots-clé important en NLP
 
 - Part-Of-Speach (PoS) Tagging
 - Parsing / Syntaxe
@@ -62,17 +62,17 @@ Ici : Mettre un exemple visuel de système symbolique.
 
 Les systèmes symboliques consistent en un système de règle explicites qui s'appuient sur une expertise linguistique qui imite la perception humaine du langage.
 
-Par exemple, si l'on cherche à extraire les symptômes ainsi leurs date d'apparition, on peut parcourir la structure en dépendances de la phrase et s'appuyer sur les POS-TAGS comme features pour un système de règles précis.
+Par exemple, si l'on cherche à extraire les symptômes ainsi que leurs dates d'apparition, on peut parcourir la structure en dépendances de la phrase et s'appuyer sur les POS-TAGS comme features pour un système de règles précis.
 
 => Qu'est un POS-TAGS (à expliquer)
 
-Le développement d'un tel système apporte beaucoup de flexibilité pour ajuster le système de règles en foction d'exemples isolés, sans changer l'approche globale. Le système peut être développé sur des jeux de données de taille réduite.
+Le développement d'un tel système apporte beaucoup de flexibilité pour ajuster le système de règles en fonction d'exemples isolés, sans changer l'approche globale. Le système peut être développé sur des jeux de données de taille réduite.
 
 Néanmoins, ce type d'approche nécessite des compétences de développement et des connaissances de linguistiques assez évoluées. Par ailleurs, l'addition et l'extension de règles peut rendre le système complexe.
 
 Ici : Mettre un exemple visuel de système statistique.
 
-Les <b>systèmes de machine learning (i.e statistiques)</b>inversent le problème. On ne créer plus des features ou des règles manuellement à partir des exemples. On va proposer un très grand nombre d'exemples au système pour qu'il produise des règles et des features correspondantes au jeu de données.
+Les <b>systèmes de machine learning (i.e statistiques)</b>inversent le problème. On ne crée plus des features ou des règles manuellement à partir des exemples. On va proposer un très grand nombre d'exemples au système pour qu'il produise des règles et des features correspondantes au jeu de données.
 
 L'algorithme va calibrer les paramètres des représentations du texte pour attribuer les bons symptômes au plus grand nombre de phrases.
 
@@ -84,7 +84,7 @@ Le système nécessite un nombre important d'exemples et un jeu de données cons
 
 Ici : mettre les principales différences entre système symbolique et statistique sous forme de tableau / pipeline de traitement.
 
-Tout au long de ce cours, nous allons principalement axé notre approche sur les méthodes dites de NLP statistiques qui représente à notre sens un point d'entrée accessible pour un débutant en NLP sans forcément avoir un background de linguiste.
+Tout au long de ce cours, nous allons principalement axer notre approche sur les méthodes dites de NLP statistique qui représentent à notre sens un point d'entrée accessible pour un débutant en NLP sans forcément avoir un background de linguiste.
 
 ## Exemple de jeux de données pour les méthodes dites de  "NLP statistiques"
 
