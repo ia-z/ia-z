@@ -152,14 +152,15 @@ Il peut être utile de garder les résultats de vos recherches dans un coin pour
 
 ### 2. Pour des recherches liées à une notion d’un langage de programmation
 
-- Pour comprendre comment utiliser une fonction/librairie, tapez : < nom de la fonction > < nom du langage >
-- Pour chercher la documentation relative à une librairie, tapez :  < nom du module > documentation (éventuellement < nom du langage >)
-- Pour chercher la documentation relative à une fonction, tapez : < nom de la fonction > (< nom du module > si la fonction provient d’une librairie externe) < nom du langage >
-- Certains sites regroupent des documentations non officielles avec des exemples, voire dans certains cas proposent la possibilité de tester une fonction sur le site ou des exercices d’entraînement. A titre d’exemple, on peut citer W3School ou geekforgeeks.org.
-- Cherchez des exemples d’utilisation de la fonction, pour cela, tapez : < nom de la fonction > exemples (ou “examples” pour une recherche en anglais). N’hésitez pas à consulter les sites suivants qui regorgent d’exemples et d’explications : _Stackoverflow, Github, pythonexamples.org, Grepper_.
+- Pour comprendre comment utiliser une fonction/librairie :
+  - Pour chercher la documentation relative à une librairie, tapez :  < nom du module > documentation (éventuellement < nom du langage >)
+  - Pour chercher la documentation relative à une fonction, tapez : < nom de la fonction > (< nom du module > si la fonction provient d’une librairie externe) < nom du langage >
+  - Certains sites regroupent des documentations non officielles avec des exemples, voire dans certains cas proposent la possibilité de tester une fonction sur le site ou des exercices d’entraînement. A titre d’exemple, on peut citer W3School ou geekforgeeks.org.
+  - Cherchez des exemples d’utilisation de la fonction, pour cela, tapez : < nom de la fonction > exemples (ou “examples” pour une recherche en anglais). N’hésitez pas à consulter les sites suivants qui regorgent d’exemples et d’explications : _Stackoverflow, Github, pythonexamples.org, Grepper_.
+  
 - Pour résoudre les erreurs (si la lecture de l’erreur ne vous permet pas de résoudre le problème) :
-- copier coller l’erreur dans la barre de recherche
-- Cherchez des solutions soit dans la documentation du langage ou de la librairie, soit sur les forums comme Stackoverflow.
+  - copier coller l’erreur dans la barre de recherche
+  - Cherchez des solutions soit dans la documentation du langage ou de la librairie, soit sur les forums comme Stackoverflow.
 
  Le plus important ici est de vérifier que la version dont il est question est la même que celle que vous utilisez. Vérifiez également les dates des posts sur les forums, si la solution proposée ne fonctionne pas, cela peut venir du fait qu’il s’agit d’une ancienne version.
 
