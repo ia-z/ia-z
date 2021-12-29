@@ -62,7 +62,7 @@ Ici : Mettre un exemple visuel de système symbolique.
 
 Les systèmes symboliques consistent en un système de règle explicites qui s'appuient sur une expertise linguistique qui imite la perception humaine du langage.
 
-Par exemple, si l'on cherche à extraire les symptômes ainsi que leurs dates d'apparition, on peut parcourir la structure en dépendances de la phrase et s'appuyer sur les POS-TAGS comme features pour un système de règles précis.
+Par exemple, si l'on cherche à extraire les symptômes ainsi que leur date d'apparition, on peut parcourir la structure en dépendances de la phrase et s'appuyer sur les POS-TAGS comme features pour un système de règles précis.
 
 => Qu'est un POS-TAGS (à expliquer)
 
