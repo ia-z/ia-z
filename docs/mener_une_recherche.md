@@ -39,6 +39,9 @@ Voici une liste (non-exhaustive) rassemblant les principaux conseils à respecte
 
 - Utilisez les outils de votre navigateur :
   - _Sur une longue page, vous pouvez chercher les occurences d'une expression en utilisant le raccourci 'Ctrl+F'_.
+  - _Vous pouvez traduire les résultats: <br>
+      'Clic droit >> traduire' sur Google Chrome <br>
+      En utilisant des extensions sur Mozilla Firefox_ <br>
   - _Les opérateurs de recherche (nous aborderons cela dans la partie suivante)_
 
 - Pour des recherches orientées sciences, vous pouvez utiliser des moteurs de recherche spécialisé comme :
