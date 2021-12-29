@@ -35,6 +35,8 @@ Voici une liste (non-exhaustive) rassemblant les principaux conseils à respecte
   - _Pensez toujours à chercher plusieurs sources différentes pour recouper et affiner les informations._
   - _Pensez également à vérifier la date des articles que vous lisez. Une information n’est utile que si elle est encore à jour. Pour les conventions de codage ou documentations, vérifiez que la version dont il est question est la même que celle que vous devez utiliser._
 
+- Ne pas hésiter à lire des reviews, critiques sur un article donné. C'est très instructif pour comprendre les limites et les différents avis de la communauté scientifique.
+
 - Utilisez les outils de votre navigateur :
   - _Sur une longue page, vous pouvez chercher les occurences d'une expression en utilisant le raccourci 'Ctrl+F'_.
   - _Les opérateurs de recherche (nous aborderons cela dans la partie suivante)_
@@ -43,6 +45,7 @@ Voici une liste (non-exhaustive) rassemblant les principaux conseils à respecte
   - _[Google Scholar](https://scholar.google.fr/) qui permet de rechercher des expression parmi un grand nombre de livres et articles scientifiques ( Cet outil propose d'utiliser les opérateurs de recherche de Google pour affiner vos recherches)._
   - _[arXiv](https://arxiv.org/) qui permet de chercher des articles scientifiques parmi des archives de différents domaines des sciences._
   - _[Elsevier](https://www.elsevier.com/fr-fr) qui permet de chercher des ressources parmi une large base de livres et pages web entre autres. Ce site est axé plutôt sur la biologie._
+  - Si vous êtes étudiant, les écoles et universités proposent souvent un accès à une bibliothèque en ligne qui vousdonne accès à de nombreux livres et article de la littérteur scientifique. Profitez-en !
 
 - Pensez à enregistrer les résultats les plus pertinents que vous avez pu trouver. Enregistrez les et organisez les de manière à facilement retrouver les informations importantes. Pour cela, vous pouvez vous aider d’outils spécialisés :
   - _Les favoris dans votre navigateur de recherche : vous pouvez créer des dossiers et organiser vos favoris. C’est la manière la plus rapide de sauvegarder les résultats de vos recherches._
