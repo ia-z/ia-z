@@ -47,7 +47,6 @@ Voici une liste (non-exhaustive) rassemblant les principaux conseils à respecte
 - Pour des recherches orientées sciences, vous pouvez utiliser des moteurs de recherche spécialisé comme :
   - _[Google Scholar](https://scholar.google.fr/) qui permet de rechercher des expression parmi un grand nombre de livres et articles scientifiques ( Cet outil propose d'utiliser les opérateurs de recherche de Google pour affiner vos recherches)._
   - _[arXiv](https://arxiv.org/) qui permet de chercher des articles scientifiques parmi des archives de différents domaines des sciences._
-  - _[Elsevier](https://www.elsevier.com/fr-fr) qui permet de chercher des ressources parmi une large base de livres et pages web entre autres. Ce site est axé plutôt sur la biologie._
   - Si vous êtes étudiant, les écoles et universités proposent souvent un accès à une bibliothèque en ligne qui vousdonne accès à de nombreux livres et article de la littérteur scientifique. Profitez-en !
 
 - Pensez à enregistrer les résultats les plus pertinents que vous avez pu trouver. Enregistrez les et organisez les de manière à facilement retrouver les informations importantes. Pour cela, vous pouvez vous aider d’outils spécialisés :
