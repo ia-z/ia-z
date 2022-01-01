@@ -1,5 +1,5 @@
 # Pourquoi le Machine Learning ?
-Lorsque la plupart des personnes entendent Machine Learning « apprentissage automatique »,
+Lorsque la plupart des personnes entendent Machine Learning (*ML*), ou « apprentissage automatique »,
 ils s'imaginent un robot ou le metaverse propulsé par Mark Z.
 Mais le Machine Learning n'est pas un simple fantasme futuriste ; il est déjà là.
 La première application de ML qui s'est vraiment imposée, en améliorant la vie de centaines de millions de personnes,
@@ -9,7 +9,7 @@ Elle a été suivie par des centaines d'applications ML qui alimentent aujourd'h
 des centaines de produits et de fonctionnalités que vous utilisez régulièrement :
 qu'il s'agisse de meilleures recommandations, de la compréhension de textes, de la vision par ordinateur ou de la recherche vocale.
 
-Le Machine Learning (*ML*) prends une place de plus en plus grande dans nos vies quotidiennes.
+Le Machine Learning prends une place de plus en plus grande dans nos vies quotidiennes.
 Avant de commencer à comprendre son fonctionnement, il semble judicieux de se demander :
 
 **Pourquoi le ML est si pratique ?**
