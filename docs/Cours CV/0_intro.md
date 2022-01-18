@@ -6,8 +6,8 @@ This is an introduction to the field of computer vision. We will cover the basic
 
 ## Contents
 The following sections will cover the following topics:
-1. Traditional Computer Vision
-2. Learning based Computer Vision
+1. Image processing techniques
+2. Machine Learning based Computer Vision
 3. Convolutional Neural Networks
 4. Modern Convolutional Neural Networks
 5. Modern Computer Vision tasks
@@ -28,6 +28,8 @@ This is not an exhaustive list of tasks.
   alt="Timeline history">
   <figcaption>Figure 1. Few milestones in computer vision</figcaption>
 </figure>
+
+
 
 
 **1970s**. The field of computer vision was mainly digital image processing techniques such as improving the image qualities, enhancing the contrast, enhancing the resolution, enhancing the sharpness, enhancing the color, etc[[1]](#1). At the same time the topic of edge and contours detections became an active area of research[[2]](#2). 
