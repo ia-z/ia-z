@@ -26,7 +26,7 @@ This is not an exhaustive list of tasks.
   <img
   src=timeline_intro.jpeg
   alt="Timeline history">
-  <figcaption>Few milestones in computer vision</figcaption>
+  <figcaption>Figure 1. Few milestones in computer vision</figcaption>
 </figure>
 
 
