@@ -29,6 +29,7 @@ This is not an exhaustive list of tasks.
   <figcaption>Few milestones in computer vision</figcaption>
 </figure>
 
+
 **1970s**. The field of computer vision was mainly digital image processing techniques such as improving the image qualities, enhancing the contrast, enhancing the resolution, enhancing the sharpness, enhancing the color, etc[[1]](#1). At the same time the topic of edge and contours detections became an active area of research[[2]](#2). 
 
 **1980s**. One noticeble milestone from our present day view was the introduction of Neocognition[[3]](#3). It was the first time that a Neural Network was used to solve a computer vision problem. Few years later, Convolutional Neural Network was introduced by Yan LeCun[[4]](#4).
