@@ -1,2 +1,2 @@
-# Section 1 Image processing for computer vision
+# Section 1 Image processing techniques
 
