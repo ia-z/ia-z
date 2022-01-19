@@ -4,18 +4,19 @@
 </p>
 <p align="center">
   <a href="https://discord.gg/nmnuf6USVT">
-    <img alt="discord server invitation link" src="https://discord.com/assets/cb48d2a8d4991281d7a6a95d2f58195e.svg" style="width: 13%; height: 15%">
+    <img alt="discord server invitation link" src="discord_img.svg" style="width: 13%; height: 15%">
   </a>
   <a href="https://ia-z.github.io/ia-z/">
-    <img  src="https://pages.github.com/images/logo.svg" style="width: 15%; height: 15%">
+    <img  src="GithubPage.svg" style="width: 15%; height: 15%">
   </a>
 </p>
 
 
 ## Sommaire
 
+- [Sommaire](#sommaire)
 - [Presentation](#presentation)
-  - [Perimètre](#perimètre)
+    - [Perimètre](#perimètre)
 - [Organisation](#organisation)
 - [Communauté](#communauté)
 - [Equipe](#equipe)
