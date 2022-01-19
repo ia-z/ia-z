@@ -12,4 +12,9 @@ root: intro
 parts:
   - caption: Computer Vision
     chapters:
-      - file: docs/Cours_CV/0_intro
+      - file: CV/0_intro
+      - file: CV/1_Image_processing
+      - file: CV/2_ML_CV
+      - file: CV/3_CNN
+      - file: CV/4_Modern_CNN
+      - file: CV/5_CV_tasks
