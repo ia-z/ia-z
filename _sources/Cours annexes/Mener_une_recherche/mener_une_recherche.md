@@ -7,8 +7,8 @@ Mais c'est là son principal défaut : pour n'importe quelle recherche, il y aur
 
 Nous aborderons en premier lieu dans la suite de cette rubrique les points clés importants pour mener une bonne recherche. Ensuite, nous verrons les outils pratiques pour restreindre le champ d'une recherche. Nous vous présenterons ensuite des solutions pour sauvegarder et organiser des résultats.
 
-<br>
-<br>
+
+
 
 # Sommaire
 
@@ -18,7 +18,6 @@ Nous aborderons en premier lieu dans la suite de cette rubrique les points clés
 - 4-Bien utiliser son navigateur
 - 5-Cas pratiques
 
----
 
 ## 1 - Méthodes de recherche
 
