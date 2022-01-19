@@ -43,14 +43,15 @@ This is not an exhaustive list of tasks.
 **2010s**. The era of solving computer vision tasks using Neural Networks became popular after the introduction of AlexNet in 2012[[9]](#9). Later on many other Neural Network architecture were introduced that modernized the computer vision field, outperforming any human experts. Unprecedented improvements were made, more than ~10k research paper was written during that time outmatching any of the previous computer vision research era. The field also began to specialize by task, such as object detection, image segmentation, image classification, each having his own subset of tasks. 
 
 
-This module will only cover some of the milestones work, a detailed study in each of the tasks and sub-tasks will require a full-time study and research. Such as the task of image classification have the sub task of image retrieval. 
+This module will only cover some of the milestones work, a detailed study in each of the tasks and sub-tasks will require a full-time study and research. Such as the task of image classification have the sub task of image retrieval.
 
 <figure>
   <img
   src=arvix.png
   alt="submission">
-  <figcaption>Figure 2. number of submission where CV stands for computer vision[[10]](#10)</figcaption>
+  <figcaption>Figure 2. number of submission where CV stands for computer vision[10]</figcaption>
 </figure>
+
 
 ## References
 <a id="1">[1]</a> 
