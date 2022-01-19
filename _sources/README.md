@@ -7,7 +7,7 @@
     <img alt="discord server invitation link" src="discord_img.png" style="width: 13%; height: 15%">
   </a>
   <a href="https://ia-z.github.io/ia-z/">
-    <img  src="GithubPage.png" style="width: 15%; height: 15%">
+    <img src="GithubPage.png" style="width: 15%; height: 15%">
   </a>
 </p>
 
