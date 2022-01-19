@@ -1,13 +1,13 @@
-<h3 align="center">iA-Z</h3>
+<h3 align="center">IA-Z</h3>
 <p align="center">
   Cours & Ressources pour l'IA (en construction)
 </p>
 <p align="center">
   <a href="https://discord.gg/nmnuf6USVT">
-    <img alt="discord server invitation link" src="discord_img.svg" style="width: 13%; height: 15%">
+    <img alt="discord server invitation link" src="discord_img.png" style="width: 13%; height: 15%">
   </a>
   <a href="https://ia-z.github.io/ia-z/">
-    <img  src="GithubPage.svg" style="width: 15%; height: 15%">
+    <img  src="GithubPage.png" style="width: 15%; height: 15%">
   </a>
 </p>
 
