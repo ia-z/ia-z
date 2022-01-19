@@ -3,6 +3,33 @@
 ## Introduction
 The first time that computer vision task was solved by using Artificial Neural Network was back in 1979 with the introduction of Neocognitron by Kunihiko Fukushima[[1]](#1). It was used for Japanese handwritten character recognition. It was inspired by the work of Hubel & Wiesel in 1959, where two type of cells were present in cats visual primary cortex which are simple cell and complex cell[[2]](#2). The simple cells called S-cells were responsible for extracting local features, and the complex cells called C-cells were responsible for the features' deformation, local shifts. The Convolutional Neural Network was introduced by Yann LeCun in 1989[[3]](#3) for the task of handwritten digital recognition. The trend after the 1990s was to use optimization algorithms for computer vision tasks, at 1998 Convolutional Neural Network was optmized using gradient descent based algorithm with backpropagation[[4]](#4).
 
+## 0. Contents
+1. Convolution operation on images
+2. Features Maps and kernels
+3. Padding and stride
+4. Pooling
+5. Multiple channels image
+6. LeNet-5
+
+
+## 1. Convolution operation on images
+
+
+## 2. Features Maps and Kernels
+
+
+## 3. Padding and Stride
+
+
+## 4. Pooling
+
+
+## 5. Multiple channels image
+
+
+## 6. LeNet-5
+
+
 
 
 
