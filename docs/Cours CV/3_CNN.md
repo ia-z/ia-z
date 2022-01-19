@@ -8,11 +8,28 @@ The first time that computer vision task was solved by using Artificial Neural N
 2. Features Maps and kernels
 3. Padding and stride
 4. Pooling
-5. Multiple channels image
-6. LeNet-5
+5. LeNet-5
 
 
 ## 1. Convolution operation on images
+The convolution operation formula applied to 2D tensors is:
+
+$f\circledast g(i,j) = \sum_{a}\sum_{b}f(a,b)g(i-a,j-b)$
+
+Where $(a,b)$ are the indexes for function $f$ and $(i,j)$ are the indexes for function $g$. 
+Now if we use matrix notation for hidden representation layers $[H]_{i,j}$, the input image $[X]_{i,j}$ and the kernel $[K]_{a,b}$ the formula becomes:
+
+$[H]_{i,j} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}[X]_{i+a,j+b}[K]_{a,b}$
+
+Note here we have changed the difference $(i-a,j-b)$ to $(i+a,j+b)$, this function now will produce a convolution operation for a given index $(i,j)$ for the input image $[X]_{i,j}$ and kernel $[K]_{a,b}$. Where the $delta$ can be interpreted as the kernel size.
+
+
+Now when we have multiple channel such as RGG images, we will have one 2D array for each channel. So the input image will be a 3D array with the shape of $(C,H,W)$, where $C$ is the number of channels, $H$ is the height of the image, and $W$ is the width of the image. So the image convolution formula becomes:  
+
+$[H]_{i,j,d} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}\sum_{c}[X]_{i+a,j+b,c}[K]_{a,b,c,d}$
+
+Where $d$ is the number of receptive fields, or feature maps in the hidden representation, which can be interpreted as the number of kernels that we have defined for the output of this layer, and each kernel applied the convolution operation on each of the 3 channel RGB, we then sum these channels to produce a single receptive field (Note that there has been studies that applied average function to fuse the differents channels).    
+
 
 
 ## 2. Features Maps and Kernels
@@ -24,10 +41,9 @@ The first time that computer vision task was solved by using Artificial Neural N
 ## 4. Pooling
 
 
-## 5. Multiple channels image
 
 
-## 6. LeNet-5
+## 5. LeNet-5
 
 
 
