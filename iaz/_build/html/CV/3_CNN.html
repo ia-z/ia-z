@@ -93,8 +93,49 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Welcome to your Jupyter Book
+  <a class="reference internal" href="../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Fondamentaux ML
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Natural Language Processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20NLP/intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20NLP/intro_beginner.html">
+   Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reinforcement Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20RL/intro.html">
+   Reinforcement learning
   </a>
  </li>
 </ul>
@@ -104,34 +145,63 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="0_intro.html">
    Computer Vision
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_Image_processing.html">
+     Section 1 Image processing techniques
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_ML_CV.html">
+     Machine Learning for Computer Vision
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Convolutional Neural Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4_Modern_CNN.html">
+     Modern Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5_CV_tasks.html">
+     Computer Vision tasks
+    </a>
+   </li>
+  </ul>
  </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Annexes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Image_processing.html">
-   Section 1 Image processing techniques
+  <a class="reference internal" href="../Cours%20annexes/Mener_une_recherche/mener_une_recherche.html">
+   Mener une recherche internet efficacement
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_ML_CV.html">
-   Machine Learning for Computer Vision
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Convolutional Neural Network
+  <a class="reference internal" href="../Cours%20annexes/Tips%20recrutement/coverletter-tips.html">
+   Créer une lettre de motivation solide pour un stage ou un emploi.
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="4_Modern_CNN.html">
-   Modern Convolutional Neural Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_CV_tasks.html">
-   Computer Vision tasks
+  <a class="reference internal" href="../Cours%20annexes/Tips%20recrutement/cv-tips.html">
+   Créer un CV solide pour un stage ou un emploi.
   </a>
  </li>
 </ul>
@@ -363,14 +433,14 @@
 <div class="section" id="convolution-operation-on-images">
 <h2>1. Convolution operation on images<a class="headerlink" href="#convolution-operation-on-images" title="Permalink to this headline">¶</a></h2>
 <p>The convolution operation formula applied to 2D tensors is:</p>
-<!-- $f\circledast g(i,j) = \sum_{a}\sum_{b}f(a,b)g(i-a,j-b)$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/JQEBTWc5ke.svg">
+<p><span class="math notranslate nohighlight">\(f\circledast g(i,j) = \sum_{a}\sum_{b}f(a,b)g(i-a,j-b)\)</span></p>
 <p>Where <span class="math notranslate nohighlight">\((a,b)\)</span> are the indexes for function <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\((i,j)\)</span> are the indexes for function <span class="math notranslate nohighlight">\(g\)</span>.
 Now if we use matrix notation for hidden representation layers <span class="math notranslate nohighlight">\([H]_{i,j}\)</span>, the input image <span class="math notranslate nohighlight">\([X]_{i,j}\)</span> and the kernel <span class="math notranslate nohighlight">\([K]_{a,b}\)</span> the formula becomes:</p>
-<!-- $[H]_{i,j} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}[X]_{i+a,j+b}[K]_{a,b}$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/eJaBCGlAPc.svg">
+<p><span class="math notranslate nohighlight">\([H]_{i,j} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}[X]_{i+a,j+b}[K]_{a,b}\)</span></p>
 <p>Note here we have changed the difference <span class="math notranslate nohighlight">\((i-a,j-b)\)</span> to <span class="math notranslate nohighlight">\((i+a,j+b)\)</span>, this function now will produce a convolution operation for a given index <span class="math notranslate nohighlight">\((i,j)\)</span> for the input image <span class="math notranslate nohighlight">\([X]_{i,j}\)</span> and kernel <span class="math notranslate nohighlight">\([K]_{a,b}\)</span>. Where the <span class="math notranslate nohighlight">\(delta\)</span> can be interpreted as the kernel size.</p>
 <p>Now when we have multiple channel such as RGB images, we will have one 2D array for each channel. So the input image will be a 3D array with the shape of <span class="math notranslate nohighlight">\((C,H,W)\)</span>, where <span class="math notranslate nohighlight">\(C\)</span> is the number of channels, <span class="math notranslate nohighlight">\(H\)</span> is the height of the image, and <span class="math notranslate nohighlight">\(W\)</span> is the width of the image. So the image convolution formula becomes:</p>
-<!-- $[H]_{i,j,d} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}\sum_{c}[X]_{i+a,j+b,c}[K]_{a,b,c,d}$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/5DpPa28MoD.svg">
-<p>Where <!-- $d$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/hf6DCWcSPa.svg"> is the number of receptive fields, or feature maps in the hidden representation, which can be interpreted as the number of kernels that we have defined for the output of this layer, and each kernel applied the convolution operation on each of the 3 channel RGB, we then sum these channels to produce a single receptive field (Note that there has been studies that applied average function to fuse the differents channels).</p>
+<p><span class="math notranslate nohighlight">\([H]_{i,j,d} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}\sum_{c}[X]_{i+a,j+b,c}[K]_{a,b,c,d}\)</span></p>
+<p>Where <span class="math notranslate nohighlight">\(d\)</span> is the number of receptive fields, or feature maps in the hidden representation, which can be interpreted as the number of kernels that we have defined for the output of this layer, and each kernel applied the convolution operation on each of the 3 channel RGB, we then sum these channels to produce a single receptive field (Note that there has been studies that applied average function to fuse the differents channels).</p>
 </div>
 <div class="section" id="features-maps-and-kernels">
 <h2>2. Features Maps and Kernels<a class="headerlink" href="#features-maps-and-kernels" title="Permalink to this headline">¶</a></h2>
