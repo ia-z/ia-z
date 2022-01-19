@@ -2,21 +2,24 @@
 <p align="center">
   Cours & Ressources pour l'IA (en construction)
 </p>
+
 <p align="center">
-  <a href="https://discord.gg/nmnuf6USVT">
+  <!-- <a href="https://discord.gg/nmnuf6USVT">
     <img alt="discord server invitation link" src="discord_img.png" style="width: 13%; height: 15%">
-  </a>
-  <a href="https://ia-z.github.io/ia-z/">
+  </a> -->
+  !["https://discord.gg/nmnuf6USVT"](discord_img.png)
+  <!-- <a href="https://ia-z.github.io/ia-z/">
     <img src="GithubPage.png" style="width: 15%; height: 15%">
-  </a>
+  </a> -->
+  !["https://ia-z.github.io/ia-z/"](GithubPage.png)
 </p>
 
 
 # Sommaire
 
 - [Sommaire](#sommaire)
-  - [Presentation](#presentation)
-    - [Perimètre](#perimètre)
+- [Presentation](#presentation)
+- [Perimètre](#perimètre)
 - [Organisation](#organisation)
 - [Communauté](#communauté)
 - [Equipe](#equipe)
@@ -25,12 +28,12 @@
 
 
 
-## Presentation
+# Presentation
 **iA-Z** est une plateforme en ligne offrant un enseignement complet en data science. Elle est destinée à un public ayant un bagage en mathématiques, python et sciences informatiques de niveau supérieur ou égal au BAC. 
 
 iA-Z est conçue pour fournir des enseignements destinés à un public déjà sensibilisé et dans l’optique de fournir la meilleure qualité de support pédagogique et didactique.
 
-### Perimètre
+# Perimètre
 - La plateforme web a pour objectif de former et sensibiliser à la data science
 -	Les enseignements apportés sont segmentés en notions, elles même découpées en cours
 -	Les cours ont pour but de donner une information claire, concise au possible et illustrée par des exemples
