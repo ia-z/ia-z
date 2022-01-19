@@ -49,7 +49,7 @@ This module will only cover some of the milestones work, a detailed study in eac
   <img
   src=arvix.png
   alt="submission">
-  <figcaption>Figure 2. number of submission where CV stands for computer vision</figcaption>
+  <figcaption>Figure 2. number of submission where CV stands for computer vision[[10]](#10)</figcaption>
 </figure>
 
 ## References
@@ -83,3 +83,7 @@ Deng, J., Dong, W., Socher, R., Li, L.J., Li, K. and Fei-Fei, L., 2009, June. Im
 
 <a id="9">[9]</a>
 Krizhevsky, A., Sutskever, I. and Hinton, G.E., 2012. Imagenet classification with deep convolutional neural networks. Advances in neural information processing systems, 25, pp.1097-1105.
+
+
+<a id="10">[10]</a>
+https://arxiv.org/help/stats/2020_by_area/index
