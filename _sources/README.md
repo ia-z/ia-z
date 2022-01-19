@@ -3,19 +3,9 @@
   Cours & Ressources pour l'IA (en construction)
 </p>
 
-<p align="center">
-  <!-- <a href="https://discord.gg/nmnuf6USVT">
-    <img alt="discord server invitation link" src="discord_img.png" style="width: 13%; height: 15%">
-  </a>  -->
-  [![discord](discord_img.png)](https://discord.gg/nmnuf6USVT)
-   <!-- <a href="https://ia-z.github.io/ia-z/">
-    <img src="GithubPage.png" style="width: 15%; height: 15%">
-  </a>   -->
-  [![discord](GithubPage.png)](https://ia-z.github.io/ia-z/)
-</p>
 
-
-
+[![discord](discord_img.png)](https://discord.gg/nmnuf6USVT)
+[![discord](GithubPage.png)](https://ia-z.github.io/ia-z/)
 
 # Sommaire
 
