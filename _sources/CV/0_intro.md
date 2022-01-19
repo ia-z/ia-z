@@ -1,4 +1,4 @@
-# Computer Vision
+# An introduction to Computer Vision
 As human we perceive the world using our eyes, by processing those signal in our brain to understand the world. Computer Vision is that task to percieve the world by a machine.
 Today computer vision has evolved trememdously and it is used in several different industires. Back in the earlier days of 1970 it was believed that Computer Vision was the beginning to the Artificial General Intelligence. It was mainly dominated by hand crafted mathematical models. Fast forward to the present days, Computer Vision has outperformed the humans in many visual tasks. 
 
