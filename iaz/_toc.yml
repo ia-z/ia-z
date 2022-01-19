@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+# chapters:
+# # - file: docs/Cours_CV/intro
+# - file: markdown
+# - file: notebooks
+
+parts:
+  - caption: Computer Vision
+    chapters:
+      - file: docs/Cours_CV/0_intro

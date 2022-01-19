@@ -24,7 +24,7 @@ Now if we use matrix notation for hidden representation layers $[H]_{i,j}$, the 
 Note here we have changed the difference $(i-a,j-b)$ to $(i+a,j+b)$, this function now will produce a convolution operation for a given index $(i,j)$ for the input image $[X]_{i,j}$ and kernel $[K]_{a,b}$. Where the $delta$ can be interpreted as the kernel size.
 
 
-Now when we have multiple channel such as RGG images, we will have one 2D array for each channel. So the input image will be a 3D array with the shape of $(C,H,W)$, where $C$ is the number of channels, $H$ is the height of the image, and $W$ is the width of the image. So the image convolution formula becomes:  
+Now when we have multiple channel such as RGB images, we will have one 2D array for each channel. So the input image will be a 3D array with the shape of $(C,H,W)$, where $C$ is the number of channels, $H$ is the height of the image, and $W$ is the width of the image. So the image convolution formula becomes:  
 
 <!-- $[H]_{i,j,d} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}\sum_{c}[X]_{i+a,j+b,c}[K]_{a,b,c,d}$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/5DpPa28MoD.svg">
 
