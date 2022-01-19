@@ -45,6 +45,13 @@ This is not an exhaustive list of tasks.
 
 This module will only cover some of the milestones work, a detailed study in each of the tasks and sub-tasks will require a full-time study and research. Such as the task of image classification have the sub task of image retrieval. 
 
+<figure>
+  <img
+  src=arvix.png
+  alt="submission">
+  <figcaption>Figure 2. number of submission where CV stands for computer vision</figcaption>
+</figure>
+
 ## References
 <a id="1">[1]</a> 
 Rosenfeld, A. and Pfaltz, J.L., 1966. Sequential operations in digital picture processing. Journal of the ACM (JACM), 13(4), pp.471-494.
