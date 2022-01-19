@@ -13,6 +13,9 @@
   </a>  
 </p>
 
+[![discord](discord_img.png)](https://discord.gg/nmnuf6USVT)
+[![discord](GithubPage.png)](https://ia-z.github.io/ia-z/)
+
 # Sommaire
 
 - [Sommaire](#sommaire)
