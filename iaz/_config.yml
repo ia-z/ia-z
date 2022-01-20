@@ -1,10 +1,11 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: iaz
-author: iaz
-logo: logo.png
-
+title: IA-Z
+authors: Community contributors members
+logo: channels4_profile.jpeg
+author: IAZ
+copyright: '2022'
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
