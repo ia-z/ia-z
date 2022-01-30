@@ -23,7 +23,7 @@ Voici une pipeline typique d’un projet de Machine Learning
 
 ![pipeline](map_feat_eng.png)
 
-Supposons que vous êtes Data Scientists pour une entreprise data-centric. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement étudier les données à votre disposition en ayant effectuer une EDA digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d'utiliser votre modèle favori. Néannmoins vous constater que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste ! Pas de panique ! Pour résoudre ce problème, on réitère l’étape n°6 tant que les objectifs de performances du modèle donnés par votre N+1 ne sont pas atteints.
+Supposons que vous êtes Data Scientists pour une entreprise data-centric. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement étudier les données à votre disposition en ayant effectuer une EDA digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d'utiliser votre modèle favori. Néannmoins vous constatez que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste ! Pas de panique ! Pour résoudre ce problème, on réitère l’étape n°6 tant que les objectifs de performances du modèle donnés par votre N+1 ne sont pas atteints.
 
 La qualité des données et des features ont le plus d'impact sur un projet de Machine Learning et fixent la limite de ce que vous pouvez faire. La qualité de vos prédictions et le bien fondé de votre approche repose essentiellement sur ces aspects. 
 
