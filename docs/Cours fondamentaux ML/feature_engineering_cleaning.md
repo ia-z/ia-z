@@ -69,13 +69,13 @@ D'autre part, certains algorithmes sont plus robustes aux valeurs aberrantes. Pa
 
 ### Valeurs rares <a name="subparagraph3"></a>
 
-Définition : Variable catégorielle dont certaines valeurs n'apparaissent que rarement.
+Définition : Variable dont certaines  valeurs n'apparaissent que rarement.
 
 Dans certaines situations, les valeurs rares, comme les valeurs aberrantes, peuvent contenir des informations précieuses sur l'ensemble de données et nécessitent donc une attention particulière. Par exemple, une valeur rare dans une transaction peut indiquer une fraude.
 
 *Pourquoi les valeurs rares sont-elles importantes ?*
 
-Les valeurs rares dans les variables catégorielles ont tendance à provoquer un overfitting.
+Les valeurs rares ont tendance à provoquer un overfitting.
 Un grand nombre de labels peu fréquents ajoute du bruit, avec peu d'informations, ce qui entraîne un ajustement excessif aux données.
 Les labels rares peuvent être présents dans l'ensemble d'apprentissage, mais pas dans l'ensemble de test, ce qui entraîne un ajustement excessif de l'ensemble d'apprentissage.
 
@@ -83,7 +83,7 @@ Les labels rares peuvent apparaître dans l'ensemble de test, mais pas dans l'en
 
 ### Haute cardinalité <a name="subparagraph4"></a>
 
-Définition : Le nombre de labels au sein d'une variable catégorielle est appelé cardinalité. Un nombre élevé de labels au sein d'une variable est connu comme une cardinalité élevée.
+Définition : Le nombre de labels au sein d'une variable  appelé cardinalité. Un nombre élevé de labels au sein d'une variable est connu comme une cardinalité élevée.
 
 *Pourquoi une cardinalité élevée est-elle importante ?*
 
@@ -126,7 +126,9 @@ On remarquera que la suppression des valeurs aberrantes est un autre sujet du ne
 
 *Pourquoi le Feature encoding est-il important ?*
 
-Nous devons transformer les strings ou les variables catégorielles (donner un exemple avec un schéma) en nombres pour que les algorithmes puissent traiter ces valeurs. Même si vous voyez qu'un algorithme peut prendre en charge des entrées catégorielles, il est très probable que l'algorithme intègre ce processus de feature encoding.
+On appelle 'variable catégorielles' les données qui prennent généralement un nombre limité de valeurs possibles. En outre, les données de la catégorie ne doivent pas nécessairement être numériques, elles peuvent être de nature textuelle. Tous les modèles de Machine Learning sont une sorte de modèle mathématique qui a besoin de chiffres pour fonctionner. C'est l'une des principales raisons pour lesquelles nous devons prétraiter ces données dites 'catégorielles' avant de les transmettre aux modèles.
+
+Cette étape de transformation des strings/ des variables catégorielles en nombres est une étape primordiale pour que les algorithmes puissent traiter ces valeurs. Même si vous voyez qu'un algorithme peut prendre en charge des entrées catégorielles, il est très probable que l'algorithme intègre ce processus de feature encoding.
 
 **One-hot Encoding** : Remplace la variable catégorielle par différentes variables booléennes (0/1) pour indiquer si un certain label est vrai ou faux pour une observation donnée. 
 
