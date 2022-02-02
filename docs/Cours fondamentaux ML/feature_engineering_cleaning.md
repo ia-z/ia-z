@@ -19,7 +19,7 @@
 
 Le feature engineering représente l’art de convertir les données de la meilleure façon possible, ce qui implique une combinaison d'expertise du domaine, d'intuitions et de procédés mathématiques. Ce cours a pour objectif d’être une référence concise pour les débutants avec la plupart des techniques simples mais largement utilisées pour cette approche. De prochains articles permettront d'approfondir chacuns des points abordés.
 
-Le feature engineering est la partie la plus essentielle de la construction d'un projet de machine learning. Des centaines d'algorithmes à l’état de l’art apparaissent aujourd'hui à travers différentes thématiques, comme le transfer learning ou le Deep Leaning. Au bout du compte, certains projets réussissent et d'autres échouent. Qu'est-ce qui fait la différence entre ces approches ? Le facteur le plus important est sans aucun doute la qualité des données et les features utilisées.
+Le feature engineering est la partie la plus essentielle de la construction d'un projet de machine learning. Des centaines d'algorithmes à l’état de l’art apparaissent aujourd'hui à travers différentes thématiques, comme le Transfer Learning ou le Deep Learning. Au bout du compte, certains projets réussissent et d'autres échouent. Qu'est-ce qui fait la différence entre ces approches ? Le facteur le plus important est sans aucun doute la qualité des données et les features utilisées.
 
 ## Méthodologie <a name="methodologie"></a>
 
