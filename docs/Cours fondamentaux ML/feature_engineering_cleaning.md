@@ -28,9 +28,17 @@ Le feature engineering est la partie la plus essentielle de la construction d'un
     <em>Pipeline typique d’un projet de Machine Learning </em>
 </p>
 
-Supposons que vous êtes Data Scientists pour une entreprise data-centric. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement explorer les données à votre disposition en ayant effectuer une EDA (Exploratory Data Analysis) digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d'utiliser votre modèle favori. Néanmoins vous constater que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste ! Pas de panique ! Pour résoudre ce problème, on réitère l’étape n°6 tant que les objectifs de performances du modèle donnés par votre N+1 ne sont pas atteints.
+Supposons que vous êtes Data Scientists pour une entreprise. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement explorer les données à votre disposition en ayant effectuer une EDA (Exploratory Data Analysis) digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d'utiliser votre modèle favori. Néanmoins vous constater que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste ! 
+
+En tant que Data Scientist agueri, vous décidez de collaborer avec le Data Engineer de votre équipe pour vous concentrer, le temps d'une après-midi, sur cette étape de feature engineering. Ensemble vous décidez de vous attardez sur la qualité des données pour ne pas injecter des features qui auront un impact négatif sur les performances de votre modèle.
+
+Le Data Engineer vous dit de ne pas paniquer. Pour résoudre ce problème, il vous conseille de réitèrer l’étape n°6 en sa compagnie tant que les objectifs de performances du modèle donné par votre N+1 ne sont pas atteints.
+
+```
+A retenir : 
 
 La qualité des données et des features ont le plus d'impact sur un projet de Machine Learning et fixent la limite de ce que vous pouvez faire. La qualité de vos prédictions et le bien fondé de votre approche repose essentiellement sur ces aspects. 
+```
 
 ## Nettoyage des données<a name="nettoyage"></a>
 
@@ -166,6 +174,8 @@ Nous devons garder à l'esprit que différents sous-ensembles de featurees offre
 Une méthode populaire de sélection des features consiste à mélanger de manière aléatoire les valeurs d'une variable spécifique et de déterminer comment cette permutation affecte la métrique de performance de l'algorithme. En d'autres termes, l'idée est de permuter les valeurs de chaque features, une à la fois, et de mesurer dans quelle mesure la permutation diminue la précision, la ROC_AUC, ou la MSE du modèle d'apprentissage automatique. Si les variables sont importantes, c'est-à-dire hautement prédictives, une permutation aléatoire de leurs valeurs diminuera considérablement n'importe laquelle de ces métriques. En revanche, les variables non importantes / non prédictives ne devraient avoir que peu ou pas d'effet sur la mesure de performance du modèle que nous évaluons.
 
 ## Sources & Application <a name="sources"></a>
+
+- https://machinelearningmastery.com/books-on-data-cleaning-data-preparation-and-feature-engineering/
 
 - https://core.ecu.edu/krosj/IMDSDataMining2003.pdf
 
