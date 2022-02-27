@@ -34,11 +34,11 @@ En tant que Data Scientist agueri, vous décidez de collaborer avec le Data Engi
 
 Le Data Engineer vous dit de ne pas paniquer. Pour résoudre ce problème, il vous conseille de réitèrer l’étape n°6 en sa compagnie tant que les objectifs de performances du modèle donné par votre N+1 ne sont pas atteints.
 
-```
+
 A retenir : 
 
 La qualité des données et des features ont le plus d'impact sur un projet de Machine Learning et fixent la limite de ce que vous pouvez faire. La qualité de vos prédictions et le bien fondé de votre approche repose essentiellement sur ces aspects. 
-```
+
 
 ## Nettoyage des données<a name="nettoyage"></a>
 
