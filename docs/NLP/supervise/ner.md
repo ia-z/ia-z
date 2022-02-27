@@ -150,6 +150,9 @@ if __name__ == '__main__':
     # Tokens [('Je', '', 2), ('supporte', '', 2), ('Paris', 'LOC', 3), ('et', '', 2), ('le', '', 2), ('Bayern', 'LOC', 3), ('.', '', 2)]
 ```
 
+Pour utiliser cette démarche avec Spacy, il est nécessaire d'avoir un TRAIN_DATA dans ce format.
+Si vous souhaitez créer un TRAIN_DATA avec ce format en utilisant plusieurs centaines/milliers de phrases puis de réutiliser la démarche précédente, il est possible de le faire en suivant ce blog : https://thinkinfi.com/prepare-training-data-and-train-custom-ner-using-spacy-python/.
+
 ### Créer son propre modèle
 
 #### Deep Learning
