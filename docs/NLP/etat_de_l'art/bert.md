@@ -81,28 +81,7 @@ Le MLM demande au modèle de prédire les mots manquants d'une phrase. Chaque mo
 
 Bien que le NSP (et le MLM) soient utilisés pour pré-entraîner les modèles BERT,
 nous pouvons utiliser ces méthodes exactes pour affiner nos modèles afin de mieux comprendre le style spécifique de la langue dans des uses cases précis.
-*Je ne comprends pas cette phrase ?*
-
-### Pré-entraînement : fonctions de perte
-
-La fonction perte de BERT = fonction de perte MLM + fonction de perte NSP.
-
-### Fonction de perte pour l'entraînement d'un modèle de langage traditionnel
-*Je ne comprends pas cette partie.*
-
-Cas unidirectionnel :
-
-* Première étape
-
-  (Contexte) Le viewer_1 est [?] satisfait mais le viewer_2 est mécontent. 
-  
-  Tâche de classification : prédire [?] en tenant compte du contexte comme entrée.
-
-* Étape 2
-
-  Le viewer_1 (Contexte) est satisfait [?] mais le viewer_2 est mécontent.
-
-  La fonction de perte est la vraisemblance moyenne de cette classification.
+*Je ne comprends pas cette phrase ?* => *ça fait référence au tranfert learning. BERT a été pré-entrainé sur des tâches de NSP / MLM, je voulais préciser que l'on peut réutiliser ces méthodes sur des tâches précises (NER, analyse de sentiment etc .) en fonction d'une langue donnée.*
 
 #### Fonction de perte (MLM)
 Cas profond bidirectionnel (BERT) :
