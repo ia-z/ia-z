@@ -65,9 +65,9 @@ Un vecteur one-hot est un tableau dont un élément est égal à 1 et tous les a
 ![onehot](one-hot.png)
 
 
-Nous utilisons cet encoding car les vecteurs one-hot représentent la manière la plus imple de map les mots vers des vecteurs.
+Nous utilisons cet encoding car les vecteurs one-hot représentent la manière la plus simple de map les mots vers des vecteurs.
 
-Le n-ième mot dans le dictionnaire aura une représentation one-hot où le n-ième élément est 1 et le reste est égal à 0. Pour le reste de ce cours, nous ferons référence à ce one-hot vector noté $o_{n}$. Supposons que "dfi" est le 1152 mots dans notre dictionaire. Le one-hot vecteur correspondant à "dfi" va être $o_{1152}$ dans notre dictionnaire.
+Le n-ième mot dans le dictionnaire aura une représentation one-hot où le n-ième élément est 1 et le reste est égal à 0. Pour le reste de ce cours, nous ferons référence à ce one-hot vector noté $(o_{n}$. Supposons que "dfi" est le 1152 mots dans notre dictionaire. Le one-hot vecteur correspondant à "dfi" va être $o_{1152}$ dans notre dictionnaire.
 
 ```python
 o = torch.zeros(2000)
