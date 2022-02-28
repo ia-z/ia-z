@@ -48,19 +48,14 @@ Nous devons également effectuer cette mise en correspondance à l'aide de machi
 
 Pour rendre le problème plus précis, nous dirons que nous voulons stocker toutes ces propriétés numériques de nos mots dans des vecteurs (qui sont simplement des tableaux 1D). La tâche consiste donc à trouver un algorithme qui transforme les mots en vecteurs.
 
-```
-Mais attends, c'est quoi la différence entre un tableau et un vecteur ?
 
-Et bien bonne question jeune padawan ! 
+> Mais attends, c'est quoi la différence entre un tableau et un vecteur ? <br>
+> Et bien bonne question jeune padawan ! <br><br>
+> Techniquement parlant, les tableaux et les vecteurs ne sont pas la même chose. Les tableaux sont une structure de données qui nous permet d'organiser les données d'une manière particulière.<br><br>
+> Les vecteurs, par contre, sont un type spécifique d'objet mathématique abstrait avec une définition précise (un vecteur est un élément d'un espace vectoriel linéaire, et vous pourriez alors définir un espace vectoriel en termes de propriétés de ses éléments).<br><br>
+> Si vous voulez vous aventurer dans les profondeurs des mathématiques pures, il est probablement important de garder cela à l'esprit. Mais pour toutes les raisons pratiques qui nous intéressent, les vecteurs et les tableaux 1D sont essentiellement la même chose. Dans ce cours, nous utiliserons ces termes de manière interchangeable.<br><br>
+> En fait, le C++ appelle même son tableau à taille dynamique std::vector, et nous avons réussi à construire une grande majorité de l'infrastructure informatique mondiale avec cette nomenclature.
 
-Techniquement parlant, les tableaux et les vecteurs ne sont pas la même chose. Les tableaux sont une structure de données qui nous permet d'organiser les données d'une manière particulière.
-
-Les vecteurs, par contre, sont un type spécifique d'objet mathématique abstrait avec une définition précise (un vecteur est un élément d'un espace vectoriel linéaire, et vous pourriez alors définir un espace vectoriel en termes de propriétés de ses éléments).
-
-Si vous voulez vous aventurer dans les profondeurs des mathématiques pures, il est probablement important de garder cela à l'esprit. Mais pour toutes les raisons pratiques qui nous intéressent, les vecteurs et les tableaux 1D sont essentiellement la même chose. Dans ce cours, nous utiliserons ces termes de manière interchangeable.
-
-En fait, le C++ appelle même son tableau à taille dynamique std::vector, et nous avons réussi à construire une grande majorité de l'infrastructure informatique mondiale avec cette nomenclature.
-```
 
 Si vous vous souvenez des bases du Machine Learning et en particulier du feature engineeringn (si vous êtes arrivé jusqu'ici, c'est le cas je l'espère sinon n'hésitez pas à retourner sur les cours de bases), vous devez vous souvenir de l'idée de vecteur one-hot.
 
