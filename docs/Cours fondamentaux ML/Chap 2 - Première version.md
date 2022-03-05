@@ -55,6 +55,7 @@ Cette méthode permet de réaliser deux types de tâches :
 #### 2.1.1 Enjeux Classification VS Régression
 Une première grande distinction à faire en machine learning est la différence entre apprentissage supervisé et non supervisé. En anglais, ces deux notions se nomment respectivement supervised learning et unsupervised learning.
 Si le modèle est un modèle supervisé, il peut-être de 2 types ou sous-catégories : modèle de régression ou de classification.
+Je fais une modif ici
 
 ![Capture](https://assets.moncoachdata.com/v7/moncoachdata.com/wp-content/uploads/2020/01/segmentation-machine-learning.png?w=1242)
 
