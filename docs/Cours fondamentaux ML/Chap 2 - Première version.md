@@ -9,43 +9,43 @@ Ce chapitre se veut une introduction aux concepts et aux premières définitions
 ### 1.1 Typologie selon le type de modèle obtenu
 
 Typologie selon l’objectif
+- Prédiction : sortie d'un modèle de machine learning.
+Le terme prédiction est un peu trompeur, car on ne prédit pas le futur mais on utilise un modèle
+qui a appris de données passées pour effectuer des suppositions sur de nouvelles données.
 - Classification : examiner les caractéristiques d’un objet et lui attribuer
 une classe. e.g. diagnostic ou décision d’attribution de prêt à un client.
-- Prédiction : prédire la valeur future d’un attribut en fonction d’autres
-attributs. e.g. prédire la qualité d’un client .
-- Association : déterminer les attributs qui sont corrélés. e.g. analyse du panier de la ménagère
+- Régression : tâche où la prédiction est une valeur continue.
+- Association : déterminer les attributs qui sont corrélés. e.g. analyse du panier d'un client.
 - Segmentation : former des groupes homogènes à l’intérieur d’une
 population.
 
 ### 1.2 Typologie selon le type d'apprentissage utilisé
 
-- Apprentissage supervisé : fouille supervisée
-- Processus qui prend en entrée des exemples d’apprentissage contenant à la fois des données d’entrée et de sortie.
+**Apprentissage supervisé : fouille supervisée *(fouille supervisée ?)***
+- Méthode d'apprentissage qui nécessite des exemples d’apprentissage contenant à la fois
+des données d’entrée (les *inputs*) et de sortie (les *labels*).
 - Les exemples d’apprentissage sont fournis avec leur classe.
-- But : classer correctement un nouvel exemple.
-- Utilisés principalement en classification et prédiction.
-- Apprentissage non supervisé : fouille non supervisée
-- Processus qui prend en entrée des exemples d’apprentissage contenant que des données d’entrée
-- Pas de notion de classe
+- But : prédire correctement un nouvel exemple.
+- Utilisés principalement en classification et en régression.
+
+**Apprentissage non supervisé : fouille non supervisée *(?)***
+- Processus qui prend en entrée des exemples d’apprentissage contenant que des données d’entrée (et pas de *labels*).
+- Pas de notion de classe.
 - But : regrouper les exemples en paquets (clusters) d’exemples similaires.
-- Utilisés principalement en segmentation et association
+- Utilisés principalement en segmentation et association.
 
 
 ## 2. Plusieurs approches en ML
 
 Le machine learning est un champ assez vaste, et nous dressons dans cette section une liste des plus grandes classes de problèmes auxquels il s’intéresse. Une description précise de chaque approche sera apportée, toujours illustrée d'exemples précis. Chaque approche a ses spécificités et permet de répondre à des objectifs précis. 
- 
 
 ### 2.1 Supervisé
 Qu’il s’agisse des types d’apprentissage supervisé ou non supervisé, tout part d’un jeu de données très important. Et quand on dit « très important », cela peut signifier jusqu’à plusieurs millions d”images ou plusieurs millions de documents. C’est à partir de cette base que l’algorithme peut apprendre.  
 Avec l’apprentissage supervisé, la machine peut apprendre à faire une certaine tâche en étudiant des exemples de cette tâche. Par exemple, elle peut apprendre à reconnaître une photo de chien après qu’on lui ait montré des millions de photos de chiens. Ou bien, elle peut apprendre à traduire le français en chinois après avoir vu des millions d’exemples de traduction français-chinois. 
-D’une manière générale, la machine peut apprendre une relation ![Capture](https://machinelearnia.com/wp-content/ql-cache/quicklatex.com-207635d9dc78202020418524e3bfa9ea_l3.png)
-qui relie ![Capture](https://machinelearnia.com/wp-content/ql-cache/quicklatex.com-1b66421aa4e9aaa4b09cd63705be0444_l3.png) à ![Capture](https://machinelearnia.com/wp-content/ql-cache/quicklatex.com-e090138b6b0aec7ba05f3447f6d51d20_l3.png) en ayant analysé des millions d’exemples d’associations.
-![Capture](https://machinelearnia.com/wp-content/ql-cache/quicklatex.com-3b04aa19d562be616a2b6e71186fc396_l3.png)
+D’une manière générale, la machine peut apprendre une relation $f: x → y$
+qui relie $x$ à $y$ en ayant analysé des millions d’exemples d’associations.
 
 ![Capture](https://machinelearnia.com/wp-content/uploads/2019/06/apprentissage-supervise-2-.png)
-
-
  
 Dans le cadre de l’apprentissage supervisé, la machine connaît déjà les réponses qu’on attend d’elle. Elle travaille à partir de données étiquetées. Reprenons l’exemple d’une application destinée à reconnaître les chiens et les chats. Pour l’entraîner, on lui présente des images étiquetés comme « chien » ou « chat ». Par des techniques issues des statistiques et des probabilités, l’algorithme comprend alors quelles sont les caractéristiques qui permettent de classer ces images dans chacune des catégories. Ainsi, au fur et à mesure qu’on lui présentera des nouveaux images, il pourra les identifier, en donnant un score de probabilité. Par exemple : « cette image a 95 % de chances de représenter un chat. » Et ses premières réponses seront corrigées à la main, pour qu’il s’améliore au fur et à mesure.
 Cette méthode permet de réaliser deux types de tâches :
@@ -89,7 +89,7 @@ Les domaines d’application sont nombreux, des finances (prédiction du cours d
 Il existe plusieurs algorithmes pour la régression:
 •	Régression linéaire
 •	Régression polynomiale
-•	Régression logistique
+•	Régression logistique *C'est en fait un modèle de classification*
 •	Régression quantile
 •	etc.
 
