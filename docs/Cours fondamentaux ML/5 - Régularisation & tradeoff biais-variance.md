@@ -1,11 +1,30 @@
 # Régularisation & tradeoff biais-variance
-La régularisation est un moyen de limiter les capacités d'un modèle afin
-d'éviter l'overfitting.
+La régularisation ainsi que les biais inductifs sont deux moyens
+de limiter les capacités d'un modèle afin d'éviter l'overfitting.
 
-Le biais inductif d'un modèle est un moyen de limiter
-*Qu'est-ce que la régularisation*
+La variance décrit la puissance à laquelle un modèle peut facilement s'adapter,
+à des données. C'est une puissance à double tranchant car s'il s'adapte trop facilement
+alors il sera prone à l'overfitting.
 
 ## Comment fonctionne la régularisation
+Le principe général est de contraindre les paramètres appris par un modèle.
+Pour ce faire, on peut ajouter un terme supplémentaire dans la fonction de loss
+que l'on souhaite minimiser.
+Ce terme supplémentaire compte comme une pénalité, elle permet de réduire l'overfitting.
+
+*Mais pourquoi ajouter une pénalité permet de réduire l'overfitting ?*
+
+Cela peut paraître contre-intuitif, mais en fait réduire les capacités d'apprentissage d'un modèle
+peut l'aider à mieux généraliser !
+Si on reprends notre exemple du chapitre précédent, on peut imaginer qu'ajouter une pénalité
+à notre modèle revient à l'obliger à travailler avec un kit réduit d'outils à sa disposition.
+Il va être obliger de faire avec moins, et donc il ne pourra pas sur-optimiser son apprentissage sur
+les exercices d'entraînement (les petites corrélations qui améliorent marginalement les performances
+mais qui se trouvent inutiles voire désastreuses lors de l'évaluation sur de nouveaux exercices).
+
+D'une certaine manière, ajouter une pénalité sur les paramètres du modèle revient à demander au modèle
+de trouver une solution simple et efficace au problème donné. Cette solution est
+[généralement la meilleure](https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham) !
 
 ## Régularisations classiques
 ### L2
