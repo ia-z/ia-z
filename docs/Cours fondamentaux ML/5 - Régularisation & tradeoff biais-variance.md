@@ -34,10 +34,22 @@ D'autres régularisations peuvent directement dépendre de la tâche considéré
 La régularisation L2 demande à ce que la norme quadratique des paramètres soit la plus petite possible.
 Mathématiquement on peut écrire :
 
-<img src="https://render.githubusercontent.com/render/math?math=Loss_{final}(w) = loss(w) + \lambda L2(w)">
 <img src="https://render.githubusercontent.com/render/math?math=L2(w) = \sqrt{\sum_i w_i^2}">
+<img src="https://render.githubusercontent.com/render/math?math=Loss_{final}(w) = loss(w) \+ \lambda L2(w)">
+
+*Comment afficher ça mieux ? :'( jupyter notebook ?*
+
+Afin de moduler la force de pénalisation par rapport au loss, on définit un hyperparamètre \lambda qui est une constante
+définit avant l'entraînement. Un lambda trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
+car la moindre modification de ses poids sera fortement pénalisée), mais un lambda trop faible masquera l'effet
+de la régularisation.
+
+*Image du cercle autour de w_1 et w_2 pour comprendre comment la régularisation réduit l'espace de recherche.*
 
 ### L1
+*Image du diamant autour de w_1 et w_2 pour comprendre la différence avec la reg L2, et pour mieux comprendre
+pourquoi la L1 pousse les poids à valoir 0.*
+
 ### Lasso
 
 
@@ -58,3 +70,8 @@ Mathématiquement on peut écrire :
 ### (\*\*) Les détails mathématiques
 
 ## Conclusion
+
+
+## Sources
+
+https://math.mit.edu/~gs/learningfromdata/
