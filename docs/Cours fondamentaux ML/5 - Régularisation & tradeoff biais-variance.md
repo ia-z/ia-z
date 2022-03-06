@@ -27,7 +27,17 @@ de trouver une solution simple et efficace au problème donné. Cette solution e
 [généralement la meilleure](https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham) !
 
 ## Régularisations classiques
+Il existe plusieurs régularisations possibles, mais les plus connues sont certainement la régularisation L1 et L2.
+D'autres régularisations peuvent directement dépendre de la tâche considérée ou du type de modèle utilisé.
+
 ### L2
+La régularisation L2 demande à ce que la norme quadratique des paramètres soit la plus petite possible.
+Mathématiquement on peut écrire :
+$$$
+L2(w) = \sqrt{\sum_i w_i^2}
+Loss_{final}(w) = loss(w) + \lambda L2(w)
+$$$
+
 ### L1
 ### Lasso
 
