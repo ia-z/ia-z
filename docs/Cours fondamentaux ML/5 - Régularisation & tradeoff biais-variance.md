@@ -34,10 +34,10 @@ D'autres régularisations peuvent directement dépendre de la tâche considéré
 La régularisation L2 demande à ce que la norme quadratique des paramètres soit la plus petite possible.
 Mathématiquement on peut écrire :
 
-```math
+$$
 L2(w) = \sqrt{\sum_i w_i^2}
 Loss_{final}(w) = loss(w) + \lambda L2(w)
-```
+$$
 
 ### L1
 ### Lasso
