@@ -37,7 +37,7 @@ Mathématiquement on peut écrire :
 <img src="https://render.githubusercontent.com/render/math?math=L2(w) = \sqrt{\sum_i w_i^2}">
 <img src="https://render.githubusercontent.com/render/math?math=Loss_{final}(w) = loss(w) \+ \lambda L2(w)">
 
-*Comment afficher ça mieux ? :'( jupyter notebook ?*
+*Comment afficher ça mieux ? :'( jupyter notebook ? Peut-être qu'en compilant le site web les équations vont s'afficher!*
 
 Afin de moduler la force de pénalisation par rapport au loss, on définit un hyperparamètre \lambda qui est une constante
 définit avant l'entraînement. Un lambda trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
