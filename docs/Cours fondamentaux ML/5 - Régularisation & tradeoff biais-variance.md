@@ -32,42 +32,119 @@ D'autres régularisations peuvent directement dépendre de la tâche considéré
 
 ### L2
 La régularisation L2 demande à ce que la norme quadratique des paramètres soit la plus petite possible.
-Mathématiquement on peut écrire :
+Cette norme étant une fonction quadratique, elle est continue et dérivable en tout point ce qui est souvent apprécié.
 
-<img src="https://render.githubusercontent.com/render/math?math=L2(w) = \sqrt{\sum_i w_i^2}">
-<img src="https://render.githubusercontent.com/render/math?math=Loss_{final}(w) = loss(w) \+ \lambda L2(w)">
+Mathématiquement on peut écrire :
+$L2(w) = \sqrt{\sum_i w_i^2}$
+$Loss_{final}(w) = loss(w) + \lambda L2(w)$
 
 *Comment afficher ça mieux ? :'( jupyter notebook ? Peut-être qu'en compilant le site web les équations vont s'afficher!*
 
 Afin de moduler la force de pénalisation par rapport au loss, on définit un hyperparamètre \lambda qui est une constante
-définit avant l'entraînement. Un lambda trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
+définie avant l'entraînement. Un lambda trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
 car la moindre modification de ses poids sera fortement pénalisée), mais un lambda trop faible masquera l'effet
 de la régularisation.
 
-*Image du cercle autour de w_1 et w_2 pour comprendre comment la régularisation réduit l'espace de recherche.*
-
 ### L1
-*Image du diamant autour de w_1 et w_2 pour comprendre la différence avec la reg L2, et pour mieux comprendre
-pourquoi la L1 pousse les poids à valoir 0.*
+La régularisation L1 contrait la norme L1 des paramètres à être la plus petite possible.
+Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
-### Lasso
+$L1(w) = \sum_i |w_i|$
+$Loss_{final}(w) = loss(w) + \lambda L2(w)$
 
+Cette régularisation a tendance à pousser des coefficients $w$ à valoir 0 exactement, ce qui est utile
+pour faire de la sélection de features par exemple. En effet, si une feature a un coefficient associé qui
+vaut exactement 0, alors on peut se débarasser de cette feature, elle n'influe clairement pas le calcul des prédictions.
 
 ## Biais & variance
-*C'est quoi le biais inductif d'un modèle ?*
-*C'est quoi la variance d'un modèle ?*
-### Exemple: régression linéaire vs KNN
+Lorsque l'on parle du *tradeoff biais-variance*, on parle du biais inductif et de la variance d'un modèle de machine learning.
+Concrètement :
+* Les **biais inductif** d'un modèle représente l'espace des fonctions apprenables par un modèle.
+* La **variance** d'un modèle est une mesure de la sensibilité que possède un modèle par rapport aux données utilisées pour l'entraîner.
 
-## Biais vs régularisation
-| Régularisation                                                     | Biais                                                                   |
-|--------------------------------------------------------------------|-------------------------------------------------------------------------|
-| Contraintes sur les paramètres du modèle.                          | Contraintes sur l'architecture du modèle.                               |
-| Réduit l'espace de recherche des solutions pendant l'entraînement. | Réduit l'espace des solutions potentielles dès la définition du modèle. |
-| Réduit l'overfiting.                                               | Réduit l'overfitting.                                                   |
+### Biais inductif
+Il est en fait impossible d'entraîner un modèle sans biais inductif. Sans cela, il existerait une infinité de fonctions qui
+sont capables de modéliser les relations entres les couples $(x, y)$.
+L'ensemble des biais inductifs constituent des hypothèses sur les fonctions qui pourraient le mieux modéliser la relation entre
+nos couples $(x, y)$. L'étape d'apprentissage se résume alors à la recherche de la meilleure fonction parmis l'espace des fonctions
+modélisables.
+
+Le biais le plus courant est celui de **la continuité** : on suppose que si deux points $x$ et $x'$ sont proches dans l'espace, alors
+il est probable que $f(x)$ et $f(x')$ soient proches l'un de l'autre. Intuitivement, cela revient à dire que si deux images ne diffèrent
+que de quelques pixels, alors si l'une des deux images représente un chien, la seconde sera très probablement une image de chien.
+
+La régularisation est en fait une façon de biaiser notre modèle vers des solutions plus simples. C'est aussi une hypothèse que l'on
+choisi lorsque l'on entraîne le modèle !
+
+### Variance
+La variance d'un modèle résume son besoin de données pour apprendre au mieux. Plus un modèle a de variance et plus il aura besoin
+de grosses quantités de données afin de ne pas sur-apprendre.
+
+Pour être plus précis, on considère que les données utilisées à l'apprentissage proviennent toutes d'une source aléatoire capable
+de générer toutes les données possibles d'une distribution fixée. On peut alors échantilloner plusieurs jeux de données à partir de cette source.
+Cela permet alors d'entraîner autant de modèles qu'il y a de jeux de données, et chaque modèle va converger vers une solution finale
+qui peut être évaluer sur un ensemble de test commun.
+Dans ce cas, la variance d'un modèle de ML est mesurée à la variance des performances des différents modèles évalués sur le jeu de test,
+mais entraînés sur des données différentes.
+
+Si les prédictions d'un modèle sont trop dépendantes des données utilisées pour l'entraîner, alors c'est qu'il est en sur-apprentissage,
+car cela signifie qu'il s'est trop spécialisé sur les données fournies à l'apprentissage.
+
+### Exemple: régression linéaire vs KNN
+Le modèle utilisé lors de la régression linéaire ne peut apprendre que des fonctions de la forme $f(x) = ax + b$ (ici nous n'avons qu'une feature $x$).
+Pour ce modèle, le biais inductif est l'hypothèse que les données peuvent se modéliser sous la forme d'une droite.
+L'espace de recherche est donc extrêmement contraint ! Mais l'avantage d'un tel modèle c'est qu'il suffit de peu de points
+pour rapidement converger vers une fonction $f$ de bonne qualité. En effet, il suffit de deux points pour tracer une droite !
+*Dans la vie réelle, les points sont bruités donc il faut plus de points pour mieux estimer la droite, mais l'idée reste la même.*
+
+On peut comparer cet exemple à celui du KNN. Le KNN ne fait que l'hypothèse de continuité, il prédit la valeur d'un point $x$ par rapport
+aux autres points vus pendant l'entraînement qui sont au voisinage de $x$. C'est l'hypothèse la plus simple qui soit, et cela laisse place à
+un ensemble de fonctions modélisables énorme. Cela permet de garder un fort potentiel de modélisation, mais cela demande aussi un nombre de données
+très élevées pour modéliser précisemment une fonction en tout point.
+*En fait, à cause de la malédiction de la dimension, le nombre de données nécessaires pour couvrir l'ensemble de définition d'un KNN
+croit exponentiellement avec le nombre de dimensions à nos features.*
+
+A travers ces deux exemples, on peut voir qu'il peut y avoir des comportements drastiquement différents lors de l'entraînement de nos modèles.
+Avec peu de points et une hypothèse forte sur la relation entre nos données, on peut utiliser un modèle simple qui va converger sans problème.
+Cependant, si nous faisons une hypothèse trop forte ou mauvaise, on peut se retrouver avec un modèle trop contraint qui ne pourra pas trouver de bonne façon
+de modéliser le problème. Il faudra alors trouver (ou tester) de meilleures hypothèses, ou adoucir celles déjà faites. Le cas le plus simple
+est alors d'entraîner un modèle plus expressif comme le KNN, mais il faut alors assez de données pour que ce dernier soit capable d'apprendre
+une relation utile sans sur-apprendre.
 
 ## Tradeoff biais-variance
-### L'intuition
-### (\*\*) Les détails mathématiques
+Le tradeoff biais-variance est fondamental en Machine Learning.
+Intuitivement, on a un équilibre à trouver dans la taille de l'espace des fonctions que peuvent modéliser nos modèles.
+Si on laisse cet espace être trop grand, alors le modèle va trouver une fonction qui sera très performante sur les données d'entraînement
+mais qui aura un loss élevé sur de nouvelles données à cause d'un sur-apprentissage sévère. A l'inverse, à trop réduire cet espace,
+on ne va laisser au modèle que des fonctions sous-efficaces pour modéliser la relation entre nos couples $(x, y)$.
+
+Le biais et la variance sont deux faces d'une même pièce, ajouter du biais réduit la variance, et vice versa.
+
+### (\*\*) Détails mathématiques
+Soit :
+* $x, y$ : Des couples de données où $x$ est un ensemble de features et $y$ la valeur à déterminer à partir du vecteur $x$.
+Ces couples proviennent d'une distribution de probabilité $P$ quelconque.
+* $D$ : Un jeu de données quelconque constitué de couples $(x_i, y_i)$.
+$D$ est la réalisation d'un échantillonage de $P$. On définit $y_i = y(x_i)$.
+* $h$ : Un modèle de ML capable d'apprendre à partir d'un jeu de données $D$.
+Si $h$ a été entraîné sur $D$, on le note $h_D$, et on note ses prédictions $h_D(x)$.
+
+On peut alors décomposer le loss moyen d'un modèle $h$ :
+$$
+Loss_{test}(h) = variance(h) + biais(h)^2 + bruit \\
+E_{x, y, D}[(h_D(x) - y)] = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y)^2]
+$$
+
+Où :
+$$
+\bar h(x) = E_D[h_D(x)] \\
+\bar y(x) = E_{y, x}[y(x)]
+$$
+
+Les valeurs de 
+*TODO: Explications intuitives*
+
+## No Free Lunch
 
 ## Conclusion
 
@@ -75,3 +152,7 @@ pourquoi la L1 pousse les poids à valoir 0.*
 ## Sources
 
 https://math.mit.edu/~gs/learningfromdata/
+https://fr.abcdef.wiki/wiki/Inductive_bias
+https://fr.abcdef.wiki/wiki/No_free_lunch_in_search_and_optimization
+https://explained.ai/regularization/L1vsL2.html
+https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html
