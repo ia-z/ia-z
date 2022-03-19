@@ -36,7 +36,7 @@ Cette norme étant une fonction quadratique, elle est continue et dérivable en 
 
 Mathématiquement on peut écrire :
 $$
-L2(w) = \sqrt{\sum_i w_i^2}\\
+L2(w) = \sqrt{\sum_i w_i^2} \\
 Loss_{final}(w) = loss(w) + \lambda L2(w)
 $$
 
@@ -52,7 +52,7 @@ La régularisation L1 contrait la norme L1 des paramètres à être la plus peti
 Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
 $$
-L1(w) = \sum_i |w_i|
+L1(w) = \sum_i |w_i| \\
 Loss_{final}(w) = loss(w) + \lambda L2(w)
 $$
 
