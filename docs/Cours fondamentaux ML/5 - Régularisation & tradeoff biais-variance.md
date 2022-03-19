@@ -35,8 +35,10 @@ La régularisation L2 demande à ce que la norme quadratique des paramètres soi
 Cette norme étant une fonction quadratique, elle est continue et dérivable en tout point ce qui est souvent apprécié.
 
 Mathématiquement on peut écrire :
-$L2(w) = \sqrt{\sum_i w_i^2}$
-$Loss_{final}(w) = loss(w) + \lambda L2(w)$
+$$
+L2(w) = \sqrt{\sum_i w_i^2}\\
+Loss_{final}(w) = loss(w) + \lambda L2(w)
+$$
 
 *Comment afficher ça mieux ? :'( jupyter notebook ? Peut-être qu'en compilant le site web les équations vont s'afficher!*
 
@@ -49,8 +51,10 @@ de la régularisation.
 La régularisation L1 contrait la norme L1 des paramètres à être la plus petite possible.
 Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
-$L1(w) = \sum_i |w_i|$
-$Loss_{final}(w) = loss(w) + \lambda L2(w)$
+$$
+L1(w) = \sum_i |w_i|
+Loss_{final}(w) = loss(w) + \lambda L2(w)
+$$
 
 Cette régularisation a tendance à pousser des coefficients $w$ à valoir 0 exactement, ce qui est utile
 pour faire de la sélection de features. En effet, si une feature a un coefficient associé qui
