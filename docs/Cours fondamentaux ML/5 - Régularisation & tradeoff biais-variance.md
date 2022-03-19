@@ -1,4 +1,4 @@
-# Régularisation & tradeoff biais-variance
+# 5 - Régularisation & tradeoff biais-variance
 La régularisation ainsi que les biais inductifs sont deux moyens
 de limiter les capacités d'un modèle afin d'éviter l'overfitting.
 
@@ -166,7 +166,7 @@ le biais sera forcément très fort. Si le biais n'est pas bon (c.a.d. si $\bar 
 faire diminuer le loss. Au contraire, un réseau de neurones peut plus facilement contrôler la force de son biais à travers plusieurs mécanismes de régularisation.
 Cela nous permet mieux choisir la force des biais et de la variance de notre modèle.
 
-*Si ici on utilise $h$ pour désigner un modèle, c'est parce qu'en fait on considère qu'un modèle est pleinement définit par ses hypothèses.*
+*Si ici on utilise $h$ pour désigner un modèle, c'est parce que l'on considère qu'un modèle est pleinement définit par ses hypothèses.*
 
 ## No Free Lunch (NFL)
 NFL est un théorème important. Il statue que aucun algorithme de recherche de solution n'est meilleur que les autres sur tout les problèmes possibles.
