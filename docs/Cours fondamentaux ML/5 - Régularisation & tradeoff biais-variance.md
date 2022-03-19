@@ -2,9 +2,9 @@
 La régularisation ainsi que les biais inductifs sont deux moyens
 de limiter les capacités d'un modèle afin d'éviter l'overfitting.
 
-La variance décrit la puissance à laquelle un modèle peut facilement s'adapter,
+La variance décrit la puissance à laquelle un modèle peut facilement s'adapter
 à des données. C'est une puissance à double tranchant car s'il s'adapte trop facilement
-alors il sera prone à l'overfitting.
+alors il sera prone à de l'overfitting.
 
 ## Comment fonctionne la régularisation
 Le principe général est de contraindre les paramètres appris par un modèle.
@@ -53,8 +53,8 @@ $L1(w) = \sum_i |w_i|$
 $Loss_{final}(w) = loss(w) + \lambda L2(w)$
 
 Cette régularisation a tendance à pousser des coefficients $w$ à valoir 0 exactement, ce qui est utile
-pour faire de la sélection de features par exemple. En effet, si une feature a un coefficient associé qui
-vaut exactement 0, alors on peut se débarasser de cette feature, elle n'influe clairement pas le calcul des prédictions.
+pour faire de la sélection de features. En effet, si une feature a un coefficient associé qui
+vaut exactement 0, alors on peut se débarasser de cette feature car elle n'influe clairement pas le calcul des prédictions !
 
 ## Biais & variance
 Lorsque l'on parle du *tradeoff biais-variance*, on parle du biais inductif et de la variance d'un modèle de machine learning.
