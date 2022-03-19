@@ -63,8 +63,8 @@ Concrètement :
 * La **variance** d'un modèle est une mesure de la sensibilité que possède un modèle par rapport aux données utilisées pour l'entraîner.
 
 ### Biais inductif
-Il est en fait impossible d'entraîner un modèle sans biais inductif. Sans cela, il existerait une infinité de fonctions qui
-sont capables de modéliser les relations entres les couples $(x, y)$.
+Il est en fait [impossible d'entraîner un modèle sans biais inductif](https://fr.abcdef.wiki/wiki/Ugly_duckling_theorem).
+Sans cela, il existerait une infinité de fonctions qui sont capables de modéliser les relations entres les couples $(x, y)$.
 L'ensemble des biais inductifs constituent des hypothèses sur les fonctions qui pourraient le mieux modéliser la relation entre
 nos couples $(x, y)$. L'étape d'apprentissage se résume alors à la recherche de la meilleure fonction parmis l'espace des fonctions
 modélisables.
@@ -99,7 +99,7 @@ pour rapidement converger vers une fonction $f$ de bonne qualité. En effet, il 
 
 On peut comparer cet exemple à celui du KNN. Le KNN ne fait que l'hypothèse de continuité, il prédit la valeur d'un point $x$ par rapport
 aux autres points vus pendant l'entraînement qui sont au voisinage de $x$. C'est l'hypothèse la plus simple qui soit, et cela laisse place à
-un ensemble de fonctions modélisables énorme. Cela permet de garder un fort potentiel de modélisation, mais cela demande aussi un nombre de données
+un ensemble de fonctions modélisables énorme. Cela permet de garder un fort potentiel de modélisation, mais ça demande aussi un nombre de données
 très élevées pour modéliser précisemment une fonction en tout point.
 *En fait, à cause de la malédiction de la dimension, le nombre de données nécessaires pour couvrir l'ensemble de définition d'un KNN
 croit exponentiellement avec le nombre de dimensions à nos features.*
@@ -112,11 +112,16 @@ est alors d'entraîner un modèle plus expressif comme le KNN, mais il faut alor
 une relation utile sans sur-apprendre.
 
 ## Tradeoff biais-variance
-Le tradeoff biais-variance est fondamental en Machine Learning.
+Le compromis biais-variance est fondamental en Machine Learning.
 Intuitivement, on a un équilibre à trouver dans la taille de l'espace des fonctions que peuvent modéliser nos modèles.
 Si on laisse cet espace être trop grand, alors le modèle va trouver une fonction qui sera très performante sur les données d'entraînement
 mais qui aura un loss élevé sur de nouvelles données à cause d'un sur-apprentissage sévère. A l'inverse, à trop réduire cet espace,
 on ne va laisser au modèle que des fonctions sous-efficaces pour modéliser la relation entre nos couples $(x, y)$.
+Idéalement, on voudrait appliquer uniquement des biais qui correspondent à la nature de la vraie relation entre nos données. Cependant
+il faut garder en tête que ces biais sont souvent inconnus, nous ne ponvons donc uniquement tester différentes hypothèses afin de regarder
+ce qui fonctionne le mieux en pratique sur les données à considérer.
+*Une relation linéaire est peut-être sous-efficace par rapport à la vraie relation de votre couple $(x, y)$, mais elle est peut-être
+ce que vous aurez de mieux entre le compromis "biais simplificateur" vs "nombre de données".*
 
 Le biais et la variance sont deux faces d'une même pièce, ajouter du biais réduit la variance, et vice versa.
 
@@ -132,7 +137,7 @@ Si $h$ a été entraîné sur $D$, on le note $h_D$, et on note ses prédictions
 On peut alors décomposer le loss moyen d'un modèle $h$ :
 $$
 Loss_{test}(h) = variance(h) + biais(h)^2 + bruit \\
-E_{x, y, D}[(h_D(x) - y)] = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y)^2]
+E_{x, y, D}[(h_D(x) - y)^2] = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y(x))^2]
 $$
 
 Où :
@@ -141,13 +146,46 @@ $$
 \bar y(x) = E_{y, x}[y(x)]
 $$
 
-Les valeurs de 
-*TODO: Explications intuitives*
+Explications des valeurs ci-dessus :
+* $\bar h(x)$ représente la prédiction moyenne du modèle $h$ lorsqu'on l'entraîne sur tous les datasets $D$ probables provenant de la distribution $P$.
+* $\bar y(x)$ représente la valeur moyenne de $y$ associée à $x$. En effet, la valeur de $y$ peut être bruitée ou même ne pas complètement dépendre de $x$,
+donc il faut prendre en compte que même si l'on mesure deux fois le même $x$, il est possible que l'on se retrouve avec des valeurs de $y$ différentes.
+* $Loss_{test}(h)$ est la performance moyenne du modèle $h$ entraîné sur l'ensemble de $D$ probables et évalué sur l'ensemble des couples $(x, y)$ probables,
+provenant de la distribution $P$.
+* La variance est une mesure de l'écart moyen entre la prédiction d'un modèle entraîné avec un dataset $D$ lambda et
+la prédiction espérée $\bar h(x)$ de l'ensemble des datasets.
+* Le biais est une mesure de l'écart moyen entre la prédiction espérée $\bar h(x)$ et la valeur espérée $\bar y(x)$.
+* Le bruit mesure la variance moyenne entre points $y(x)$ et leur moyenne $\bar y(x)$
 
-## No Free Lunch
+Ce que définit cette équation, c'est simplement qu'il est possible de réduire les pertes d'un modèle en réduisant sa variance et son biais.
+Ce c'est pas une preuve qu'il y a forcément un compromis à faire entre la variance et les biais. Ce compromis est intrinsèque à la définition
+de ces termes : l'un réduit l'espace de recherche et l'autre l'augmente.
+
+Cependant, il faut savoir que les modèles $h$ ne sont pas tous égaux dans cette équation. Une fois que l'on choisit d'utiliser un modèle linéaire,
+le biais sera forcément très fort. Si le biais n'est pas bon (c.a.d. si $\bar h(x)$ est loin de $\bar y(x)$), notre modèle aura de la peine à
+faire diminuer le loss. Au contraire, un réseau de neurones peut plus facilement contrôler la force de son biais à travers plusieurs mécanismes de régularisation.
+Cela nous permet mieux choisir la force des biais et de la variance de notre modèle.
+
+*Si ici on utilise $h$ pour désigner un modèle, c'est parce qu'en fait on considère qu'un modèle est pleinement définit par ses hypothèses.*
+
+## No Free Lunch (NFL)
+NFL est un théorème important. Il statue que aucun algorithme de recherche de solution n'est meilleur que les autres sur tout les problèmes possibles.
+La recherche d'un unique algorithme qui serait meilleur que tout les autres est donc inutile. Il est nécessaire de faire des hypothèses sur les biais qui seraient
+intéressants, afin de choisir le ou les modèles de Machine Learning à entraîner.
 
 ## Conclusion
+En résumé, il est nécessaire de choisir les bons biais qui permettront à un modèle de machine learning de bien généraliser.
+Ces biais inductifs constituent toutes les hypothèses que l'on fait pour réduire l'espace de recherche des fonctions.
+Ces biais doivent être utilisés avec parcimonie, afin de laisser au modèle un peu de liberté pour trouver une fonction qui
+ne sous-performe pas (pour éviter le sous-apprentissage). Il faut tout de même faire attention à ne pas laisser un modèle
+sur-apprendre par un manque de biais et de données.
 
+Enfin, réduire les biais permet généralement d'augmenter la performance d'un modèle sur son jeu d'entraînement,
+et réduire la variance permet de mieux généraliser sur des exemples nouveaux.
+
+Avoir beaucoup de données permet de réduire le besoin de biais forts en laissant plus de flexibilité dans l'espace de recherche,
+car des données supplémentaires peuvent être vues comme un moyen de régulariser l'apprentissage en exigeant au modèle d'être bon
+sur toutes les données d'entraînement.
 
 ## Sources
 
@@ -156,3 +194,6 @@ https://fr.abcdef.wiki/wiki/Inductive_bias
 https://fr.abcdef.wiki/wiki/No_free_lunch_in_search_and_optimization
 https://explained.ai/regularization/L1vsL2.html
 https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html
+https://fr.abcdef.wiki/wiki/Ugly_duckling_theorem
+no-free-lunch.org
+https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham
