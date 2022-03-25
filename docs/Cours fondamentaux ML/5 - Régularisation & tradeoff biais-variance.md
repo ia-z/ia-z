@@ -122,7 +122,7 @@ Si on laisse cet espace être trop grand, alors le modèle va trouver une foncti
 mais qui aura un loss élevé sur de nouvelles données à cause d'un sur-apprentissage sévère. A l'inverse, à trop réduire cet espace,
 on ne va laisser au modèle que des fonctions sous-efficaces pour modéliser la relation entre nos couples $(x, y)$.
 Idéalement, on voudrait appliquer uniquement des biais qui correspondent à la nature de la vraie relation entre nos données. Cependant
-il faut garder en tête que ces biais sont souvent inconnus, nous ne ponvons donc uniquement tester différentes hypothèses afin de regarder
+il faut garder en tête que ces biais sont souvent inconnus, nous ne pouvons donc que tester différentes hypothèses afin de regarder
 ce qui fonctionne le mieux en pratique sur les données à considérer.
 *Une relation linéaire est peut-être sous-efficace par rapport à la vraie relation de votre couple $(x, y)$, mais elle est peut-être
 ce que vous aurez de mieux entre le compromis "biais simplificateur" vs "nombre de données".*
