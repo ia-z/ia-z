@@ -78,7 +78,7 @@ il est probable que $f(x)$ et $f(x')$ soient proches l'un de l'autre. Intuitivem
 que de quelques pixels, alors si l'une des deux images représente un chien, la seconde sera très probablement une image de chien.
 
 La régularisation est en fait une façon de biaiser notre modèle vers des solutions plus simples. C'est aussi une hypothèse que l'on
-choisi lorsque l'on entraîne le modèle !
+choisit lorsque l'on entraîne le modèle !
 
 ### Variance
 La variance d'un modèle résume son besoin de données pour apprendre au mieux. Plus un modèle a de variance et plus il aura besoin
