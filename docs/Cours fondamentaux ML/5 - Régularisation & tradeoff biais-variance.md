@@ -91,7 +91,7 @@ La variance d'un modèle résume son besoin de données pour apprendre au mieux.
 de grosses quantités de données afin de ne pas sur-apprendre.
 
 Pour être plus précis, on considère que les données utilisées à l'apprentissage proviennent toutes d'une source aléatoire capable
-de générer toutes les données possibles d'une distribution fixée. On peut alors échantilloner plusieurs jeux de données à partir de cette source.
+de générer toutes les données possibles d'une distribution fixée. On peut alors échantillonner plusieurs jeux de données à partir de cette source.
 Cela permet alors d'entraîner autant de modèles qu'il y a de jeux de données, et chaque modèle va converger vers une solution finale
 qui peut être évaluer sur un ensemble de test commun.
 Dans ce cas, la variance d'un modèle de ML est mesurée à la variance des performances des différents modèles évalués sur le jeu de test,
