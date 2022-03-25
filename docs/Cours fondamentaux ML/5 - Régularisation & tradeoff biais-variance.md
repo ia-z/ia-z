@@ -36,32 +36,38 @@ Cette norme étant une fonction quadratique, elle est continue et dérivable en 
 
 Mathématiquement on peut écrire :
 $$
-L2(w) = \sqrt{\sum_i w_i^2} \\
-Loss_{final}(w) = loss(w) + \lambda L2(w)
+\text{L2}(w) = \sum_i w_i^2\\
+\text{loss}_{\text{final}}(w) = \text{loss}(w) + \lambda \text{L2}(w)
 $$
 
 *Comment afficher ça mieux ? :'( jupyter notebook ? Peut-être qu'en compilant le site web les équations vont s'afficher!*
 
-Afin de moduler la force de pénalisation par rapport au loss, on définit un hyperparamètre \lambda qui est une constante
-définie avant l'entraînement. Un lambda trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
+Afin de moduler la force de pénalisation par rapport au loss, on définit un hyperparamètre $\lambda$ qui est une constante positive
+définie avant l'entraînement. Un $\lambda$ trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
 car la moindre modification de ses poids sera fortement pénalisée), mais un lambda trop faible masquera l'effet
 de la régularisation.
+
+On parle de *Ridge Regression* lorsque l'on fait une régression linéaire couplée à une régularisation L2.
 
 ### L1
 La régularisation L1 contraint la norme L1 des paramètres à être la plus petite possible.
 Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
 $$
-L1(w) = \sum_i |w_i| \\
-Loss_{final}(w) = loss(w) + \lambda L1(w)
+\text{L1}(w) = \sum_i |w_i| \\
+\text{loss}_{\text{final}}(w) = \text{loss}(w) + \lambda \text{L1}(w)
 $$
 
 Cette régularisation a tendance à pousser des coefficients $w$ à valoir 0 exactement, ce qui est utile
 pour faire de la sélection de features. En effet, si une feature a un coefficient associé qui
 vaut exactement 0, alors on peut se débarasser de cette feature car elle n'influe clairement pas le calcul des prédictions !
 
+On parle de *Lasso Regression* lorsque l'on fait une régression linéaire couplée à une régularisation L1.
+De plus, rien n'empêche d'utiliser à la fois la régularisation L1 et L2. Lorsque les deux méthodes sont utilisées pour une
+régression linéaire, on dit que l'on utilise une méthode *Elastic Net*.
+
 ## Biais & variance
-Lorsque l'on parle du *tradeoff biais-variance*, on parle du biais inductif et de la variance d'un modèle de machine learning.
+Lorsque l'on parle du *tradeoff biais-variance*, on parle du biais inductif et de la variance d'un modèle de Machine Learning.
 Concrètement :
 * Les **biais inductif** d'un modèle représente l'espace des fonctions apprenables par un modèle.
 * La **variance** d'un modèle est une mesure de la sensibilité que possède un modèle par rapport aux données utilisées pour l'entraîner.
@@ -106,7 +112,7 @@ aux autres points vus pendant l'entraînement qui sont au voisinage de $x$. C'es
 un ensemble de fonctions modélisables énorme. Cela permet de garder un fort potentiel de modélisation, mais ça demande aussi un nombre de données
 très élevé pour modéliser précisément une fonction en tout point.
 *En fait, à cause de la malédiction de la dimension, le nombre de données nécessaires pour couvrir l'ensemble de définition d'un KNN
-croit exponentiellement avec le nombre de dimensions à nos features.*
+croit exponentiellement avec le nombre de dimensions de nos features.*
 
 A travers ces deux exemples, on peut voir qu'il peut y avoir des comportements drastiquement différents lors de l'entraînement de nos modèles.
 Avec peu de points et une hypothèse forte sur la relation entre nos données, on peut utiliser un modèle simple qui va converger sans problème.
@@ -127,7 +133,7 @@ ce qui fonctionne le mieux en pratique sur les données à considérer.
 *Une relation linéaire est peut-être sous-efficace par rapport à la vraie relation de votre couple $(x, y)$, mais elle est peut-être
 ce que vous aurez de mieux entre le compromis "biais simplificateur" vs "nombre de données".*
 
-Le biais et la variance sont deux faces d'une même pièce, ajouter du biais réduit la variance, et vice versa.
+Le biais et la variance sont deux erreurs opposées, ajouter du biais réduit la variance, et vice versa.
 
 ### (\*\*) Détails mathématiques
 Soit :
@@ -140,7 +146,7 @@ Si $h$ a été entraîné sur $D$, on le note $h_D$, et on note ses prédictions
 
 On peut alors décomposer le loss moyen d'un modèle $h$ :
 $$
-Loss_{test}(h) = variance(h) + biais(h)^2 + bruit \\
+\text{loss}_{\text{test}}(h) = \text{variance}(h) + \text{biais}(h)^2 + \text{bruit}\\
 E_{x, y, D}[(h_D(x) - y)^2] = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y(x))^2]
 $$
 
@@ -154,7 +160,7 @@ Explications des valeurs ci-dessus :
 * $\bar h(x)$ représente la prédiction moyenne du modèle $h$ lorsqu'on l'entraîne sur tous les datasets $D$ probables provenant de la distribution $P$.
 * $\bar y(x)$ représente la valeur moyenne de $y$ associée à $x$. En effet, la valeur de $y$ peut être bruitée ou même ne pas complètement dépendre de $x$,
 donc il faut prendre en compte que même si l'on mesure deux fois le même $x$, il est possible que l'on se retrouve avec des valeurs de $y$ différentes.
-* $Loss_{test}(h)$ est la performance moyenne du modèle $h$ entraîné sur l'ensemble de $D$ probables et évalué sur l'ensemble des couples $(x, y)$ probables,
+* $\text{loss}_{\text{test}}(h)$ est la performance moyenne du modèle $h$ entraîné sur l'ensemble de $D$ probables et évalué sur l'ensemble des couples $(x, y)$ probables,
 provenant de la distribution $P$.
 * La variance est une mesure de l'écart moyen entre la prédiction d'un modèle entraîné avec un dataset $D$ lambda et
 la prédiction espérée $\bar h(x)$ de l'ensemble des datasets.
@@ -178,7 +184,7 @@ La recherche d'un unique algorithme qui serait meilleur que tout les autres est 
 intéressants, afin de choisir le ou les modèles de Machine Learning à entraîner.
 
 ## Conclusion
-En résumé, il est nécessaire de choisir les bons biais qui permettront à un modèle de machine learning de bien généraliser.
+En résumé, il est nécessaire de choisir les bons biais qui permettront à un modèle de Machine Learning de bien généraliser.
 Ces biais inductifs constituent toutes les hypothèses que l'on fait pour réduire l'espace de recherche des fonctions.
 Ces biais doivent être utilisés avec parcimonie, afin de laisser au modèle un peu de liberté pour trouver une fonction qui
 ne sous-performe pas (pour éviter le sous-apprentissage). Il faut tout de même faire attention à ne pas laisser un modèle
