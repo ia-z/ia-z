@@ -48,7 +48,7 @@ car la moindre modification de ses poids sera fortement pénalisée), mais un la
 de la régularisation.
 
 ### L1
-La régularisation L1 contrait la norme L1 des paramètres à être la plus petite possible.
+La régularisation L1 contraint la norme L1 des paramètres à être la plus petite possible.
 Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
 $$
