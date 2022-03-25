@@ -173,7 +173,7 @@ Cela nous permet mieux choisir la force des biais et de la variance de notre mod
 *Si ici on utilise $h$ pour désigner un modèle, c'est parce que l'on considère qu'un modèle est pleinement défini par ses hypothèses.*
 
 ## No Free Lunch (NFL)
-NFL est un théorème important. Il statue que aucun algorithme de recherche de solution n'est meilleur que les autres sur tout les problèmes possibles.
+Le théorème du NFL statue qu'aucun algorithme de recherche de solution n'est meilleur que les autres sur tous les problèmes possibles.
 La recherche d'un unique algorithme qui serait meilleur que tout les autres est donc inutile. Il est nécessaire de faire des hypothèses sur les biais qui seraient
 intéressants, afin de choisir le ou les modèles de Machine Learning à entraîner.
 
