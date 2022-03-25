@@ -104,7 +104,7 @@ pour rapidement converger vers une fonction $f$ de bonne qualité. En effet, il 
 On peut comparer cet exemple à celui du KNN. Le KNN ne fait que l'hypothèse de continuité, il prédit la valeur d'un point $x$ par rapport
 aux autres points vus pendant l'entraînement qui sont au voisinage de $x$. C'est l'hypothèse la plus simple qui soit, et cela laisse place à
 un ensemble de fonctions modélisables énorme. Cela permet de garder un fort potentiel de modélisation, mais ça demande aussi un nombre de données
-très élevées pour modéliser précisemment une fonction en tout point.
+très élevé pour modéliser précisément une fonction en tout point.
 *En fait, à cause de la malédiction de la dimension, le nombre de données nécessaires pour couvrir l'ensemble de définition d'un KNN
 croit exponentiellement avec le nombre de dimensions à nos features.*
 
