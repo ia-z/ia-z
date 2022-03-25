@@ -53,7 +53,7 @@ Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
 $$
 L1(w) = \sum_i |w_i| \\
-Loss_{final}(w) = loss(w) + \lambda L2(w)
+Loss_{final}(w) = loss(w) + \lambda L1(w)
 $$
 
 Cette régularisation a tendance à pousser des coefficients $w$ à valoir 0 exactement, ce qui est utile
