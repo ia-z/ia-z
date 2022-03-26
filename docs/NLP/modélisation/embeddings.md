@@ -149,7 +149,7 @@ array(['20e', '24e', '27e', '30e', 'adversaire', 'alors', 'attaquant',
 
 ### Word2Vec <a name="word2vec"></a>
 
-Notre espace de représentation obtenu avec la méthode one-hot est de très grande dimentionalité étant donné qu'il dépend de la taille de notre vocabulaire.
+L'espace de représentation obtenu avec la méthode one-hot est de très grande dimentionalité étant donné qu'il dépend de la taille de notre vocabulaire.
 
 De plus, il ne tient pas compte de l'encapsulation du sens du texte. Plusieurs algorithmes proposent de construire une représentation qui encapsule le sens, correspondant à la notion 'embeddings', et en particulier de l'algorithme word2vec.
 
