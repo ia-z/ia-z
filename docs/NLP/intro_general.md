@@ -19,6 +19,6 @@ Ces technologies se sont intégrées dans notre vie quotidienne et nous oublions
 
 Le NLP est l'un des sujets d'actualité les plus importants de l'IA aujourd'hui. À la traîne depuis des années par rapport à d'autres domaines du Deep Learning tels que le Computer Vision, le NLP n'a que récemment gagné en popularité.
 
-Ce cours vous aidera à vous familiariser avec ce domaine.
+Ce guide vous aidera à vous familiariser avec ce domaine.
 
-Avant de commencer ce cours, nous partons du principe que vous avez déjà quelques connaissances en Machine Learning et que vous avez déjà utilisé Python et des librairies telles que Numpy, pandas et matplotlib. De plus, une bonne connaissance de l'algèbre linéaire, des probabilités et des statistiques est très fortement recommandé.
+Nous partons du principe que vous avez déjà quelques connaissances en Machine Learning et que vous avez déjà utilisé Python et des librairies telles que Numpy, pandas et matplotlib. De plus, une bonne connaissance de l'algèbre linéaire, des probabilités et des statistiques est très fortement recommandé.
