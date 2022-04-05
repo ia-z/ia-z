@@ -130,9 +130,7 @@ def main(model=None, output_dir=None, n_iter=100):
         if not output_dir.exists():
             output_dir.mkdir()
         nlp.to_disk(output_dir)
-        print("Saved model to", output_dir)
 
-        print("Loading from", output_dir)
         nlp2 = spacy.load(output_dir)
         for text, _ in TRAIN_DATA:
             doc = nlp2(text)
@@ -153,21 +151,8 @@ if __name__ == '__main__':
 Pour utiliser cette démarche avec Spacy, il est nécessaire d'avoir un TRAIN_DATA dans ce format.
 Si vous souhaitez créer un TRAIN_DATA avec ce format en utilisant plusieurs centaines/milliers de phrases puis de réutiliser la démarche précédente, il est possible de le faire en suivant ce blog : https://thinkinfi.com/prepare-training-data-and-train-custom-ner-using-spacy-python/.
 
-### Créer son propre modèle
-
-#### Deep Learning
-
-Les modèles de deep learning utilisent généralement des réseaux de neurones récurrents comme les LSTM qui arrivent à capter les dépendances des mots dans la phrase.
-La couche d'entrée est typiquement constituée d'un embedding (word2vec, BERT) qui permettent de représenter les mots sous la forme de vecteurs en fonction de leur contexte.
-
-Il est préférable d'utiliser un CRF en sortie du réseau de neurones car ce dernier permet de calculer la séquence de labels la plus probable, et non de considérer chaque output séparément.
-
-On notera que les modèles utilisant BERT ont besoin de beaucoup de RAM pour fonctionner, mais peuvent être implémenté très facilement en utilisant l'une des libraires ci-dessous.
 
 ## Librairies
 
 - **pytorch-transformers** ([Hugging Face](https://github.com/huggingface/pytorch-transformers))
 - **Flair** ([Flair](https://github.com/zalandoresearch/flair))
-
-## Datasets de NER
-- https://github.com/juand-r/entity-recognition-datasets
