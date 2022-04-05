@@ -52,7 +52,7 @@ Il utilise un modèle de représentation du langage profond bidirectionnel.
 ### Différentes approches de la représentation du modèle de langage :
 
 1. Sans contexte :  
-    * Chaque mot d'une phrase est transformé en un embedding de mots qui est indépendant du contexte (c.f word2vec ou GloVe).
+    * Chaque mot d'une phrase est transformé en un embedding de mots qui est indépendant du contexte.
 
        La représentation sans contexte d'une phrase est une séquence d'embeddings de mots.
 
@@ -69,7 +69,7 @@ Il utilise un modèle de représentation du langage profond bidirectionnel.
        La représentation contextuelle de chaque mot de la phrase est influencée par les mots précédents ET les mots suivants. Maaaagique ! 🪄🧙
 
 
-### Comment former un modèle de langage bidirectionnel profond ?
+### Comment entrainer un modèle de langage bidirectionnel profond ?
 
 ### Fonctionnement global
 
@@ -84,6 +84,7 @@ nous pouvons utiliser ces méthodes exactes pour affiner nos modèles afin de mi
 *Je ne comprends pas cette phrase ?* => *ça fait référence au tranfert learning. BERT a été pré-entrainé sur des tâches de NSP / MLM, je voulais préciser que l'on peut réutiliser ces méthodes sur des tâches précises (NER, analyse de sentiment etc .) en fonction d'une langue donnée.*
 
 #### Fonction de perte (MLM)
+
 Cas profond bidirectionnel (BERT) :
 
 * (Contexte) `Le viewer_1 est [MASK] mais le viewer_2 est mécontent.`
@@ -104,8 +105,8 @@ Cas profond bidirectionnel (BERT) :
 * Tâche de classification binaire : déterminer si B suit A ou non.
 * Calculer le score de classification (= score NSP) 
 
-
 ### Exploitation du modèle
+
 Le modèle pré-entraîné peut-être utilisé directement ou alors être fine-tuner pour des tâches spécifiques.
 Son pré-entraînement et son architecture très malléable le rend très performant même si on l'utilise pour autre chose que
 pour des tâches de NSP et MLM.
@@ -113,13 +114,3 @@ pour des tâches de NSP et MLM.
 Son cas d'utilisation le plus classique est de créer les embeddings des tokens de vos textes. Il n'est pas nécessaire de fine-tuner le modèle pour ce faire.
 En revanche, si vous voulez faire du sentiment analysis par exemple, vous aurez besoin de fine-tuner le modèle afin qu'il s'adapte au nouveau rôle
 du token `[CLS]`. Ce faisant, vous changerez la façon dont le modèle traite une phrase et la façon dont il va contextualiser le token `[CLS]` avec le reste des tokens.
-
-## Liens intéressants : 
-
-## Tutoriels :
-* https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb
-
-* Publication originale : https://arxiv.org/abs/1810.04805
-* https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270
-* https://ai.googleblog.com/2018/11/open-sourcing-bert-state-of-art-pre.html
-* https://lesdieuxducode.com/blog/2019/4/bert--le-transformer-model-qui-sentraine-et-qui-represente
