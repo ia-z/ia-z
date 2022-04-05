@@ -153,21 +153,9 @@ L'espace de représentation obtenu avec la méthode one-hot est de très grande 
 
 De plus, il ne tient pas compte de l'encapsulation du sens du texte. Plusieurs algorithmes proposent de construire une représentation qui encapsule le sens, correspondant à la notion 'embeddings', et en particulier de l'algorithme word2vec.
 
-L'algorithme a été introduit dans deux articles principaux
-
-- Mikolov, T., Sutskever, I., Chen, K., Corrado, G. S., & Dean, J. (2013). Distributed representations of words and phrases and their compositionality. In Advances in neural information processing systems (pp. 3111-3119).
-
-- Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient estimation of word representations in vector space. arXiv preprint arXiv:1301.3781.
-
 Plusieurs versions et architectures de l'algorithme existent : L'architecture Skip-Gram cherche à prédire les mots dans le contexte de la cible. A l'inverse l'architecture CBow cherche à prédire un mot en fonction de son contexte.
 
 Différents articles par la suite dans le cadre de ce guide de NLP seront réalisés pour vous présenter ces algorithmes en détails.
-
-On remarquera que plusieurs versions de l'algorithme sont disponibles sur le net en utilisant la libraire gensim.
-
-```
-pip install --upgrade gensim
-```
 
 ## Sources
 
