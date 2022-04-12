@@ -28,11 +28,6 @@ jobs:
     # Build web project using jupyter-book
     - name: Build Jupyter-Book
       run: jupyter-book build .
-    - name: Test github event
-      run: |
-        cat << OBJECT
-        ${{ toJson(github) }}
-        OBJECT
     # Upload the artifact to be used in next job
     - uses: actions/upload-artifact@v2
       with:
