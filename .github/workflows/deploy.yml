@@ -54,6 +54,8 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: build-artifact
+    - name: list
+      run: ls -la
     - name: Test github event
       run: |
         cat << OBJECT
