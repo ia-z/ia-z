@@ -11,6 +11,9 @@
   </a>
 </p>
 
+## Statut
+
+[![pages-build-deployment](https://github.com/ia-z/ia-z/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ia-z/ia-z/actions/workflows/pages/pages-build-deployment)
 
 ## Sommaire
 
