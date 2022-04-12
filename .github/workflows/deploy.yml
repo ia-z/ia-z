@@ -4,13 +4,19 @@ on:
   push:
     branches:
       - main
+      
+  pull_request:
+    branches:
+      - main
 
 jobs:
+
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     # Checkout from main
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     # Set the agent to run Python 3.10
     - uses: actions/setup-python@v3
       with:
@@ -21,6 +27,26 @@ jobs:
     # Build web project using jupyter-book
     - name: Build Jupyter-Book
       run: jupyter-book build .
+    # Upload the artifact to be used in next job
+    - uses: actions/upload-artifact@v2
+      with:
+        name: build-artifact
+        path: _build/html
+
+  deploy:
+    name: Deploy
+    # Deploy only if build succeeded
+    needs: build
+    # Deploy only if pull request has been merged
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout from main
+    - uses: actions/checkout@v2
+    # Download the artifact from previous job
+    - uses: actions/download-artifact@v3
+      with:
+        name: build-artifact
     # Deploy it to Github pages
     - name: Deploy to GitHub Pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
