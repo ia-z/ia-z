@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CR ia-z : réunion du 12/03/2022 &#8212; IA-Z</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/2%20-%20Elements%20de%20definition.html">
+   Eléments de définition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/3%20-%20Regression%20lineaire.html">
+   Modèle élémentaire : La régression linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/4%20-%20Generalisation.html">
+   Généralisation d’un modèle de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/6%20-%20Feature%20engineering%20%26%20cleaning.html">
+   Feature Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/README.html">
+   Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20RL/intro.html">
+   Reinforcement learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/CRs/12032022_CR.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/CRs/12032022_CR.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectif-du-cours-apres-discussion">
+   Objectif du cours après discussion :
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repartition-des-taches">
+   Répartition des tâches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#organisation-du-cours">
+   Organisation du cours
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CR ia-z : réunion du 12/03/2022</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectif-du-cours-apres-discussion">
+   Objectif du cours après discussion :
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repartition-des-taches">
+   Répartition des tâches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#organisation-du-cours">
+   Organisation du cours
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="cr-ia-z-reunion-du-12-03-2022">
+<h1>CR ia-z : réunion du 12/03/2022<a class="headerlink" href="#cr-ia-z-reunion-du-12-03-2022" title="Permalink to this headline">¶</a></h1>
+<p>Personnes présentes - core team : Bsh, Pierrot, Adrien</p>
+<p>Nouveaux entrants dans le projet : Chaminou, Zinzolin (Welcome les potes !)</p>
+<p>Rédigé par : Bsh</p>
+<div class="section" id="objectif-du-cours-apres-discussion">
+<h2>Objectif du cours après discussion :<a class="headerlink" href="#objectif-du-cours-apres-discussion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Avoir un site web français avec des bonnes ressources en IA. On s’est concentré sur du ML pour le moment. L’idée est qu’une personne qui cherche des infos en IA en français, il tombera sur le notre site. Une base en ML avec la possibilité de spécialiser (IA symbolique, CV, NLP, RL, Cloud, Big Data ..).</p></li>
+<li><p>Reprendre les sites comme open classroom, qui nous ont tous permi d’apprendre en autodidacte. Avoir une version similaire pour notre usecase en mode projet communautaire.</p></li>
+<li><p>Les pré-requis du cours : une personne qui sort de terminale scientifique (niveau bac) avec une base en maths suffisante (spé maths). L’idée est de réussir à donner une intuition sur les notions que l’on souhaite aborder et on s’autorise pour certains chapitre d’approfondir certains points pour ceux qui le souhaitent.</p></li>
+</ul>
+</div>
+<div class="section" id="repartition-des-taches">
+<h2>Répartition des tâches<a class="headerlink" href="#repartition-des-taches" title="Permalink to this headline">¶</a></h2>
+<p>Chaminou bossera sur :</p>
+<ul class="simple">
+<li><p>introduction générale du cours (l’article qui devait être fait initialement par Defend Intelligence) : IA c’est quoi ? Mal défini, avoir de meilleures explications et une meilleure approche historique/philosophique. Data Science ≠ Machine ≠ IA.</p></li>
+<li><p>Aspects symbolique de l’IA. Remettre l’IA symbolique à sa juste valeur.</p></li>
+<li><p>Ouvert aux discussions et aux reviews de cours</p></li>
+</ul>
+<p>Zinzolin bossera sur  :</p>
+<ul class="simple">
+<li><p>RL &amp; Deep Learning (notamment CV).</p></li>
+<li><p>CV : Application aux véhicules autonomes.</p></li>
+<li><p>RL : Un parallèle avec bandit manchot.</p></li>
+<li><p>Ouvert aux discussions, aux reviews de cours et sur les aspects organisationels du cours.</p></li>
+</ul>
+<p>Pierrot bossera sur :</p>
+<ul class="simple">
+<li><p>Les cours fondamentaux en Machine Learning</p></li>
+</ul>
+<p>Adrien bossera sur :</p>
+<ul class="simple">
+<li><p>La partie Big Data, Data Engineering</p></li>
+</ul>
+<p>Bsh bossera sur :</p>
+<ul class="simple">
+<li><p>La partie organisation du cours (formaliser bonnes pratiques du github, onboarding, framework d’écriture de cours ..).</p></li>
+</ul>
+</div>
+<div class="section" id="organisation-du-cours">
+<h2>Organisation du cours<a class="headerlink" href="#organisation-du-cours" title="Permalink to this headline">¶</a></h2>
+<p>Concernant la partie organisation du cours, plusieurs points pertinents ont étaient abordés :</p>
+<ul class="simple">
+<li><p>Idée de Zinzolin concernant les bonnes pratiques pour l’édition des chapitres : Faciliter le travail des rédacteurs, l’idée est de développer un framework/template de cours. Faire gagner du temps à ceux qui doivent rédiger des cours, ça permet que tous les cours soient uniformes. Insister sur les bonnes pratiques de rédactions (template, titres, formats images, police …).</p></li>
+<li><p>Avoir un responsable par chapitre.</p></li>
+<li><p>A l’issu de chaque réunion :</p>
+<ul>
+<li><p>Faire un fichier pour écrire les objectifs de chacun pour la prochaine réunion (cours terme) - 1 sprint. L’idée est que si l’on écrit les objectifs de chaque personne pour une réunion donnée, les personnes concernées s’engagent à respecter leurs obligations.</p></li>
+<li><p>Faire un fichier pour résumer ce qui a été dit lors de chaque CR</p></li>
+</ul>
+</li>
+<li><p>Avoir une roadmap “long terme” afin de définir des objectifs précis et réalisable à atteindre.</p></li>
+<li><p>Avoir un dossier d’onboarding pour simplifier l’arrivée de nouvelles personnes dans le projet (points importants à connaitre, les bonnes pratiques du projet et notamment du github, quels sont les différents rôles possibles, comment s’y retrouver..)</p></li>
+<li><p>Tout ça sera formaliser sur le github  :</p>
+<ul>
+<li><p>Avoir un folder CR pour mettre l’ensemble des CR du projet.</p></li>
+<li><p>Avoir un template d’écriture pour les rédacteurs.</p></li>
+<li><p>Avoir un dossier d’onboarding pour les nouveaux venus.</p></li>
+<li><p>Avoir un dossier TODO pour historiser les objectifs de chacuns lors de chaque sprint.</p>
+<ul>
+<li><p>A partir de ce TODO ‘mensuel’, les personnes concernées devront faire des issues pour chaque cours en expliquant plus ou moins en détails ce qu’ils/elles souhaitent faire puis créer une branche à partir des issues pour avoir un PR liée.</p></li>
+<li><p>Système de sous-branche (idée de Zinzolin) : une branche par chapitre (la responsabilité de la branche revient au team manager du chapitre) et les personnes souhaitant faire des modifications les feraient sur un chapitre et donc feraient des MR sur la branche en question plutôt que sur main directement. Lorsqu’on fait une MR, on merge sur chapitre et non sur main lorsque c’est reviewé. Quand le chapitre est terminée et reviewé, on merge sur la branche main.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Remarque annexe énoncée par Pierrot :</p>
+<ul class="simple">
+<li><p>Ne pas se véxer lorsqu’on fait des remarques ou des modifications sur son cours. Mettez votre égo de côté ! Chill.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/CRs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

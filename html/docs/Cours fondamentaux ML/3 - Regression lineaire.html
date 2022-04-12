@@ -1,0 +1,1363 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modèle élémentaire : La régression linéaire &#8212; IA-Z</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Généralisation d’un modèle de Machine Learning" href="4%20-%20Generalisation.html" />
+    <link rel="prev" title="Eléments de définition" href="2%20-%20Elements%20de%20definition.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2%20-%20Elements%20de%20definition.html">
+   Eléments de définition
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modèle élémentaire : La régression linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4%20-%20Generalisation.html">
+   Généralisation d’un modèle de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6%20-%20Feature%20engineering%20%26%20cleaning.html">
+   Feature Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/README.html">
+   Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20RL/intro.html">
+   Reinforcement learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/3 - Regression lineaire.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/3 - Regression lineaire.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/Cours fondamentaux ML/3 - Regression lineaire.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modèle élémentaire : La régression linéaire
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-regression-cest-sympa-mais-comment-on-fait">
+     La régression c’est sympa, mais comment on fait ?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optimisation-des-parametres">
+       Optimisation des paramètres :
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calcul-du-gradient">
+       Calcul du gradient :
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strategie-d-optimisation">
+       Stratégie d’optimisation :
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synthese-des-calculs">
+     Synthèse des calculs :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithme">
+     Algorithme :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-dataset">
+     Le dataset :
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notre-objet-d-etude">
+       Notre objet d’étude :
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analyse-rapide-des-donnees">
+       Analyse rapide des données :
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-des-fonctions">
+   Définition des fonctions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Optimisation des paramètres
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-des-resultats">
+   Analyse des résultats :
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-polynomiale">
+   Régression polynomiale :
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adaptation-du-programme-python">
+     Adaptation du programme python :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#petit-point-sur-la-classification-binaire">
+     Petit point sur la classification binaire :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pour-aller-plus-loin">
+     Pour aller plus loin :
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modèle élémentaire : La régression linéaire</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modèle élémentaire : La régression linéaire
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#la-regression-cest-sympa-mais-comment-on-fait">
+     La régression c’est sympa, mais comment on fait ?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optimisation-des-parametres">
+       Optimisation des paramètres :
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calcul-du-gradient">
+       Calcul du gradient :
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strategie-d-optimisation">
+       Stratégie d’optimisation :
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synthese-des-calculs">
+     Synthèse des calculs :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithme">
+     Algorithme :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-dataset">
+     Le dataset :
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notre-objet-d-etude">
+       Notre objet d’étude :
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analyse-rapide-des-donnees">
+       Analyse rapide des données :
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition-des-fonctions">
+   Définition des fonctions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Optimisation des paramètres
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-des-resultats">
+   Analyse des résultats :
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-polynomiale">
+   Régression polynomiale :
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adaptation-du-programme-python">
+     Adaptation du programme python :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#petit-point-sur-la-classification-binaire">
+     Petit point sur la classification binaire :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pour-aller-plus-loin">
+     Pour aller plus loin :
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="modele-elementaire-la-regression-lineaire">
+<h1>Modèle élémentaire : La régression linéaire<a class="headerlink" href="#modele-elementaire-la-regression-lineaire" title="Permalink to this headline">¶</a></h1>
+<p>La régression linéaire est l’un des outils les plus basiques en Machine Learning. Cela consiste à faire correspondre au mieux un modèle mathématique à un jeu de données. Plus formellement, on dit que l’on détermine le lien entre une variable ‘explicative’ (des variables dans le cas de la régression multiple) et une variable ‘expliquée’.</p>
+<p>Pour cela, il faut tout d’abord des données à modéliser. Pour illustrer cela, supposons que vous êtes agent immobilier et que vous avez répertorié un grand jeu de données concernant des appartements. Pour chaque appartement, vous avez sa surface, son prix, son niveau d’isolation …
+L’objectif est d’en extraire un modèle mathématique suffisament fiable pour que vous puissiez déterminer le prix d’un appartement lorsque vous le visitez à partir de ses caractéristiques.
+Il vous faut maintenant sélectionner un modèle mathématique qui consiste en une courbe dont vous pouvez modifier les paramètres pour l’ajuster à vos données. Cela peut être une droite, un polynôme, une exponentielle …</p>
+<p>Ce modèle va permettre de faire le lien entre les caractéristiques et le prix de l’appartement. On parle de régression simple lorsque le prix n’est lié qu’à une seule variable explicative, par exemple la surface. Mais vous imaginez bien qu’à surface égale, un appartement situé proche du centre ville et des services sera plus cher qu’un bien situé en périphérie. Dans ce cas là, il faut déterminer le prix en fonction de plusieurs variables explcatives. On parle alors de régression multiple. C’est une technique assez courante puisque vous serez souvent confrontés à des phénomènes dont les paramètres sont liés entre eux.</p>
+<p>Une fois que vous avez déterminé votre modèle et chargé vos données, il n’y a plus qu’à optimiser ses paramètres.</p>
+<p>Dans la suite de ce chapitre, nous ne traiterons que le cas de la régression simple pour une droite affine et un polynôme, mais si vous avez bien compris le principe, avec quelques recherches et un peu de réflexion, vous devriez pouvoir adapter l’algorithme à votre modèle.</p>
+<p>Pour mieux comprendre cela, étudions un exemple simple.</p>
+<p>Prenons un jeu de données qui contient le prix ainsi que la surface d’un certain nombre d’appartements.
+Voici le graphique obtenu lorsque l’on trace le prix d’un appartement en fonction de sa surface. Un point correspond à un appartement, son abscisse correspond à sa surface, son ordonnée à son prix.</p>
+<p>![nuage_points.png](data:image/png;base64,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)</p>
+<p>Observons un peu ce nuage de point. On peut remarquer que plus la surface est grande, plus le prix des appartements est élevé.</p>
+<p>Imaginons que nous voulions déterminer le prix d’un appartement en fonction de sa surface.  Nous disposons de données discrètes (nombre fini d’exemples), ce qui ne permet pas de déterminer le prix d’un appartement quelle que soit sa surface. Il nous faut donc disposer d’un modèle mathématique continu.</p>
+<p>C’est ici qu’intervient la régression linéaire : Nous allons expliquer la variable ‘prix’ à partir de la variable ‘surface’ . Il n’y a qu’une variable explicative, la régression sera donc qualifiée de simple par opposition à la régression multiple.</p>
+<div class="section" id="la-regression-cest-sympa-mais-comment-on-fait">
+<h2>La régression c’est sympa, mais comment on fait ?<a class="headerlink" href="#la-regression-cest-sympa-mais-comment-on-fait" title="Permalink to this headline">¶</a></h2>
+<p>L’idée de la régression, c’est de <strong>quantifier l’écart</strong> entre le modèle et les données, puis de <strong>minimiser cet écart</strong> en faisant varier les paramètres du modèle.</p>
+<p>Reprenons nos données, nous avons relevé que les points formaient une droite, nous allons donc choisir un modèle de droite affine pour les représenter. Le modèle aura donc une équation de la forme <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">ax+b</span></code>, où <code class="docutils literal notranslate"><span class="pre">y</span></code> est le prix prédit à partir d’une surface <code class="docutils literal notranslate"><span class="pre">x</span></code>.  <code class="docutils literal notranslate"><span class="pre">a</span></code> et  <code class="docutils literal notranslate"><span class="pre">b</span></code> sont les paramètres que l’on fera varier pour <strong>ajuster le modèle</strong>.</p>
+<p>Maintenant, il faut être capable de quantifier l’écart entre le modèle et les données. C’est à ça que sert la <strong>fonction coût</strong>. Nous utiliserons ici la <strong>moyenne quadratique des écarts (Mean Squared Error en anglais ou MSE)</strong>  :</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(S(y,ŷ) = \frac{1}{2m} * \sum_{i=0}^m (ŷ_i - y_i)²\)</span>
+<br>
+Explication : On mesure ici l’erreur entre le modèle et les données &gt;expérimentales en calculant la somme des écarts au carré entre les données expérimentales et les valeurs prédites par le modèle.</p>
+</div></blockquote>
+<p>On note <span class="math notranslate nohighlight">\(y_i\)</span> la i-ème valeur expérimentale de la variable expliquée,  <span class="math notranslate nohighlight">\(ŷ_i\)</span> est la i-ème valeur prédite par le modèle et m correspond au nombre de données dans le jeu.</p>
+<p>⚠ Il est important de noter que <em><strong><code class="docutils literal notranslate"><span class="pre">ce</span> <span class="pre">n’est</span> <span class="pre">pas</span> <span class="pre">la</span> <span class="pre">seule</span> <span class="pre">fonction</span> <span class="pre">coût</span> <span class="pre">qui</span> <span class="pre">puisse</span> <span class="pre">exister</span> <span class="pre">et</span> <span class="pre">qu’il</span> <span class="pre">existe</span> <span class="pre">plusieurs</span> <span class="pre">techniques</span> <span class="pre">pour</span> <span class="pre">réaliser</span> <span class="pre">une</span> <span class="pre">régression</span></code></strong></em>. Nous ne traiterons ici que de la méthode la plus courante dite des moindres carrés avec optimisation par une descente de gradient.</p>
+<p>Nous avons donc à présent un modèle, des données et une fonction qui quantifie les écarts entre les deux.
+Nous allons maintenant nous attaquer à l’optimisation des paramètres !</p>
+<div class="section" id="optimisation-des-parametres">
+<h3>Optimisation des paramètres :<a class="headerlink" href="#optimisation-des-parametres" title="Permalink to this headline">¶</a></h3>
+<p><em>Encore une fois, il existe plusieurs manières de calculer les paramètres optimaux d’une régression linéaire et il serait difficile de toutes les lister. Nous allons donc traiter ici de la technique la plus commune</em></p>
+<p>Le but de l’optimisation est de modifier les paramètres du modèle pour minimiser l’erreur. Nous allons pour cela utiliser l’outil gradient.</p>
+<p>Pour rappel on appel le gradient d’une fonction à n variables est l’application qui associe à f un vecteur dont les composantes sont les dérivées partielles par rapport à chacune des variables de f :
+<br><br>
+<span class="math notranslate nohighlight">\(
+\nabla f(\left.x_{1}, x_{2}, \ldots, x_{n}\right)=\left[\begin{array}{c}
+\dfrac{\partial f}{\partial x_1} \\
+\dfrac{\partial f}{\partial x_2} \\
+\vdots \\
+\dfrac{\partial f}{\partial x_n}
+\end{array}\right]
+\)</span></p>
+<br>
+<p>Calculer le gradient de notre fonction coût va nous renseigner sur ses variations et fournira des des informations sur la manière dont on doit faire varier les paramètres pour minimiser l’erreur.</p>
+</div>
+<div class="section" id="calcul-du-gradient">
+<h3>Calcul du gradient :<a class="headerlink" href="#calcul-du-gradient" title="Permalink to this headline">¶</a></h3>
+<p>Dans cette section, nous allons calculer ensemble le gradient de la fonction coût. Si vous êtes adepte des maths, et que vous voulez une démonstration pas à pas, je vous invite à aller voir la <a class="reference external" href="https://www.youtube.com/watch?v=wg7-roETbbM">vidéo de MachinLearnIA</a> qui sert de base à ce chapitre.</p>
+<p>Rappelons ce qui a été établi plus haut:</p>
+<ul class="simple">
+<li><p>Le modèle <span class="math notranslate nohighlight">\(ŷ_i = a \times x_i + b\)</span></p></li>
+<li><p>La fonction coût <span class="math notranslate nohighlight">\(S(y,ŷ) = \frac{1}{2m} * \sum_{i=0}^m (ŷ_i - y_i)²\)</span></p></li>
+</ul>
+<p>Calculons les dérivées partielles de S par rapport aux paramètres a et b: <br>
+<span class="math notranslate nohighlight">\(\frac{\partial S}{\partial a} = \sum_{i=0}^m x_i \times (ŷ_i - y_i)\)</span> <br>
+<span class="math notranslate nohighlight">\(\frac{\partial S}{\partial b} = \sum_{i=0}^m (ŷ_i - y_i)\)</span></p>
+<p>On peut remarquer qu’en posant :</p>
+<p><span class="math notranslate nohighlight">\(X = \left[\begin{array}{c}{x_1\\
+\vdots\\x_m} {1 \\ \vdots \\ 1}\end{array} \right]\)</span></p>
+<p><span class="math notranslate nohighlight">\(Y =  \left[\begin{array}{c}
+{y_1\\ \vdots \\ y_m}\end{array}\right]\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Theta =  \left[\begin{array}{c}
+{a \\ b}\end{array}\right]\)</span></p>
+<p>On a alors :
+<span class="math notranslate nohighlight">\(∇S = \frac{1}{m} \times ^tX \times (X\Theta - Y)\)</span></p>
+</div>
+<div class="section" id="strategie-d-optimisation">
+<h3>Stratégie d’optimisation :<a class="headerlink" href="#strategie-d-optimisation" title="Permalink to this headline">¶</a></h3>
+<p>Pour optimiser le modèle, l’idée est de réaliser un certain nombre d’itérations au cours desquelles nous allons modifier légèrement les paramètres a et b. Pour cela, à chaque itération, on calcule la nouvelle valeur de <span class="math notranslate nohighlight">\(\Theta\)</span> de la manière suivante :
+<span class="math notranslate nohighlight">\(\Theta ' = \Theta - \alpha \times ∇S\)</span></p>
+<p>On pourrait avoir envie de retrancher simplement le gradient au vecteur <span class="math notranslate nohighlight">\(\Theta\)</span> mais dans certains cas, si la variation de S est trop importante, on pourrait se retrouver dans l’impossibilité de converger :</p>
+<p>– Insérer animations explicatives sur gradient trop grand –</p>
+<p>Pour résoudre ce problème, nous allons ajouter l’<strong>hyperparamètre</strong> <span class="math notranslate nohighlight">\(\alpha\)</span> à notre modèle. On l’appelle le <code class="docutils literal notranslate"><span class="pre">learning</span> <span class="pre">rate</span></code> et c’est un simple coefficient qui permet de pondérer le gradient lors du calcul de <span class="math notranslate nohighlight">\(\Theta\)</span> pour limiter la valeur du gradient. Nous ne traiterons pas plus de cet hyperparmamètre ici, cela sera traité dans le prochain chapitre.</p>
+</div>
+</div>
+<div class="section" id="synthese-des-calculs">
+<h2>Synthèse des calculs :<a class="headerlink" href="#synthese-des-calculs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>On a choisi un modèle de droite affine :  <span class="math notranslate nohighlight">\(ŷ_i= a x_i+ b\)</span></p></li>
+<li><p>On a choisi d’utiliser la fonction coût MSE qui s’écrit donc : <span class="math notranslate nohighlight">\(S(y,ŷ) = \frac{1}{2m} * \sum_{i=0}^m (ŷ_i - y_i)²\)</span></p></li>
+<li><p>On utilise l’algorithme de descente de gradient pour optimiser les paramètres avec cette formule : <span class="math notranslate nohighlight">\(\Theta ' = \Theta - \alpha \times ∇S\)</span></p></li>
+</ul>
+<p>Pour pouvoir calculer tout cela il nous faut définir 3 matrices :</p>
+<ul class="simple">
+<li><p>X  : Une matrice qui contient les <strong>données explicatives</strong> (m données discrètes)</p></li>
+<li><p>Y  : Une matrice qui contient les** données expliquées** tirées du dataset (m données discrètes). Ces données serviront à calibrer le modèle</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Theta\)</span> : La matrice qui contient les <strong>paramètres du modèle</strong>. Les paramètres pourront être initialisés aléatoirement ou arbitrairement (exemple : a = 0 et b = 0)</p></li>
+</ul>
+</div>
+<div class="section" id="algorithme">
+<h2>Algorithme :<a class="headerlink" href="#algorithme" title="Permalink to this headline">¶</a></h2>
+<p>Voici donc l’algorithme que je vous propose d’utiliser pour réaliser une régression linéaire simple :</p>
+<blockquote>
+<div><p>Début</p>
+</div></blockquote>
+<blockquote>
+<div><p>Importer/charger les données à traiter</p>
+</div></blockquote>
+<blockquote>
+<div><p>Initialiser les 3 matrices X, Y, et <span class="math notranslate nohighlight">\(\Theta\)</span></p>
+</div></blockquote>
+<blockquote>
+<div><p>Définir la fonction gradient</p>
+</div></blockquote>
+<blockquote>
+<div><p>Faire n fois : <br>
+ Retrancher à <span class="math notranslate nohighlight">\(\Theta\)</span> le produit du learning rate, de X et de <span class="math notranslate nohighlight">\(\Theta\)</span></p>
+</div></blockquote>
+<blockquote>
+<div><p>Fin</p>
+</div></blockquote>
+<p>A ce stade, les paramètres ont été optimisés, ils peuvent être utilisés pour définir le modèle de droite affine qui servira à modéliser les données.</p>
+<p>#Implémentation de l’algorithme de régression linéaire sous python :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_diabetes</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="le-dataset">
+<h2>Le dataset :<a class="headerlink" href="#le-dataset" title="Permalink to this headline">¶</a></h2>
+<p>J’ai choisi d’utiliser un dataset qui est intégré dans la librairie Sklearn. L’objectif ici n’est pas d’apprendre à utiliser cette librairie, mais sachez tout de même qu’il s’agit d’une librairie python qui regroupe un très grand nombre de modèles de machine learning et quelques dataset.
+Le jeu de données choisi regroupe des données médicales de 420 personnes. Nous ne nous attarderons pas sur le contenu du jeu pour nous focaliser sur la mise en application d’une régression linéaire simple.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chargement du dataset</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="n">load_diabetes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> <span class="c1"># Résumé des données</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-8727fdd4-8ecb-499b-9b15-b4c5793b1f26">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>bp</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>s3</th>
+      <th>s4</th>
+      <th>s5</th>
+      <th>s6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+      <td>4.420000e+02</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-3.634285e-16</td>
+      <td>1.308343e-16</td>
+      <td>-8.045349e-16</td>
+      <td>1.281655e-16</td>
+      <td>-8.835316e-17</td>
+      <td>1.327024e-16</td>
+      <td>-4.574646e-16</td>
+      <td>3.777301e-16</td>
+      <td>-3.830854e-16</td>
+      <td>-3.412882e-16</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+      <td>4.761905e-02</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-1.072256e-01</td>
+      <td>-4.464164e-02</td>
+      <td>-9.027530e-02</td>
+      <td>-1.123996e-01</td>
+      <td>-1.267807e-01</td>
+      <td>-1.156131e-01</td>
+      <td>-1.023071e-01</td>
+      <td>-7.639450e-02</td>
+      <td>-1.260974e-01</td>
+      <td>-1.377672e-01</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-3.729927e-02</td>
+      <td>-4.464164e-02</td>
+      <td>-3.422907e-02</td>
+      <td>-3.665645e-02</td>
+      <td>-3.424784e-02</td>
+      <td>-3.035840e-02</td>
+      <td>-3.511716e-02</td>
+      <td>-3.949338e-02</td>
+      <td>-3.324879e-02</td>
+      <td>-3.317903e-02</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>5.383060e-03</td>
+      <td>-4.464164e-02</td>
+      <td>-7.283766e-03</td>
+      <td>-5.670611e-03</td>
+      <td>-4.320866e-03</td>
+      <td>-3.819065e-03</td>
+      <td>-6.584468e-03</td>
+      <td>-2.592262e-03</td>
+      <td>-1.947634e-03</td>
+      <td>-1.077698e-03</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>3.807591e-02</td>
+      <td>5.068012e-02</td>
+      <td>3.124802e-02</td>
+      <td>3.564384e-02</td>
+      <td>2.835801e-02</td>
+      <td>2.984439e-02</td>
+      <td>2.931150e-02</td>
+      <td>3.430886e-02</td>
+      <td>3.243323e-02</td>
+      <td>2.791705e-02</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.107267e-01</td>
+      <td>5.068012e-02</td>
+      <td>1.705552e-01</td>
+      <td>1.320442e-01</td>
+      <td>1.539137e-01</td>
+      <td>1.987880e-01</td>
+      <td>1.811791e-01</td>
+      <td>1.852344e-01</td>
+      <td>1.335990e-01</td>
+      <td>1.356118e-01</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8727fdd4-8ecb-499b-9b15-b4c5793b1f26')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-8727fdd4-8ecb-499b-9b15-b4c5793b1f26 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-8727fdd4-8ecb-499b-9b15-b4c5793b1f26');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="section" id="notre-objet-d-etude">
+<h3>Notre objet d’étude :<a class="headerlink" href="#notre-objet-d-etude" title="Permalink to this headline">¶</a></h3>
+<p>Je vous propose de travailler sur le lien entre l’age de la personne et sa mesure s6. On sélectionne donc les 2 colonnes du dataframe importé [–insérer lien vers indexage avec panda–]
+On commence par tracer les points de données avec l’âge en abscisses et la mesure s6 en ordonnées.
+On obtient le nuage de points suivant</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélection des 2 colonnes de données</span>
+<span class="n">age</span><span class="p">,</span> <span class="n">s6</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;s6&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s6</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># Tracé du nuage de point</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">s6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Age des personnes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;S6&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mesure de s6 en fonction de l&#39;âge du patient&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(442,) (442,)
+</pre></div>
+</div>
+<img alt="../../_images/3 - Regression lineaire_15_1.png" src="../../_images/3 - Regression lineaire_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analyse-rapide-des-donnees">
+<h3>Analyse rapide des données :<a class="headerlink" href="#analyse-rapide-des-donnees" title="Permalink to this headline">¶</a></h3>
+<p>On remarque qu’il se dégage une tendance dans ce nuage de ponts. Ils semblent s’aligner autour d’une droite de pente proche de 0.5 :
+![données_avec_reg.png](data:image/png;base64,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)</p>
+<p>Nous allons mettre en oeuvre un régression linéaire qui nous le confirmera.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Définition des matrices X, Y et Theta</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">age</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">age</span><span class="o">.</span><span class="n">shape</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Ajout d&#39;une colonne de biais aux données</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">s6</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Theta_init</span> <span class="o">=</span> <span class="n">Theta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># On copie les paramètres initiaux pour comparer ensuite les modèles optimisé et initial</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X shape : &quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;  Y shape : &quot;</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;Theta shape : &quot;</span><span class="p">,</span> <span class="n">Theta</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># Vérification des tailles de chaque matrice</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X shape :  (442, 2)   Y shape :  (442, 1) Theta shape :  (2, 1)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="definition-des-fonctions">
+<h1>Définition des fonctions<a class="headerlink" href="#definition-des-fonctions" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implémenter le calcul  et de son gradient</span>
+<span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span><span class="p">):</span>
+  <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+  <span class="k">return</span>  <span class="mi">1</span><span class="o">/</span><span class="n">m</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cost_function</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span><span class="p">):</span>
+  <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">Y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>Optimisation des paramètres<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Nombre d&#39;itérations de l&#39;optimisation</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># Learning rate : Pour régler la vitesse de convergence</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Cet historique permettra de tracer l&#39;évolution de l&#39;erreur du modèle au cours des itérations</span>
+
+<span class="c1"># Apprentissage</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">Theta</span> <span class="o">-=</span> <span class="n">grad</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span><span class="p">)</span> <span class="c1"># Mise à jour des paramètres</span>
+  <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost_function</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span><span class="p">))</span> <span class="c1"># Enregistrement des paramètres dans l&#39;historique</span>
+
+<span class="n">param_opti</span> <span class="o">=</span> <span class="n">Theta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># On stocke les paramètres optimisés dans une variable</span>
+<span class="n">Y_prediction</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span> <span class="c1"># On calcul les points de la droite</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:8: RuntimeWarning: overflow encountered in square
+  
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="analyse-des-resultats">
+<h1>Analyse des résultats :<a class="headerlink" href="#analyse-des-resultats" title="Permalink to this headline">¶</a></h1>
+<p>On vient d’entraîner notre modèle, voyons ce que nous obtenons. On va commencer par afficher l’évolution de l’erreur au cours de l’entraînement, puis nous afficherons les courbes obtenues ainsi que les paramètres calculés.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)),</span> <span class="n">history</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Nombre de cycles d&#39;entrainement&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Erreur entre le modèle et les données&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evolution de l&#39;erreur au cours de l&#39;apprentissage avec un learning rate lr = </span><span class="si">{</span><span class="n">lr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3 - Regression lineaire_23_0.png" src="../../_images/3 - Regression lineaire_23_0.png" />
+</div>
+</div>
+<p>On voit que l’erreur converge bien vers un minimum. On peut jouer sur la valeur de <span class="math notranslate nohighlight">\(\alpha\)</span> pour ajuster la vitesse de convergence. Il faut cependant faire attention à ne pas utiliser de valeurs trop grandes qui empêcheraient la convergence !</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tracé des données</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span>  <span class="n">Y_prediction</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span>  <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Theta_init</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">age</span><span class="p">,</span>  <span class="n">Y</span><span class="p">)</span>
+<span class="c1"># Paramétrage du graphe</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mesure de s6 en fonction del&#39;âge du patient&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;s6&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Modèle optimisé&quot;</span><span class="p">,</span> <span class="s2">&quot;Modèle non optimisé&quot;</span><span class="p">,</span> <span class="s2">&quot;Données expérimentales&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">########### Paramètres ###########&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paramètres initiaux : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Theta_init</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paramètres optimisés : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">param_opti</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3 - Regression lineaire_25_0.png" src="../../_images/3 - Regression lineaire_25_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>########### Paramètres ###########
+Paramètres initiaux : 
+ [[1.47894938]
+ [2.32231497]]
+Paramètres optimisés : 
+ [[ 4.23960821e-01]
+ [-1.85874443e-16]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>On voit bien ici que le modèle initial est totalement à côté de la plaque, mais c’est normal, car à ce stade les paramètres ont été définis aléatoirement. Cependant on remarque qu’après optimisation, le modèle est plutôt fidèle à la réalité et suit bien le nuage de points.</p>
+<p>Notez que le nuage semble étiré par rapport aux graphes précédents, cela est du au changement d’échelle : les données ne descendent pas au dessous de -0.2 alors que le modèle initial a une ordonnées à l’origine de -0.8. Pour afficher tous les tracés sur la même figure matplotlib bibliothèque de tracés de graphes) a changé l’échelle.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="regression-polynomiale">
+<h1>Régression polynomiale :<a class="headerlink" href="#regression-polynomiale" title="Permalink to this headline">¶</a></h1>
+<p>Nous venons de voir comment réaliser une régression dans le cas où la variable expliquée dépend d’une variable et que la relation qui les relie est linéaire. Cependant, il se peut très bien que vous tombiez sur des cas où la relation est de forme polynomiale ou exponentielle.</p>
+<p>Nous ne traiterons pas ici de la régression exponentielle, mais il est assez simple d’aapter notre programme précédent pour en faire un algorithme de régression polynomiale simple.</p>
+<p>Dans le cas d’une régression polynomiale en effet, le modèle n’est plus <span class="math notranslate nohighlight">\(y = a\times x + b\)</span> mais <span class="math notranslate nohighlight">\(y = a_0 + a_1 x + a_2 x² + ... + a_n x^n\)</span>.</p>
+<p>Rappelez-vous, nous avions calculé Y, la matrice qui contenait les valeurs calculées par le modèle à partir de nos données de la manière suivante :</p>
+<p><span class="math notranslate nohighlight">\(Y = \left[\begin{array}{c}{x_1\\ \vdots\\x_m} {1 \\ \vdots \\ 1}\end{array} \right]
+\times \left[\begin{array}{c}
+{a \\ b}\end{array}\right] = \left[\begin{array}{c}{a x_1 + b\\ \vdots\\a x_m + b}\end{array} \right]\)</span></p>
+<p>Pour une régression polynomiale de degré n, nous cherchons à obtenir la matrice suivante :</p>
+<p><span class="math notranslate nohighlight">\(\left[\begin{array}{c}{a_0 + a_1 x_1 + a_2 x_1² + ... + a_n x_1^n\\ \vdots \\a_0 + a_1 x_m + a_2 x_m² + ... + a_n x_m^n}\end{array} \right]\)</span></p>
+<p>Matrice qui s’obtient ainsi :</p>
+<p><span class="math notranslate nohighlight">\(Y = \left[\begin{array}{c}{x_1^n\\ \vdots\\x_m^n} {...  \\  \vdots \\ ...}{x_1\\ \vdots\\x_m} {1 \\ \vdots \\ 1} \end{array} \right] \times \left[ \begin{array}{c}{a_1 \\ \vdots \\ a_m} \end{array} \right]\)</span></p>
+<p>On peut alors remarquer que les calculs matriciels seront identiques (<span class="math notranslate nohighlight">\(Y = X \times \Theta\)</span>) et qu’il suffit seulement de modifier les matrices de départ en fonction du degré du polynôme qui sert de modèle.</p>
+<div class="section" id="adaptation-du-programme-python">
+<h2>Adaptation du programme python :<a class="headerlink" href="#adaptation-du-programme-python" title="Permalink to this headline">¶</a></h2>
+<p>Pour adapter le programme python, il suffit donc simplement d’adapter les tableaux de données que l’on prend en entrée de l’algorithme.</p>
+<p>Pour rappel, nous avions chargé le dataset sur le diabète depuis sklearn. Puis nous avions sélectionné les données qui nous intéressaient. Pour finir, nous avions ajouté la colonne de biais aux données explicatives (la colonne de 1 dans la matrice), et nous avions retravaillé la dimension de Y pour obtenir une matrice de la forme (<span class="math notranslate nohighlight">\(m \times 1\)</span>).</p>
+<p>je vous propose donc de construire une fonction python qui prend en entrée deux listes, l’une contenant les targets et l’autre  les features, ainsi qu’un paramètre <em>d</em> qui correspondra au degré du modèle (1 pour une droite, 2 pour un polynôme de degré 2 …).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_arrays</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Permet de construire le tableau de données à fournir à notre modèle pour </span>
+<span class="sd">  l&#39;entraîner.</span>
+<span class="sd">  Paramètres :</span>
+<span class="sd">    x (ndarray) : tableau de données explicatives (dimensions (m,) ou (m,1))</span>
+<span class="sd">    y (bdarray) : tableau de données expliquées (dimensions (m,) ou (m,1))</span>
+<span class="sd">    d (int) : Degré de la régression que l&#39;on souhaite réaliser (1 pour une droite, 2 pour un polynôme du second degré ...)</span>
+<span class="sd">  Retourne :</span>
+<span class="sd">    X (ndarray) : le tableau prêt à être passé à l&#39;algorithme d&#39;entraînement</span>
+<span class="sd">    Y (ndarray) : Idem pour les données expliquées&quot;&quot;&quot;</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Initialisation du tableau contenant les paramètres</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="n">d</span> <span class="c1"># Initialiser la première colonne</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1">#print(f&quot;--------------- d = {i} ---------------&quot;)</span>
+    <span class="c1">#print(&quot;X : \n&quot;, X, &quot;\n : x**i : \n&quot;, x**i)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">i</span><span class="p">))</span> <span class="c1"># Ajout d&#39;une nouvelle colonne à droite</span>
+  <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span>
+
+<span class="c1"># Démonstration pour un tableau simple :</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span> <span class="o">=</span> <span class="n">build_arrays</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avant modification : </span><span class="se">\n</span><span class="s2"> --&gt; x : </span><span class="se">\n</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="se">\n</span><span class="s2"> --&gt; y : </span><span class="se">\n</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Après modification : </span><span class="se">\n</span><span class="s2"> --&gt; X : </span><span class="se">\n</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="se">\n</span><span class="s2"> --&gt; Y : </span><span class="se">\n</span><span class="si">{</span><span class="n">Y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paramètres initiaux : &quot;</span><span class="p">,</span> <span class="n">Theta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Avant modification : 
+ --&gt; x : 
+[2 2 2 2 2]
+ --&gt; y : 
+[1 1 1 1 1]
+Après modification : 
+ --&gt; X : 
+[[32 16  8  4  2  1]
+ [32 16  8  4  2  1]
+ [32 16  8  4  2  1]
+ [32 16  8  4  2  1]
+ [32 16  8  4  2  1]]
+ --&gt; Y : 
+[[1]
+ [1]
+ [1]
+ [1]
+ [1]]
+Paramètres initiaux :  [[ 0.12752593]
+ [ 1.62460394]
+ [ 0.31968355]
+ [ 0.3320153 ]
+ [-1.37692674]
+ [ 0.2287687 ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Nombre d&#39;itérations de l&#39;optimisation</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Learning rate : Pour régler la vitesse de convergence</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Cet historique permettra de tracer l&#39;évolution de l&#39;erreur du modèle au cours des itérations</span>
+
+<span class="c1"># Générons des données qui ne forment pas une droite</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span>  <span class="n">x</span><span class="o">**</span><span class="mi">5</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span> <span class="o">=</span> <span class="n">build_arrays</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Apprentissage</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">Theta</span> <span class="o">-=</span> <span class="n">grad</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span><span class="p">)</span> <span class="c1"># Mise à jour des paramètres</span>
+  <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost_function</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Theta</span><span class="p">))</span> <span class="c1"># Enregistrement des paramètres dans l&#39;historique</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">param_opti</span> <span class="o">=</span> <span class="n">Theta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># On stocke les paramètres optimisés dans une variable</span>
+<span class="n">Y_prediction</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Theta</span><span class="p">)</span> <span class="c1"># On calcul les points de la droite</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.101224934651856e+26
+4.724587758741584e+44
+4.375758719941214e+62
+4.0526846685649316e+80
+3.7534640445261803e+98
+3.476335685041002e+116
+3.2196684587170557e+134
+2.9819516649857685e+152
+2.761786142370265e+170
+2.557876033253823e+188
+2.3690211566776508e+206
+2.194109944275552e+224
+2.0321128977675561e+242
+1.8820765295044133e+260
+1.7431177503980164e+278
+1.6144186722060264e+296
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+inf
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+nan
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:8: RuntimeWarning: overflow encountered in square
+  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tracé des données</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span>  <span class="n">Y_prediction</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span>  <span class="n">y</span><span class="p">)</span>
+<span class="c1"># Paramétrage du graphe</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mesure de s6 en fonction del&#39;âge du patient&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Modèle optimisé&quot;</span><span class="p">,</span> <span class="s2">&quot;Données expérimentales&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">########### Paramètres ###########&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paramètres initiaux : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Theta_init</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paramètres optimisés : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">param_opti</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3 - Regression lineaire_31_0.png" src="../../_images/3 - Regression lineaire_31_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>########### Paramètres ###########
+Paramètres initiaux : 
+ [[1.47894938]
+ [2.32231497]]
+Paramètres optimisés : 
+ [[-8.59832521e+89]
+ [-9.41257755e+88]
+ [-1.04082522e+88]
+ [-1.16535323e+87]
+ [-1.32556771e+86]
+ [-1.53937221e+85]]
+</pre></div>
+</div>
+<img alt="../../_images/3 - Regression lineaire_31_2.png" src="../../_images/3 - Regression lineaire_31_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="petit-point-sur-la-classification-binaire">
+<h2>Petit point sur la classification binaire :<a class="headerlink" href="#petit-point-sur-la-classification-binaire" title="Permalink to this headline">¶</a></h2>
+<p>Les problèmes qui consistent à séparer différents éléments d’un dataset en plusieurs classes s’appellent des problèmes de classification. Lorsqu’il n’existe que 2 classes dans le problème, on parle alors de classification binaire. Quel rapport avec la régression linéaire ? He bien, un modèle affine (comme utilisé plus haut) ou polynomial (en fait toute fonction continue sur un intervalle) peut servir de frontière et permet de définir 2 domaines, et donc 2 classes
+–lier des schémas–</p>
+</div>
+<div class="section" id="pour-aller-plus-loin">
+<h2>Pour aller plus loin :<a class="headerlink" href="#pour-aller-plus-loin" title="Permalink to this headline">¶</a></h2>
+<p>Comme dit précédemment, la régression linéaire ne s’arrête pas à dessiner une droite dans un nuage de points. Il s’agit avant tout de modéliser des données (expliquées) pour pouvoir les prédire lorsque l’on aura de nouvelles données (explicatives)
+Ainsi, tous les modèles ne seront pas des droites affines. Il pourra par exemple d’agir de polynomes.
+Il peut être d’ailleurs très intéressant d’essayer par vous-même de modifier l’algorithme que nous avons établi pour en faire une régression polynomiale.
+–Donner dataset–
+–Donner réponse–</p>
+<p>Sources :
+MachinLearnIA :
+<a class="reference external" href="https://machinelearnia.com/">https://machinelearnia.com/</a></p>
+<p>site
+<a class="reference external" href="https://colab.research.google.com/drive/13y17KOs9oK46hejuicb7ku2RdDBgBdaV?usp=sharing">https://colab.research.google.com/drive/13y17KOs9oK46hejuicb7ku2RdDBgBdaV?usp=sharing</a> // colab sur la regression linéaire</p>
+<p>RL ½ : <a class="reference external" href="https://www.youtube.com/watch?v=wg7-roETbbM">https://www.youtube.com/watch?v=wg7-roETbbM</a></p>
+<p>RL 2/2 <a class="reference external" href="https://www.youtube.com/watch?v=8Y3r7F47Xfo">https://www.youtube.com/watch?v=8Y3r7F47Xfo</a></p>
+<p>Autres :
+<a class="reference external" href="https://www.math.univ-toulouse.fr/~besse/Wikistat/pdf/st-l-inf-regsim.pdf">https://www.math.univ-toulouse.fr/~besse/Wikistat/pdf/st-l-inf-regsim.pdf</a>
+<a class="reference external" href="http://www.math.u-bordeaux.fr/~mchave100p/wordpress/wp-content/uploads/2013/10/SlidesModStat_C1_print.pdf">http://www.math.u-bordeaux.fr/~mchave100p/wordpress/wp-content/uploads/2013/10/SlidesModStat_C1_print.pdf</a>
+<a class="reference external" href="http://univ.ency-education.com/uploads/1/3/1/0/13102001/secg_lessons06-regression_lineaire.pdf">http://univ.ency-education.com/uploads/1/3/1/0/13102001/secg_lessons06-regression_lineaire.pdf</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours fondamentaux ML"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2%20-%20Elements%20de%20definition.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Eléments de définition</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="4%20-%20Generalisation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Généralisation d’un modèle de Machine Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

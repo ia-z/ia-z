@@ -1,0 +1,140 @@
+# Imports
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_diabetes
+import numpy as np
+
+# Chargement du dataset
+data, targets = load_diabetes(return_X_y=True, as_frame=True)
+data.describe() # Résumé des données
+
+
+
+# Sélection des 2 colonnes de données
+age, s6= data["age"], data["s6"]
+print(age.shape, s6.shape)
+# Tracé du nuage de point
+plt.scatter(age, s6)
+plt.xlabel("Age des personnes")
+plt.ylabel("S6")
+plt.title("Mesure de s6 en fonction de l'âge du patient")
+plt.show()
+
+# Définition des matrices X, Y et Theta
+X = np.stack((age, np.ones(age.shape)), axis=-1) # Ajout d'une colonne de biais aux données
+Y = np.array(s6).reshape(s6.shape[0], 1)
+Theta = np.random.randn(2, 1)
+Theta_init = Theta.copy() # On copie les paramètres initiaux pour comparer ensuite les modèles optimisé et initial
+
+print("X shape : ", X.shape, "  Y shape : ", Y.shape, "Theta shape : ", Theta.shape) # Vérification des tailles de chaque matrice
+
+# Implémenter le calcul  et de son gradient
+def grad(X, Y, Theta):
+  m = len(Y)
+  return  1/m * X.T.dot(X.dot(Theta) - Y)
+
+def cost_function(X, Y, Theta):
+  m = len(Y)
+  return 1/(2*m) * np.sum((X.dot(Theta) - Y)**2)
+
+n = 1000 # Nombre d'itérations de l'optimisation
+lr = 0.01 # Learning rate : Pour régler la vitesse de convergence
+
+history = [] # Cet historique permettra de tracer l'évolution de l'erreur du modèle au cours des itérations
+
+# Apprentissage
+for i in range(n):
+  Theta -= grad(X, Y, Theta) # Mise à jour des paramètres
+  history.append(cost_function(X, Y, Theta)) # Enregistrement des paramètres dans l'historique
+
+param_opti = Theta.copy() # On stocke les paramètres optimisés dans une variable
+Y_prediction = X.dot(Theta) # On calcul les points de la droite
+
+plt.plot(range(len(history)), history)
+plt.xlabel("Nombre de cycles d'entrainement")
+plt.ylabel("Erreur entre le modèle et les données")
+plt.title(f"Evolution de l'erreur au cours de l'apprentissage avec un learning rate lr = {lr}")
+plt.show()
+
+# Tracé des données
+plt.plot(age,  Y_prediction, "r")
+plt.plot(age,  X.dot(Theta_init), "b")
+plt.scatter(age,  Y)
+# Paramétrage du graphe
+plt.title("Mesure de s6 en fonction del'âge du patient")
+plt.xlabel("Age")
+plt.ylabel("s6")
+plt.legend(["Modèle optimisé", "Modèle non optimisé", "Données expérimentales"])
+plt.show()
+print("\n########### Paramètres ###########")
+print("Paramètres initiaux : \n", Theta_init)
+print("Paramètres optimisés : \n", param_opti)
+
+def build_arrays(x, y, d):
+  """ Permet de construire le tableau de données à fournir à notre modèle pour 
+  l'entraîner.
+  Paramètres :
+    x (ndarray) : tableau de données explicatives (dimensions (m,) ou (m,1))
+    y (bdarray) : tableau de données expliquées (dimensions (m,) ou (m,1))
+    d (int) : Degré de la régression que l'on souhaite réaliser (1 pour une droite, 2 pour un polynôme du second degré ...)
+  Retourne :
+    X (ndarray) : le tableau prêt à être passé à l'algorithme d'entraînement
+    Y (ndarray) : Idem pour les données expliquées"""
+
+  x = x.reshape(x.shape[0], 1)
+  y = y.reshape(y.shape[0], 1)
+  params = np.random.randn(d+1, 1) # Initialisation du tableau contenant les paramètres
+  X = x**d # Initialiser la première colonne
+  for i in range(d-1, -1, -1):
+    #print(f"--------------- d = {i} ---------------")
+    #print("X : \n", X, "\n : x**i : \n", x**i)
+    X = np.hstack((X, x**i)) # Ajout d'une nouvelle colonne à droite
+  return X, y, params
+
+# Démonstration pour un tableau simple :
+x = np.array([2,2,2,2,2])
+y = np.array([1,1,1,1,1])
+d = 5
+
+X, Y, Theta = build_arrays(x,y,5) 
+
+print(f"Avant modification : \n --> x : \n{x}\n --> y : \n{y}")
+print(f"Après modification : \n --> X : \n{X}\n --> Y : \n{Y}")
+print("Paramètres initiaux : ", Theta)
+
+n = 100 # Nombre d'itérations de l'optimisation
+lr = 1 # Learning rate : Pour régler la vitesse de convergence
+
+history = [] # Cet historique permettra de tracer l'évolution de l'erreur du modèle au cours des itérations
+
+# Générons des données qui ne forment pas une droite
+m = 100
+x = np.linspace(0, 10, m).reshape(m, 1)
+y =  x**5 + x**4 + x**3 + x**2 + x + 0.1 * np.random.randn(m, 1)
+
+X, Y, Theta = build_arrays(x, y, 5)
+
+# Apprentissage
+for i in range(n):
+  Theta -= grad(X, Y, Theta) # Mise à jour des paramètres
+  history.append(cost_function(X, Y, Theta)) # Enregistrement des paramètres dans l'historique
+  print(history[i])
+param_opti = Theta.copy() # On stocke les paramètres optimisés dans une variable
+Y_prediction = X.dot(Theta) # On calcul les points de la droite
+
+# Tracé des données
+plt.plot(x,  Y_prediction, "r")
+plt.scatter(x,  y)
+# Paramétrage du graphe
+plt.title("Mesure de s6 en fonction del'âge du patient")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend(["Modèle optimisé", "Données expérimentales"])
+plt.show()
+print("\n########### Paramètres ###########")
+print("Paramètres initiaux : \n", Theta_init)
+print("Paramètres optimisés : \n", param_opti)
+
+plt.plot(history)
+plt.show()
+
+

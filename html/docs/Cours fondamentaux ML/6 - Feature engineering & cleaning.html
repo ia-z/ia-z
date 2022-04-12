@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Engineering &#8212; IA-Z</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?" href="../NLP/README.html" />
+    <link rel="prev" title="Généralisation d’un modèle de Machine Learning" href="4%20-%20Generalisation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2%20-%20Elements%20de%20definition.html">
+   Eléments de définition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3%20-%20Regression%20lineaire.html">
+   Modèle élémentaire : La régression linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4%20-%20Generalisation.html">
+   Généralisation d’un modèle de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Feature Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/README.html">
+   Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20RL/intro.html">
+   Reinforcement learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/6 - Feature engineering & cleaning.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/6 - Feature engineering & cleaning.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-a-name-introduction-a">
+   Introduction
+   <a name="introduction">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodologie-a-name-methodologie-a">
+   Méthodologie
+   <a name="methodologie">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nettoyage-des-donnees-a-name-nettoyage-a">
+   Nettoyage des données
+   <a name="nettoyage">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valeurs-manquantes-a-name-subparagraph1-a">
+     Valeurs manquantes
+     <a name="subparagraph1">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valeurs-aberrantes-a-name-subparagraph2-a">
+     Valeurs aberrantes
+     <a name="subparagraph2">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valeurs-rares-a-name-subparagraph3-a">
+     Valeurs rares
+     <a name="subparagraph3">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#haute-cardinalite-a-name-subparagraph4-a">
+     Haute cardinalité
+     <a name="subparagraph4">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-scaling-a-name-featurescaling-a">
+   Feature Scaling
+   <a name="featurescaling">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-encoding-a-name-featureencoding-a">
+   Feature Encoding
+   <a name="featureencoding">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection-a-name-featureselection-a">
+   Feature Selection
+   <a name="featureselection">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-application-a-name-sources-a">
+   Sources &amp; Application
+   <a name="sources">
+   </a>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Feature Engineering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-a-name-introduction-a">
+   Introduction
+   <a name="introduction">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodologie-a-name-methodologie-a">
+   Méthodologie
+   <a name="methodologie">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nettoyage-des-donnees-a-name-nettoyage-a">
+   Nettoyage des données
+   <a name="nettoyage">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valeurs-manquantes-a-name-subparagraph1-a">
+     Valeurs manquantes
+     <a name="subparagraph1">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valeurs-aberrantes-a-name-subparagraph2-a">
+     Valeurs aberrantes
+     <a name="subparagraph2">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valeurs-rares-a-name-subparagraph3-a">
+     Valeurs rares
+     <a name="subparagraph3">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#haute-cardinalite-a-name-subparagraph4-a">
+     Haute cardinalité
+     <a name="subparagraph4">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-scaling-a-name-featurescaling-a">
+   Feature Scaling
+   <a name="featurescaling">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-encoding-a-name-featureencoding-a">
+   Feature Encoding
+   <a name="featureencoding">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection-a-name-featureselection-a">
+   Feature Selection
+   <a name="featureselection">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-application-a-name-sources-a">
+   Sources &amp; Application
+   <a name="sources">
+   </a>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="feature-engineering">
+<h1>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-a-name-introduction-a">
+<h2>Introduction <a name="introduction"></a><a class="headerlink" href="#introduction-a-name-introduction-a" title="Permalink to this headline">¶</a></h2>
+<p>Le feature engineering représente l’art de convertir les données de la meilleure façon possible, ce qui implique une combinaison d’expertise du domaine, d’intuitions et de procédés mathématiques. Ce cours a pour objectif d’être une référence concise pour les débutants avec la plupart des techniques simples mais largement utilisées pour cette approche. De prochains articles permettront d’approfondir chacuns des points abordés.</p>
+<p>Le feature engineering est la partie la plus essentielle de la construction d’un projet de machine learning. Des centaines d’algorithmes à l’état de l’art apparaissent aujourd’hui à travers différentes thématiques, comme le Transfer Learning ou le Deep Learning. Au bout du compte, certains projets réussissent et d’autres échouent. Qu’est-ce qui fait la différence entre ces approches ? Le facteur le plus important est sans aucun doute la qualité des données et les features utilisées.</p>
+</div>
+<div class="section" id="methodologie-a-name-methodologie-a">
+<h2>Méthodologie <a name="methodologie"></a><a class="headerlink" href="#methodologie-a-name-methodologie-a" title="Permalink to this headline">¶</a></h2>
+<p>
+    <img src="map_feat_eng.png" alt>
+    <em>Pipeline typique d’un projet de Machine Learning </em>
+</p>
+<p>Supposons que vous êtes Data Scientists pour une entreprise. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement explorer les données à votre disposition en ayant effectuer une EDA (Exploratory Data Analysis) digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d’utiliser votre modèle favori. Néanmoins vous constater que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste !</p>
+<p>En tant que Data Scientist agueri, vous décidez de collaborer avec le Data Engineer de votre équipe pour vous concentrer, le temps d’une après-midi, sur cette étape de feature engineering. Ensemble vous décidez de vous attardez sur la qualité des données pour ne pas injecter des features qui auront un impact négatif sur les performances de votre modèle.</p>
+<p>Le Data Engineer vous dit de ne pas paniquer. Pour résoudre ce problème, il vous conseille de réitèrer l’étape n°6 en sa compagnie tant que les objectifs de performances du modèle donné par votre N+1 ne sont pas atteints.</p>
+<p>A retenir :</p>
+<p>La qualité des données et des features ont le plus d’impact sur un projet de Machine Learning et fixent la limite de ce que vous pouvez faire. La qualité de vos prédictions et le bien fondé de votre approche repose essentiellement sur ces aspects.</p>
+</div>
+<div class="section" id="nettoyage-des-donnees-a-name-nettoyage-a">
+<h2>Nettoyage des données<a name="nettoyage"></a><a class="headerlink" href="#nettoyage-des-donnees-a-name-nettoyage-a" title="Permalink to this headline">¶</a></h2>
+<p>La première étape lorsqu’on évoque le concept de “feature engineering” consiste au nettoyage des données. Celle-ci repose sur différents aspects importants que nous aborderons dans cette partie.</p>
+<div class="section" id="valeurs-manquantes-a-name-subparagraph1-a">
+<h3>Valeurs manquantes <a name="subparagraph1"></a><a class="headerlink" href="#valeurs-manquantes-a-name-subparagraph1-a" title="Permalink to this headline">¶</a></h3>
+<p>Définition : Aucune valeur n’est enregistrée dans une certaine observation pour une variable donnée.</p>
+<p><em>Pourquoi les données manquantes sont-elles importantes ?</em></p>
+<p>Certains algorithmes ne peuvent pas fonctionner en présence de valeurs manquantes
+même pour les algorithmes qui traitent les données manquantes, sans traitement, le modèle peut conduire à des prédictions inexactes.</p>
+<p>Une étude sur l’impact des données manquantes sur différents algorithmes Machine Learning peut être trouvée ici <a class="reference external" href="https://core.ecu.edu/krosj/IMDSDataMining2003.pdf">link</a>.</p>
+</div>
+<div class="section" id="valeurs-aberrantes-a-name-subparagraph2-a">
+<h3>Valeurs aberrantes <a name="subparagraph2"></a><a class="headerlink" href="#valeurs-aberrantes-a-name-subparagraph2-a" title="Permalink to this headline">¶</a></h3>
+<p>Définition : Une observation aberrante est une observation qui s’écarte tellement des autres observations que l’on peut soupçonner qu’elle a été générée par un mécanisme différent.</p>
+<p>Les observations aberrantes, selon le contexte, méritent une attention particulière ou doivent être complètement ignorées. Par exemple, une transaction inhabituelle sur une carte de crédit est généralement le signe d’une activité frauduleuse, tandis qu’une taille de 1600 cm d’une personne est très probablement due à une erreur de mesure et doit être filtrée ou imputée par autre chose.</p>
+<p><em>Pourquoi la valeur aberrante est-elle importante ?</em></p>
+<p>La présence de valeurs aberrantes peut :</p>
+<ul class="simple">
+<li><p>Empêcher l’algorithme de fonctionner correctement</p></li>
+<li><p>Introduire des bruits dans l’ensemble de données</p></li>
+<li><p>Rendre les échantillons moins représentatifs</p></li>
+</ul>
+<p>Certains algorithmes sont très sensibles aux valeurs aberrantes.
+Par exemple, Adaboost peut traiter les valeurs aberrantes comme des cas “difficiles” et leur accorder un poids considérable, ce qui produit un modèle à mauvaise généralisation.
+Tous les algorithmes qui reposent sur les moyennes/variances sont sensibles aux valeurs aberrantes, car ces statistiques sont fortement influencées par les valeurs extrêmes.</p>
+<p>D’autre part, certains algorithmes sont plus robustes aux valeurs aberrantes. Par exemple, les arbres de décision ont tendance à ignorer la présence de valeurs aberrantes lorsqu’ils créent les branches de leurs arbres. En général, les arbres effectuent des séparations en demandant si la variable x &gt;= la valeur c, et donc la valeur aberrante tombera de chaque côté de la branche, mais elle sera traitée de la même manière que les autres valeurs, quelle que soit son ampleur.</p>
+</div>
+<div class="section" id="valeurs-rares-a-name-subparagraph3-a">
+<h3>Valeurs rares <a name="subparagraph3"></a><a class="headerlink" href="#valeurs-rares-a-name-subparagraph3-a" title="Permalink to this headline">¶</a></h3>
+<p>Définition : Variable dont certaines  valeurs n’apparaissent que rarement.</p>
+<p>Dans certaines situations, les valeurs rares, comme les valeurs aberrantes, peuvent contenir des informations précieuses sur l’ensemble de données et nécessitent donc une attention particulière. Par exemple, une valeur rare dans une transaction peut indiquer une fraude.</p>
+<p><em>Pourquoi les valeurs rares sont-elles importantes ?</em></p>
+<p>Les valeurs rares ont tendance à provoquer un overfitting.
+Un grand nombre de labels peu fréquents ajoute du bruit, avec peu d’informations, ce qui entraîne un ajustement excessif aux données.
+Les labels rares peuvent être présents dans l’ensemble d’apprentissage, mais pas dans l’ensemble de test, ce qui entraîne un ajustement excessif de l’ensemble d’apprentissage.</p>
+<p>Les labels rares peuvent apparaître dans l’ensemble de test, mais pas dans l’ensemble d’entraînement. Ainsi, le modèle ne saura pas comment l’évaluer.</p>
+</div>
+<div class="section" id="haute-cardinalite-a-name-subparagraph4-a">
+<h3>Haute cardinalité <a name="subparagraph4"></a><a class="headerlink" href="#haute-cardinalite-a-name-subparagraph4-a" title="Permalink to this headline">¶</a></h3>
+<p>Définition : Le nombre de labels au sein d’une variable  appelé cardinalité. Un nombre élevé de labels au sein d’une variable est connu comme une cardinalité élevée.</p>
+<p><em>Pourquoi une cardinalité élevée est-elle importante ?</em></p>
+<p>Les variables comportant trop de labels ont tendance à dominer celles qui n’en comportent que quelques-unes, en particulier dans les algorithmes basés sur des arbres.
+Un grand nombre de labels dans une variable peut introduire du bruit avec peu ou pas d’informations, ce qui rend les modèles d’apprentissage automatique susceptibles d’être overfittés.</p>
+<p>Certains labels peuvent n’être présentes que dans l’ensemble de données d’apprentissage, mais pas dans l’ensemble de test, ce qui entraîne une suradaptation des algorithmes à l’ensemble d’apprentissage.</p>
+<p>À l’inverse, de nouveaux labels peuvent apparaître dans l’ensemble de test alors qu’elles n’étaient pas présentes dans l’ensemble d’apprentissage, ce qui empêche l’algorithme d’effectuer un calcul sur la nouvelle observation.</p>
+</div>
+</div>
+<div class="section" id="feature-scaling-a-name-featurescaling-a">
+<h2>Feature Scaling <a name="featurescaling"></a><a class="headerlink" href="#feature-scaling-a-name-featurescaling-a" title="Permalink to this headline">¶</a></h2>
+<p>Définition : Le feature scaling est une méthode utilisée pour normaliser des variables indépendantes ou des features. Dans le traitement des données, elle est également connue sous le nom de normalisation des données et est effectuée durant l’étape de prétraitement des données.</p>
+<p><em>Pourquoi le Feature Scaling est-elle importante ?</em></p>
+<ul class="simple">
+<li><p>Si la taille des entrées varie, avec certains algorithmes vous pouvez obtenir des résultats incohérents.</p></li>
+<li><p>La descente de gradient converge beaucoup plus rapidement lorsque la normalisation à l’échelle des features est effectuée. La descente de gradient est un algorithme d’optimisation communément utilisé dans la régression logistique, les SVM, les réseaux neuronaux, etc. qui a été introduite précédemment.</p></li>
+</ul>
+<p><em>Comment gérer le Feature Scaling ?</em></p>
+<ul>
+<li><p>La normalisation (mise à l’échelle du score Z) supprime la moyenne et met les données à l’échelle de la variance unitaire : <span class="math notranslate nohighlight">\(Z=\frac{X - X_{mean}}{std}\)</span> où std correspond à l’écart type.</p>
+<p>La feature est remise à l’échelle pour avoir une distribution normale standard centrée autour de 0 avec un écart type de 1.</p>
+<p>Si la variable est asymétrique ou comporte des valeurs aberrantes, cela comprime les observations dans une plage étroite, ce qui nuit au pouvoir prédictif.</p>
+</li>
+<li><p>Scaling Min-Max transforme les features en mettant à l’échelle chaque feature dans une plage donnée.</p>
+<p>La valeur par défaut est entre <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(X_{scaled}=\frac{X - X_{min}}{X_{max}-X_{min}}\)</span> compresse les observations dans la plage étroite si la variable est asymétrique ou comporte des valeurs aberrantes.</p>
+</li>
+</ul>
+<p>Comme nous pouvons le voir, la normalisation et la méthode Min-Max comprimeront la plupart des données dans une plage de valeurs restreintes.</p>
+<p>On remarquera que la suppression des valeurs aberrantes est un autre sujet du nettoyage des données qui doit être effectuée au préalable de cette étape.</p>
+</div>
+<div class="section" id="feature-encoding-a-name-featureencoding-a">
+<h2>Feature Encoding <a name="featureencoding"></a><a class="headerlink" href="#feature-encoding-a-name-featureencoding-a" title="Permalink to this headline">¶</a></h2>
+<p><em>Pourquoi le Feature encoding est-il important ?</em></p>
+<p>On appelle ‘variable catégorielles’ les données qui prennent généralement un nombre limité de valeurs possibles. En outre, les données de la catégorie ne doivent pas nécessairement être numériques, elles peuvent être de nature textuelle. Tous les modèles de Machine Learning sont une sorte de modèle mathématique qui a besoin de chiffres pour fonctionner. C’est l’une des principales raisons pour lesquelles nous devons prétraiter ces données dites ‘catégorielles’ avant de les transmettre aux modèles.</p>
+<p>Cette étape de transformation des strings/ des variables catégorielles en nombres est une étape primordiale pour que les algorithmes puissent traiter ces valeurs. Même si vous voyez qu’un algorithme peut prendre en charge des entrées catégorielles, il est très probable que l’algorithme intègre ce processus de feature encoding.</p>
+<p><strong>One-hot Encoding</strong> : Remplace la variable catégorielle par différentes variables booléennes (0/1) pour indiquer si un certain label est vrai ou faux pour une observation donnée.</p>
+<p>Cette méthode permet de conserver toutes les informations de cette variable.</p>
+<p>Néanmoins, elle présente deux défauts :</p>
+<ul class="simple">
+<li><p>elle élargir considérablement l’espace des features si trop de labels sont présents au sein de cette variable.</p></li>
+<li><p>n’ajoute pas de valeur supplémentaire pour rendre la variable plus prédictive.</p></li>
+</ul>
+<p><strong>Count-Frequency Encoding</strong> : Remplace chaque label de la variable catégorielle par le nombre/fréquence dans cette catégorie</p>
+<p>Cette méthode présent un défaut :</p>
+<ul class="simple">
+<li><p>permet d’attribuer le même encodage pour deux labels différentes (si elles apparaissent en même temps, avec le même nombre d’occurences) et perd des informations précieuses.</p></li>
+</ul>
+</div>
+<div class="section" id="feature-selection-a-name-featureselection-a">
+<h2>Feature Selection <a name="featureselection"></a><a class="headerlink" href="#feature-selection-a-name-featureselection-a" title="Permalink to this headline">¶</a></h2>
+<p>Définition : Processus de sélection d’un sous-ensemble de features pertinents à utiliser dans la mise en place de modèles de Machine Learning.</p>
+<p>“Plus il y a de données, meilleur sera le résultat de mon modèle”, vous avez sans doute entendu cette phrase plusieurs fois, mais elle n’est pas toujours vraie. L’inclusion de features non pertinentes (celles qui ne sont pas utiles à la prédiction) et de features redondantes (non pertinentes en présence d’autres features) ne fera que surcharger le processus d’apprentissage et entraînera facilement un overfitting.</p>
+<p>Avec la feature selection, nous pouvons avoir :</p>
+<ul class="simple">
+<li><p>une simplification des modèles pour les rendre plus faciles à interpréter</p></li>
+<li><p>des temps d’apprentissage plus courts et des coûts de calcul moindres</p></li>
+<li><p>réduire le coût de la collecte des données</p></li>
+<li><p>éviter la malédiction de la dimensionnalité</p></li>
+<li><p>une meilleure généralisation en réduisant l’overfitting</p></li>
+</ul>
+<p>Nous devons garder à l’esprit que différents sous-ensembles de featurees offrent des performances optimales pour différents algorithmes.</p>
+<p>Une méthode populaire de sélection des features consiste à mélanger de manière aléatoire les valeurs d’une variable spécifique et de déterminer comment cette permutation affecte la métrique de performance de l’algorithme. En d’autres termes, l’idée est de permuter les valeurs de chaque features, une à la fois, et de mesurer dans quelle mesure la permutation diminue la précision, la ROC_AUC, ou la MSE du modèle d’apprentissage automatique. Si les variables sont importantes, c’est-à-dire hautement prédictives, une permutation aléatoire de leurs valeurs diminuera considérablement n’importe laquelle de ces métriques. En revanche, les variables non importantes / non prédictives ne devraient avoir que peu ou pas d’effet sur la mesure de performance du modèle que nous évaluons.</p>
+</div>
+<div class="section" id="sources-application-a-name-sources-a">
+<h2>Sources &amp; Application <a name="sources"></a><a class="headerlink" href="#sources-application-a-name-sources-a" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://machinelearningmastery.com/books-on-data-cleaning-data-preparation-and-feature-engineering/">https://machinelearningmastery.com/books-on-data-cleaning-data-preparation-and-feature-engineering/</a></p></li>
+<li><p><a class="reference external" href="https://core.ecu.edu/krosj/IMDSDataMining2003.pdf">https://core.ecu.edu/krosj/IMDSDataMining2003.pdf</a></p></li>
+</ul>
+<p>Pour appliquer au sein de vos projets les différentes notions qui ont été abordées dans cet article, voici une sélection de ressources préalablement sélectionnées :</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.udemy.com/feature-engineering-for-machine-learning/">https://www.udemy.com/feature-engineering-for-machine-learning/</a></p></li>
+<li><p><a class="reference external" href="https://www.udemy.com/feature-selection-for-machine-learning">https://www.udemy.com/feature-selection-for-machine-learning</a></p></li>
+<li><p><a class="reference external" href="http://sebastianraschka.com/Articles/2014_about_feature_scaling.html">http://sebastianraschka.com/Articles/2014_about_feature_scaling.html</a></p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/iel7/7153596/7160221/07160458.pdf">https://ieeexplore.ieee.org/iel7/7153596/7160221/07160458.pdf</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours fondamentaux ML"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="4%20-%20Generalisation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Généralisation d’un modèle de Machine Learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../NLP/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
