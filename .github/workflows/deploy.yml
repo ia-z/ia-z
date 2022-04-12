@@ -22,5 +22,8 @@ jobs:
     - name: Build Jupyter-Book
       run: jupyter-book build .
     # Deploy it to Github pages
-    - name: Deploy the Github pages
-      run: ghp-import -n -p -f _build/html
+    - name: Deploy to GitHub Pages 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.3.0
+      with:
+        branch: gh-pages
+        folder: _build
