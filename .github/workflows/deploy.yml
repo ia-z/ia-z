@@ -55,8 +55,6 @@ jobs:
       with:
         name: build-artifact
         path: _build
-    - name: list
-      run: ls -la
     - name: Test github event
       run: |
         cat << OBJECT
