@@ -31,14 +31,14 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: build-artifact
-        path: _build/html
+        path: _build
 
   deploy:
     name: Deploy
     # Deploy only if build succeeded
     needs: build
     # Deploy only if pull request has been merged
-    if: ${{ github.event.pull_request.merged }}
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
     # Checkout from main
