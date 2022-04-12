@@ -12,6 +12,7 @@ on:
 jobs:
 
   build:
+
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +28,11 @@ jobs:
     # Build web project using jupyter-book
     - name: Build Jupyter-Book
       run: jupyter-book build .
+    - name: Test github event
+      run: |
+        cat << OBJECT
+        ${{ toJson(github) }}
+        OBJECT
     # Upload the artifact to be used in next job
     - uses: actions/upload-artifact@v2
       with:
@@ -34,11 +40,12 @@ jobs:
         path: _build
 
   deploy:
-    name: Deploy
     # Deploy only if build succeeded
-    needs: build
+    needs: [build]
     # Deploy only if pull request has been merged
-    if: github.event.pull_request.merged == true
+    # if: "github.event.pull_request.merged == true"
+
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
     # Checkout from main
@@ -47,6 +54,12 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: build-artifact
+        path: _build
+    - name: Test github event
+      run: |
+        cat << OBJECT
+        ${{ toJson(github) }}
+        OBJECT
     # Deploy it to Github pages
     - name: Deploy to GitHub Pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
