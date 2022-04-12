@@ -30,7 +30,9 @@ jobs:
       run: jupyter-book build .
     - name: Test github event
       run: |
-        echo ${{ toJson(github) }}
+        cat << OBJECT
+        ${{ toJson(github) }}
+        OBJECT
     # Upload the artifact to be used in next job
     - uses: actions/upload-artifact@v2
       with:
@@ -52,6 +54,11 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: build-artifact
+    - name: Test github event
+      run: |
+        cat << OBJECT
+        ${{ toJson(github) }}
+        OBJECT
     # Deploy it to Github pages
     - name: Deploy to GitHub Pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.0
