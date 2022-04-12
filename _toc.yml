@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README
+parts:
+  - caption: Apprentissage automatique
+    chapters:
+    - glob: "docs/Cours fondamentaux ML/*"
+  - caption: Traitement automatique de la langue
+    chapters:
+    - glob: "docs/NLP/*"
+  - caption: Vision par ordinateur
+    chapters:
+    - glob: "docs/Cours_CV/*"
+  - caption: Apprentissage par renforcement
+    chapters:
+    - file: "docs/Cours RL/intro"

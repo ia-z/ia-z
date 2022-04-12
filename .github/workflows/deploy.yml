@@ -1,0 +1,58 @@
+name: IA-Z Deploy
+
+on:
+  push:
+    branches:
+      - main
+      
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  build:
+
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout from main
+    - uses: actions/checkout@v2
+    # Set the agent to run Python 3.10
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+    # Install prerequisites
+    - name: Install requirements
+      run: pip install -r requirements.txt
+    # Build web project using jupyter-book
+    - name: Build Jupyter-Book
+      run: jupyter-book build .
+    # Upload the artifact to be used in next job
+    - uses: actions/upload-artifact@v2
+      with:
+        name: build-artifact
+        path: _build
+
+  deploy:
+    # Deploy only if build succeeded
+    needs: [build]
+    # Deploy only if pull request has been pushed and merged
+    if: github.event_name == 'push'
+
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout from main
+    - uses: actions/checkout@v2
+    # Download the artifact from previous job
+    - uses: actions/download-artifact@v3
+      with:
+        name: build-artifact
+        path: _build
+    # Deploy it to Github pages
+    - name: Deploy to GitHub Pages 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.3.0
+      with:
+        branch: gh-pages
+        folder: _build/html

@@ -1,1 +1,0 @@
-# Modern Convolutional Neural Networks
