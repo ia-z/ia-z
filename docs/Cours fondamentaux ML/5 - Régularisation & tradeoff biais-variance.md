@@ -1,4 +1,4 @@
-# 5 - Régularisation & tradeoff biais-variance
+# Régularisation & tradeoff biais-variance
 La régularisation ainsi que les biais inductifs sont deux moyens
 de limiter les capacités d'un modèle afin d'éviter l'overfitting.
 
@@ -30,41 +30,77 @@ de trouver une solution simple et efficace au problème donné. Cette solution e
 Il existe plusieurs régularisations possibles, mais les plus connues sont certainement la régularisation L1 et L2.
 D'autres régularisations peuvent directement dépendre de la tâche considérée ou du type de modèle utilisé.
 
-### L2
+### Régularisation L2
 La régularisation L2 demande à ce que la norme quadratique des paramètres soit la plus petite possible.
 Cette norme étant une fonction quadratique, elle est continue et dérivable en tout point ce qui est souvent apprécié.
 
 Mathématiquement on peut écrire :
-$$
-\text{L2}(w) = \sum_i w_i^2\\
-\text{loss}_{\text{final}}(w) = \text{loss}(w) + \lambda \text{L2}(w)
-$$
 
-*Comment afficher ça mieux ? :'( jupyter notebook ? Peut-être qu'en compilant le site web les équations vont s'afficher!*
+$$\begin{align}
+\text{L2}(w) & = \sum_i w_i^2\\
+\text{loss}_{\text{final}}(w) & = \text{loss}(w) + \lambda \text{L2}(w)
+\end{align}$$
 
-Afin de moduler la force de pénalisation par rapport au loss, on définit un hyperparamètre $\lambda$ qui est une constante positive
+Afin de moduler la force de pénalisation par rapport à la loss, on définit un hyperparamètre $\lambda$ qui est une constante positive
 définie avant l'entraînement. Un $\lambda$ trop gros empêchera le modèle d'apprendre (il ne pourra plus s'exprimer
-car la moindre modification de ses poids sera fortement pénalisée), mais un lambda trop faible masquera l'effet
+car la moindre modification de ses poids sera fortement pénalisée), mais un $\lambda$ trop faible masquera l'effet
 de la régularisation.
 
 On parle de *Ridge Regression* lorsque l'on fait une régression linéaire couplée à une régularisation L2.
 
-### L1
+### Régularisation L1
 La régularisation L1 contraint la norme L1 des paramètres à être la plus petite possible.
 Elle n'est pas dérivable en 0, mais ce n'est en pratique pas gênant.
 
-$$
-\text{L1}(w) = \sum_i |w_i| \\
-\text{loss}_{\text{final}}(w) = \text{loss}(w) + \lambda \text{L1}(w)
-$$
+$$\begin{align}
+\text{L1}(w) & = \sum_i |w_i| \\
+\text{loss}_{\text{final}}(w) & = \text{loss}(w) + \lambda \text{L1}(w)
+\end{align}$$
 
 Cette régularisation a tendance à pousser des coefficients $w$ à valoir 0 exactement, ce qui est utile
 pour faire de la sélection de features. En effet, si une feature a un coefficient associé qui
 vaut exactement 0, alors on peut se débarasser de cette feature car elle n'influe clairement pas le calcul des prédictions !
 
 On parle de *Lasso Regression* lorsque l'on fait une régression linéaire couplée à une régularisation L1.
-De plus, rien n'empêche d'utiliser à la fois la régularisation L1 et L2. Lorsque les deux méthodes sont utilisées pour une
-régression linéaire, on dit que l'on utilise une méthode *Elastic Net*.
+
+### Visualisation L1 vs L2
+Pour mieux visualiser leur effet sur l'entraînement de nos modèles, nous pouvons considérer un cas simple où nous
+avons deux paramètres $w_1$ et $w_2$ à entraîner. On peut reformuler les problèmes de minimisation comme des problèmes
+de minimisation sous contraintes :
+
+$$\begin{align}
+\arg \min_{w_1, w_2} = \text{loss}(w_1, w_2) + \lambda (|w_1| + |w_2|)
+& \iff \arg \min_{|w_1| + |w_2| \leq \beta} = \text{loss}(w_1, w_2) \\
+\arg \min_{w_1, w_2} = \text{loss}(w_1, w_2) + \lambda (w_1^2 + w_2^2)
+& \iff \arg \min_{w_1^2 + w_2^2 \leq \beta} = \text{loss}(w_1, w_2)
+\end{align}$$
+
+Ces deux façons de voir le problème sont équivalentes. $\beta$ est inversement proportionnel à $\lambda$.
+On peut ainsi tracer les courbes de niveaux du loss en fonction des valeurs de $w_1$ et $w_2$ et visualiser
+les zones où les contraintes sont satisfaites (l'espace des solutions réalisables).
+
+:::{figure-md} L1vsL2-fig
+<img src="L1vsL2.png" alt="L1vsL2">
+
+Visualisation de la régularisation L1 (à gauche) et L2 (à droite).
+:::
+
+Comme on peut le voir, la régularisation L1 impose des solutions dans un espace en forme de diamant, alors
+que la L2 génère un espace de solutions en forme de cercle.
+La solution optimale sans régularisation est représentée par le point $w^*$.
+Le loss ici est une simple *MSE*, dont les courbes de niveaux tracent des ellipses de plus en plus grandes autour du minimum $w^*$.
+La solution obtenue avec régularisation est représentée par le point $\hat w$.
+
+*Visuellement, la solution optimal $\hat w$ est à la jonction
+entre les courbes de niveau du loss et la frontière de l'espace des solutions.*
+
+Ainsi, il est plus facile de comprendre pourquoi la régularisation L1 pousse plus facilement les coefficients $\hat w$ vers 0.
+En prenant un point $w^*$ au hasard sur le plan 2D, il est plus probable que la projection des courbes de niveaux sur le
+diamant arrive sur un des angles !
+
+Rien n'empêche d'utiliser à la fois la régularisation L1 et L2. Lorsque les deux méthodes sont utilisées pour une
+régression linéaire, on dit que l'on utilise une méthode *Elastic Net*. En pratique, *Elastic Net* qui a tendance à donner
+de meilleurs résultats que la L1 et la L2 pris séparéments.
 
 ## Biais & variance
 Lorsque l'on parle du *tradeoff biais-variance*, on parle du biais inductif et de la variance d'un modèle de Machine Learning.
@@ -133,7 +169,15 @@ ce qui fonctionne le mieux en pratique sur les données à considérer.
 *Une relation linéaire est peut-être sous-efficace par rapport à la vraie relation de votre couple $(x, y)$, mais elle est peut-être
 ce que vous aurez de mieux entre le compromis "biais simplificateur" vs "nombre de données".*
 
+:::{figure-md} biais-variance-fig
+<img src="biais_variance.jpg" alt="tradeoff biais-variance">
+
+Visualisation du compromis biais-variance. L'erreur totale (en jaune) est mesurée sur le jeu de validation.
+Image en open access obtenue [ici](https://www.ncbi.nlm.nih.gov/books/NBK543534/figure/ch8.Fig3/).
+:::
+
 Le biais et la variance sont deux erreurs opposées, ajouter du biais réduit la variance, et vice versa.
+Le meilleur modèle est celui qui a eu juste assez de biais pour bien généraliser sur le jeu de test sans pour autant sur-apprendre.
 
 ### (\*\*) Détails mathématiques
 Soit :
@@ -145,16 +189,18 @@ $D$ est la réalisation d'un échantillonage de $P$. On définit $y_i = y(x_i)$.
 Si $h$ a été entraîné sur $D$, on le note $h_D$, et on note ses prédictions $h_D(x)$.
 
 On peut alors décomposer le loss moyen d'un modèle $h$ :
-$$
-\text{loss}_{\text{test}}(h) = \text{variance}(h) + \text{biais}(h)^2 + \text{bruit}\\
-E_{x, y, D}[(h_D(x) - y)^2] = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y(x))^2]
-$$
+
+$$\begin{align}
+\text{loss}_{\text{test}}(h) & = \text{variance}(h) + \text{biais}(h)^2 + \text{bruit}\\
+E_{x, y, D}[(h_D(x) - y)^2] & = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y(x))^2]
+\end{align}$$
 
 Où :
-$$
-\bar h(x) = E_D[h_D(x)] \\
-\bar y(x) = E_{y, x}[y(x)]
-$$
+
+$$\begin{align}
+\bar h(x) & = E_D[h_D(x)] \\
+\bar y(x) & = E_{y, x}[y(x)]
+\end{align}$$
 
 Explications des valeurs ci-dessus :
 * $\bar h(x)$ représente la prédiction moyenne du modèle $h$ lorsqu'on l'entraîne sur tous les datasets $D$ probables provenant de la distribution $P$.
@@ -184,26 +230,19 @@ La recherche d'un unique algorithme qui serait meilleur que tout les autres est 
 intéressants, afin de choisir le ou les modèles de Machine Learning à entraîner.
 
 ## Conclusion
-En résumé, il est nécessaire de choisir les bons biais qui permettront à un modèle de Machine Learning de bien généraliser.
-Ces biais inductifs constituent toutes les hypothèses que l'on fait pour réduire l'espace de recherche des fonctions.
-Ces biais doivent être utilisés avec parcimonie, afin de laisser au modèle un peu de liberté pour trouver une fonction qui
-ne sous-performe pas (pour éviter le sous-apprentissage). Il faut tout de même faire attention à ne pas laisser un modèle
-sur-apprendre par un manque de biais et de données.
-
-Enfin, réduire les biais permet généralement d'augmenter la performance d'un modèle sur son jeu d'entraînement,
-et réduire la variance permet de mieux généraliser sur des exemples nouveaux.
-
-Avoir beaucoup de données permet de réduire le besoin de biais forts en laissant plus de flexibilité dans l'espace de recherche,
-car des données supplémentaires peuvent être vues comme un moyen de régulariser l'apprentissage en exigeant au modèle d'être bon
-sur toutes les données d'entraînement.
+* La régularisation force un modèle à apprendre des solutions simples et efficaces, évitant ainsi le sur-apprentissage.
+* Les biais inductifs représentent toutes les hypothèses que l'on fait pour réduire l'espace de recherche des solutions.
+* Il est nécessaire de choisir les bons biais qui permettront à un modèle de bien généraliser. Ils évitent le sur-apprentissage.
+* Ces biais doivent être utilisés avec parcimonie afin d'éviter le sous-apprentissage.
+* Avoir beaucoup de données permet l'utilisation de modèles plus expressifs (avec peu de biais), tout en évitant le sur-apprentissage.
+Les données supplémentaires peuvent être vues comme un moyen de régulariser l'entraînement.
 
 ## Sources
-
-https://math.mit.edu/~gs/learningfromdata/
-https://fr.abcdef.wiki/wiki/Inductive_bias
-https://fr.abcdef.wiki/wiki/No_free_lunch_in_search_and_optimization
-https://explained.ai/regularization/L1vsL2.html
-https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html
-https://fr.abcdef.wiki/wiki/Ugly_duckling_theorem
-no-free-lunch.org
-https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham
+* [Linear Algebra and Learning from Data, Gilbert Strang, 2019](https://math.mit.edu/~gs/learningfromdata/)
+* [L1 vs L2, Terence Parr](https://explained.ai/regularization/L1vsL2.html)
+* [Tradeoff biais-variance, Kilian Weinberger, Cornell University](https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html)
+* [Biais inductif, page wiki](https://fr.abcdef.wiki/wiki/Inductive_bias)
+* [No Free Lunch, page wiki](https://fr.abcdef.wiki/wiki/No_free_lunch_in_search_and_optimization)
+* [Rasoir d'Ockham, page wiki, Terence Parr](https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham)
+* [Théorème du vilain petit canard, page wiki](https://fr.abcdef.wiki/wiki/Ugly_duckling_theorem)
+* no-free-lunch.org
