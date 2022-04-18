@@ -64,7 +64,7 @@ Celle-ci est protégée et il est nécessaire de respecter ces règles/conventio
 
     * Les messages de commit doivent suivre une convention précise : 
 
-    ```
+    ```bash
     git commit -m "fix: votre message"
     git commit -m "feat: votre message"
     git commit -m "BREAKING CHANGE: votre message"
@@ -88,9 +88,63 @@ Celle-ci est protégée et il est nécessaire de respecter ces règles/conventio
     * vous ayez respectez l'ensemble des conventions citées jusqu'à présent.
     * vous passez tous les tests/checks liés à la CI (si ce n'est pas le cas, veuillez contacter votre chap' leader).
 
+**Commandes utiles à connaitre**
+
+### Commandes de bases : 
+
+```bash
+git status 
+```
+
+Permet de déterminer l'état courant de la branche par rapport au dernier commit, donne les fichiers non trackés par git.
+
+```bash
+git add 
+```
+
+Ajoute un ou plusieurs fichier au tracking. Si vous voulez retirer des fichiers utilisez "git rm". Si vous voulez ajouter tous les fichiers d'un répertoire(à vos risques et périls), utilisez "git add ." ou "git add all"
+
+```bash
+git commit
+```
+
+Permet de prendre un snapshot de l'état courant de votre codebase (uniquement les fichiers trackés par le git add).
+
+```bash
+git push
+```
+
+Envoie les commits effectués en local à une remote (repository sur github).
+
+```bash
+git pull
+```
+
+Récupération des commits d'une remote et merge avec les commits présents localement.
+
+```bash
+git branch
+```
+
+Donne la branche de développement en cours. En ajoutant l'option -r, vous obtenez l'ensemble des branches du projet.
+
+```bash
+git checkout
+```
+
+Permet de se placer sur un novueau commit ou une nouvelle branche existante. En utilisant l'option -b suivant d'un nom, vous créez une nouvelle branche avec le nom associé.
+
+### Commandes utiles mais rares d'utilisation pour vos contributions :
+
+```bash
+git merge
+```
+
+Permet de fusionner deux branches en comparant les commits qui ont été effectués.
+
 ## Conclusion
 
-Ce guide te sera utile pour contribuer au projet ia-z. N'hésite pas à t'y référer sans modération pour savoir comment contribuer de manière **propre**, **professionelle** et **efficace** au projet. A très vite sur le discord ou autour du pull request ! 
+Ce guide te sera utile pour contribuer au projet ia-z. N'hésite pas à t'y référer sans modération pour savoir comment contribuer de manière **propre**, **professionelle** et **efficace** au projet. A très vite sur le discord ou autour d'une pull request ! 
 
 ## Sources
 * Pour plus d'informations sur la convetion liée aux commits : https://www.conventionalcommits.org/en/v1.0.0/
