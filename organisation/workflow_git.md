@@ -12,7 +12,7 @@ Ce document est un guide d'utilisation de git pour le projet `ia-z`.
 **En pratique, les grandes étapes pour contribuer au projet**
 
 - Cloner le projet : git clone https://github.com/ia-z/ia-z.git
-- Créer une issue avec le tag associé à l'équipe/thématique en question : https://github.com/ia-z/ia-z/issues
+- Créer une issue avec le tag associé à l'équipe/thématique en question : https://github.com/ia-z/ia-z/issues . C'est obligatoire. Ceci permettra une meilleure gestion du projet.
 - Créer une branche en fonction de son équipe : "équipe/feature" (exemple : ML/tradeoffbiaisvariance) directement au sein de son terminal en prenant soin d'être dans le folder du projet : 
 
 ```bash
@@ -50,7 +50,7 @@ Celle-ci est protégée et il est nécessaire de respecter ces règles/conventio
 
 ![](imagess/workflow_git.png)[https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow]
 
-- Chaque chap' leader créera une branche dédiée à son équipe (en violet sur le graph ci-dessus). Une branche sera dédiée pour le ML, NLP, CV, Times Series, Big Data .. afin que les membres de son équipe puissent créer des souss-branches dites de features à partir de celle-ci (en vert sur le graph ci-dessus). Vous comprennez pourquoi il est extrêmement important de respecter la convention de nommage des branches citée précédemment ("nom_équipe" + "feature_associée")  afin de pouvoir s'y retrouver facilement. Les PRs que vous réaliserez seront directement merge sur la branche violet de votre chap' leader après un accord commun au sein de votre équipe. Pour que votre travail soit accepté par l'ensemble de la communauté du projet au sein de la branche master, il sera nécessaire d'avoir l'autorisation de l'ensemble des chap' leader et des personnes en charge de l'harmonisation et du suivi du cours.
+- Chaque chap' leader créera une branche dédiée à son équipe (en violet sur le graph ci-dessus). Une branche sera dédiée pour le ML, NLP, CV, Times Series, Big Data .. afin que les membres de son équipe puissent créer des souss-branches dites de features à partir de celle-ci (en vert sur le graph ci-dessus). Vous comprennez pourquoi il est extrêmement important de respecter la convention de nommage des branches citée précédemment ("nom_équipe" + "/" + "feature/chapitre")  afin de pouvoir s'y retrouver facilement. Les PRs que vous réaliserez seront directement merge sur la branche violet de votre chap' leader après un accord commun au sein de votre équipe. Pour que votre travail soit accepté par l'ensemble de la communauté du projet au sein de la branche master, il sera nécessaire d'avoir l'autorisation de l'ensemble des chap' leader et des personnes en charge de l'harmonisation et du suivi du cours.
 
 
 - Les commits sur votre sous-branche de feature doivent suivre les règles/conventions suivantes : 
@@ -67,6 +67,7 @@ Celle-ci est protégée et il est nécessaire de respecter ces règles/conventio
     ```bash
     git commit -m "fix: votre message"
     git commit -m "feat: votre message"
+    git commit -m "docs: votre message"
     git commit -m "BREAKING CHANGE: votre message"
     ```
 
@@ -74,6 +75,8 @@ Celle-ci est protégée et il est nécessaire de respecter ces règles/conventio
     fix: un commit de type fix qui corrige un bug.
 
     feat: un commit de type feat qui introduit une nouvelle fonctionnalité.
+
+    docs: un commit de type docs qui précise qu'une modification de la doc a été réalisée.
 
     BREAKING CHANGE: un commit de type BREAKING CHANGE qui introduit une modification qui fait planté votre code.
     ```
@@ -132,7 +135,7 @@ Donne la branche de développement en cours. En ajoutant l'option -r, vous obten
 git checkout
 ```
 
-Permet de se placer sur un novueau commit ou une nouvelle branche existante. En utilisant l'option -b suivant d'un nom, vous créez une nouvelle branche avec le nom associé.
+Permet de se placer sur un nouveau commit ou une nouvelle branche existante. En utilisant l'option -b suivant d'un nom, vous créez une nouvelle branche avec le nom associé.
 
 ### Commandes utiles mais rares d'utilisation pour vos contributions :
 
