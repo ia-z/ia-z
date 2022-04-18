@@ -9,7 +9,7 @@ Le feature engineering est la partie la plus essentielle de la construction d'un
 ## Méthodologie <a name="methodologie"></a>
 
 <p>
-    <img src="map_feat_eng.png" alt>
+    <img src="src/map_feat_eng.png" alt>
     <em>Pipeline typique d’un projet de Machine Learning </em>
 </p>
 
