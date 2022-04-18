@@ -11,7 +11,7 @@ Ce document est un guide d'utilisation de git pour le projet `ia-z`.
 
 **En pratique, les grandes étapes pour contribuer au projet**
 
-- Cloner le projet : git clone https://github.com/ia-z/ia-z.git
+- Forker puis cloner le projet : git clone https://github.com/<mon_username>/ia-z.git
 - Créer une issue avec le tag associé à l'équipe/thématique en question : https://github.com/ia-z/ia-z/issues . C'est obligatoire. Ceci permettra une meilleure gestion du projet.
 - Créer une branche en fonction de son équipe : "équipe/feature" (exemple : ML/tradeoffbiaisvariance) directement au sein de son terminal en prenant soin d'être dans le folder du projet : 
 
