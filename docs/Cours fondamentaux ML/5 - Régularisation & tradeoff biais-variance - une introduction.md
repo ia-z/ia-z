@@ -1,14 +1,14 @@
 # Régularisation & tradeoff biais-variance : une introduction
 
 On a pu voir dans dans le chapitre précédent que le but d'un modèle de ML est de bien généraliser.
-Dans un court exemple de régression polynomial, nous avons pu voir qu'il y était possible d'améliorer
-les performances du modèle en ajoutant élevant le degré de notre polynôme, mais qu'il fallait être précautionneux
+Dans un court exemple de régression polynômiale, on a vu qu'il y était possible d'améliorer
+les performances du modèle en augmentant le degré de notre polynôme, mais qu'il fallait être précautionneux
 pour éviter le sur-apprentissage.
 
 Ce comportement n'est pas spécifique à la régression polynômiale. Ce phénomène apparaît partout en ML,
 à tel point qu'on lui a donné un nom : **le compromis biais-variance**.
-Ce compromis (*tradeoff* en anglais) se modélise par une équation décrivant les sources d'erreurs possibles
-par tout modèle de ML.
+Ce compromis (*tradeoff* en anglais) se modélise par une équation décrivant les trois sources d'erreurs possibles
+par tout modèle de ML : le biais, la variance et le bruit.
 
 La régularisation est un moyen de réduire l'erreur de généralisation d'un modèle en limitant explicitement
 sa capacité à apprendre. C'est une des méthodes les plus utilisées en ML lorsque l'on fait face à du sur-apprentissage.
