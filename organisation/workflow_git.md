@@ -152,3 +152,8 @@ Ce guide te sera utile pour contribuer au projet ia-z. N'hésite pas à t'y réf
 ## Sources
 * Pour plus d'informations sur la convetion liée aux commits : https://www.conventionalcommits.org/en/v1.0.0/
 * https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow
+
+Deux sources pertinentes proposées par Github à ce sujet :
+
+* https://docs.github.com/en/get-started/using-git/about-git 
+* https://docs.github.com/en/get-started/quickstart/hello-world
