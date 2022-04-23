@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Convolutional Neural Network &#8212; IA-Z</title>
+    <title>Régularisation &amp; tradeoff biais-variance : une introduction &#8212; IA-Z</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,12 +51,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Modern Convolutional Neural Networks" href="4_Modern_CNN.html" />
-    <link rel="prev" title="Machine Learning for Computer Vision" href="2_ML_CV.html" />
+    <link rel="next" title="Régularisation d’un modèle" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html" />
+    <link rel="prev" title="Généralisation d’un modèle de Machine Learning" href="4%20-%20Generalisation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,44 +103,44 @@ const thebe_selector_output = ".output, .cell_output"
   Apprentissage automatique
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+  <a class="reference internal" href="1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
    Pourquoi le Machine Learning ?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/2%20-%20Elements%20de%20definition.html">
+  <a class="reference internal" href="2%20-%20Elements%20de%20definition.html">
    Eléments de définition
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/3%20-%20Regression%20lineaire.html">
+  <a class="reference internal" href="3%20-%20Regression%20lineaire.html">
    Modèle élémentaire : La régression linéaire
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/4%20-%20Generalisation.html">
+  <a class="reference internal" href="4%20-%20Generalisation.html">
    Généralisation d’un modèle de Machine Learning
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/5%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Régularisation &amp; tradeoff biais-variance : une introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+  <a class="reference internal" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
    Régularisation d’un modèle
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/7%20-%20Tradeoff%20biais-variance.html">
+  <a class="reference internal" href="7%20-%20Tradeoff%20biais-variance.html">
    Compromis biais-variance
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20fondamentaux%20ML/8%20-%20Feature%20engineering%20%26%20cleaning.html">
+  <a class="reference internal" href="8%20-%20Feature%20engineering%20%26%20cleaning.html">
    Feature Engineering
   </a>
  </li>
@@ -164,34 +162,34 @@ const thebe_selector_output = ".output, .cell_output"
   Vision par ordinateur
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="0_intro.html">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
    Computer Vision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1_Image_processing.html">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
    Section 1 Image processing techniques
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_ML_CV.html">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
    Machine Learning for Computer Vision
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
    Convolutional Neural Network
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="4_Modern_CNN.html">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
    Modern Convolutional Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_CV_tasks.html">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
    Computer Vision tasks
   </a>
  </li>
@@ -248,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/Cours_CV/3_CNN.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/5 - Régularisation & tradeoff biais-variance - une introduction.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -268,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours_CV/3_CNN.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/5 - Régularisation & tradeoff biais-variance - une introduction.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -294,51 +292,14 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Convolutional Neural Network
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compromis-biais-variance">
+   Compromis biais-variance
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introduction">
-     Introduction
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contents">
-     0. Contents
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#convolution-operation-on-images">
-     1. Convolution operation on images
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#features-maps-and-kernels">
-     2. Features Maps and Kernels
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#padding-and-stride">
-     3. Padding and Stride
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pooling">
-     4. Pooling
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lenet-5">
-     5. LeNet-5
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularisation">
+   Régularisation
   </a>
  </li>
 </ul>
@@ -351,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Convolutional Neural Network</h1>
+                <h1>Régularisation & tradeoff biais-variance : une introduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -361,51 +322,14 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Convolutional Neural Network
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compromis-biais-variance">
+   Compromis biais-variance
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#introduction">
-     Introduction
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#contents">
-     0. Contents
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#convolution-operation-on-images">
-     1. Convolution operation on images
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#features-maps-and-kernels">
-     2. Features Maps and Kernels
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#padding-and-stride">
-     3. Padding and Stride
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pooling">
-     4. Pooling
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lenet-5">
-     5. LeNet-5
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularisation">
+   Régularisation
   </a>
  </li>
 </ul>
@@ -417,57 +341,45 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="convolutional-neural-network">
-<h1>Convolutional Neural Network<a class="headerlink" href="#convolutional-neural-network" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The first time that computer vision task was solved by using Artificial Neural Network was back in 1979 with the introduction of Neocognitron by Kunihiko Fukushima<a class="reference external" href="#1">[1]</a>. It was used for Japanese handwritten character recognition. It was inspired by the work of Hubel &amp; Wiesel in 1959, where two type of cells were present in cats visual primary cortex which are simple cell and complex cell<a class="reference external" href="#2">[2]</a>. The simple cells called S-cells were responsible for extracting local features, and the complex cells called C-cells were responsible for the features’ deformation, local shifts. The Convolutional Neural Network was introduced by Yann LeCun in 1989<a class="reference external" href="#3">[3]</a> for the task of handwritten digital recognition. The trend after the 1990s was to use optimization algorithms for computer vision tasks, at 1998 Convolutional Neural Network was optmized using gradient descent based algorithm with backpropagation<a class="reference external" href="#4">[4]</a>.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="regularisation-tradeoff-biais-variance-une-introduction">
+<h1>Régularisation &amp; tradeoff biais-variance : une introduction<a class="headerlink" href="#regularisation-tradeoff-biais-variance-une-introduction" title="Permalink to this headline">¶</a></h1>
+<p>On a pu voir dans dans le chapitre précédent que le but d’un modèle de ML est de bien généraliser.
+Dans un court exemple de régression polynômiale, on a vu qu’il y était possible d’améliorer
+les performances du modèle en augmentant le degré de notre polynôme, mais qu’il fallait être précautionneux
+pour éviter le sur-apprentissage.</p>
+<p>Ce comportement n’est pas spécifique à la régression polynômiale. Ce phénomène apparaît partout en ML,
+à tel point qu’on lui a donné un nom : <strong>le compromis biais-variance</strong>.
+Ce compromis (<em>tradeoff</em> en anglais) se modélise par une équation décrivant les trois sources d’erreurs possibles
+par tout modèle de ML : le biais, la variance et le bruit.</p>
+<p>La régularisation est un moyen de réduire l’erreur de généralisation d’un modèle en limitant explicitement
+sa capacité à apprendre. C’est une des méthodes les plus utilisées en ML lorsque l’on fait face à du sur-apprentissage.</p>
+<p>Dans ce chapitre, nous allons voir rapidement ce qu’est le compromis biais-variance et la régularisation, afin d’en avoir
+une intuition. Les deux prochains chapitres aborderont ces deux concepts plus profondemment.</p>
+<div class="section" id="compromis-biais-variance">
+<h2>Compromis biais-variance<a class="headerlink" href="#compromis-biais-variance" title="Permalink to this headline">¶</a></h2>
+<p>Comme nous l’avons vu, un modèle doit être entraîné de sorte à ne pas tomber dans le sous-apprentissage ni le sur-apprentissage.
+<em>Mathématiquement, on peut décrire le sous-apprentissage comme un phénomène étant causé par un modèle trop biaisé.
+De la même façon, il est possible de définir la source d’un sur-apprentissage d’un modèle par sa variance.</em></p>
+<p>Mais alors, qu’entends-t-on par <em>biais</em> et <em>variance</em> d’un modèle ?</p>
+<p>Pour faire simple, les biais d’un modèle réunissent l’ensemble des contraintes qui définissent l’ensemble des modélisations que peuvent
+exprimer notre modèle. Par exemple, un modèle linéaire ne peut modéliser que des fonctions affines entre ses entrées et sa sortie,
+ce qui en fait un modèle très biaisé.</p>
+<p>La variance elle peut se visualiser par la sensibilité d’un modèle face aux données d’entraînement. Un modèle avec une haute variance
+sera très sensible à un changement dans ses données d’entraînement. Il va donc plus facilement sur-apprendre, car une grosse variance
+est en général synonyme d’une grosse capacité d’adaptation aux données. Un <em>K-NN</em> est sensible aux données car ces dernières définissent
+directement la façon dont il va faire ses prédictions. A l’inverse, un modèle linéaire prends en compte l’ensemble des données
+pour trouver la courbe qui passe le mieux à travers celles-ci.</p>
 </div>
-<div class="section" id="contents">
-<h2>0. Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Convolution operation on images</p></li>
-<li><p>Features Maps and kernels</p></li>
-<li><p>Padding and stride</p></li>
-<li><p>Pooling</p></li>
-<li><p>LeNet-5</p></li>
-</ol>
+<div class="section" id="regularisation">
+<h2>Régularisation<a class="headerlink" href="#regularisation" title="Permalink to this headline">¶</a></h2>
+<p>La régularisation est une méthode pour limiter le sur-apprentissage d’un modèle.
+Le principe est d’empêcher un modèle à apprendre des relations trop complexes entre les features <code class="docutils literal notranslate"><span class="pre">X</span></code> et l’objectif <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>En fait, il est possible de voir la régularisation comme une façon d’ajouter un biais à notre modèle, afin de réduire sa variance.
+Ce biais indique au modèle que nous préférons trouver des solutions simples, en partant de l’hypothèse que
+<a class="reference external" href="https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham">ces solutions simples sont généralement les meilleures</a>.</p>
+<p>La régularisation prends souvent la forme d’une pénalité ajoutée à la fonction de perte d’entraînement du modèle.
+Cette pénalité modélise la complexité du modèle (que le modèle cherche donc à minimiser).</p>
 </div>
-<div class="section" id="convolution-operation-on-images">
-<h2>1. Convolution operation on images<a class="headerlink" href="#convolution-operation-on-images" title="Permalink to this headline">¶</a></h2>
-<p>The convolution operation formula applied to 2D tensors is:</p>
-<!-- $f\circledast g(i,j) = \sum_{a}\sum_{b}f(a,b)g(i-a,j-b)$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/JQEBTWc5ke.svg">
-<p>Where <span class="math notranslate nohighlight">\((a,b)\)</span> are the indexes for function <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\((i,j)\)</span> are the indexes for function <span class="math notranslate nohighlight">\(g\)</span>.
-Now if we use matrix notation for hidden representation layers <span class="math notranslate nohighlight">\([H]_{i,j}\)</span>, the input image <span class="math notranslate nohighlight">\([X]_{i,j}\)</span> and the kernel <span class="math notranslate nohighlight">\([K]_{a,b}\)</span> the formula becomes:</p>
-<!-- $[H]_{i,j} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}[X]_{i+a,j+b}[K]_{a,b}$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/eJaBCGlAPc.svg">
-<p>Note here we have changed the difference <span class="math notranslate nohighlight">\((i-a,j-b)\)</span> to <span class="math notranslate nohighlight">\((i+a,j+b)\)</span>, this function now will produce a convolution operation for a given index <span class="math notranslate nohighlight">\((i,j)\)</span> for the input image <span class="math notranslate nohighlight">\([X]_{i,j}\)</span> and kernel <span class="math notranslate nohighlight">\([K]_{a,b}\)</span>. Where the <span class="math notranslate nohighlight">\(delta\)</span> can be interpreted as the kernel size.</p>
-<p>Now when we have multiple channel such as RGB images, we will have one 2D array for each channel. So the input image will be a 3D array with the shape of <span class="math notranslate nohighlight">\((C,H,W)\)</span>, where <span class="math notranslate nohighlight">\(C\)</span> is the number of channels, <span class="math notranslate nohighlight">\(H\)</span> is the height of the image, and <span class="math notranslate nohighlight">\(W\)</span> is the width of the image. So the image convolution formula becomes:</p>
-<!-- $[H]_{i,j,d} = \sum_{a=-delta}^{delta}\sum_{b=-delta}^{delta}\sum_{c}[X]_{i+a,j+b,c}[K]_{a,b,c,d}$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/5DpPa28MoD.svg">
-<p>Where <!-- $d$ --> <img style="transform: translateY(0.1em); background: white;" src="../../svg/hf6DCWcSPa.svg"> is the number of receptive fields, or feature maps in the hidden representation, which can be interpreted as the number of kernels that we have defined for the output of this layer, and each kernel applied the convolution operation on each of the 3 channel RGB, we then sum these channels to produce a single receptive field (Note that there has been studies that applied average function to fuse the differents channels).</p>
-</div>
-<div class="section" id="features-maps-and-kernels">
-<h2>2. Features Maps and Kernels<a class="headerlink" href="#features-maps-and-kernels" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="padding-and-stride">
-<h2>3. Padding and Stride<a class="headerlink" href="#padding-and-stride" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="pooling">
-<h2>4. Pooling<a class="headerlink" href="#pooling" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="lenet-5">
-<h2>5. LeNet-5<a class="headerlink" href="#lenet-5" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<p><a id="1">[1]</a>
-Fukushima, K. and Miyake, S., 1982. Neocognitron: A self-organizing neural network model for a mechanism of visual pattern recognition. In Competition and cooperation in neural nets (pp. 267-285). Springer, Berlin, Heidelberg.</p>
-<p><a  id="2">[2]</a>
-Hubel, D.H. and Wiesel, T.N., 1959. Receptive fields of single neurones in the cat’s striate cortex. The Journal of physiology, 148(3), pp.574-591.</p>
-<p><a  id="3">[3]</a>
-LeCun, Y., Boser, B., Denker, J.S., Henderson, D., Howard, R.E., Hubbard, W. and Jackel, L.D., 1989. Backpropagation applied to handwritten zip code recognition. Neural computation, 1(4), pp.541-551.</p>
-<p><a  id="4">[4]</a>
-LeCun, Y., Bottou, L., Bengio, Y. and Haffner, P., 1998. Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), pp.2278-2324.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -483,7 +395,7 @@ LeCun, Y., Bottou, L., Bengio, Y. and Haffner, P., 1998. Gradient-based learning
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/Cours_CV"
+            path: "./docs/Cours fondamentaux ML"
         },
         predefinedOutput: true
     }
@@ -495,17 +407,17 @@ LeCun, Y., Bottou, L., Bengio, Y. and Haffner, P., 1998. Gradient-based learning
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="2_ML_CV.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="4%20-%20Generalisation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Machine Learning for Computer Vision</p>
+            <p class="prev-next-title">Généralisation d’un modèle de Machine Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="4_Modern_CNN.html" title="next page">
+    <a class='right-next' id="next-link" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modern Convolutional Neural Networks</p>
+        <p class="prev-next-title">Régularisation d’un modèle</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

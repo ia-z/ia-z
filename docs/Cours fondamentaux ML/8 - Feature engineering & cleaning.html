@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?" href="../NLP/README.html" />
-    <link rel="prev" title="Généralisation d’un modèle de Machine Learning" href="4%20-%20Generalisation.html" />
+    <link rel="prev" title="Compromis biais-variance" href="7%20-%20Tradeoff%20biais-variance.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,6 +124,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="4%20-%20Generalisation.html">
    Généralisation d’un modèle de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+   Régularisation &amp; tradeoff biais-variance : une introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+   Régularisation d’un modèle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7%20-%20Tradeoff%20biais-variance.html">
+   Compromis biais-variance
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -233,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/6 - Feature engineering & cleaning.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/8 - Feature engineering & cleaning.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -253,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/6 - Feature engineering & cleaning.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/8 - Feature engineering & cleaning.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -476,7 +491,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="methodologie-a-name-methodologie-a">
 <h2>Méthodologie <a name="methodologie"></a><a class="headerlink" href="#methodologie-a-name-methodologie-a" title="Permalink to this headline">¶</a></h2>
 <p>
-    <img src="map_feat_eng.png" alt>
+    <img src="src/map_feat_eng.png" alt>
     <em>Pipeline typique d’un projet de Machine Learning </em>
 </p>
 <p>Supposons que vous êtes Data Scientists pour une entreprise. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement explorer les données à votre disposition en ayant effectuer une EDA (Exploratory Data Analysis) digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d’utiliser votre modèle favori. Néanmoins vous constater que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste !</p>
@@ -628,11 +643,11 @@ Un grand nombre de labels dans une variable peut introduire du bruit avec peu ou
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="4%20-%20Generalisation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="7%20-%20Tradeoff%20biais-variance.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Généralisation d’un modèle de Machine Learning</p>
+            <p class="prev-next-title">Compromis biais-variance</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../NLP/README.html" title="next page">

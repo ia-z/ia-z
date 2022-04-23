@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compromis biais-variance &#8212; IA-Z</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Feature Engineering" href="8%20-%20Feature%20engineering%20%26%20cleaning.html" />
+    <link rel="prev" title="Régularisation d’un modèle" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Statut
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2%20-%20Elements%20de%20definition.html">
+   Eléments de définition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3%20-%20Regression%20lineaire.html">
+   Modèle élémentaire : La régression linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4%20-%20Generalisation.html">
+   Généralisation d’un modèle de Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+   Régularisation &amp; tradeoff biais-variance : une introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+   Régularisation d’un modèle
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Compromis biais-variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8%20-%20Feature%20engineering%20%26%20cleaning.html">
+   Feature Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/README.html">
+   Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20RL/intro.html">
+   Reinforcement learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/7 - Tradeoff biais-variance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/7 - Tradeoff biais-variance.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/Cours fondamentaux ML/7 - Tradeoff biais-variance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biais-inductif">
+   Biais inductif
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#espace-de-recherche-de-fonction">
+     Espace de recherche de fonction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caracterisation-de-l-espace-de-recherche">
+     Caractérisation de l’espace de recherche
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biais-courants">
+     Biais courants
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance">
+   Variance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-regression-lineaire-vs-knn">
+   Exemple: régression linéaire vs KNN
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-lineaire">
+     Régression linéaire
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-nn">
+     K-NN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tradeoff-biais-variance">
+   Tradeoff biais-variance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decomposition-de-l-erreur-d-un-modele">
+     Décomposition de l’erreur d’un modèle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualisation">
+     Visualisation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#details-mathematiques">
+     (**) Détails mathématiques
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-free-lunch-nfl">
+   No Free Lunch (NFL)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Compromis biais-variance</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biais-inductif">
+   Biais inductif
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#espace-de-recherche-de-fonction">
+     Espace de recherche de fonction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#caracterisation-de-l-espace-de-recherche">
+     Caractérisation de l’espace de recherche
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biais-courants">
+     Biais courants
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance">
+   Variance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-regression-lineaire-vs-knn">
+   Exemple: régression linéaire vs KNN
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-lineaire">
+     Régression linéaire
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-nn">
+     K-NN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tradeoff-biais-variance">
+   Tradeoff biais-variance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decomposition-de-l-erreur-d-un-modele">
+     Décomposition de l’erreur d’un modèle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualisation">
+     Visualisation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#details-mathematiques">
+     (**) Détails mathématiques
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-free-lunch-nfl">
+   No Free Lunch (NFL)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="compromis-biais-variance">
+<h1>Compromis biais-variance<a class="headerlink" href="#compromis-biais-variance" title="Permalink to this headline">¶</a></h1>
+<p>Le compromis biais-variance est un résultat fondamental en Machine Learning.
+Il décompose les erreurs d’un modèle en trois catégories : <strong>le biais inductif, la variance et le bruit</strong>.</p>
+<ul class="simple">
+<li><p>Les <strong>biais inductifs</strong> d’un modèle caractérisent l’espace des fonctions apprenables par un modèle.</p></li>
+<li><p>La <strong>variance</strong> est une mesure de la sensibilité que possède un modèle par rapport aux données utilisées pour l’entraîner.</p></li>
+</ul>
+<div class="section" id="biais-inductif">
+<h2>Biais inductif<a class="headerlink" href="#biais-inductif" title="Permalink to this headline">¶</a></h2>
+<p>Il est en fait <a class="reference external" href="https://fr.abcdef.wiki/wiki/Ugly_duckling_theorem">impossible d’entraîner un modèle sans biais inductif</a>.
+Sans cela, il existerait une infinité de fonctions qui seraient capables de modéliser les relations entres des couples <span class="math notranslate nohighlight">\((x, y)\)</span> quelconques.
+L’ensemble des biais inductifs forment une contrainte sur les caractéristiques que doivent avoir un modèle.
+L’étape d’apprentissage se résume alors à la recherche de la meilleure fonction parmis l’espace des fonctions
+modélisables.</p>
+<div class="section" id="espace-de-recherche-de-fonction">
+<h3>Espace de recherche de fonction<a class="headerlink" href="#espace-de-recherche-de-fonction" title="Permalink to this headline">¶</a></h3>
+<p>Il est important d’avoir une intuition de ce que l’on entends par <em>espace de recherche de fonction</em>.</p>
+<p>On peut décrire le processus d’apprentissage d’un modèle comme une façon de trouver la meilleure fonction qui
+modélise la relation souhaitée entre nos couples <span class="math notranslate nohighlight">\((x, y)\)</span>.
+Il y a donc au départ de l’apprentissage tout un ensemble de fonctions modélisables par notre modèle.
+Cet ensemble peut être vu comme un espace de recherche.</p>
+<p>Par exemple, dans le cas de la régression linéaire, la fonction est décrite par les coefficients de la droite modélisée.
+Dans ce cas, l’espace des fonctions modélisables est décris par toutes les fonctions linéaires définies par les valeurs que peuvent prendre les coefficients.
+Durant l’apprentissage d’une régression linéaire, le modèle va trouver les meilleures valeurs des coefficients afin de minimiser le loss d’entraînement, et donc finir par choisir une fonction dans cet espace.</p>
+</div>
+<div class="section" id="caracterisation-de-l-espace-de-recherche">
+<h3>Caractérisation de l’espace de recherche<a class="headerlink" href="#caracterisation-de-l-espace-de-recherche" title="Permalink to this headline">¶</a></h3>
+<p>Les biais expriment des contraintes sur les fonctions que peuvent modéliser nos algorithmes.
+Un modèle linéaire fait l’hypothèse que la relation <span class="math notranslate nohighlight">\((x, y)\)</span> peut être facilement décrite à l’aide d’une droite.
+Ainsi, l’espace de recherche ne contient que des fonctions affines.</p>
+<p>L’espace de recherche définit l’expressivité d’un modèle. Le plus cet espace est divers et complexe, le mieux
+notre modèle sera capable d’apprendre des relations complexes entre nos couples <span class="math notranslate nohighlight">\((x, y)\)</span>.
+Pour avoir un tel espace de recherche, il faut n’imposer que des biais peut contraignants.
+On a alors un modèle très maléable.
+Cependant, on se rend vite compte que si notre modèle est trop maléable, il risquera de facilement sur-apprendre
+car il aura trop finement adapter son modèle aux données d’entraînement.</p>
+<p><em>Les biais inductifs nous permettent donc choisir la forme de l’espace de fonctions modélisables.
+Ajuster nos biais permet de contrôler le sur-apprentissage ainsi que le sous-apprentissage.</em></p>
+</div>
+<div class="section" id="biais-courants">
+<h3>Biais courants<a class="headerlink" href="#biais-courants" title="Permalink to this headline">¶</a></h3>
+<p>Le biais le plus courant est celui de <strong>la continuité</strong> : on suppose que si deux points <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(x'\)</span> sont proches dans l’espace, alors
+il est probable que <span class="math notranslate nohighlight">\(f(x)\)</span> et <span class="math notranslate nohighlight">\(f(x')\)</span> soient proches l’un de l’autre. Intuitivement, cela revient à dire que si deux images ne diffèrent
+que de quelques pixels, alors si l’une des deux images représente un chien, la seconde sera très probablement une image de chien.</p>
+<p>Un autre biais omniprésent est celui de <strong>la régularisation</strong>.
+La régularisation est en fait une façon de biaiser notre modèle vers des solutions plus simples. C’est aussi une hypothèse que l’on
+choisit lorsque l’on entraîne le modèle !</p>
+</div>
+</div>
+<div class="section" id="variance">
+<h2>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h2>
+<p>La variance d’un modèle résume son besoin de données pour apprendre au mieux. Plus un modèle a de variance et plus il aura besoin
+de grosses quantités de données afin de ne pas sur-apprendre.</p>
+<p>Pour être plus précis, on considère que les données utilisées à l’apprentissage proviennent toutes d’une source aléatoire capable
+de générer toutes les données possibles d’une distribution fixée. On peut alors échantillonner plusieurs jeux de données à partir de cette source.
+Cela permet alors d’entraîner autant de modèles qu’il y a de jeux de données.
+Chaque modèle va converger vers une fonction finale qui peut être évaluer sur un ensemble de test commun.
+Dans ce cas, la variance d’un modèle de ML est mesurée par la variance des performances des différents modèles évalués sur le jeu de test,
+mais entraînés sur des données différentes.</p>
+<p>Si les prédictions d’un modèle sont trop dépendantes des données utilisées pour l’entraîner, alors c’est qu’il est en sur-apprentissage,
+car cela signifie qu’il s’est trop spécialisé sur les données fournies d’entraînement.</p>
+</div>
+<div class="section" id="exemple-regression-lineaire-vs-knn">
+<h2>Exemple: régression linéaire vs KNN<a class="headerlink" href="#exemple-regression-lineaire-vs-knn" title="Permalink to this headline">¶</a></h2>
+<p>On va illustrer l’impact des biais et de la variance dans un exemple en utilisant un jeu de données non linéaire.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_friedman1</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="k">def</span> <span class="nf">make_dataset</span><span class="p">(</span><span class="n">n_samples</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_friedman1</span><span class="p">(</span>
+        <span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span>
+        <span class="n">n_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_perf</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entraînement : </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">n_samples_small</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">n_samples_big</span> <span class="o">=</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="regression-lineaire">
+<h3>Régression linéaire<a class="headerlink" href="#regression-lineaire" title="Permalink to this headline">¶</a></h3>
+<p>Le modèle utilisé lors de la régression linéaire ne peut apprendre que des fonctions de la forme <span class="math notranslate nohighlight">\(f(x) = ax + b\)</span> (ici nous n’avons qu’une feature <span class="math notranslate nohighlight">\(x\)</span>).
+Pour ce modèle, le biais inductif est l’hypothèse que les données peuvent se modéliser sous la forme d’une droite.
+L’espace de recherche est donc extrêmement contraint ! Mais l’avantage d’un tel modèle c’est qu’il suffit de peu de points
+pour rapidement converger vers une fonction <span class="math notranslate nohighlight">\(f\)</span> de bonne qualité. En effet, il suffit de deux points pour tracer une droite !
+<em>Dans la vie réelle, les points sont bruités donc il faut plus de points pour mieux estimer la droite, mais l’idée reste la même.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Modèle linéaire&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Petit jeu de données (</span><span class="si">{</span><span class="n">n_samples_small</span><span class="si">}</span><span class="s1"> exemples)&#39;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">n_samples_small</span><span class="p">)</span>
+<span class="n">plot_perf</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Gros jeu de données (</span><span class="si">{</span><span class="n">n_samples_big</span><span class="si">}</span><span class="s1"> exemples)&#39;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">n_samples_big</span><span class="p">)</span>
+<span class="n">plot_perf</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Modèle linéaire
+
+Petit jeu de données (50 exemples)
+Entraînement : 0.723
+Test: 0.920
+
+Gros jeu de données (10000 exemples)
+Entraînement : 0.755
+Test: 0.745
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="k-nn">
+<h3>K-NN<a class="headerlink" href="#k-nn" title="Permalink to this headline">¶</a></h3>
+<p>On peut comparer cet exemple à celui du KNN. Le KNN ne fait que l’hypothèse de continuité, il prédit la valeur d’un point <span class="math notranslate nohighlight">\(x\)</span> par rapport
+aux autres points vus pendant l’entraînement qui sont au voisinage de <span class="math notranslate nohighlight">\(x\)</span>. C’est l’hypothèse la plus simple qui soit, et elle laisse place à
+un ensemble de fonctions modélisables énorme. Cela permet de garder un fort potentiel de modélisation, mais ça demande aussi un nombre de données
+très élevé pour modéliser précisément une fonction en tout point.
+<em>En fait, à cause de la <a class="reference external" href="https://fr.wikipedia.org/wiki/Fl%C3%A9au_de_la_dimension">malédiction de la dimension</a>,
+le nombre de données nécessaires pour couvrir l’ensemble de définition d’un KNN
+croit exponentiellement avec le nombre de dimensions de nos features.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;K-Nearest Neighbor&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Petit jeu de données (</span><span class="si">{</span><span class="n">n_samples_small</span><span class="si">}</span><span class="s1"> exemples)&#39;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">n_samples_small</span><span class="p">)</span>
+<span class="n">plot_perf</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Gros jeu de données (</span><span class="si">{</span><span class="n">n_samples_big</span><span class="si">}</span><span class="s1"> exemples)&#39;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">(</span><span class="n">n_samples_big</span><span class="p">)</span>
+<span class="n">plot_perf</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K-Nearest Neighbor
+
+Petit jeu de données (50 exemples)
+Entraînement : 0.413
+Test: 0.107
+
+Gros jeu de données (10000 exemples)
+Entraînement : 0.892
+Test: 0.853
+</pre></div>
+</div>
+</div>
+</div>
+<p>À travers ces deux exemples, on peut voir qu’il peut y avoir des comportements drastiquement différents lors de l’entraînement de nos modèles.
+Avec peu de points et une hypothèse forte sur la relation entre nos données, on peut utiliser un modèle simple qui va converger sans problème.
+Cependant, si nous faisons une hypothèse trop forte ou mauvaise, on peut se retrouver avec un modèle trop contraint qui ne pourra pas trouver de bonne façon
+de modéliser le problème. Il faudra alors trouver (ou tester) de meilleures hypothèses, ou adoucir celles déjà faites. Le cas le plus simple
+est alors d’entraîner un modèle plus expressif comme le KNN, mais il faut alors assez de données pour que ce dernier soit capable d’apprendre
+une relation utile sans sur-apprendre.</p>
+<p>Notre dataset d’exemple n’étant pas linéaire, le biais du modèle linéaire est trop contraignant dans un régime où nous avons
+suffisemment de données pour modéliser des modèles plus complexes.</p>
+</div>
+</div>
+<div class="section" id="tradeoff-biais-variance">
+<h2>Tradeoff biais-variance<a class="headerlink" href="#tradeoff-biais-variance" title="Permalink to this headline">¶</a></h2>
+<p>Le compromis biais-variance est fondamental en Machine Learning.</p>
+<p>Intuitivement, on a un équilibre à trouver dans la taille de l’espace des fonctions que peuvent modéliser nos modèles.
+Si on laisse cet espace être trop grand, alors le modèle va trouver une fonction qui sera très performante sur les données d’entraînement
+mais qui aura un loss élevé sur de nouvelles données à cause d’un sur-apprentissage sévère.
+A l’inverse, à trop réduire cet espace, on ne va laisser au modèle que des fonctions sous-efficaces pour modéliser la relation entre nos couples <span class="math notranslate nohighlight">\((x, y)\)</span>.</p>
+<p>Idéalement, on voudrait appliquer uniquement des biais qui correspondent à la nature de la vraie relation entre nos données. Cependant
+il faut garder en tête que ces biais sont souvent inconnus, nous ne pouvons donc que tester différentes hypothèses afin de regarder
+ce qui fonctionne le mieux en pratique sur les données à considérer.</p>
+<p><em>Une relation linéaire est peut-être sous-efficace par rapport à la vraie relation de votre couple <span class="math notranslate nohighlight">\((x, y)\)</span>, mais elle est peut-être
+ce que vous aurez de mieux entre le compromis “biais simplificateur” vs “nombre de données”.</em></p>
+<div class="section" id="decomposition-de-l-erreur-d-un-modele">
+<h3>Décomposition de l’erreur d’un modèle<a class="headerlink" href="#decomposition-de-l-erreur-d-un-modele" title="Permalink to this headline">¶</a></h3>
+<p>Le compromis biais-variance est le résultat d’une décomposition de l’erreur d’un modèle <span class="math notranslate nohighlight">\(h\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+\text{loss}_{\text{test}}(h) = \text{variance}(h) + \text{biais}(h)^2 + \text{bruit}
+\]</div>
+<p>Les mauvaises performances du modèle évalué sur le jeu de test s’expliquent par la variance du modèle, son biais et le bruit intrinsèque des données.
+Comme nous l’avons expliqué jusqu’à présent, plus notre modèle a de biais ou de variance et plus il fera d’erreurs sur le jeu de test.</p>
+<ul class="simple">
+<li><p>Pour réduire l’erreur liée à la variance, il faudrait pouvoir entraîner le modèle sur l’ensemble des données imaginables pour la tâche en question.</p></li>
+<li><p>Pour réduire l’erreur liée au biais, il faudrait connaître parfaitement les caractéristiques de la relation de nos couples <span class="math notranslate nohighlight">\((x, y)\)</span>.</p></li>
+<li><p><em>Il est impossible de réduire l’erreur liée au bruit !</em> Ce bruit décrit la part d’inexplicabilité dans la relation entre <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ul>
+<p>Ce que définit cette équation, c’est simplement qu’il est possible de réduire les pertes d’un modèle en réduisant sa variance et son biais.
+Ce c’est pas une preuve qu’il y a forcément un compromis à faire entre la variance et les biais. Ce compromis est intrinsèque à la définition
+de ces termes : l’un réduit l’espace de recherche et l’autre l’augmente.</p>
+<blockquote>
+<div><p>Et le bruit alors ?</p>
+</div></blockquote>
+<p>Il est fort probable les features <span class="math notranslate nohighlight">\(x\)</span> ne permettent pas de pleinement expliquer la quantité <span class="math notranslate nohighlight">\(y\)</span>. Dans ce cas, on aura beau essayer de réduire
+l’erreur au maximum, on aura toujours une petite erreur liée au bruit.
+Le bruit peut provenir de deux sources différentes :</p>
+<ul class="simple">
+<li><p>Un manque de features pour décrire au mieux la situation qui a menée à <span class="math notranslate nohighlight">\(y\)</span>.
+Par exemple, une photo n’est qu’une coupe 2D d’un environnement 3D (voire 4D si l’on inclus le temps).
+Cette coupe peut être insuffisante pour décrire au mieux ce que l’on souhaite (comment deviner ce que fait une personne qui nous tourne le dos ?).</p></li>
+<li><p>Un bruit purement stochastique dans la source qui a générée <span class="math notranslate nohighlight">\(y\)</span>. On peut voir ça comme l’imprécision de la mesure de <span class="math notranslate nohighlight">\(y\)</span>, ou alors simplement
+un phénomène aléatoire qui se produit lors de la production de <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ul>
+<p>Ce bruit peut être vu ainsi : lorsque j’observe les mêmes <span class="math notranslate nohighlight">\(x\)</span>, je vais tout de même obtenir des <span class="math notranslate nohighlight">\(y\)</span> différents. Le meilleur modèle possible
+ne peux alors que prédire la valeur moyenne de <span class="math notranslate nohighlight">\(y\)</span> sachant <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<blockquote>
+<div><p>Mais alors on ne peut pas avoir de modèle parfait ?</p>
+</div></blockquote>
+<p>Et non ! Un <a class="reference external" href="https://fr.abcdef.wiki/wiki/All_models_are_wrong">adage très connu en statistique</a>
+décrit la situation ainsi : <strong>Tous les modèles sont faux, mais certains sont utiles.</strong></p>
+<p>Il est impossible en pratique de parfaitement modéliser la relation <span class="math notranslate nohighlight">\((x, y)\)</span>. Et on ne parle pas que du bruit irréductible,
+mais même de la fonction réelle qui décrit au mieux la relation entre <span class="math notranslate nohighlight">\(x\)</span> et la valeur moyenne <span class="math notranslate nohighlight">\(\hat y\)</span> sachant <span class="math notranslate nohighlight">\(x\)</span>.
+Il faudrait avoir toutes les données possibles (pouvez-vous me trouver toutes les photos de chats et de chiens possibles ?),
+ou faire les bonnes hypothèses sur la relation afin d’injecter les bons biais au modèle.</p>
+<p>Enfin, il est intéressant de voir qu’une partie du sur-apprentissage est en fait dû au modèle qui s’affine sur le bruit. Il aura alors
+réduit les erreurs liées au bruit du jeu d’entraînement, mais il aura appris n’importe quoi !</p>
+</div>
+<div class="section" id="visualisation">
+<h3>Visualisation<a class="headerlink" href="#visualisation" title="Permalink to this headline">¶</a></h3>
+<p>On peut imaginer ce que donne un tracé de l’erreur d’un modèle dont on ferait progressivement augmenter
+la complexité.
+Petit à petit, l’erreur liée à son biais diminue, mais celle liée à la variance augmente.
+On peut distinguer alors les deux régimes de sous-apprentissage et de sur-apprentissage.</p>
+<div class="figure align-default" id="biais-variance-fig">
+<img alt="tradeoff biais-variance" src="../../_images/biais_variance.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Visualisation du compromis biais-variance.
+Inspiré de l’image libre de droit <a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK543534/figure/ch8.Fig3/">ici</a>.</span><a class="headerlink" href="#biais-variance-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>En pratique, on préfère prendre un modèle faiblement biaisé et ajouter de la régularisation afin de réduire petit à petit le sur-apprentissage.</p>
+</div>
+<div class="section" id="details-mathematiques">
+<h3>(**) Détails mathématiques<a class="headerlink" href="#details-mathematiques" title="Permalink to this headline">¶</a></h3>
+<p>Soit :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x, y\)</span> : Des couples de données où <span class="math notranslate nohighlight">\(x\)</span> est un ensemble de features et <span class="math notranslate nohighlight">\(y\)</span> la valeur à déterminer à partir du vecteur <span class="math notranslate nohighlight">\(x\)</span>.
+Ces couples proviennent d’une distribution de probabilité <span class="math notranslate nohighlight">\(P\)</span> quelconque.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> : Un jeu de données quelconque constitué de couples <span class="math notranslate nohighlight">\((x_i, y_i)\)</span>.
+<span class="math notranslate nohighlight">\(D\)</span> est la réalisation d’un échantillonage de <span class="math notranslate nohighlight">\(P\)</span>. On note <span class="math notranslate nohighlight">\(y_i = y(x_i)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span> : Un modèle de ML capable d’apprendre à partir d’un jeu de données <span class="math notranslate nohighlight">\(D\)</span>.
+Si <span class="math notranslate nohighlight">\(h\)</span> a été entraîné sur <span class="math notranslate nohighlight">\(D\)</span>, on le note <span class="math notranslate nohighlight">\(h_D\)</span>, et on note ses prédictions <span class="math notranslate nohighlight">\(h_D(x)\)</span>.</p></li>
+</ul>
+<p>On peut alors décomposer le loss moyen d’un modèle <span class="math notranslate nohighlight">\(h\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\text{loss}_{\text{test}}(h) &amp; = \text{variance}(h) + \text{biais}(h)^2 + \text{bruit}\\
+E_{x, y, D}[(h_D(x) - y)^2] &amp; = E_{x, D}[(h_D(x) - \bar h(x))^2] + E_x[(\bar h(x) - \bar y(x))^2] + E_{x, y}[(\bar y(x) - y(x))^2]
+\end{align}\end{split}\]</div>
+<p>Où :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\bar h(x) &amp; = E_D[h_D(x)] \\
+\bar y(x) &amp; = E_{y, x}[y(x)]
+\end{align}\end{split}\]</div>
+<p>Explications des valeurs ci-dessus :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bar h(x)\)</span> représente la prédiction moyenne du modèle <span class="math notranslate nohighlight">\(h\)</span> lorsqu’on l’entraîne sur tous les datasets <span class="math notranslate nohighlight">\(D\)</span> probables provenant de la distribution <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar y(x)\)</span> représente la valeur moyenne de <span class="math notranslate nohighlight">\(y\)</span> associée à <span class="math notranslate nohighlight">\(x\)</span>. En effet, la valeur de <span class="math notranslate nohighlight">\(y\)</span> peut être bruitée ou même ne pas complètement dépendre de <span class="math notranslate nohighlight">\(x\)</span>,
+donc il faut prendre en compte que même si l’on mesure deux fois le même <span class="math notranslate nohighlight">\(x\)</span>, il est possible que l’on se retrouve avec des valeurs de <span class="math notranslate nohighlight">\(y\)</span> différentes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{loss}_{\text{test}}(h)\)</span> est la performance moyenne du modèle <span class="math notranslate nohighlight">\(h\)</span> entraîné sur l’ensemble de <span class="math notranslate nohighlight">\(D\)</span> probables et évalué sur l’ensemble des couples <span class="math notranslate nohighlight">\((x, y)\)</span> probables,
+provenant de la distribution <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
+<li><p>La variance est une mesure de l’écart moyen entre la prédiction d’un modèle entraîné avec un dataset <span class="math notranslate nohighlight">\(D\)</span> lambda et
+la prédiction espérée <span class="math notranslate nohighlight">\(\bar h(x)\)</span> de l’ensemble des datasets.</p></li>
+<li><p>Le biais est une mesure de l’écart moyen entre la prédiction espérée <span class="math notranslate nohighlight">\(\bar h(x)\)</span> et la valeur espérée <span class="math notranslate nohighlight">\(\bar y(x)\)</span>.</p></li>
+<li><p>Le bruit mesure la variance moyenne entre points <span class="math notranslate nohighlight">\(y(x)\)</span> et leur moyenne <span class="math notranslate nohighlight">\(\bar y(x)\)</span></p></li>
+</ul>
+<p>Il faut savoir que les modèles <span class="math notranslate nohighlight">\(h\)</span> ne sont pas tous égaux dans cette équation. Une fois que l’on choisit d’utiliser un modèle linéaire,
+le biais sera forcément très fort. Si le biais n’est pas bon (c.a.d. si <span class="math notranslate nohighlight">\(\bar h(x)\)</span> est loin de <span class="math notranslate nohighlight">\(\bar y(x)\)</span>), notre modèle aura de la peine à
+faire diminuer le loss. Au contraire, un réseau de neurones peut plus facilement contrôler la force de son biais à travers plusieurs mécanismes de régularisation.
+Cela nous permet mieux choisir la force des biais et de la variance de notre modèle.</p>
+<p><em>Si ici on utilise <span class="math notranslate nohighlight">\(h\)</span> pour désigner un modèle, c’est parce que l’on considère qu’un modèle est pleinement défini par ses hypothèses.</em></p>
+</div>
+</div>
+<div class="section" id="no-free-lunch-nfl">
+<h2>No Free Lunch (NFL)<a class="headerlink" href="#no-free-lunch-nfl" title="Permalink to this headline">¶</a></h2>
+<p>Le théorème du NFL statue qu’aucun algorithme de recherche de solution n’est meilleur que les autres sur tous les problèmes possibles.
+La recherche d’un unique algorithme qui serait meilleur que tout les autres est donc inutile. Il est nécessaire de faire des hypothèses sur les biais qui seraient
+intéressants, afin de choisir le ou les modèles de Machine Learning à entraîner.</p>
+<p><em>Gardez cela en tête, il n’est pas possible de faire un modèle universel !</em></p>
+<p>Le résultat sous-jacent est un peu plus profond que cela, et il existe en fait <a class="reference external" href="http://no-free-lunch.org">plusieurs versions</a> de ce théorème.
+Vous pouvez creuser le sujet de votre côté si vous le souhaitez.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Les biais inductifs représentent toutes les hypothèses que l’on fait pour réduire l’espace de recherche des solutions.</p></li>
+<li><p>Il est nécessaire de choisir les bons biais qui permettront à un modèle de bien généraliser. Ils évitent le sur-apprentissage.</p></li>
+<li><p>Ces biais doivent être utilisés avec parcimonie afin d’éviter le sous-apprentissage.</p></li>
+<li><p>La variance d’un modèle caractérise la sensibilité du modèle au jeu d’entraînement. Elle augmente avec la taille de l’espace de recherche.</p></li>
+<li><p>Avoir beaucoup de données permet l’utilisation de modèles plus expressifs (avec peu de biais et beaucoup de variance), tout en évitant le sur-apprentissage.
+Les données supplémentaires peuvent être vues comme un moyen de régulariser l’entraînement.</p></li>
+<li><p>Il n’existe pas de modèle universel meilleur que tous les autres sur n’importe quel jeu de données.</p></li>
+</ul>
+</div>
+<div class="section" id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html">Tradeoff biais-variance, Kilian Weinberger, Cornell University</a></p></li>
+<li><p><a class="reference external" href="https://fr.abcdef.wiki/wiki/Inductive_bias">Biais inductif, page wiki</a></p></li>
+<li><p><a class="reference external" href="https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham">Rasoir d’Ockham, page wiki</a></p></li>
+<li><p><a class="reference external" href="https://fr.abcdef.wiki/wiki/Ugly_duckling_theorem">Théorème du vilain petit canard, page wiki</a></p></li>
+<li><p><a class="reference external" href="https://fr.abcdef.wiki/wiki/All_models_are_wrong">Tous les modèles sont faux, page wiki</a></p></li>
+<li><p><a class="reference external" href="https://fr.abcdef.wiki/wiki/No_free_lunch_in_search_and_optimization">No Free Lunch, page wiki</a></p></li>
+<li><p><a class="reference external" href="http://no-free-lunch.org">No Free Lunch Theorems</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours fondamentaux ML"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Régularisation d’un modèle</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="8%20-%20Feature%20engineering%20%26%20cleaning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Feature Engineering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
