@@ -15,4 +15,7 @@ parts:
     - glob: "docs/Cours_CV/*"
   - caption: Apprentissage par renforcement
     chapters:
-    - file: "docs/Cours RL/intro"
+    - glob: "docs/Cours RL/*"
+  - caption: Hors-série
+    chapters:
+    - glob: "docs/Cours annexes/*"
