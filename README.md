@@ -25,8 +25,6 @@
 
 ---
 
-
-
 ## Presentation
 **iA-Z** est une plateforme en ligne offrant un enseignement complet en data science. Elle est destinée à un public ayant un bagage en mathématiques, python et sciences informatiques de niveau supérieur ou égal au BAC. 
 
@@ -44,9 +42,14 @@ iA-Z est conçue pour fournir des enseignements destinés à un public déjà se
 ---
 ## Organisation
 
--  Pour suggérer un nouveau cours, ouvrez un ticket en sélectionnant le template de proposition de cours.
--  Si un cours contient une erreur, ouvrez un ticket avec le template d'erreur, ou soumettez une PR directement.
--  Tout le reste se passe dans l'espace de discussion du dépôt.
+- Nouveau membre du projet ia-z ? 
+
+  * Accèdez au document d'onboarding : ia-z/organisation/onboarding.md 
+  * Accèdez au document de bonnes pratiques git : ia-z/organisation/workflow_git.md
+  * Accèdez au template d'écriture de cours : ia-z/organisation/template_chapitre.md
+
+-  Pour suggérer un nouveau cours ou pour toutes suggestions, réagissez à ce fil de discussion pour nous en faire part : https://github.com/ia-z/ia-z/discussions/categories/ideas ou créez une issue détaillée avec le bon tag associé.
+-  Si un cours contient une erreur ou vous rencontrez un problème technique, ouvrez une issue dédiée puis soumettez une PR directement.
 
 ---
 ## Communauté

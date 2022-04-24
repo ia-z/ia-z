@@ -4,7 +4,7 @@
 title: IA-Z
 author: Communauté IA-Z
 logo: logo.jpeg
-exclude_patterns: [_build, "**.ipynb_checkpoints", .venv, venv]
+exclude_patterns: [_build, "**.ipynb_checkpoints", .venv, venv, organisation]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
