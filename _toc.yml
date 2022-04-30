@@ -6,7 +6,7 @@ root: README
 parts:
   - caption: Apprentissage automatique
     chapters:
-      - file: "docs/Cours fondamentaux ML/module_1_introduction/1 - Pourquoi le ML & information grâce à la data.md"
+      - file: "docs/Cours fondamentaux ML/module_1_introduction/01 - Pourquoi le ML & information grâce à la data.md"
         sections:
         - glob: "docs/Cours fondamentaux ML/module_1_introduction/*"
   - caption: Traitement automatique de la langue
