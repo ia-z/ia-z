@@ -1,6 +1,7 @@
 # Build artefacts from jupyter-book
 _build/
 *.ipynb_checkpoints
+*.pyc
 
 # Virtual env
 .venv/
