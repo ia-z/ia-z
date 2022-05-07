@@ -29,7 +29,7 @@ Le cours se décomposera en trois chapitres, chaque chapitre possèdera une part
 ### Plan:
 -  Chapitre I: Introduction
    - [Présentation du NLP](#présentation-du-nlp)
-   - [Etude des données textuelles](./2_DonneesTextuelles.html)
+   - [Etude des données textuelles](./2_DonneesTextuelles.md)
 - Chapitre II: Notions générales
    - Modélisation statistique du language
    - Modèles de langues
