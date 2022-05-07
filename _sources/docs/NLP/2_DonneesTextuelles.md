@@ -1,4 +1,4 @@
-# Chapitre I: Introduction - Etude des données textuelles
+# Etude des données textuelles
 
 ## Sommaire
 * [Différences avec les données structurées](#différences-avec-les-données-structurées)
