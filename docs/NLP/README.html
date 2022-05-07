@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ? &#8212; IA-Z</title>
+    <title>Chapitre I: Introduction &#8212; IA-Z</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BERT - Bidirectional Encoder Representations from Transformers" href="bert.html" />
-    <link rel="prev" title="Feature Engineering" href="../Cours%20fondamentaux%20ML/8%20-%20Feature%20engineering%20%26%20cleaning.html" />
+    <link rel="prev" title="Chapitre I: Introduction - Etude des données textuelles" href="DonneesTextuelles.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,9 +151,14 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DonneesTextuelles.html">
+   Chapitre I: Introduction - Etude des données textuelles
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?
+   Chapitre I: Introduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -309,6 +314,36 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presentation-du-nlp">
+   Présentation du NLP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plan-du-cours">
+   Plan du cours
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prerequis">
+     Prérequis:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plan">
+     Plan:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -316,34 +351,100 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?</h1>
+                <h1>Chapitre I: Introduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presentation-du-nlp">
+   Présentation du NLP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plan-du-cours">
+   Plan du cours
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prerequis">
+     Prérequis:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plan">
+     Plan:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="section" id="qu-est-ce-que-le-traitement-du-langage-naturel-a-k-a-nlp">
-<h1>Qu’est-ce que le traitement du langage naturel (a.k.a NLP) ?<a class="headerlink" href="#qu-est-ce-que-le-traitement-du-langage-naturel-a-k-a-nlp" title="Permalink to this headline">¶</a></h1>
-<p>Beaucoup d’entre vous travaillent quotidiennement avec des données numériques, soit dans un tableur comme Microsoft Excel, soit dans un environnement de programmation comme Jupyter Notebook. Lorsque vous travaillez avec des chiffres, vous laissez le traitement des chiffres à l’ordinateur. Il n’y a pratiquement aucune raison pour que vous ne le fassiez pas.</p>
-<p>Les ordinateurs sont rapides et précis dans le traitement des chiffres, alors que le cerveau humain s’enlise facilement. Si on lui demandait de calculer 42 * 12 * 24, l’Homme n’hésiterait pas une seconde à sortir une calculatrice ou un ordinateur et à laisser les machines faire le gros du travail.</p>
-<p>Mais lorsqu’il s’agit d’analyser des données textuelles, les ordinateurs  ne sont pas aussi performants. Les humains utilisent des ordinateurs pour calculer des chiffres, mais s’en remettent au cerveau humain pour analyser des documents contenant du texte. Cette incapacité à travailler avec du texte a limité le champ d’action des ordinateurs.</p>
-<p>Ce temps est révolu. Les ordinateurs sont désormais capables de traiter du texte et de l’audio d’une manière que la plupart des humains auraient considérée comme magique il y a seulement deux décennies.</p>
-<p>Pensez à quel point vous dépendez des ordinateurs pour analyser et donner un sens aux données textuelles au quotidien. Voici plusieurs exemples :</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="chapitre-i-introduction">
+<h1>Chapitre I: Introduction<a class="headerlink" href="#chapitre-i-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="presentation-du-nlp">
+<h2>Présentation du NLP<a class="headerlink" href="#presentation-du-nlp" title="Permalink to this headline">¶</a></h2>
+<p>Le Natural Language Processing, ou Traitement du Language Naturel, est une branche de l’intelligence artificielle se concentrant sur les données textuelles et linguistiques dans le but de rendre des machines capable de “comprendre” le contenu de documents et les nuances du language.</p>
+<p>Cela a permis l’émergence de nouvelles technologies tel que les:</p>
 <ul class="simple">
-<li><p>Moteur de recherche : Effectuez des recherches sur l’ensemble du Web et affichez des résultats de recherche pertinents.</p></li>
-<li><p>Complétion automatique : Complétez automatiquement les phrases lorsque vous écrivez des e-mails.</p></li>
-<li><p>Traduction : Convertissez du texte et de l’audio d’une langue à l’autre.</p></li>
-<li><p>Assistants vocaux : donnez des commandes vocales et contrôlez vos appareils domestiques.</p></li>
+<li><p>Traducteurs automatique: Pour convertir du texte d’une langue à une autre.</p></li>
+<li><p>Générateurs de texte: Pour compléter automatiquement des phrases lors de la rédaction d’un email ou de SMS.</p></li>
+<li><p>Moteurs de recherche: Pour obtenir les résultats les plus pertinents en fonction de mots clés.</p></li>
+<li><p>Assistants vocaux: Afin de donner des commandes vocales et contrôler ses appareils domestiques.</p></li>
 </ul>
-<p>Ces technologies se sont intégrées dans notre vie quotidienne et nous oublions presque à quel point nous les utilisons. L’histoire des machines capables de travailler avec des données textuelles ne fait que commencer.</p>
-<p>Le NLP est l’un des sujets d’actualité les plus importants de l’IA aujourd’hui. À la traîne depuis des années par rapport à d’autres domaines du Deep Learning tels que le Computer Vision, le NLP n’a que récemment gagné en popularité.</p>
-<p>Ce guide vous aidera à vous familiariser avec ce domaine.</p>
-<p>Nous partons du principe que vous avez déjà quelques connaissances en Machine Learning et que vous avez déjà utilisé Python et des librairies telles que Numpy, pandas et matplotlib. De plus, une bonne connaissance de l’algèbre linéaire, des probabilités et des statistiques est très fortement recommandé.</p>
+<p>Aujourd’hui banalisées, ces technologies relevaient du rêve il y a quelques décennies de cela, c’est grâce à l’essor des réseaux de neurone et des meilleures performances des machines que nous sommes capable d’établir des modèles suffisament fin pour saisir les nuances du language.</p>
+<p>Le Natural Language Processing est cependant toujours un important sujet d’actualité et continue d’être étudié.</p>
+</div>
+<div class="section" id="plan-du-cours">
+<h2>Plan du cours<a class="headerlink" href="#plan-du-cours" title="Permalink to this headline">¶</a></h2>
+<p>Afin de pouvoir suivre ce cours au mieux il est recommandé d’avoir des connaissances dans les prérequis listés ci-dessous.</p>
+<div class="section" id="prerequis">
+<h3>Prérequis:<a class="headerlink" href="#prerequis" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Language Python</p></li>
+<li><p>Librairies Numpy et Pandas</p></li>
+<li><p>Algèbre linéaire, probabilités et statistiques</p></li>
+<li><p>Fondamentaux du Machine learning (Descente de gradient, Clustering, Régularisation…)</p></li>
+</ul>
+<p>Le cours se décomposera en trois chapitres, chaque chapitre possèdera une partie de mise en pratique des connaissances acquises:</p>
+</div>
+<div class="section" id="plan">
+<h3>Plan:<a class="headerlink" href="#plan" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Chapitre I: Introduction</p>
+<ul>
+<li><p><a class="reference external" href="#pr%C3%A9sentation-du-nlp">Présentation du NLP</a></p></li>
+<li><p><a class="reference external" href="./DonneesTextuelles.md#chapitre-i:-introduction---etude-des-donn%C3%A9es-textuelles">Etude des données textuelles</a></p></li>
+</ul>
+</li>
+<li><p>Chapitre II: Notions générales</p>
+<ul>
+<li><p>Modélisation statistique du language</p></li>
+<li><p>Modèles de langues</p></li>
+<li><p>Embeddings</p></li>
+</ul>
+</li>
+<li><p>Chapitre III:</p>
+<ul>
+<li><p>Les réseaux de neurones récurrents</p></li>
+<li><p>Pipelines NLP</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -371,11 +472,11 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../Cours%20fondamentaux%20ML/8%20-%20Feature%20engineering%20%26%20cleaning.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="DonneesTextuelles.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Feature Engineering</p>
+            <p class="prev-next-title">Chapitre I: Introduction - Etude des données textuelles</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="bert.html" title="next page">
