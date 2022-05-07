@@ -80,7 +80,7 @@ Ce modèle est une représentation d'une partie de l'information contenue dans l
 **Il y a de l'information dans la data ?**
 
 Et oui ! Alors ça dépends de la qualité de la data et de ce qu'elle représente, mais toute data contient de l'information.
-C'est cette fameuse information qui est le nouveau "or noir" pour les GAFAM et autres grosses entreprises.
+C'est cette fameuse information qui est le nouvel "or noir" pour les GAFAM et autres grosses entreprises.
 
 En fait, du moment qu'un ensemble de donnée n'est pas généré aléatoirement, c'est qu'il y a un mécanisme sous-jacent qui
 dicte un minimum les règles qui produisent ces données.
