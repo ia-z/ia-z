@@ -115,16 +115,20 @@ Le code suivant permet de convertir des phrases en un format plus compréhensibl
 
 ``` python
 import re
-import unidecode
 import nltk
+import unidecode
+from nltk import word_tokenize
+from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
+
+#nltk.download('wordnet')
 
 def text_processing(text):
     ''' Return cleaned text for Machine Learning '''
     REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]')
     NEW_LINE = re.compile('\n')
     BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
-    STOPWORDS = set(nltk.corpus.stopwords.words('french'))
+	STOPWORDS = set(nltk.corpus.stopwords.words('french'))
     STEMMER = SnowballStemmer('french')
 
     text = text.lower()
@@ -132,13 +136,12 @@ def text_processing(text):
     text = NEW_LINE.sub(' ',text)
     text = REPLACE_BY_SPACE_RE.sub(' ',text)
     text = BAD_SYMBOLS_RE.sub(' ',text)
-    text = ' '.join([STEMMER.stem(word) for word in text.split() if word not in STOPWORDS])
+    text = ' '.join([STEMMER.stem(word) for word in word_tokenize(text) if word not in STOPWORDS])
     return text
     
 text = "Je mangerais bien-une poire_aprés mon repas de ce midi.\n"
 print(text)
 print(text_processing(text))
-tmp = input("Program paused...")
 ```
 
 Et on obtient:
