@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Embeddings : comment les machines comprennent les mots ?" href="4_embeddings.html" />
+    <link rel="next" title="Modèles de langues" href="4_ModLangues.html" />
     <link rel="prev" title="Etude des données textuelles" href="2_DonneesTextuelles.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -169,12 +169,17 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="4_embeddings.html">
-   Embeddings : comment les machines comprennent les mots ?
+  <a class="reference internal" href="4_ModLangues.html">
+   Modèles de langues
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5_bert.html">
+  <a class="reference internal" href="5_Embedings.html">
+   Embeddings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_bert.html">
    BERT - Bidirectional Encoder Representations from Transformers
   </a>
  </li>
@@ -352,30 +357,79 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#modelisation-statistique-du-language">
    Modélisation statistique du language
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bag-of-words-bow">
+   Bag of Words (BoW)
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bag-of-words-bow">
-     Bag of Words (BoW)
+    <a class="reference internal nav-link" href="#implementation-en-python">
+     Implémentation en Python:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-frequency-inverse-document-frenquency-tf-idf">
+   Term Frequency-Inverse Document Frenquency (TF-IDF)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Implémentation en Python:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelisation-de-topics-latent-dirichlet-allocation-lda">
+   Modélisation de topics: Latent Dirichlet Allocation (LDA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-de-dirichlet">
+     Distribution de Dirichlet:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-multinomiale">
+     Distribution multinomiale:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formule-complete">
+     Formule complète:
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#implementation-en-python">
-       Implémentation en Python:
+      <a class="reference internal nav-link" href="#echantillonnage-de-gibbs">
+       Echantillonnage de Gibbs:
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#methode-de-monte-carlo">
+         Méthode de Monte Carlo:
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#chaine-de-markov-monte-carlo">
+         Chaîne de Markov Monte Carlo:
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#generation-de-la-chaine-de-markov">
+         Génération de la chaîne de Markov:
+        </a>
+       </li>
+      </ul>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#term-frequency-inverse-document-frenquency-tf-idf">
-     Term Frequency-Inverse Document Frenquency (TF-IDF)
+    <a class="reference internal nav-link" href="#implementation-de-l-algorithme">
+     Implémentation de l’algorithme:
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Implémentation en Python:
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -408,30 +462,79 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#modelisation-statistique-du-language">
    Modélisation statistique du language
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bag-of-words-bow">
+   Bag of Words (BoW)
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bag-of-words-bow">
-     Bag of Words (BoW)
+    <a class="reference internal nav-link" href="#implementation-en-python">
+     Implémentation en Python:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#term-frequency-inverse-document-frenquency-tf-idf">
+   Term Frequency-Inverse Document Frenquency (TF-IDF)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Implémentation en Python:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelisation-de-topics-latent-dirichlet-allocation-lda">
+   Modélisation de topics: Latent Dirichlet Allocation (LDA)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-de-dirichlet">
+     Distribution de Dirichlet:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-multinomiale">
+     Distribution multinomiale:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formule-complete">
+     Formule complète:
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#implementation-en-python">
-       Implémentation en Python:
+      <a class="reference internal nav-link" href="#echantillonnage-de-gibbs">
+       Echantillonnage de Gibbs:
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#methode-de-monte-carlo">
+         Méthode de Monte Carlo:
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#chaine-de-markov-monte-carlo">
+         Chaîne de Markov Monte Carlo:
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#generation-de-la-chaine-de-markov">
+         Génération de la chaîne de Markov:
+        </a>
+       </li>
+      </ul>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#term-frequency-inverse-document-frenquency-tf-idf">
-     Term Frequency-Inverse Document Frenquency (TF-IDF)
+    <a class="reference internal nav-link" href="#implementation-de-l-algorithme">
+     Implémentation de l’algorithme:
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Implémentation en Python:
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -460,20 +563,31 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a class="reference external" href="#id1">Implémentation en Python:</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="#modelisation-de-topics-latent-dirichlet-allocation-lda">Modélisation de topics: Latent Dirichlet Allocation (LDA)</a></p>
+<ul>
+<li><p><a class="reference external" href="#distribution-de-dirichlet">Distribution de Dirichlet</a></p></li>
+<li><p><a class="reference external" href="#distribution-multinomiale">Distribution multinomiale</a></p></li>
+<li><p><a class="reference external" href="#formule-complete">Formule complète</a></p></li>
+<li><p><a class="reference external" href="#implementation-de-l-algorithme">Implémentation de l’algorithme</a></p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="modelisation-statistique-du-language">
 <h2>Modélisation statistique du language<a class="headerlink" href="#modelisation-statistique-du-language" title="Permalink to this headline">¶</a></h2>
 <p>Maintenant que nous avons vu comment préparer le texte avant son utilisation dans un algorithme de NLP, nous nous intéresserons à la représentation des phrases d’un point de vue statistique.</p>
 <p>Il est difficile pour un algorithme de travailler avec du texte, mais si nous pouvons convertir ce texte en une suite de chiffres alors nous pourrons en tirer certaines informations qui permettront à l’algorithme de travailler.</p>
-<p>Nous étudierons deux techniques de modélisation du texte sous forme de vecteur:</p>
+<p>Nous étudierons deux techniques de modélisation statistique du texte:</p>
 <ul class="simple">
 <li><p>Bag of Words (BoW)</p></li>
 <li><p>Term Frequency-Inverse Document Frequency (TF-IDF)</p></li>
 </ul>
+<p>Cependant des méthodes plus pointues existent afin d’identifier des corrélations entre des mots avec la modélisation de <strong>topics</strong>. (groupes de mots ayant une forte probabilité d’être associé)</p>
+<p>Nous étudierons en particulier une méthode de modélisation de topics: Latent Dirichlet Allocation (LDA)</p>
+</div>
 <div class="section" id="bag-of-words-bow">
-<h3>Bag of Words (BoW)<a class="headerlink" href="#bag-of-words-bow" title="Permalink to this headline">¶</a></h3>
-<p>Bag of Words ou Sac de Mots est une technique de modélisation du texte sous forme de vecteur où chaque élément représente la fréquence d’un token (ici mots) dans le corpus.</p>
+<h2>Bag of Words (BoW)<a class="headerlink" href="#bag-of-words-bow" title="Permalink to this headline">¶</a></h2>
+<p>Bag of Words ou Sac de Mots est une technique de modélisation du texte sous forme de vecteur où chaque élément représente la fréquence d’un token (ici mots) dans le document.</p>
 <p>Par exemple:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">John</span> <span class="n">aime</span> <span class="n">regarder</span> <span class="n">des</span> <span class="n">films</span><span class="p">,</span> <span class="n">Mary</span> <span class="n">aime</span> <span class="n">les</span> <span class="n">films</span> <span class="n">aussi</span><span class="o">.</span>
 </pre></div>
@@ -488,7 +602,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p><em>Ce vecteur ne préserve pas l’ordre des mots.</em></p>
 <div class="section" id="implementation-en-python">
-<h4>Implémentation en Python:<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h4>
+<h3>Implémentation en Python:<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h3>
 <p>Il est possible de le programmer soi-même ou d’utiliser une librairie Python tel que scikit-learn qui fera aussi le pré-processing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
@@ -513,8 +627,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="term-frequency-inverse-document-frenquency-tf-idf">
-<h3>Term Frequency-Inverse Document Frenquency (TF-IDF)<a class="headerlink" href="#term-frequency-inverse-document-frenquency-tf-idf" title="Permalink to this headline">¶</a></h3>
-<p>Afin de remédier au problème du Sac de Mots une approche serait de redéfinir la fréquence des mots afin de constituer un indice qui permette de connaître l’importance d’un mot dans un corpus de textes, ainsi les mots présent dans de nombreux documents seront pénalisés.</p>
+<h2>Term Frequency-Inverse Document Frenquency (TF-IDF)<a class="headerlink" href="#term-frequency-inverse-document-frenquency-tf-idf" title="Permalink to this headline">¶</a></h2>
+<p>Afin de remédier au problème du Sac de Mots une approche serait de redéfinir la fréquence des mots afin de constituer un indice qui permette de connaître l’importance d’un mot dans un corpus de textes, ainsi les mots présents dans de nombreux documents seront pénalisé.</p>
 <p>Pour cela on utilise deux indices que l’on multipliera:</p>
 <ol class="simple">
 <li><p>Term Frequency</p></li>
@@ -530,7 +644,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[TF-IDF = TF*IDF \Rightarrow TF-IDF = \frac{n}{N}+\frac{n}{N}log(\frac{D}{Dn})\]</div>
 <div class="section" id="id1">
-<h4>Implémentation en Python:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h3>Implémentation en Python:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">nltk</span>
 <span class="kn">import</span> <span class="nn">unidecode</span>
@@ -538,8 +652,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 <span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-
-<span class="c1">#nltk.download(&#39;wordnet&#39;)</span>
 
 <span class="k">def</span> <span class="nf">text_processing</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Return cleaned text for Machine Learning &#39;&#39;&#39;</span>
@@ -585,6 +697,213 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Malheureusement le Stemmer a commis quelques erreurs par exemple ‘aim’ et ‘aiment’ ou ‘box’ et ‘boxing’ qui pourtant devraient avoir la même racine.</em></p>
 </div>
 </div>
+<div class="section" id="modelisation-de-topics-latent-dirichlet-allocation-lda">
+<h2>Modélisation de topics: Latent Dirichlet Allocation (LDA)<a class="headerlink" href="#modelisation-de-topics-latent-dirichlet-allocation-lda" title="Permalink to this headline">¶</a></h2>
+<p><em>Cette partie va vous faire comprendre l’intérêt des mathématiques et des statistiques en particulier pour établir des modèles et des solutions en machine learning.</em></p>
+<p>Latent Dirichlet Allocation ou Allocation de Dirichlet Latente est un algorithme génératif probabiliste permettant la génération de groupes de mots ayant une forte corrélation nommés <strong>topics</strong>, cet algorithme est particulièrement utile pour l’exploration de données.</p>
+<p>Il sert par exemple à:</p>
+<ul class="simple">
+<li><p>Connaître l’idée principale derrière un document.</p></li>
+<li><p>Trouver un document à partir d’un autre document avec un topic similaire</p></li>
+</ul>
+<p>L’idée derrière l’algorithme LDA est de considérer un document comme un ensemble de topics où chaque topic est caractérisé par sa distribution de mots.</p>
+<p>On entraîne alors l’algorithme à reproduire le document de départ à partir de paramètres que l’on optimise en fonction de la ressemblance du document généré avec l’original.</p>
+<p align="center"> <b>Structure de l'algorithme LDA</b>
+<img src="https://user-images.githubusercontent.com/65224852/169113151-17da4b26-222d-45ff-bfc2-00f7a7f88b28.png" width="480" height="483">
+</p>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \cdots, \alpha_k)\)</span>: distribution de Dirichlet de mots pour l’ensemble des topics <em>(vecteur de réels symbolisant les paramètres de la distribution)</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta = (\beta_1, \cdots, \beta_k)\)</span>: distribution de Dirichlet de topics pour l’ensemble des documents</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta_m\)</span>: distribution multinomiale de topics pour un document m</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi_k\)</span>: distribution multinomiale de mots pour un topic k</p></li>
+<li><p><span class="math notranslate nohighlight">\(z_{m,n}\)</span>: topic pour le n-éme mot dans le document m</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_{m,n}\)</span>: mot spécifique</p></li>
+</ul>
+<p>La probabilité de générer un document à partir de ce modèle est la suivante:</p>
+<div class="math notranslate nohighlight">
+\[P(W, Z, \theta, \phi, \alpha, \beta) = \prod_{m=1}^{M}{P(\theta_m;\alpha)} \prod_{k=1}^{K}{P(\phi_k;\beta)} \prod_{n=1}^{N}{P(Z_{m,n} | \theta_m)P(W_{m,n} | \phi Z_{m,n})}\]</div>
+<p>Pour comprendre cette formule il faut d’abord comprendre comment fonctionnent les distributions de Dirichlet et les distributions multinomiales.</p>
+<div class="section" id="distribution-de-dirichlet">
+<h3>Distribution de Dirichlet:<a class="headerlink" href="#distribution-de-dirichlet" title="Permalink to this headline">¶</a></h3>
+<p>La distribution de Dirichlet ou distribution bêta multivariée est une distribution de probabilités multivariées continues paramétrées par un vecteur de réels positifs <span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \cdots, \alpha_K)\)</span> avec un ordre <span class="math notranslate nohighlight">\(K \ge 2\)</span>.</p>
+<p>Elle possède une fonction de densité de probabilité qui est la suivante:</p>
+<div class="math notranslate nohighlight">
+\[f(x_1, \cdots , x_K \ ; \ \alpha_1, \cdots, \alpha_K) = \frac{1}{B(\alpha)}\prod_{i=1}^{K}x_i^{\alpha_{i}-1}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_k\)</span>: variable aléatoire</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_k\)</span>: paramètre à faire varier</p></li>
+<li><p><span class="math notranslate nohighlight">\(B(\alpha)\)</span>: constante de normalisation, ici la fonction bêta multivariée.</p></li>
+</ul>
+<p><em>Une fonction de densité de probabilité d’une variable aléatoire continue, est une fonction dont la valeur à tout échantillon donné dans l’espace échantillon peut être interprété comme une probabilité relative que la valeur de la variable aléatoire soit proche de cet échantillon.</em></p>
+<p><em>En d’autres termes cela spécifie la probabilité que la variable aléatoire tombe dans une plage de valeurs particulière, en opposition à une valeur donnée.</em></p>
+<p>Prenons <span class="math notranslate nohighlight">\(K = 3\)</span>:</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/65224852/169143103-edc0d0c5-1603-40bf-a1e8-0a59b462fe12.jpg" width="562" height="450">
+</p>
+<p>On observe que:</p>
+<ul class="simple">
+<li><p>Lorsque <span class="math notranslate nohighlight">\(\alpha_k = 1.0\)</span> la répartition des valeurs des variables aléatoires est libre.</p></li>
+<li><p>Lorsque <span class="math notranslate nohighlight">\(\alpha_k \lt 1.0\)</span> la répartition des valeurs des variables aléatoires tend vers les bords du triangle.</p></li>
+<li><p>Lorsque <span class="math notranslate nohighlight">\(\alpha_k \gt 1.0\)</span> la répartition des valeurs des variables aléatoires tend vers le milieu.</p></li>
+</ul>
+<p>Ainsi on peut voir une distribution de Dirichlet de topics pour l’ensemble des documents de la manière suivante (en faisant varier les paramètres <span class="math notranslate nohighlight">\(\alpha_k\)</span>):</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/65224852/169162474-2382c403-8660-46bb-88a7-e37e9aedbadd.png">
+</p>
+</div>
+<div class="section" id="distribution-multinomiale">
+<h3>Distribution multinomiale:<a class="headerlink" href="#distribution-multinomiale" title="Permalink to this headline">¶</a></h3>
+<p>La distribution multinomiale est une généralisation de la distribution binomiale qui avec des paramètres n (nombre d’expérience indépendantes) et p (probabilité de succés) représente la distribution de probabilités d’une épreuve de Bernoulli (succès ou échec d’une expérience).</p>
+<p>Ici il faut imaginer un dé à 6 faces, la distribution multinomiale représente la probablité pour chaque face de succès ou d’échec pour un nombre n de lancer.</p>
+<p>La fonction de densité de probabilité est la suivante:</p>
+<div class="math notranslate nohighlight">
+\[(\text{Conditions: } \sum_{i=1}^k p_i = 1 \text{ et } \sum_{i=1}^k x_i = n)\]</div>
+<div class="math notranslate nohighlight">
+\[f(x_1, \cdots, x_k \ ; \ n, p_1, \cdots, p_k) = P(X_1=x_1 \text{ et ... et }  X_k=x_k )\]</div>
+<div class="math notranslate nohighlight">
+\[\Rightarrow f(x_1, \cdots, x_k \ ; \ n, p_1, \cdots, p_k) = \frac{n!}{x_1!...x_k!} \prod_{i=1}^K p_i^{x_i}\]</div>
+<p>Il est à noter que dans la théorie bayésienne la distribution multinomiale est le conjugué de la distribution de Dirichlet, cela signifie que l’on peut voir la distribution multinomiale comme une distribution de Dirichlet avec des paramétres <span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \cdots, \alpha_K)\)</span> différents, plus facile à calculer.</p>
+<p>Ainsi pour <span class="math notranslate nohighlight">\((p_1, \cdots, p_k)\)</span> un vecteur de paramètres d’une distribution multinomiale:</p>
+<div class="math notranslate nohighlight">
+\[(p_1, \cdots, p_k) \sim Dirichlet(\alpha_1, \cdots, \alpha_k)\]</div>
+<p>On peut voir une distribution multinomiale de mots par topics de la manière suivante:</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/65224852/169647026-f0affae5-d4bf-4adf-97e3-761447cda395.png" width="356" height="298">
+</p>
+</div>
+<div class="section" id="formule-complete">
+<h3>Formule complète:<a class="headerlink" href="#formule-complete" title="Permalink to this headline">¶</a></h3>
+<p>Revenons désormais à notre formule décrivant la probabilité de l’algorithme LDA de générer un document spécifique:</p>
+<div class="math notranslate nohighlight">
+\[P(W, Z, \theta, \phi, \alpha, \beta) = \prod_{m=1}^{M}{P(\theta_m;\alpha)} \prod_{k=1}^{K}{P(\phi_k;\beta)} \prod_{n=1}^{N}{P(Z_{m,n}|\theta_m) P(W_{m,n}|\phi Z_{m,n})}\]</div>
+<p>On observe que:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\prod_{m=1}^{M}{P(\theta_m;\alpha)}\)</span>: Distribution multinomiale de topics par documents sachant une distribution de Dirichlet de mots pour l’ensemble des topics.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\prod_{k=1}^{K}{P(\phi_k;\beta)}\)</span>: Distribution multinomiale de mots par topics sachant une distribution de Dirichlet de topics pour l’ensemble des documents.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\prod_{n=1}^{N}P(Z_{m,n} | \theta_m)\)</span>: Probabilité d’obtenir un topic pour un mot n donné sachant une distribution multinomiale de topics pour un document m.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(W_{m,n}|\phi Z_{m,n})\)</span>: Probabilité d’obtenir un mot sachant une distribution multinomiale de mots pour un topic.</p></li>
+</ul>
+<p>Pour résumer:</p>
+<ol class="simple">
+<li><p>On choisit des paramètres <span class="math notranslate nohighlight">\((\alpha_1, \cdots, \alpha_k)\)</span> et <span class="math notranslate nohighlight">\((\beta_1, \cdots, \beta_k)\)</span> pour initialiser une distribution de Dirichlet.</p></li>
+<li><p>On calcule à partir de ces distributions de Dirichlet des distributions multinomiales.</p></li>
+<li><p>Ces distributions multinomiales servent à calculer la probablité d’obtenir des topics par mot et réciproquement.</p></li>
+</ol>
+<p>La méthode pour choisir les paramètres <span class="math notranslate nohighlight">\((\alpha_1, \cdots, \alpha_k)\)</span> est d’utiliser le <strong>Gibbs sampling</strong> <em>ou échantillonage de Gibbs</em>:</p>
+<div class="section" id="echantillonnage-de-gibbs">
+<h4>Echantillonnage de Gibbs:<a class="headerlink" href="#echantillonnage-de-gibbs" title="Permalink to this headline">¶</a></h4>
+<p>L’échantillonage de Gibbs est un algorithme utilisant une chaîne de Markov Monte Carlo permettant d’assigner chaque variable aléatoire à un groupe distinct.</p>
+<p>Cette forme d’échantillonnage est particulièrement efficace lorsque la distribution des probabilités jointes des variables aléatoires n’est pas connue mais que l’on connaît la distribution conditionnelle de chaque variable.</p>
+<p>L’algorithme génére des échantillons conditionnés par la distribution de chaque autre variable, la séquence des échantillons générés ainsi est une chaîne de Markov et la distribution de cette chaîne de Markov est la distribution des probabilités jointes des variables aléatoires.</p>
+<ul class="simple">
+<li><p><strong>Chaîne de Markov:</strong> une chaîne de Markov est un processus représentant l’évolution d’une variable aléatoire passant d’un état à un autre de manière aléatoire <em>(processus stochastique)</em> indépendamment des états précédents <em>(c’est la <strong>condition de Markov</strong>)</em></p></li>
+<li><p><strong>Méthode de Monte Carlo:</strong> méthode algorithmique calculant une valeur numérique en utilisant des procédés aléatoires.</p></li>
+</ul>
+<div class="section" id="methode-de-monte-carlo">
+<h5>Méthode de Monte Carlo:<a class="headerlink" href="#methode-de-monte-carlo" title="Permalink to this headline">¶</a></h5>
+<p>Supposons que nous souhaitons calculer l’espérance d’une fonction g de la variable aléatoire X tel que <span class="math notranslate nohighlight">\(G = \mathbf{E}(g(X)) = \int g(x)f_X(x)dx\)</span></p>
+<p>La méthode de Monte Carlo consiste à produire un échantillon <span class="math notranslate nohighlight">\((x_1, \cdots, x_N)\)</span> de la variable aléatoire X par rapport à une distribution de probabilités (ici on choisit la distribution uniforme <span class="math notranslate nohighlight">\(f_X(x) = \frac{1}{b-a}\)</span>)</p>
+<p>Grâce à la <strong>loi des grands nombres</strong>, qui stipule que l’on peut interpréter la probabilité comme une fréquence de réalisation, on peut utiliser comme estimateur la moyenne empirique <span class="math notranslate nohighlight">\(\bar{g}_N = \frac{1}{N}\sum_{i=1}^{N}g(x_i)\)</span>.</p>
+<p>Et ainsi <span class="math notranslate nohighlight">\(\mathbf{E}(\bar{g}_N) = G = \mathbf{E}(g(X))\)</span></p>
+<p>Nous avons donc une estimation de l’espérance de G grâce à un échantillon <span class="math notranslate nohighlight">\((x_1, \cdots, x_N)\)</span> de la variable aléatoire X et à un estimateur <span class="math notranslate nohighlight">\(\bar{g}_N\)</span>.</p>
+</div>
+<div class="section" id="chaine-de-markov-monte-carlo">
+<h5>Chaîne de Markov Monte Carlo:<a class="headerlink" href="#chaine-de-markov-monte-carlo" title="Permalink to this headline">¶</a></h5>
+<p>La différence de cette méthode avec la méthode de Monte Carlo est que pour produire un échantillon  <span class="math notranslate nohighlight">\((x_1, \cdots, x_N)\)</span> de la variable aléatoire X nous utilisons une chaîne de Markov et non une distribution de probabilités indépendantes.</p>
+<p>En effet les variables aléatoires sont autocorrélées dans notre exemple; la présence de mots dans un topic ou de topics dans un document influe sur la probabilité d’associer un topic à un mot, c’est pourquoi une chaîne de markov est plus appropriée.</p>
+</div>
+<div class="section" id="generation-de-la-chaine-de-markov">
+<h5>Génération de la chaîne de Markov:<a class="headerlink" href="#generation-de-la-chaine-de-markov" title="Permalink to this headline">¶</a></h5>
+<ol class="simple">
+<li><p>On initialise le modèle en choissant des valeurs aléatoires <em>(Affecter des mots à des topics et des documents à des topics)</em>.</p></li>
+<li><p>On sélectionne le topic du mot n sachant la distribution des mots par topic, la probabilité de trouver un topic pour un mot est la suivante:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[p(Z_{m,n} = k \ | \ Z, W, \alpha, \beta) = \frac{D_{m,k}+\alpha_k}{\sum_i^K D_{m,i}+a_i} \frac{T_{k,W_{m,n}}+\beta_n}{\sum_i^N T_{m,i}+\beta_i}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D_{m,k}\)</span>: Nombre de fois qu’un document m utilise un topic k.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_{k,W_{m,n}}\)</span>: Nombre de fois qu’un topic k utilise un mot donné.</p></li>
+<li><p><em>Le reste on l’a déjà vu</em></p></li>
+</ul>
+<ol class="simple">
+<li><p>Répéter cette étape jusqu’à avoir assigné tous les mots de l’ensemble des documents.</p></li>
+<li><p>Mettre à jour les paramètres des distributions de Dirichlet <span class="math notranslate nohighlight">\((\alpha_1, \cdots, \alpha_k)\)</span> et <span class="math notranslate nohighlight">\((\beta_1, \cdots, \beta_k)\)</span> avec l’échantillon généré (la chaîne de Markov).</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="implementation-de-l-algorithme">
+<h3>Implémentation de l’algorithme:<a class="headerlink" href="#implementation-de-l-algorithme" title="Permalink to this headline">¶</a></h3>
+<p>Maintenant que nous avons vu la laborieuse théorie, nous pouvons passer à la pratique !</p>
+<p>Pour fonctionner l’implémentation LDA de scikit-learn a besoin de prendre en entrée une matrice de termes par document, pour cela nous utiliserons l’algorithme TF-IDF étudié plus haut ainsi que de spécifier le nombre de topics à l’avance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">unidecode</span>
+<span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">LatentDirichletAllocation</span> <span class="k">as</span> <span class="n">LDA</span>
+
+<span class="k">def</span> <span class="nf">text_processing</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return cleaned text for Machine Learning &#39;&#39;&#39;</span>
+    <span class="n">REPLACE_BY_SPACE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[/()</span><span class="si">{}</span><span class="s1">\[\]\|@,;]&#39;</span><span class="p">)</span>
+    <span class="n">NEW_LINE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">BAD_SYMBOLS_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^0-9a-z #+_]&#39;</span><span class="p">)</span>
+    <span class="n">STEMMER</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s1">&#39;french&#39;</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">unidecode</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">NEW_LINE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">REPLACE_BY_SPACE_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">BAD_SYMBOLS_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">STEMMER</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">text</span>
+        
+<span class="n">doc1</span> <span class="o">=</span> <span class="s2">&quot;Tout est bien, sortant des mains de l’Auteur des choses : tout dégénère entre les mains de l’homme. Il force une terre à nourrir les productions d’une autre, un arbre à porter les fruits d’un autre : il mêle et confond les climats, les éléments, les saisons : il mutile son chien, son cheval, son esclave : il bouleverse tout, il défigure tout : il aime la difformité, les monstres : il ne veut rien, tel que l’a fait la nature, pas même l’homme ; il le faut dresser pour lui, comme un cheval de manège ; il le faut contourner à sa mode, comme un arbre de son jardin. Sans cela, tout irait plus mal encore, et notre espèce ne veut pas être façonnée à demi. Dans l’état où sont désormais les choses, un homme abandonné dès sa naissance à lui-même parmi les autres serait le plus défiguré de tous. Les préjugés, l’autorité, la nécessité, l’exemple, toutes les institutions sociales, dans lesquelles nous nous trouvons submergés, étoufferaient en lui la nature, et ne mettraient rien à la place. Elle y serait comme un arbrisseau que le hasard fait naître au milieu d’un chemin, et que les passants font bientôt périr, en le heurtant de toutes parts et le pliant dans tous les sens.&quot;</span>
+                                     
+<span class="n">doc2</span> <span class="o">=</span> <span class="s2">&quot;Le deuxième volet du sixième rapport d’évaluation du Giec a été publié le 28 février 2022. Le premier volet, en date d&#39;août 2021, concluait que le changement climatique était plus rapide que prévu. Ces derniers travaux s’intéressent aux effets, aux vulnérabilités et aux capacités d’adaptation à la crise climatique.&quot;</span>
+                                     
+<span class="n">doc3</span> <span class="o">=</span> <span class="s2">&quot;L’histoire de la vigne et du vin est si ancienne qu’elle se confond avec l&#39;histoire de l’humanité. La vigne et le vin ont représenté un élément important des sociétés, intimement associés à leurs économies et à leurs cultures. Le vin synonyme de fête, d&#39;ivresse, de convivialité, qui a investi le vaste champ des valeurs symboliques, est aujourd&#39;hui présent dans la plupart des pays du monde. Son existence est le fruit d’une longue histoire mouvementée.&quot;</span>
+
+<span class="n">tf_idf_vect</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">use_idf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">stop_words</span><span class="o">=</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;french&#39;</span><span class="p">))</span>
+<span class="n">tf_idf_matrix</span> <span class="o">=</span> <span class="n">tf_idf_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">doc1</span><span class="p">,</span> <span class="n">doc2</span><span class="p">,</span> <span class="n">doc3</span><span class="p">])</span>
+                                     
+<span class="n">lda_bow</span>  <span class="o">=</span> <span class="n">LDA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1">#n_components = nombre de topics !</span>
+<span class="n">lda_bow</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tf_idf_matrix</span><span class="p">)</span>
+                                     
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lda_bow</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Top 5 des mots dans le Topic &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">([</span><span class="n">tf_idf_vect</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]])</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>on obtient alors</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">0</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;sixième&#39;</span><span class="p">,</span> <span class="s1">&#39;concluait&#39;</span><span class="p">,</span> <span class="s1">&#39;publié&#39;</span><span class="p">,</span> <span class="s1">&#39;volet&#39;</span><span class="p">,</span> <span class="s1">&#39;climatique&#39;</span><span class="p">]</span>
+
+<span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">1</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;fête&#39;</span><span class="p">,</span> <span class="s1">&#39;vigne&#39;</span><span class="p">,</span> <span class="s1">&#39;leurs&#39;</span><span class="p">,</span> <span class="s1">&#39;histoire&#39;</span><span class="p">,</span> <span class="s1">&#39;vin&#39;</span><span class="p">]</span>
+
+<span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">2</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;naissance&#39;</span><span class="p">,</span> <span class="s1">&#39;mêle&#39;</span><span class="p">,</span> <span class="s1">&#39;préjugés&#39;</span><span class="p">,</span> <span class="s1">&#39;être&#39;</span><span class="p">,</span> <span class="s1">&#39;confond&#39;</span><span class="p">]</span>
+
+<span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">3</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;naissance&#39;</span><span class="p">,</span> <span class="s1">&#39;mêle&#39;</span><span class="p">,</span> <span class="s1">&#39;préjugés&#39;</span><span class="p">,</span> <span class="s1">&#39;être&#39;</span><span class="p">,</span> <span class="s1">&#39;confond&#39;</span><span class="p">]</span>
+
+<span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">4</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;naissance&#39;</span><span class="p">,</span> <span class="s1">&#39;mêle&#39;</span><span class="p">,</span> <span class="s1">&#39;préjugés&#39;</span><span class="p">,</span> <span class="s1">&#39;être&#39;</span><span class="p">,</span> <span class="s1">&#39;confond&#39;</span><span class="p">]</span>
+
+<span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">5</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;naissance&#39;</span><span class="p">,</span> <span class="s1">&#39;mêle&#39;</span><span class="p">,</span> <span class="s1">&#39;préjugés&#39;</span><span class="p">,</span> <span class="s1">&#39;être&#39;</span><span class="p">,</span> <span class="s1">&#39;confond&#39;</span><span class="p">]</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p><em>On observe que le nombre de topic était peut être trop élevé.</em></p>
+</div>
 </div>
 </div>
 
@@ -620,10 +939,10 @@ const thebe_selector_output = ".output, .cell_output"
             <p class="prev-next-title">Etude des données textuelles</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="4_embeddings.html" title="next page">
+    <a class='right-next' id="next-link" href="4_ModLangues.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Embeddings : comment les machines comprennent les mots ?</p>
+        <p class="prev-next-title">Modèles de langues</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
