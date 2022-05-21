@@ -128,7 +128,7 @@ def text_processing(text):
     REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]')
     NEW_LINE = re.compile('\n')
     BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
-    STOPWORDS = set(nltk.corpus.stopwords.words('french'))
+	STOPWORDS = set(nltk.corpus.stopwords.words('french'))
     STEMMER = SnowballStemmer('french')
 
     text = text.lower()
