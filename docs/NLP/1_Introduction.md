@@ -32,8 +32,8 @@ Le cours se décomposera en trois chapitres, chaque chapitre possèdera une part
    - [Etude des données textuelles](./2_DonneesTextuelles.md)
 - Chapitre II: Notions générales
    - [Modélisation statistique du language](./3_ModStatLanguage.md)
-   - Modèles de langues
-   - Embeddings
+   - [Modèles de langues](./4_ModLangues.md)
+   - [Embeddings](./5_Embedings.md)
 - Chapitre III: NLP & Deep learning
    - Les réseaux de neurones récurrents
    - Pipelines NLP
