@@ -91,7 +91,7 @@ Les Stop Words sont des mots courants qui n'apportent qu'une légére aide lors 
 La stratégie pour pouvoir déterminer une liste de Stop Words est de trier les termes par une collection de fréquences, puis prendre les termes les plus fréquents.
 
 ### Tokenisation:
-La Tokenisation est un procédé de segmentation des phrases ou mots d'un corpus en petites unités, des *tokens*.
+La Tokenisation est un procédé de segmentation du texte d'un corpus en petites unités, des *tokens*.
 
 On peut voir les mots comme des tokens des phrases, ou encore les phrases comme des tokens d'un corpus.
 
@@ -128,7 +128,7 @@ def text_processing(text):
     REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]')
     NEW_LINE = re.compile('\n')
     BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
-	STOPWORDS = set(nltk.corpus.stopwords.words('french'))
+    STOPWORDS = set(nltk.corpus.stopwords.words('french'))
     STEMMER = SnowballStemmer('french')
 
     text = text.lower()
