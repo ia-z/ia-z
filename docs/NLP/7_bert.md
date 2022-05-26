@@ -10,7 +10,7 @@ La force de ce type de modèle réside dans sa capacité à produire des embeddi
 
 Un modèle de représentation du langage transforme une phrase en une représentation abstraite de la phrase qui peut être utilisée pour une variété de tâches :
 
-* Reconnaissance d'entités nommées : Étant donné une phrase, classer les mots de la phrase (en choisissant parmi un ensemble de labels prédéfinis).
+* Reconnaissance d'entités nommées : Étant donnée une phrase, classer les mots de la phrase (en choisissant parmi un ensemble de labels prédéfinis).
 * Réponse à une question (tâche de classification binaire) : Étant donné une question et une phrase, déterminez si la phrase répond à la question.
 * Réponse à une question (traditionnelle) : Étant donné une question, trouver dans un corpus textuel la phrase qui répond à la question (marquer son début et sa fin).
 * Analyse de sentiment : Étant donné une phrase, déterminer le score du sentiment (score faible = tristesse, score élevé = heureux).
@@ -107,7 +107,7 @@ Cas profond bidirectionnel (BERT) :
 
 ### Exploitation du modèle
 
-Le modèle pré-entraîné peut-être utilisé directement ou alors être fine-tuner pour des tâches spécifiques.
+Le modèle pré-entraîné peut-être utilisé directement ou alors être fine-tuné pour des tâches spécifiques.
 Son pré-entraînement et son architecture très malléable le rend très performant même si on l'utilise pour autre chose que
 pour des tâches de NSP et MLM.
 
