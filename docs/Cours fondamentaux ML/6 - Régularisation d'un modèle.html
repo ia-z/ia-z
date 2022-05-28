@@ -523,7 +523,7 @@ Ce terme supplémentaire compte comme une pénalité, elle permet de réduire l�
 <p><em>Mais pourquoi ajouter une pénalité permet de réduire l’overfitting ?</em></p>
 <p>Cela peut paraître contre-intuitif, mais en fait réduire les capacités d’apprentissage d’un modèle
 peut l’aider à mieux généraliser !
-Si on reprends notre exemple du chapitre sur la généralisation, on peut imaginer qu’ajouter une pénalité
+Si on reprend notre exemple du chapitre sur la généralisation, on peut imaginer qu’ajouter une pénalité
 à notre modèle revient à l’obliger à travailler avec un kit réduit d’outils à sa disposition.
 Il va être obliger de faire avec moins, et donc il ne pourra pas sur-optimiser son apprentissage sur
 les exercices d’entraînement (les petites corrélations qui améliorent marginalement les performances
@@ -543,7 +543,7 @@ les performances finales de généralisation de nos modèles sans faire de reche
 Cependant, gardez en tête qu’en cas réel, il faut aussi générer le jeu de validation et n’évaluer qu’un modèle final
 sur le jeu de test.</p>
 <p>Le dataset est généré en ajoutant un fort bruit pour empêcher nos modèles linéaires de pouvoir prédire parfaitement <code class="docutils literal notranslate"><span class="pre">y</span></code>.
-Cela permet de faciliter l’overfitting de nos modèles si nous sommes pas prudent.</p>
+Cela permet de faciliter l’overfitting de nos modèles si nous ne sommes pas prudent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
@@ -578,7 +578,7 @@ choisie avant l’entraînement. Un <span class="math notranslate nohighlight">\
 car la moindre modification de ses poids sera fortement pénalisée), mais un <span class="math notranslate nohighlight">\(\lambda\)</span> trop faible masquera l’effet
 de la régularisation.</p>
 <p>Cette régularisation (ainsi que la L1 juste après) pousse le modèle à apprendre des coefficients pas trop éloignés de 0.
-Il doit équilibrer son entraînement afin de réduire le loss principal et éviter d’avoir une pénalité élevée.
+Il doit équilibrer son entraînement afin de réduire la loss principale et éviter d’avoir une pénalité élevée.
 Intuitivement, le modèle est contraint à simplifier sa prédiction.
 Il ne peut pas affiner ses prédictions, ce qui le rend moins précis sur le jeu d’entraînement
 mais qui réduit la chance de sur-apprentissage.</p>
@@ -689,7 +689,7 @@ R² sur le jeu de test: 0.816
 </div>
 <p>Comme pour l’exemple précédent, le modèle qui généralise le mieux est celui qui est régularisé.
 On remarque de plus que le modèle régularisé a décidé que deux des features étaient inintéressantes pour la prédiction.
-C’est cohérant car nous avons généré le dataset à l’aide de 7 features informatives parmis 10 features au total
+C’est cohérent car nous avons généré le dataset à l’aide de 7 features informatives parmis 10 features au total
 (il y a donc 3 features qui ne servent pas à la prédiction, et qui sont présentes uniquement pour brouiller le modèle).</p>
 </div>
 </div>
@@ -698,7 +698,7 @@ C’est cohérant car nous avons généré le dataset à l’aide de 7 features 
 <p>Nous connaissons maitenant deux méthodes qui permettent de régulariser facilement un modèle.</p>
 <p><em>Comment choisir entre les deux ? Laquelle est la meilleure ?</em></p>
 <p>Pour mieux comprendre la différence entre les deux méthodes on peut visualiser les solutions engendrées par l’utilisation
-de l’un ou l’autre façon de régulariser.</p>
+de l’une ou l’autre façon de régulariser.</p>
 <div class="section" id="visualisation-l1-vs-l2">
 <h3>Visualisation L1 vs L2<a class="headerlink" href="#visualisation-l1-vs-l2" title="Permalink to this headline">¶</a></h3>
 <p>Pour mieux visualiser leur effet sur l’entraînement de nos modèles, nous pouvons considérer un cas simple où nous
@@ -723,7 +723,7 @@ que la L2 génère un espace de solutions en forme de cercle.
 La solution optimale sans régularisation est représentée par le point <span class="math notranslate nohighlight">\(w^*\)</span>.
 Le loss ici est une simple <em>MSE</em>, dont les courbes de niveaux tracent des ellipses de plus en plus grandes autour du minimum <span class="math notranslate nohighlight">\(w^*\)</span>.
 La solution obtenue avec régularisation est représentée par le point <span class="math notranslate nohighlight">\(\hat w\)</span>.</p>
-<p><em>Visuellement, la solution optimal <span class="math notranslate nohighlight">\(\hat w\)</span> est à la jonction
+<p><em>Visuellement, la solution optimale <span class="math notranslate nohighlight">\(\hat w\)</span> est à la jonction
 entre les courbes de niveau du loss et la frontière de l’espace des solutions.</em></p>
 <p>Ainsi, il est aisé de comprendre pourquoi la régularisation L1 pousse plus facilement les coefficients <span class="math notranslate nohighlight">\(\hat w\)</span> vers 0.
 En prenant un point <span class="math notranslate nohighlight">\(w^*\)</span> au hasard sur le plan 2D, il est plus probable que la projection des courbes de niveaux sur le
@@ -749,11 +749,11 @@ où la dérivée n’est pas définie. Cependant, sachez en pratique ne pas êtr
 <h2>Et les autres régularisations ?<a class="headerlink" href="#et-les-autres-regularisations" title="Permalink to this headline">¶</a></h2>
 <p>Il est possible de régulariser le modèle de plusieurs façons possibles. Les autres façons de régulariser
 dépendent beaucoup du modèle et de la tâche qui sont considérés.</p>
-<p>Par exemple dans le chapitre sur la généralisation, nous avons régulariser nos régressions polynomiales sans même le savoir.
+<p>Par exemple dans le chapitre sur la généralisation, nous avons régularisé nos régressions polynomiales sans même le savoir.
 En effet, on a contraint les capacités du modèle en choisissant de limiter le degré maximal de notre polynôme !
-(<em>Peut-on vraiment de régularisation pour ce cas là ?</em>)</p>
-<p>D’autres régularisation existent donc. Elles sont souvent spécifique au type de modèle choisi, et se découvrent
-donc petit à petit en même temps que l’on apprends à utiliser d’autres modèles.
+(<em>Peut-on vraiment parler de régularisation pour ce cas là ?</em>)</p>
+<p>D’autres régularisations existent donc. Elles sont souvent spécifiques au type de modèle choisi, et se découvrent
+donc petit à petit en même temps que l’on apprend à utiliser d’autres modèles.
 La L1 et L2 sont quand même les deux régularisations les plus utilisées et il est important de les connaître.</p>
 </div>
 <div class="section" id="conclusion">

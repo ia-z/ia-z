@@ -582,7 +582,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Bag of Words (BoW)</p></li>
 <li><p>Term Frequency-Inverse Document Frequency (TF-IDF)</p></li>
 </ul>
-<p>Cependant des méthodes plus pointues existent afin d’identifier des corrélations entre des mots avec la modélisation de <strong>topics</strong>. (groupes de mots ayant une forte probabilité d’être associé)</p>
+<p>Cependant des méthodes plus pointues existent afin d’identifier des corrélations entre des mots avec la modélisation de <strong>topics</strong>. (groupes de mots ayant une forte probabilité d’être associés)</p>
 <p>Nous étudierons en particulier une méthode de modélisation de topics: Latent Dirichlet Allocation (LDA)</p>
 </div>
 <div class="section" id="bag-of-words-bow">
@@ -603,7 +603,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Ce vecteur ne préserve pas l’ordre des mots.</em></p>
 <div class="section" id="implementation-en-python">
 <h3>Implémentation en Python:<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h3>
-<p>Il est possible de le programmer soi-même ou d’utiliser une librairie Python tel que scikit-learn qui fera aussi le pré-processing:</p>
+<p>Il est possible de le programmer soi-même ou d’utiliser une librairie Python telle que scikit-learn qui fera aussi le pré-processing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 
@@ -628,7 +628,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="term-frequency-inverse-document-frenquency-tf-idf">
 <h2>Term Frequency-Inverse Document Frenquency (TF-IDF)<a class="headerlink" href="#term-frequency-inverse-document-frenquency-tf-idf" title="Permalink to this headline">¶</a></h2>
-<p>Afin de remédier au problème du Sac de Mots une approche serait de redéfinir la fréquence des mots afin de constituer un indice qui permette de connaître l’importance d’un mot dans un corpus de textes, ainsi les mots présents dans de nombreux documents seront pénalisé.</p>
+<p>Afin de remédier au problème du Sac de Mots une approche serait de redéfinir la fréquence des mots afin de constituer un indice qui permette de connaître l’importance d’un mot dans un corpus de textes, ainsi les mots présents dans de nombreux documents seront pénalisés.</p>
 <p>Pour cela on utilise deux indices que l’on multipliera:</p>
 <ol class="simple">
 <li><p>Term Frequency</p></li>
@@ -680,7 +680,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="nb">print</span><span class="p">(</span><span class="n">tf_idf_data</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>on obtient alors:</p>
+<p>On obtient alors:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;aim&#39;</span> <span class="s1">&#39;aiment&#39;</span> <span class="s1">&#39;anglais&#39;</span> <span class="s1">&#39;auss&#39;</span> <span class="s1">&#39;bertrand&#39;</span> <span class="s1">&#39;box&#39;</span> <span class="s1">&#39;boxing&#39;</span> <span class="s1">&#39;film&#39;</span> <span class="s1">&#39;john&#39;</span>
  <span class="s1">&#39;kick&#39;</span> <span class="s1">&#39;mary&#39;</span> <span class="s1">&#39;mem&#39;</span> <span class="s1">&#39;muay&#39;</span> <span class="s1">&#39;pizz&#39;</span> <span class="s1">&#39;regard&#39;</span> <span class="s1">&#39;retour&#39;</span> <span class="s1">&#39;superieur&#39;</span> <span class="s1">&#39;thai&#39;</span><span class="p">]</span>
 <span class="p">[[</span><span class="mf">0.4736296</span>  <span class="mf">0.</span>         <span class="mf">0.</span>         <span class="mf">0.311383</span>   <span class="mf">0.</span>         <span class="mf">0.</span>
@@ -755,7 +755,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="distribution-multinomiale">
 <h3>Distribution multinomiale:<a class="headerlink" href="#distribution-multinomiale" title="Permalink to this headline">¶</a></h3>
-<p>La distribution multinomiale est une généralisation de la distribution binomiale qui avec des paramètres n (nombre d’expérience indépendantes) et p (probabilité de succés) représente la distribution de probabilités d’une épreuve de Bernoulli (succès ou échec d’une expérience).</p>
+<p>La distribution multinomiale est une généralisation de la distribution binomiale qui avec des paramètres n (nombre d’expériences indépendantes) et p (probabilité de succès) représente la distribution de probabilités d’une épreuve de Bernoulli (succès ou échec d’une expérience).</p>
 <p>Ici il faut imaginer un dé à 6 faces, la distribution multinomiale représente la probablité pour chaque face de succès ou d’échec pour un nombre n de lancer.</p>
 <p>La fonction de densité de probabilité est la suivante:</p>
 <div class="math notranslate nohighlight">
@@ -881,7 +881,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>on obtient alors</p>
+<p>On obtient alors</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Top</span> <span class="mi">5</span> <span class="n">des</span> <span class="n">mots</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">Topic</span> <span class="mi">0</span><span class="p">:</span>
 <span class="p">[</span><span class="s1">&#39;sixième&#39;</span><span class="p">,</span> <span class="s1">&#39;concluait&#39;</span><span class="p">,</span> <span class="s1">&#39;publié&#39;</span><span class="p">,</span> <span class="s1">&#39;volet&#39;</span><span class="p">,</span> <span class="s1">&#39;climatique&#39;</span><span class="p">]</span>
 

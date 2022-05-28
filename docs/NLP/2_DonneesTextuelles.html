@@ -502,8 +502,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="differences-avec-les-donnees-structurees">
 <h2>Différences avec les données structurées<a class="headerlink" href="#differences-avec-les-donnees-structurees" title="Permalink to this headline">¶</a></h2>
 <p>Tout d’abord nous devons nous intéresser au type de donnée que nous manipulerons tout au long de ce cours, à savoir du texte.</p>
-<p>De ce texte découle des mots, des phrases, des langues et des contextes difficilement quantifiable d’un point de vue mathématique, car contrairement aux chiffres le texte n’a pas de relation d’ordre ou d’axiome permettant de le manipuler facilement, or le but d’une donnée structurée est d’avoir une information claire permettant son interprétation et son traitement par des machines.</p>
-<p>Cependant le texte suit des régles, qu’elles soient grammaticales ou syntaxiques qui vont nous permettre de le transformer en une donnée structurée par la suite.</p>
+<p>De ce texte découle des mots, des phrases, des langues et des contextes difficilement quantifiables d’un point de vue mathématique, car contrairement aux chiffres le texte n’a pas de relation d’ordre ou d’axiome permettant de le manipuler facilement, or le but d’une donnée structurée est d’avoir une information claire permettant son interprétation et son traitement par des machines.</p>
+<p>Cependant le texte suit des règles, qu’elles soient grammaticales ou syntaxiques qui vont nous permettre de le transformer en une donnée structurée par la suite.</p>
 <p>Prenons par exemple la construction d’une phrase:</p>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/65224852/166940035-1d1ed107-06ca-490e-85ed-b95c46b78865.jpg" width=600 height=302>
@@ -516,7 +516,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="pre-traitements">
 <h2>Pré-traitements<a class="headerlink" href="#pre-traitements" title="Permalink to this headline">¶</a></h2>
-<p>Nous étudierons quelques-uns des pré-traitements les plus courant en NLP:</p>
+<p>Nous étudierons quelques-uns des pré-traitements les plus courants en NLP:</p>
 <p><em>(Il est à noter que certains algorithmes ne fonctionnent qu’en anglais)</em></p>
 <div class="section" id="stemming">
 <h3>Stemming:<a class="headerlink" href="#stemming" title="Permalink to this headline">¶</a></h3>
@@ -558,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="regularisation-des-expressions">
 <h3>Régularisation des expressions:<a class="headerlink" href="#regularisation-des-expressions" title="Permalink to this headline">¶</a></h3>
-<p>Ce procédé consiste à supprimer ou remplacer par un espace tous les caractéres ne comportant pas d’information comme les paranthéses, crochets, ou encore slash…</p>
+<p>Ce procédé consiste à supprimer ou remplacer par un espace tous les caractéres ne comportant pas d’information comme les parenthéses, crochets, ou encore slash…</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Exemple</span><span class="p">:</span> <span class="s2">&quot;Ceci est_une phrase, (très intéressante).&quot;</span> <span class="o">-&gt;</span> <span class="s2">&quot;Ceci est une phrase très intéressante&quot;</span>
 </pre></div>
 </div>
@@ -579,10 +579,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="exemple-de-pre-traitement">
 <h2>Exemple de pré-traitement<a class="headerlink" href="#exemple-de-pre-traitement" title="Permalink to this headline">¶</a></h2>
-<p>Pour pouvoir traiter des phrases en Python nous auront besoin de plusieurs librairies:</p>
+<p>Pour pouvoir traiter des phrases en Python nous aurons besoin de plusieurs librairies:</p>
 <ul class="simple">
 <li><p>re ou Regular Expressions est une librairie native de Python permettant d’utiliser des caractères spéciaux sans contexte comme ‘(‘ qui serait mal interprété.</p></li>
-<li><p>unidecode est une librairie native de Python permettant de décoder un code <em>unicode</em> qui est attribué par Python à chaque caractére, cela est important lorsque l’on travaille avec plusieurs langues différentes comme l’anglais, le français, le russe ou encore l’hébreux.</p></li>
+<li><p>unidecode est une librairie native de Python permettant de décoder un code <em>unicode</em> qui est attribué par Python à chaque caractère, cela est important lorsque l’on travaille avec plusieurs langues différentes comme l’anglais, le français, le russe ou encore l’hébreux.</p></li>
 <li><p>nltk ou Natural Language Toolkit est une librairie qui procure un ensemble d’outils tel que des Stemmers ou de la Lemmatisation.</p></li>
 </ul>
 <p>Pour installer nltk il suffit d’entrer la commande:</p>

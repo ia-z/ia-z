@@ -9,7 +9,7 @@ Elle a été suivie par des centaines d'applications ML qui alimentent aujourd'h
 des centaines de produits et de fonctionnalités que vous utilisez régulièrement :
 qu'il s'agisse de meilleures recommandations, de la compréhension de textes, de la vision par ordinateur ou de la recherche vocale.
 
-Le Machine Learning prends une place de plus en plus grande dans nos vies quotidiennes.
+Le Machine Learning prend une place de plus en plus grande dans nos vies quotidiennes.
 Avant de commencer à comprendre son fonctionnement, il semble judicieux de se demander :
 
 **Pourquoi le ML est si pratique ?**
@@ -79,8 +79,8 @@ Ce modèle est une représentation d'une partie de l'information contenue dans l
 
 **Il y a de l'information dans la data ?**
 
-Et oui ! Alors ça dépends de la qualité de la data et de ce qu'elle représente, mais toute data contient de l'information.
-C'est cette fameuse information qui est le nouveau "or noir" pour les GAFAM et autres grosses entreprises.
+Et oui ! Alors ça dépend de la qualité de la data et de ce qu'elle représente, mais toute data contient de l'information.
+C'est cette fameuse information qui est le nouvel "or noir" pour les GAFAM et autres grosses entreprises.
 
 En fait, du moment qu'un ensemble de donnée n'est pas généré aléatoirement, c'est qu'il y a un mécanisme sous-jacent qui
 dicte un minimum les règles qui produisent ces données.
@@ -99,7 +99,7 @@ Nous ne rentrerons pas dans ce sujet, mais vous devriez toujours vous poser ce g
 ## Résumé
 Voici la liste des choses à retenir pour ce chapitre:
 
-* Le ML permet de fabriquer des modèles plus souples, qui ont potentiellement de meilleurs performances que ceux des systèmes symboliques;
+* Le ML permet de fabriquer des modèles plus souples, qui ont potentiellement de meilleures performances que ceux des systèmes symboliques;
 * Un modèle de ML peut facilement s'adapter à un environnement dynamique;
 * Une combinaison entre les méthodes symboliques et automatiques est souvent ce qui donne de meilleurs résultats.
 

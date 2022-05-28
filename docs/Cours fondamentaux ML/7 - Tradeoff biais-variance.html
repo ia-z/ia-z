@@ -562,7 +562,7 @@ modélise la relation souhaitée entre nos couples <span class="math notranslate
 Il y a donc au départ de l’apprentissage tout un ensemble de fonctions modélisables par notre modèle.
 Cet ensemble peut être vu comme un espace de recherche.</p>
 <p>Par exemple, dans le cas de la régression linéaire, la fonction est décrite par les coefficients de la droite modélisée.
-Dans ce cas, l’espace des fonctions modélisables est décris par toutes les fonctions linéaires définies par les valeurs que peuvent prendre les coefficients.
+Dans ce cas, l’espace des fonctions modélisables est décrit par toutes les fonctions linéaires définies par les valeurs que peuvent prendre les coefficients.
 Durant l’apprentissage d’une régression linéaire, le modèle va trouver les meilleures valeurs des coefficients afin de minimiser le loss d’entraînement, et donc finir par choisir une fonction dans cet espace.</p>
 </div>
 <div class="section" id="caracterisation-de-l-espace-de-recherche">
@@ -596,7 +596,7 @@ de grosses quantités de données afin de ne pas sur-apprendre.</p>
 <p>Pour être plus précis, on considère que les données utilisées à l’apprentissage proviennent toutes d’une source aléatoire capable
 de générer toutes les données possibles d’une distribution fixée. On peut alors échantillonner plusieurs jeux de données à partir de cette source.
 Cela permet alors d’entraîner autant de modèles qu’il y a de jeux de données.
-Chaque modèle va converger vers une fonction finale qui peut être évaluer sur un ensemble de test commun.
+Chaque modèle va converger vers une fonction finale qui peut être évalué sur un ensemble de test commun.
 Dans ce cas, la variance d’un modèle de ML est mesurée par la variance des performances des différents modèles évalués sur le jeu de test,
 mais entraînés sur des données différentes.</p>
 <p>Si les prédictions d’un modèle sont trop dépendantes des données utilisées pour l’entraîner, alors c’est qu’il est en sur-apprentissage,
@@ -680,7 +680,7 @@ un ensemble de fonctions modélisables énorme. Cela permet de garder un fort po
 très élevé pour modéliser précisément une fonction en tout point.
 <em>En fait, à cause de la <a class="reference external" href="https://fr.wikipedia.org/wiki/Fl%C3%A9au_de_la_dimension">malédiction de la dimension</a>,
 le nombre de données nécessaires pour couvrir l’ensemble de définition d’un KNN
-croit exponentiellement avec le nombre de dimensions de nos features.</em></p>
+croît exponentiellement avec le nombre de dimensions de nos features.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
@@ -719,7 +719,7 @@ de modéliser le problème. Il faudra alors trouver (ou tester) de meilleures hy
 est alors d’entraîner un modèle plus expressif comme le KNN, mais il faut alors assez de données pour que ce dernier soit capable d’apprendre
 une relation utile sans sur-apprendre.</p>
 <p>Notre dataset d’exemple n’étant pas linéaire, le biais du modèle linéaire est trop contraignant dans un régime où nous avons
-suffisemment de données pour modéliser des modèles plus complexes.</p>
+suffisamment de données pour modéliser des modèles plus complexes.</p>
 </div>
 </div>
 <div class="section" id="tradeoff-biais-variance">
@@ -749,7 +749,7 @@ Comme nous l’avons expliqué jusqu’à présent, plus notre modèle a de biai
 <li><p><em>Il est impossible de réduire l’erreur liée au bruit !</em> Ce bruit décrit la part d’inexplicabilité dans la relation entre <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 </ul>
 <p>Ce que définit cette équation, c’est simplement qu’il est possible de réduire les pertes d’un modèle en réduisant sa variance et son biais.
-Ce c’est pas une preuve qu’il y a forcément un compromis à faire entre la variance et les biais. Ce compromis est intrinsèque à la définition
+Ce n’est pas une preuve qu’il y a forcément un compromis à faire entre la variance et les biais. Ce compromis est intrinsèque à la définition
 de ces termes : l’un réduit l’espace de recherche et l’autre l’augmente.</p>
 <blockquote>
 <div><p>Et le bruit alors ?</p>
@@ -758,14 +758,14 @@ de ces termes : l’un réduit l’espace de recherche et l’autre l’augmente
 l’erreur au maximum, on aura toujours une petite erreur liée au bruit.
 Le bruit peut provenir de deux sources différentes :</p>
 <ul class="simple">
-<li><p>Un manque de features pour décrire au mieux la situation qui a menée à <span class="math notranslate nohighlight">\(y\)</span>.
+<li><p>Un manque de features pour décrire au mieux la situation qui a mené à <span class="math notranslate nohighlight">\(y\)</span>.
 Par exemple, une photo n’est qu’une coupe 2D d’un environnement 3D (voire 4D si l’on inclus le temps).
 Cette coupe peut être insuffisante pour décrire au mieux ce que l’on souhaite (comment deviner ce que fait une personne qui nous tourne le dos ?).</p></li>
 <li><p>Un bruit purement stochastique dans la source qui a générée <span class="math notranslate nohighlight">\(y\)</span>. On peut voir ça comme l’imprécision de la mesure de <span class="math notranslate nohighlight">\(y\)</span>, ou alors simplement
 un phénomène aléatoire qui se produit lors de la production de <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 </ul>
 <p>Ce bruit peut être vu ainsi : lorsque j’observe les mêmes <span class="math notranslate nohighlight">\(x\)</span>, je vais tout de même obtenir des <span class="math notranslate nohighlight">\(y\)</span> différents. Le meilleur modèle possible
-ne peux alors que prédire la valeur moyenne de <span class="math notranslate nohighlight">\(y\)</span> sachant <span class="math notranslate nohighlight">\(x\)</span>.</p>
+ne peut alors que prédire la valeur moyenne de <span class="math notranslate nohighlight">\(y\)</span> sachant <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <blockquote>
 <div><p>Mais alors on ne peut pas avoir de modèle parfait ?</p>
 </div></blockquote>

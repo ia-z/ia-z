@@ -16,9 +16,9 @@
 
 Tout d'abord nous devons nous intéresser au type de donnée que nous manipulerons tout au long de ce cours, à savoir du texte.
 
-De ce texte découle des mots, des phrases, des langues et des contextes difficilement quantifiable d'un point de vue mathématique, car contrairement aux chiffres le texte n'a pas de relation d'ordre ou d'axiome permettant de le manipuler facilement, or le but d'une donnée structurée est d'avoir une information claire permettant son interprétation et son traitement par des machines.
+De ce texte découle des mots, des phrases, des langues et des contextes difficilement quantifiables d'un point de vue mathématique, car contrairement aux chiffres le texte n'a pas de relation d'ordre ou d'axiome permettant de le manipuler facilement, or le but d'une donnée structurée est d'avoir une information claire permettant son interprétation et son traitement par des machines.
 
-Cependant le texte suit des régles, qu'elles soient grammaticales ou syntaxiques qui vont nous permettre de le transformer en une donnée structurée par la suite.
+Cependant le texte suit des règles, qu'elles soient grammaticales ou syntaxiques qui vont nous permettre de le transformer en une donnée structurée par la suite.
 
 Prenons par exemple la construction d'une phrase:
 
@@ -37,7 +37,7 @@ En effet il est difficile pour une machine de comprendre que "est" et "sois" fon
 
 ## Pré-traitements
 
-Nous étudierons quelques-uns des pré-traitements les plus courant en NLP:
+Nous étudierons quelques-uns des pré-traitements les plus courants en NLP:
 
 *(Il est à noter que certains algorithmes ne fonctionnent qu'en anglais)*
 
@@ -80,7 +80,7 @@ Exemple: "est", "sois", "fut", "étais" et "fussions" seront convertis en le ver
 Traditionnellement, les moteurs de recherche analysent votre page en essayant de retrouver chacune des variantes pour les regrouper autour de lemmes ; Le principe étant de définir le sujet principal. 
 
 ### Régularisation des expressions:
-Ce procédé consiste à supprimer ou remplacer par un espace tous les caractéres ne comportant pas d'information comme les paranthéses, crochets, ou encore slash...
+Ce procédé consiste à supprimer ou remplacer par un espace tous les caractéres ne comportant pas d'information comme les parenthéses, crochets, ou encore slash...
 
 ```
 Exemple: "Ceci est_une phrase, (très intéressante)." -> "Ceci est une phrase très intéressante"
@@ -100,9 +100,9 @@ Exemple: "Ceci est une phrase très intéressante" -> | Ceci | est | une | phras
 ```
 ## Exemple de pré-traitement
 
-Pour pouvoir traiter des phrases en Python nous auront besoin de plusieurs librairies:
+Pour pouvoir traiter des phrases en Python nous aurons besoin de plusieurs librairies:
 - re ou Regular Expressions est une librairie native de Python permettant d'utiliser des caractères spéciaux sans contexte comme '(' qui serait mal interprété.
-- unidecode est une librairie native de Python permettant de décoder un code *unicode* qui est attribué par Python à chaque caractére, cela est important lorsque l'on travaille avec plusieurs langues différentes comme l'anglais, le français, le russe ou encore l'hébreux.
+- unidecode est une librairie native de Python permettant de décoder un code *unicode* qui est attribué par Python à chaque caractère, cela est important lorsque l'on travaille avec plusieurs langues différentes comme l'anglais, le français, le russe ou encore l'hébreux.
 - nltk ou Natural Language Toolkit est une librairie qui procure un ensemble d'outils tel que des Stemmers ou de la Lemmatisation.
 
 Pour installer nltk il suffit d'entrer la commande:
