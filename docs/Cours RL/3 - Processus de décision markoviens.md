@@ -35,8 +35,11 @@ On dit que pour chaque instant $t$, l'agent reçoit une représentation de l'env
 
 Si l'on veut se replacer un instant dans le schéma présenté plus haut:
 * L'agent reçoit une représentation de l'environnement ($S_{t}$):
+
 <img src="./src/rl_3_1.png">
+
 * L'agent prend une action ($A_{t}$) en fonction de $S_{t}$:
+
 <img src="./src/rl_3_2.jpg">
 
 La récompense $R_{t}$ n'est calculée que lors du prochain état.
@@ -44,6 +47,7 @@ La récompense $R_{t}$ n'est calculée que lors du prochain état.
 C'est-à-dire $R_t = f(A_{t-1}, S_{t-1})$ ou $R_{t+1} = f(A_{t}, S_{t})$
 
 L'agent reçoit donc la récompense $R_{t+1}$ calculée à partir du couple $(S_{t}, A_{t})$:
+
 <img src="./src/rl_3_3.png">
 
 Et l'agent entre dans un nouvel état $S_{t+1}$ (i.e. une nouvelle représentation de l'environnement actualisé) dans lequel il aura encore à choisir une action parmi l'ensemble $A$.
