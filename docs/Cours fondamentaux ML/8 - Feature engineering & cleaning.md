@@ -13,9 +13,9 @@ Le feature engineering est la partie la plus essentielle de la construction d'un
     <em>Pipeline typique d’un projet de Machine Learning </em>
 </p>
 
-Supposons que vous êtes Data Scientists pour une entreprise. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement explorer les données à votre disposition en ayant effectuer une EDA (Exploratory Data Analysis) digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d'utiliser votre modèle favori. Néanmoins vous constater que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste ! 
+Supposons que vous êtes Data Scientist pour une entreprise. Votre manager vous demande d’atteindre une performance précise pour un modèle donné. Après avoir minutieusement exploré les données à votre disposition en ayant effectuer une EDA (Exploratory Data Analysis) digne de ce nom, vous décidez de vous lancer dans cette étape de préparation des données puis d'utiliser votre modèle favori. Néanmoins vous constatez que les performances de votre modèle sont bien plus basses que prévues et vous craignez de perdre votre poste ! 
 
-En tant que Data Scientist agueri, vous décidez de collaborer avec le Data Engineer de votre équipe pour vous concentrer, le temps d'une après-midi, sur cette étape de feature engineering. Ensemble vous décidez de vous attardez sur la qualité des données pour ne pas injecter des features qui auront un impact négatif sur les performances de votre modèle.
+En tant que Data Scientist agueri, vous décidez de collaborer avec le Data Engineer de votre équipe pour vous concentrer, le temps d'une après-midi, sur cette étape de feature engineering. Ensemble vous décidez de vous attarder sur la qualité des données pour ne pas injecter des features qui auront un impact négatif sur les performances de votre modèle.
 
 Le Data Engineer vous dit de ne pas paniquer. Pour résoudre ce problème, il vous conseille de réitèrer l’étape n°6 en sa compagnie tant que les objectifs de performances du modèle donné par votre N+1 ne sont pas atteints.
 
@@ -27,7 +27,7 @@ La qualité des données et des features ont le plus d'impact sur un projet de M
 
 ## Nettoyage des données<a name="nettoyage"></a>
 
-La première étape lorsqu'on évoque le concept de "feature engineering" consiste au nettoyage des données. Celle-ci repose sur différents aspects importants que nous aborderons dans cette partie.
+La première étape lorsque l'on évoque le concept de "feature engineering" consiste au nettoyage des données. Celle-ci repose sur différents aspects importants que nous aborderons dans cette partie.
 
 ### Valeurs manquantes <a name="subparagraph1"></a>
 
@@ -62,7 +62,7 @@ D'autre part, certains algorithmes sont plus robustes aux valeurs aberrantes. Pa
 
 ### Valeurs rares <a name="subparagraph3"></a>
 
-Définition : Variable dont certaines  valeurs n'apparaissent que rarement.
+Définition : Variable dont certaines valeurs n'apparaissent que rarement.
 
 Dans certaines situations, les valeurs rares, comme les valeurs aberrantes, peuvent contenir des informations précieuses sur l'ensemble de données et nécessitent donc une attention particulière. Par exemple, une valeur rare dans une transaction peut indiquer une fraude.
 
@@ -76,22 +76,22 @@ Les labels rares peuvent apparaître dans l'ensemble de test, mais pas dans l'en
 
 ### Haute cardinalité <a name="subparagraph4"></a>
 
-Définition : Le nombre de labels au sein d'une variable  appelé cardinalité. Un nombre élevé de labels au sein d'une variable est connu comme une cardinalité élevée.
+Définition : Le nombre de labels au sein d'une variable appelé cardinalité. Un nombre élevé de labels au sein d'une variable est connu comme une cardinalité élevée.
 
 *Pourquoi une cardinalité élevée est-elle importante ?*
 
 Les variables comportant trop de labels ont tendance à dominer celles qui n'en comportent que quelques-unes, en particulier dans les algorithmes basés sur des arbres.
 Un grand nombre de labels dans une variable peut introduire du bruit avec peu ou pas d'informations, ce qui rend les modèles d'apprentissage automatique susceptibles d'être overfittés.
 
-Certains labels peuvent n'être présentes que dans l'ensemble de données d'apprentissage, mais pas dans l'ensemble de test, ce qui entraîne une suradaptation des algorithmes à l'ensemble d'apprentissage.
+Certains labels peuvent n'être présents que dans l'ensemble de données d'apprentissage, mais pas dans l'ensemble de test, ce qui entraîne une suradaptation des algorithmes à l'ensemble d'apprentissage.
 
-À l'inverse, de nouveaux labels peuvent apparaître dans l'ensemble de test alors qu'elles n'étaient pas présentes dans l'ensemble d'apprentissage, ce qui empêche l'algorithme d'effectuer un calcul sur la nouvelle observation.
+À l'inverse, de nouveaux labels peuvent apparaître dans l'ensemble de test alors qu'ils n'étaient pas présents dans l'ensemble d'apprentissage, ce qui empêche l'algorithme d'effectuer un calcul sur la nouvelle observation.
 
 ## Feature Scaling <a name="featurescaling"></a>
 
 Définition : Le feature scaling est une méthode utilisée pour normaliser des variables indépendantes ou des features. Dans le traitement des données, elle est également connue sous le nom de normalisation des données et est effectuée durant l'étape de prétraitement des données.
 
-*Pourquoi le Feature Scaling est-elle importante ?*
+*Pourquoi le Feature Scaling est-il important ?*
 
 - Si la taille des entrées varie, avec certains algorithmes vous pouvez obtenir des résultats incohérents.
 
@@ -119,9 +119,9 @@ On remarquera que la suppression des valeurs aberrantes est un autre sujet du ne
 
 *Pourquoi le Feature encoding est-il important ?*
 
-On appelle 'variable catégorielles' les données qui prennent généralement un nombre limité de valeurs possibles. En outre, les données de la catégorie ne doivent pas nécessairement être numériques, elles peuvent être de nature textuelle. Tous les modèles de Machine Learning sont une sorte de modèle mathématique qui a besoin de chiffres pour fonctionner. C'est l'une des principales raisons pour lesquelles nous devons prétraiter ces données dites 'catégorielles' avant de les transmettre aux modèles.
+On appelle 'variables catégorielles' les données qui prennent généralement un nombre limité de valeurs possibles. En outre, les données de la catégorie ne doivent pas nécessairement être numériques, elles peuvent être de nature textuelle. Tous les modèles de Machine Learning sont une sorte de modèle mathématique qui a besoin de chiffres pour fonctionner. C'est l'une des principales raisons pour lesquelles nous devons prétraiter ces données dites 'catégorielles' avant de les transmettre aux modèles.
 
-Cette étape de transformation des strings/ des variables catégorielles en nombres est une étape primordiale pour que les algorithmes puissent traiter ces valeurs. Même si vous voyez qu'un algorithme peut prendre en charge des entrées catégorielles, il est très probable que l'algorithme intègre ce processus de feature encoding.
+Cette étape de transformation des strings / des variables catégorielles en nombres est une étape primordiale pour que les algorithmes puissent traiter ces valeurs. Même si vous voyez qu'un algorithme peut prendre en charge des entrées catégorielles, il est très probable que l'algorithme intègre ce processus de feature encoding.
 
 **One-hot Encoding** : Remplace la variable catégorielle par différentes variables booléennes (0/1) pour indiquer si un certain label est vrai ou faux pour une observation donnée. 
 
@@ -129,16 +129,16 @@ Cette méthode permet de conserver toutes les informations de cette variable.
 
 Néanmoins, elle présente deux défauts : 
 
-- elle élargir considérablement l'espace des features si trop de labels sont présents au sein de cette variable.
+- elle élargit considérablement l'espace des features si trop de labels sont présents au sein de cette variable.
 
-- n'ajoute pas de valeur supplémentaire pour rendre la variable plus prédictive.
+- elle n'ajoute pas de valeur supplémentaire pour rendre la variable plus prédictive.
 
 
 **Count-Frequency Encoding** : Remplace chaque label de la variable catégorielle par le nombre/fréquence dans cette catégorie 
 
-Cette méthode présent un défaut : 
+Cette méthode présente un défaut : 
 
-- permet d'attribuer le même encodage pour deux labels différentes (si elles apparaissent en même temps, avec le même nombre d'occurences) et perd des informations précieuses.
+- elle permet d'attribuer le même encodage pour deux labels différents (si ils apparaissent en même temps, avec le même nombre d'occurences) et perd des informations précieuses.
 
 ## Feature Selection <a name="featureselection"></a>
 
@@ -146,15 +146,15 @@ Définition : Processus de sélection d'un sous-ensemble de features pertinents 
 
 "Plus il y a de données, meilleur sera le résultat de mon modèle", vous avez sans doute entendu cette phrase plusieurs fois, mais elle n'est pas toujours vraie. L'inclusion de features non pertinentes (celles qui ne sont pas utiles à la prédiction) et de features redondantes (non pertinentes en présence d'autres features) ne fera que surcharger le processus d'apprentissage et entraînera facilement un overfitting.
 
-Avec la feature selection, nous pouvons avoir :
+Avec la feature selection, nous pouvons :
 
-- une simplification des modèles pour les rendre plus faciles à interpréter
-- des temps d'apprentissage plus courts et des coûts de calcul moindres
+- avoir une simplification des modèles pour les rendre plus faciles à interpréter
+- obtenir des temps d'apprentissage plus courts et des coûts de calcul moindres
 - réduire le coût de la collecte des données
 - éviter la malédiction de la dimensionnalité
-- une meilleure généralisation en réduisant l'overfitting
+- avoir une meilleure généralisation en réduisant l'overfitting
 
-Nous devons garder à l'esprit que différents sous-ensembles de featurees offrent des performances optimales pour différents algorithmes. 
+Nous devons garder à l'esprit que différents sous-ensembles de features offrent des performances optimales pour différents algorithmes. 
 
 Une méthode populaire de sélection des features consiste à mélanger de manière aléatoire les valeurs d'une variable spécifique et de déterminer comment cette permutation affecte la métrique de performance de l'algorithme. En d'autres termes, l'idée est de permuter les valeurs de chaque features, une à la fois, et de mesurer dans quelle mesure la permutation diminue la précision, la ROC_AUC, ou la MSE du modèle d'apprentissage automatique. Si les variables sont importantes, c'est-à-dire hautement prédictives, une permutation aléatoire de leurs valeurs diminuera considérablement n'importe laquelle de ces métriques. En revanche, les variables non importantes / non prédictives ne devraient avoir que peu ou pas d'effet sur la mesure de performance du modèle que nous évaluons.
 
