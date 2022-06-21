@@ -56,7 +56,7 @@ Construire un tel modèle est la partie la plus difficile, et
 il est possible de s'y attaquer de plusieurs manières. Mais deux méthodes principales s'imposent:
 
 * Etablir des hypothèses sur la nature de la relation entre l'historique du consommateur et les items potentiels,
-définir un ensemble de règles qui vont choisir quels items mettre en avant;
+définir un ensemble de règles qui vont choisir quels items mettre en avant.
 * Récolter beaucoup de données sous forme de couple `(historique, items achetés)`
 et trouver le modèle qui explique le mieux les relations entre les données.
 
@@ -96,17 +96,14 @@ L'information qu'elles récupèrent est particulièrement rentable.
 **Il y a quand même des considérations éthiques lorsqu'il s'agit de manipuler des données privées.
 Nous ne rentrerons pas dans ce sujet, mais vous devriez toujours vous poser ce genre de questions avant de vous lancer dans une exploitation de données.**
 
-## Résumé
-Voici la liste des choses à retenir pour ce chapitre:
+## Conclusion
 
-* Le ML permet de fabriquer des modèles plus souples, qui ont potentiellement de meilleures performances que ceux des systèmes symboliques;
-* Un modèle de ML peut facilement s'adapter à un environnement dynamique;
+* Le ML permet de fabriquer des modèles plus souples, qui ont potentiellement de meilleurs performances que ceux des systèmes symboliques.
+* Un modèle de ML peut facilement s'adapter à un environnement dynamique.
 * Une combinaison entre les méthodes symboliques et automatiques est souvent ce qui donne de meilleurs résultats.
 
 ## Sources
 
-- https://karpathy.medium.com/software-2-0-a64152b37c35
-
-- "Comprendre le Machine Learning en 5min" de Defend Intelligence https://www.youtube.com/watch?v=RC7GTAKoFGA
-
-- "Hands-On Machine Learning with Scikit-Learn, Keras & Tensorflow. Concepts, Tools, and Techniques to Build Intelligent Systems" O'Reilly, 2nd Edition, Aurélien Géron
+* [Comprendre le Machine Learning en 5min, Defend Intelligence](https://www.youtube.com/watch?v=RC7GTAKoFGA)
+* [Machine Learning avec Scikit-Learn, A. Géron](https://www.dunod.com/sciences-techniques/machine-learning-avec-scikit-learn-mise-en-oeuvre-et-cas-concrets-0)
+* [Software 2.0, Karpathy](https://karpathy.medium.com/software-2-0-a64152b37c35)

@@ -7,54 +7,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Généralisation d’un modèle de Machine Learning &#8212; IA-Z</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Régularisation &amp; tradeoff biais-variance : une introduction" href="5%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html" />
-    <link rel="prev" title="Modèle élémentaire : La régression linéaire" href="3%20-%20Regression%20lineaire.html" />
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Régularisation &amp; tradeoff biais-variance : une introduction" href="06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html" />
+    <link rel="prev" title="Introduction à la régression : la régression linéaire" href="03%20-%20Regression%20lineaire.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -74,26 +76,26 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      <img src="../../../_static/logo.jpeg" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">IA-Z</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../README.html">
+  <a class="reference internal" href="../../../README.html">
    Statut
   </a>
  </li>
@@ -104,45 +106,52 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="1%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
    Pourquoi le Machine Learning ?
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2%20-%20Elements%20de%20definition.html">
-   Eléments de définition
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3%20-%20Regression%20lineaire.html">
-   Modèle élémentaire : La régression linéaire
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Généralisation d’un modèle de Machine Learning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
-   Régularisation &amp; tradeoff biais-variance : une introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
-   Régularisation d’un modèle
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7%20-%20Tradeoff%20biais-variance.html">
-   Compromis biais-variance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8%20-%20Feature%20engineering%20%26%20cleaning.html">
-   Feature Engineering
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02%20-%20Elements%20de%20definition.html">
+     Eléments de définition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03%20-%20Regression%20lineaire.html">
+     Introduction à la régression : la régression linéaire
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Généralisation d’un modèle de Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+     Régularisation &amp; tradeoff biais-variance : une introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+     Régularisation d’un modèle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08%20-%20Compromis%20biais-variance.html">
+     Compromis biais-variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20-%20Feature%20engineering%20%26%20cleaning.html">
+     Feature Engineering
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -152,32 +161,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../NLP/1_Introduction.html">
+  <a class="reference internal" href="../../NLP/1_Introduction.html">
    Chapitre I: Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NLP/2_DonneesTextuelles.html">
+  <a class="reference internal" href="../../NLP/2_DonneesTextuelles.html">
    Etude des données textuelles
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NLP/3_ModStatLanguage.html">
+  <a class="reference internal" href="../../NLP/3_ModStatLanguage.html">
    Chapitre II: Notions générales
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NLP/4_ModLangues.html">
+  <a class="reference internal" href="../../NLP/4_ModLangues.html">
    Modèles de langues
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NLP/5_Embedings.html">
+  <a class="reference internal" href="../../NLP/5_Embedings.html">
    Embeddings
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../NLP/7_bert.html">
+  <a class="reference internal" href="../../NLP/7_bert.html">
    BERT - Bidirectional Encoder Representations from Transformers
   </a>
  </li>
@@ -189,32 +198,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours_CV/0_intro.html">
+  <a class="reference internal" href="../../Cours_CV/0_intro.html">
    Computer Vision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+  <a class="reference internal" href="../../Cours_CV/1_Image_processing.html">
    Section 1 Image processing techniques
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+  <a class="reference internal" href="../../Cours_CV/2_ML_CV.html">
    Machine Learning for Computer Vision
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+  <a class="reference internal" href="../../Cours_CV/3_CNN.html">
    Convolutional Neural Network
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+  <a class="reference internal" href="../../Cours_CV/4_Modern_CNN.html">
    Modern Convolutional Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+  <a class="reference internal" href="../../Cours_CV/5_CV_tasks.html">
    Computer Vision tasks
   </a>
  </li>
@@ -226,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20RL/intro.html">
+  <a class="reference internal" href="../../Cours%20RL/intro.html">
    Reinforcement learning
   </a>
  </li>
@@ -238,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Cours%20annexes/mener_une_recherche.html">
+  <a class="reference internal" href="../../Cours%20annexes/mener_une_recherche.html">
    Mener une recherche internet efficacement
   </a>
  </li>
@@ -283,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/Cours fondamentaux ML/4 - Generalisation.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/docs/Cours fondamentaux ML/module_1_introduction/05 - Generalisation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -303,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/4 - Generalisation.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/module_1_introduction/05 - Generalisation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -324,10 +333,10 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/Cours fondamentaux ML/4 - Generalisation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/Cours fondamentaux ML/module_1_introduction/05 - Generalisation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
+                    src="../../../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
@@ -380,31 +389,16 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Overfitting
+     Underfitting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     Underfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generalisation">
-     Généralisation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Underfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
      Overfitting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#generalisation">
      Généralisation
     </a>
    </li>
@@ -508,31 +502,16 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Overfitting
+     Underfitting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     Underfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generalisation">
-     Généralisation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Underfitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
      Overfitting
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#generalisation">
      Généralisation
     </a>
    </li>
@@ -600,10 +579,10 @@ l’on parle de généralisation, et comment l’évaluer.</p>
 <div class="section" id="le-besoin-de-generaliser">
 <h2>Le besoin de généraliser<a class="headerlink" href="#le-besoin-de-generaliser" title="Permalink to this headline">¶</a></h2>
 <p>Dans le schéma classique d’un apprentissage supervisé, vous voudrez un modèle capable
-de prédire une certaine valeur <code class="docutils literal notranslate"><span class="pre">y</span></code> à partir d’un ensemble de valeurs <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
+de prédire une certaine valeur <span class="math notranslate nohighlight">\(y\)</span> à partir d’un ensemble de valeurs <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Pour qu’un tel modèle soit utile, il faut qu’il soit capable de donner une bonne solution (approximative)
 pour des données jamais observées. En effet, à quoi bon utiliser un modèle sur des données où l’on a déjà
-collecté et mesuré la valeur de <code class="docutils literal notranslate"><span class="pre">y</span></code> !</p>
+collecté et mesuré la valeur de <span class="math notranslate nohighlight">\(y\)</span> !</p>
 <p>Pendant l’entraînement d’un modèle, on mesure souvent sa performance sur le jeu de données utilisé pendant l’entraînement.
 Cela revient à demander à un étudiant s’il est bien capable de refaire de tête des exercices où on lui a donné
 la correction auparavant.
@@ -624,7 +603,7 @@ certaines astuces qui permettent de court-circuiter des questions afin d’être
 peuvent se révéler n’être que des coïncidences qui fonctionnent bien sur les quelques exercices mais qui sont en fait fausses.
 L’utilisation de ces fausses corrélations s’avère alors dévastateur lors de l’évaluation sur de nouveaux exercices !</p>
 <p>On parle alors de sur-entraînement. La machine a détecté des corrélations qui semblent utiles sur le jeu d’entraînement,
-mais elles sont en fait de fausses corrélations qui n’expliquent en rien la relation entre <code class="docutils literal notranslate"><span class="pre">X</span></code> et <code class="docutils literal notranslate"><span class="pre">y</span></code>.
+mais elles sont en fait de fausses corrélations qui n’expliquent en rien la relation entre <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.
 Cela arrive très souvent, et c’est la hantise de toute personne travaillant dans le ML.</p>
 </div>
 <div class="section" id="underfitting">
@@ -650,18 +629,8 @@ sans avoir sur-appris pour autant.</p>
 </div>
 <div class="section" id="exemples">
 <h2>Exemples<a class="headerlink" href="#exemples" title="Permalink to this headline">¶</a></h2>
-<p>Exemple simple : générer des données y = x^2.</p>
-<div class="section" id="id1">
-<h3>Overfitting<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Regression polynomiale avec un degré supérieur à 2.</p>
-</div>
-<div class="section" id="id2">
-<h3>Underfitting<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Regression linaire.</p>
-</div>
-<div class="section" id="generalisation">
-<h3>Généralisation<a class="headerlink" href="#generalisation" title="Permalink to this headline">¶</a></h3>
-<p>Regression polynomiale de degré 2.</p>
+<p>On va prendre un cas simple pour illustrer ce chapitre.
+On ne génère que quelques points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -681,15 +650,14 @@ sans avoir sur-appris pour autant.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4 - Generalisation_4_0.png" src="../../_images/4 - Generalisation_4_0.png" />
+<img alt="../../../_images/05 - Generalisation_4_0.png" src="../../../_images/05 - Generalisation_4_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id3">
-<h3>Underfitting<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Underfitting<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Un exemple d’underfitting sur de telles données serait de
 réaliser une simple régression linéaire.</p>
-<p>Le modèle est trop simple, la relation entre X et y est mal
+<p>Le modèle est trop simple, la relation entre <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(y\)</span> est mal
 capturée par ce dernier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -717,15 +685,15 @@ capturée par ce dernier.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4 - Generalisation_6_0.png" src="../../_images/4 - Generalisation_6_0.png" />
+<img alt="../../../_images/05 - Generalisation_6_0.png" src="../../../_images/05 - Generalisation_6_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R² score: 0.42870723713067405
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>Overfitting<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Overfitting<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Un moyen d’améliorer le modèle assez facilement est de générer les relations
 non-linéaires en amont avant d’entraîner le modèle linéaire.</p>
 <p>On peut ainsi générer de nouvelles features, à partir d’interactions polynomiales.
@@ -768,19 +736,19 @@ Mais le comportement du polynôme en dehors de ces points est ensuite très arbi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4 - Generalisation_8_0.png" src="../../_images/4 - Generalisation_8_0.png" />
+<img alt="../../../_images/05 - Generalisation_8_0.png" src="../../../_images/05 - Generalisation_8_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R² score: 1.0
 </pre></div>
 </div>
 </div>
 </div>
-<p>On peut voir que ce modèle, bien qu’il ait des performances parfaites (R² = 1)
+<p>On peut voir que ce modèle, bien qu’il ait des performances parfaites (<span class="math notranslate nohighlight">\(R^2 = 1\)</span>)
 a un mauvais comportement en dehors des points d’entraînement.
-Dès qu’on lui demande les valeurs de y pour des X qu’il n’a jamais vu lors
+Dès qu’on lui demande les valeurs de <span class="math notranslate nohighlight">\(y\)</span> pour des <span class="math notranslate nohighlight">\(X\)</span> qu’il n’a jamais vu lors
 de l’entraînement, la réponse est au mieux approximative, et au pire complètement fausse !</p>
 </div>
-<div class="section" id="id5">
-<h3>Généralisation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="generalisation">
+<h3>Généralisation<a class="headerlink" href="#generalisation" title="Permalink to this headline">¶</a></h3>
 <p>Un meilleur modèle que le précédent est un modèle dont on a bridé
 un peu les performances, en lui permettant de n’avoir
 accès qu’à des features d’un degré moins élevé.</p>
@@ -818,7 +786,7 @@ accès qu’à des features d’un degré moins élevé.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4 - Generalisation_11_0.png" src="../../_images/4 - Generalisation_11_0.png" />
+<img alt="../../../_images/05 - Generalisation_11_0.png" src="../../../_images/05 - Generalisation_11_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score R² sur entraînement: 0.9137936586866177
 </pre></div>
 </div>
@@ -910,7 +878,7 @@ le jeu de validation et on mesure les performances finales sur le jeu de test.</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4 - Generalisation_16_0.png" src="../../_images/4 - Generalisation_16_0.png" />
+<img alt="../../../_images/05 - Generalisation_16_0.png" src="../../../_images/05 - Generalisation_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -999,13 +967,13 @@ Validation : 0.856
 
 Score du modèle pour le degré 50
 Entraînement : 0.777
-Validation : -2.964
+Validation : -2.955
 
 Meilleur modèle pour le degré 3
 Score final sur le jeu de test : 0.948
 </pre></div>
 </div>
-<img alt="../../_images/4 - Generalisation_17_1.png" src="../../_images/4 - Generalisation_17_1.png" />
+<img alt="../../../_images/05 - Generalisation_17_1.png" src="../../../_images/05 - Generalisation_17_1.png" />
 </div>
 </div>
 <p>On remarque que le degré final est celui théoriquement attendu.
@@ -1018,23 +986,33 @@ Il est possible d’aller plus loin en réduisant expressement l’overfitting d
 vous devez faire en sorte que tout information utilisée doit provenir du jeu d’entraînement uniquement. Par exemple, si vous
 décidez de normaliser vos données selon une loi normale, vous devez utiliser la moyenne et l’écart-type du jeu d’entraînement
 pour normaliser toutes vos données. Une erreur classique serait d’utiliser la moyenne et l’écart-type de chaque jeu de données pour la normalisation.</p>
+<p>Nous avons besoin de nous assurer qu’un modèle généralise bien. Il est toujours possible de trouver des corrélations statistiques
+(voir <em><a class="reference external" href="https://tylervigen.com/spurious-correlations">Spurious Correlations</a></em>) dans les données d’entraînement qui semblent expliquer les quelques détails qui améliorent les performances des prédictions.
+Or ces petites coïcidences ne permettent pas d’expliquer la relation entre <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Dans le meilleur des mondes, nous n’aurions pas besoin d’évaluer la généralisation d’un modèle si nous possédions toutes les données possibles et imaginables pour
+la tâche considérée. Mais c’est malheureusement impossible (<em>et cela rendrait d’ailleurs le ML beaucoup moins utile</em>), il faut donc s’assurer l’utilité du modèle
+une fois hors de l’entraînement.</p>
+<p>Enfin, il est intéressant que nous évaluons ici la généralisation d’un modèle sur son domaine de distribution. Sachez qu’il existe
+toute une branche de l’IA qui se concentre sur la capacité des modèles à généraliser sur d’autres domaines que celui utilisé pour l’entraînement.
+On parle alors de <em><a class="reference external" href="https://out-of-distribution-generalization.com">généralisation out-of-distribution</a></em>.</p>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Nous avons besoin de nous assurer qu’un modèle généralise bien. Il est toujours possible de trouver des corrélations statistiques
-(voir <code class="docutils literal notranslate"><span class="pre">Spurious</span> <span class="pre">Correlations</span></code>) dans les données d’entraînement qui semblent expliquer les quelques détails qui améliorent les performances des prédictions.
-Or, ces petites coïcidences ne permettent pas d’expliquer la relation entre <code class="docutils literal notranslate"><span class="pre">X</span></code> et <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
-<p>Dans le meilleur des mondes, nous n’aurions pas besoin d’évaluer la généralisation d’un modèle si nous possédions toutes les données possibles et imaginables pour
-la tâche considérée. Mais c’est malheureusement impossible (<em>et cela rendrait d’ailleurs le ML beaucoup moins utile</em>), il faut donc s’assurer de l’utilité du modèle
-une fois hors de l’entraînement.</p>
-<p>Enfin, il est intéressant que nous évaluions ici la généralisation d’un modèle sur son domaine de distribution. Sachez qu’il existe
-toute une branche de l’IA qui se concentre sur la capacité des modèles à généraliser sur d’autres domaines que celui utilisé pour l’entraînement.
-On parle alors de <em>généralisation Out-of-Distribution</em>.</p>
+<ul class="simple">
+<li><p>La généralisation d’un modèle représente sa capacité à traiter des données jamais vues pendant l’entraînement.</p></li>
+<li><p>Un modèle incapable de généraliser est inutile !</p></li>
+<li><p>Un moyen de mesurer sa capacité à généraliser est de garder une partie du jeu d’entraînement
+comme jeu de test et d’évaluer les performances sur ces données-là.</p></li>
+<li><p>Afin d’éviter le sur-apprentissage sur le jeu de test, on utilise un jeu de validation pour régler les hyperparamètres du modèle.
+On évalue sur le jeu de test qu’une fois que l’on a la version finale du modèle.</p></li>
+</ul>
 </div>
 <div class="section" id="sources">
 <h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://tylervigen.com/spurious-correlations">https://tylervigen.com/spurious-correlations</a></p>
-<p><a class="reference external" href="https://out-of-distribution-generalization.com/">https://out-of-distribution-generalization.com/</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tylervigen.com/spurious-correlations">Suprious correlations</a></p></li>
+<li><p><a class="reference external" href="https://out-of-distribution-generalization.com/">Out-of-distrubution generalization</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -1051,7 +1029,7 @@ On parle alors de <em>généralisation Out-of-Distribution</em>.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/Cours fondamentaux ML"
+            path: "./docs/Cours fondamentaux ML/module_1_introduction"
         },
         predefinedOutput: true
     }
@@ -1063,14 +1041,14 @@ On parle alors de <em>généralisation Out-of-Distribution</em>.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="3%20-%20Regression%20lineaire.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03%20-%20Regression%20lineaire.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Modèle élémentaire : La régression linéaire</p>
+            <p class="prev-next-title">Introduction à la régression : la régression linéaire</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="5%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html" title="next page">
+    <a class='right-next' id="next-link" href="06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Régularisation &amp; tradeoff biais-variance : une introduction</p>
@@ -1095,7 +1073,7 @@ On parle alors de <em>généralisation Out-of-Distribution</em>.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

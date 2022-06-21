@@ -1,0 +1,1040 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction à la régression : la régression linéaire &#8212; IA-Z</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Généralisation d’un modèle de Machine Learning" href="05%20-%20Generalisation.html" />
+    <link rel="prev" title="Eléments de définition" href="02%20-%20Elements%20de%20definition.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../README.html">
+   Statut
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02%20-%20Elements%20de%20definition.html">
+     Eléments de définition
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction à la régression : la régression linéaire
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05%20-%20Generalisation.html">
+     Généralisation d’un modèle de Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+     Régularisation &amp; tradeoff biais-variance : une introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+     Régularisation d’un modèle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08%20-%20Compromis%20biais-variance.html">
+     Compromis biais-variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20-%20Feature%20engineering%20%26%20cleaning.html">
+     Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NLP/1_Introduction.html">
+   Chapitre I: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NLP/2_DonneesTextuelles.html">
+   Etude des données textuelles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NLP/3_ModStatLanguage.html">
+   Chapitre II: Notions générales
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NLP/4_ModLangues.html">
+   Modèles de langues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NLP/5_Embedings.html">
+   Embeddings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../NLP/7_bert.html">
+   BERT - Bidirectional Encoder Representations from Transformers
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20RL/intro.html">
+   Reinforcement learning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hors-série
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20annexes/mener_une_recherche.html">
+   Mener une recherche internet efficacement
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/docs/Cours fondamentaux ML/module_1_introduction/03 - Regression lineaire.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/module_1_introduction/03 - Regression lineaire.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/Cours fondamentaux ML/module_1_introduction/03 - Regression lineaire.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-regression">
+   La régression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notre-modele-lineaire">
+   Notre modèle linéaire
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-simple">
+   Exemple simple
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-d-une-regression">
+   Évaluation d’une régression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-squared-error-mse">
+     Mean Squared Error (MSE)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficient-de-determination-r-2">
+     Coefficient de détermination
+     <span class="math notranslate nohighlight">
+      \(R^2\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-regression-lineaire-cest-sympa-mais-comment-ca-marche">
+   La régression linéaire c’est sympa, mais comment ça marche ?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#principe-general">
+     Principe général
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-analytique">
+     (**) Solution analytique
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-concret">
+   Exemple concret
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#avantages-de-la-regression-lineaire">
+   Avantages de la régression linéaire
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplicite">
+     Simplicité
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretabilite">
+     Interprétabilité
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pour-aller-plus-loin">
+   Pour aller plus loin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction à la régression : la régression linéaire</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-regression">
+   La régression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notre-modele-lineaire">
+   Notre modèle linéaire
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-simple">
+   Exemple simple
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-d-une-regression">
+   Évaluation d’une régression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-squared-error-mse">
+     Mean Squared Error (MSE)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficient-de-determination-r-2">
+     Coefficient de détermination
+     <span class="math notranslate nohighlight">
+      \(R^2\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#la-regression-lineaire-cest-sympa-mais-comment-ca-marche">
+   La régression linéaire c’est sympa, mais comment ça marche ?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#principe-general">
+     Principe général
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-analytique">
+     (**) Solution analytique
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple-concret">
+   Exemple concret
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#avantages-de-la-regression-lineaire">
+   Avantages de la régression linéaire
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplicite">
+     Simplicité
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretabilite">
+     Interprétabilité
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pour-aller-plus-loin">
+   Pour aller plus loin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-a-la-regression-la-regression-lineaire">
+<h1>Introduction à la régression : la régression linéaire<a class="headerlink" href="#introduction-a-la-regression-la-regression-lineaire" title="Permalink to this headline">¶</a></h1>
+<p>Nous allons voir dans ce chapitre un premier exemple de régression en présentant la méthode de régression linéaire.</p>
+<p>La régression linéaire est l’un des outils les plus basiques en Machine Learning. Comme son nom l’indique,
+cette méthode résoût une tâche de régression à l’aide d’une droite linéaire.
+Elle est limitée par sa capacité à ne modéliser que des droites, mais elle a l’avantage d’être simple,
+interprétable et robuste à de nouvelles données.</p>
+<div class="section" id="la-regression">
+<h2>La régression<a class="headerlink" href="#la-regression" title="Permalink to this headline">¶</a></h2>
+<p>La tâche de régression a pour but de déterminer la relation entre nos caractéristiques <span class="math notranslate nohighlight">\(x\)</span> et la cible <span class="math notranslate nohighlight">\(y\)</span>, <em>où <span class="math notranslate nohighlight">\(y\)</span> est un nombre réel</em>.</p>
+<p>Supposons que vous êtes agent immobilier et que vous avez répertorié un grand jeu de données concernant des appartements.
+Pour chaque appartement, vous avez un ensemble de caractéristiques <span class="math notranslate nohighlight">\(x\)</span> : sa surface, son prix, son niveau d’isolation…
+L’objectif est d’en extraire un modèle mathématique suffisament fiable pour que vous puissiez déterminer
+le prix <span class="math notranslate nohighlight">\(y\)</span> d’un appartement lorsque vous le visitez à partir de ses caractéristiques.</p>
+<p>Une régression linéaire va permettre de faire le lien entre les caractéristiques et le prix de l’appartement.</p>
+<p>On parle de régression simple lorsque le prix n’est lié qu’à une seule variable explicative, par exemple la surface.
+Mais vous imaginez bien qu’à surface égale, un appartement situé proche du centre ville et des services
+sera plus cher qu’un bien situé en périphérie.
+Dans ce cas là, il faut déterminer le prix en fonction de plusieurs variables explcatives.
+On parle alors de régression multiple.</p>
+</div>
+<div class="section" id="notre-modele-lineaire">
+<h2>Notre modèle linéaire<a class="headerlink" href="#notre-modele-lineaire" title="Permalink to this headline">¶</a></h2>
+<p>Pour résoudre cette tâche de régression, nous modélisons la relation entre nos couples <span class="math notranslate nohighlight">\((x, y)\)</span> par une droite :</p>
+<div class="math notranslate nohighlight">
+\[
+\hat y = \sum_{i=1}^D a_i x_i + b
+\]</div>
+<p><em>Rappel : <span class="math notranslate nohighlight">\(x = (x_1, x_2, \dotsc, x_D)\)</span> est un vecteur de caractéristiques à <span class="math notranslate nohighlight">\(D\)</span> dimensions.</em></p>
+<p>Le modèle effectue donc une combinaison linéaire de toutes les features pour produire une valeur finale représentant la valeur prédite.
+L’apprentissage de ce modèle se fait en déterminant les <span class="math notranslate nohighlight">\(D+1\)</span> valeurs du vecteur <span class="math notranslate nohighlight">\(a = (a_1, a_2, \dotsc, a_D)\)</span> et du biais <span class="math notranslate nohighlight">\(b\)</span>,
+ce sont ses paramètres.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">b_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a_list</span><span class="p">,</span> <span class="n">b_list</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Plusieurs droites selon des valeurs a et b différentes&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;ŷ = ax + b&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Valeur des paramètres&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="545px"
+    src="iframe_figures/figure_2.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>Pour mieux se rendre compte de ce que font les paramètres <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span>,
+on peut afficher le tracé de quelques droites dans le cas où <span class="math notranslate nohighlight">\(x\)</span> (et donc <span class="math notranslate nohighlight">\(a\)</span>) n’a qu’une dimension.</p>
+<p>Visuellement, <span class="math notranslate nohighlight">\(a\)</span> contrôle la pente de la courbe et <span class="math notranslate nohighlight">\(b\)</span> contrôle la hauteur à l’origine <span class="math notranslate nohighlight">\((0, 0)\)</span>.</p>
+</div>
+<div class="section" id="exemple-simple">
+<h2>Exemple simple<a class="headerlink" href="#exemple-simple" title="Permalink to this headline">¶</a></h2>
+<p>Pour illustrer cette méthode, nous allons utiliser un dataset fictif et entraîner le modèle à l’aide de <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.
+<em>Scikit-learn</em> est une librairie qui implémente beaucoup d’algorithmes de Machine Learning et dont la manipulation est simplissime.</p>
+<p>On génère notre dataset à l’aide d’une relation linéaire de la même forme que celle de notre modèle, en ajoutant un peu de bruit pour
+être un peu plus réaliste.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;a=</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Dataset généré aléatoirement (a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;y = ax + b + bruit&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;showlegend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="545px"
+    src="iframe_figures/figure_3.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">a_learn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b_learn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;a=</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> | réel&#39;</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;a=</span><span class="si">{</span><span class="n">a_learn</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, b=</span><span class="si">{</span><span class="n">b_learn</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> | prédiction&#39;</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Prédiction vs valeur réelle&quot;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="545px"
+    src="iframe_figures/figure_4.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
+<p>On peut voir que le modèle a appris des paramètres très proches des coefficients initiaux utilisés pour générer le dataset.</p>
+<p>Bien entendu, il faut bien comprendre que dans un cas réel d’utilisation, nous n’avons pas la connaissance de la vraie valeur de <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span>.
+Pire que ça, on ne sait même pas si la relation entre <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span> sous-jacente est vraiment linéaire ou non !
+Notre modèle permet d’obtenir une image simplifiée du phénomène qui relie <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</div>
+<div class="section" id="evaluation-d-une-regression">
+<h2>Évaluation d’une régression<a class="headerlink" href="#evaluation-d-une-regression" title="Permalink to this headline">¶</a></h2>
+<p>Dans notre exemple simple précédent, nous avons pu visuellement nous rendre compte de la performance de notre modèle.
+Cependant ce n’est pas tout le temps facile d’obtenir une telle visualisation, et puis c’est plus pratique d’avoir un
+score un peu plus objectif afin de comparer plusieurs méthodes sur une même tâche.</p>
+<p>Il existe donc des métriques permettant d’évaluer nos modèles afin de mieux juger leur performance.</p>
+<div class="section" id="mean-squared-error-mse">
+<h3>Mean Squared Error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">¶</a></h3>
+<p>La MSE mesure l’écart moyen entre la prédiction d’un modèle et la valeur réelle attendue.
+Des prédictions parfaites produisent un MSE valant <span class="math notranslate nohighlight">\(0\)</span>.
+Plus un modèle est bon et plus il aura un score proche de <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE} = \frac{1}{N} \sum_{i=1}^N (y_i - \hat y_i)^2
+\]</div>
+<p>Ici :</p>
+<ul class="simple">
+<li><p>Nous avons <span class="math notranslate nohighlight">\(N\)</span> différents exemples dans notre dataset.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> est la valeur réelle pour l’exemple numéro <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat y_i\)</span> est la valeur prédite par le modèle pour cet exemple <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>La MSE est une fonction pratique en optimisation car elle est convexe (minimum unique) et dérivable partout.
+Pour cette raison, elle est souvent utilisée comme objectif à minimiser en plus de simple mesure de performance.</p>
+<p>Le calcul de la MSE peut se faire ainsi dans notre exemple précédent :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MSE = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.924
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="coefficient-de-determination-r-2">
+<h3>Coefficient de détermination <span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#coefficient-de-determination-r-2" title="Permalink to this headline">¶</a></h3>
+<p>Le <span class="math notranslate nohighlight">\(R^2\)</span> mesure la capacité du modèle à prédire les variations de <span class="math notranslate nohighlight">\(y\)</span>.
+On compare le modèle à un modèle basique qui prédirait simplement la moyenne <span class="math notranslate nohighlight">\(\bar y = \frac{1}{N} \sum_{i=1}^N y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+R^2 = 1 - \frac{ \sum_{i=1}^N (y_i - \hat y_i)^2 }{ \sum_{i=1}^N (y_i - \bar y)^2 }
+\]</div>
+<p>On peut analyser le calcul ainsi :</p>
+<ul class="simple">
+<li><p>Le numérateur représente la MSE de notre modèle.</p></li>
+<li><p>Le dénominateur représente la MSE d’un modèle qui prédirait tout le temps la valeur moyenne <span class="math notranslate nohighlight">\(\bar y\)</span>.</p></li>
+</ul>
+<p>Ainsi, plusieurs cas se distinguent :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R^2 = 1\)</span> : le modèle effectue des prédictions parfaites (il a un MSE = 0).</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2 = 0\)</span> : le modèle a la même MSE qu’un modèle prédisant la valeur moyenne <span class="math notranslate nohighlight">\(\bar y\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2 &gt; 0\)</span> : le modèle est meilleur qu’un modèle prédisant la valeur moyenne <span class="math notranslate nohighlight">\(\bar y\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^2 &lt; 0\)</span> : le modèle est moins bon qu’un modèle prédisant la valeur moyenne <span class="math notranslate nohighlight">\(\bar y\)</span>.</p></li>
+</ul>
+<p>Cette mesure synthétise la pertinence de notre modèle en une seule valeur.
+Pour notre exemple précédent, on peut l’obtenir ainsi :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R² = </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R² = 0.955
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="la-regression-lineaire-cest-sympa-mais-comment-ca-marche">
+<h2>La régression linéaire c’est sympa, mais comment ça marche ?<a class="headerlink" href="#la-regression-lineaire-cest-sympa-mais-comment-ca-marche" title="Permalink to this headline">¶</a></h2>
+<p>Chaque méthode de régression a sa propre façon d’apprendre à partir d’un dataset.
+Ce chapitre se concentre sur l’exemple de la régression linéaire donc nous allons regarder de plus près comment
+ce modèle fonctionne plus précisémment.</p>
+<p>Nous avons déjà vu la manière dont la régression linéaire effectue ses prédictions une fois que les paramètres <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> sont appris.
+Nous allons maintenant nous attaquer à l’apprentissage ces paramètres !</p>
+<div class="section" id="principe-general">
+<h3>Principe général<a class="headerlink" href="#principe-general" title="Permalink to this headline">¶</a></h3>
+<p>Comme on l’a vu, on peut mesurer la performance d’un modèle par sa MSE évaluée sur le dataset.
+Pour améliorer notre modèle, on cherche à minimiser la MSE en trouvant les bonnes valeurs de notre vecteur <span class="math notranslate nohighlight">\(a\)</span> et de notre réel <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+a^*, b^* = \arg \min_{a, b} \frac{1}{N} \sum_{i=1}^N (y_i - a^T x + b)^2
+\]</div>
+<p>On utilise la MSE comme fonction de perte car elle a de bonnes propriétés : elle est convexe et dérivable partout.</p>
+<p><em>En réalité, d’autres fonctions de perte sont envisageables, et change légèrement la façon dont on considère le problème.</em></p>
+<p>Pour calculer le minimum de cette fonction, on peut utiliser diverses méthodes basées sur le gradient ou la hessienne par rapport à <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span>.
+On peut aussi directement estimer le minimum à l’aide d’une expression analytique, ce que nous allons voir.</p>
+</div>
+<div class="section" id="solution-analytique">
+<h3>(**) Solution analytique<a class="headerlink" href="#solution-analytique" title="Permalink to this headline">¶</a></h3>
+<p>On démontre ici la solution analytique de la régression linéaire.</p>
+<p>On part de la forme générale où nos données sont un ensemble de paires <span class="math notranslate nohighlight">\((x, y)\)</span> où <span class="math notranslate nohighlight">\(x = (x_1, x_2, \dotsc, x_D)\)</span> est un vecteur contenant <span class="math notranslate nohighlight">\(D\)</span> features
+et <span class="math notranslate nohighlight">\(y\)</span> est un réel.
+Sans manque de généralité, on simplifie le calcul de <span class="math notranslate nohighlight">\(b\)</span> en l’intégrant dans celui de <span class="math notranslate nohighlight">\(a\)</span>.
+Pour cela on remarque qu’il suffit d’ajouter une feature constante valant toujours <span class="math notranslate nohighlight">\(1\)</span> à <span class="math notranslate nohighlight">\(x\)</span>, qui devient alors un vecteur à <span class="math notranslate nohighlight">\(D+1\)</span> dimensions.
+La valeur de <span class="math notranslate nohighlight">\(a_{D+1}\)</span> représente alors la valeur de <span class="math notranslate nohighlight">\(b\)</span>.
+Pour ne pas s’embêter, on garde un vecteur <span class="math notranslate nohighlight">\(x \in \mathbb{R}^D\)</span> à <span class="math notranslate nohighlight">\(D\)</span> dimensions afin d’alléger les notations.</p>
+<p>On pose :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X \in \mathbb{R}^{N \times D}\)</span> : la matrice contenant les features <span class="math notranslate nohighlight">\(x\)</span> de nos données.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y \in \mathbb{R}^{N \times 1}\)</span> : vecteur contenant toutes les vraies valeurs à prédire.</p></li>
+<li><p><span class="math notranslate nohighlight">\(A \in \mathbb{R}^{D \times 1}\)</span> : vecteur de paramètre à apprendre.</p></li>
+</ul>
+<p>L’objectif peut être réécris ainsi :</p>
+<div class="math notranslate nohighlight">
+\[
+\arg \min_{A} \frac{1}{N} (y - \hat y)^T (y - \hat y) = \arg \min_{A} \frac{1}{N} (y - X A)^T (y - X A)
+\]</div>
+<p>Pour trouver l’expression de <span class="math notranslate nohighlight">\(A\)</span> qui minimise cette MSE, on calcule son gradient par rapport à <span class="math notranslate nohighlight">\(A\)</span> et on fixe celui-ci à 0.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\nabla [ \frac{1}{N} (y - X A)^T (y - X A) ] &amp; = -\frac{2}{N} X^T (y - X A) \\
+&amp; = -\frac{2}{N} X^T y + \frac{2}{N} X^T X A \\
+&amp; = 0
+\end{align}\end{split}\]</div>
+<p>On déduit alors facilement l’expression de <span class="math notranslate nohighlight">\(A\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[
+A = (X^T X)^{-1} X^T y
+\]</div>
+<p>L’inverse de <span class="math notranslate nohighlight">\(X^T X\)</span> doit exister pour que cette formule soit valable.
+En pratique, le bruit dans <span class="math notranslate nohighlight">\(X\)</span> lui permet d’éviter le cas difficile où <span class="math notranslate nohighlight">\(X^T X\)</span> n’est pas inversible,
+mais si c’est quand même le cas il existe des <a class="reference external" href="https://www.cs.cmu.edu/~aarti/Class/10315_Fall19/lecs/Lecture16.pdf">astuces</a> pour contourner le problème.</p>
+<p>Notez que cette démonstration est surtout utile pour le côté théorique du résultat.
+En pratique d’autres méthodes existent et sont numériquement plus stable ce qui donnera de meilleurs résultats.</p>
+</div>
+</div>
+<div class="section" id="exemple-concret">
+<h2>Exemple concret<a class="headerlink" href="#exemple-concret" title="Permalink to this headline">¶</a></h2>
+<p>On va maintenant utiliser le dataset <a class="reference external" href="https://scikit-learn.org/stable/datasets/real_world.html#california-housing-dataset"><em>California Housing</em></a> comme exemple plus réaliste que le précédent.
+Ce dataset contient plusieurs caractéristiques sur des maisons de Californie ainsi que leur prix de vente.
+Le but est de faire une régression linéaire capable de prédire le prix des maisons à partir des autres caractéristiques.</p>
+<p>On calcule l’inverse d’une matrice à l’aide de <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Caractéristiques :&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="c1"># Ajoute la feature constante associée à b (voir partie &quot;Solution analytique&quot;)</span>
+<span class="n">b_feature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">b_feature</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">A</span>
+
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Performances :&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MSE = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R² = </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Caractéristiques : MedInc HouseAge AveRooms AveBedrms Population AveOccup Latitude Longitude
+
+Performances :
+MSE = 0.524
+R² = 0.606
+</pre></div>
+</div>
+</div>
+</div>
+<p>Une fois le dataset chargé, le reste ne prends que quelques lignes en Python !</p>
+<p>Une fois que l’on a calculé <span class="math notranslate nohighlight">\(A\)</span>, on peut facilement faire de nouvelles prédictions à l’aide de features collectées sur une maison
+dont vous ne savez pas le prix.</p>
+</div>
+<div class="section" id="avantages-de-la-regression-lineaire">
+<h2>Avantages de la régression linéaire<a class="headerlink" href="#avantages-de-la-regression-lineaire" title="Permalink to this headline">¶</a></h2>
+<p>Pour le moment, nous n’avons vu que la régression linéaire comme modèle de régression.
+Lorsque vous en connaîtrez plusieurs, il sera utile de connaître les différents avantages de chaque méthode afin de mieux
+apréhender les performances de vos modèles et de mieux les comparer.</p>
+<div class="section" id="simplicite">
+<h3>Simplicité<a class="headerlink" href="#simplicite" title="Permalink to this headline">¶</a></h3>
+<p>Le modèle linéaire est simple. Cela peut lui faire défaut lorsque la relation <span class="math notranslate nohighlight">\((x, y)\)</span> est trop complexe pour être modélisée par une combinaison linéaire.
+Mais lorsque la linéairité s’applique, au moins un peu, alors c’est une force.
+<a class="reference external" href="https://fr.wikipedia.org/wiki/Rasoir_d%27Ockham">Les explications simples</a> sont souvent celles qui se rapprochent le plus de la vérité.
+Nous verrons dans les chapitres suivants comment la simplicité permet de mieux généraliser à de nouveaux cas.</p>
+</div>
+<div class="section" id="interpretabilite">
+<h3>Interprétabilité<a class="headerlink" href="#interpretabilite" title="Permalink to this headline">¶</a></h3>
+<p>Les coefficients <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> ont une interprétation naturelle sur le résultat de la prédiction.
+Un <span class="math notranslate nohighlight">\(a_i\)</span> positif va contribuer positivement à la prédiction, et inversement si <span class="math notranslate nohighlight">\(a_i\)</span> est négatif.
+On peut alors facilement déduire l’importance des features sur la prédiction (en prenant la valeur absolue de <span class="math notranslate nohighlight">\(a\)</span>),
+et mieux comprendre l’intéraction entre <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</div>
+</div>
+<div class="section" id="pour-aller-plus-loin">
+<h2>Pour aller plus loin<a class="headerlink" href="#pour-aller-plus-loin" title="Permalink to this headline">¶</a></h2>
+<p>Il est possible de complexifier la relation <span class="math notranslate nohighlight">\((x, y)\)</span> modélisée par notre régression linéaire sans rien changer au fonctionnement de la méthode.
+On peut transformer les features afin d’en créer de nouvelles et les ajouter à la liste des features déjà existantes.
+Si par exemples vous mettez le carré de chaque feature en plus, vous serez capable de modéliser une relation quadratique entre vos features et votre <span class="math notranslate nohighlight">\(y\)</span>.
+Dans le cas où on ajoute des puissances de features à notre ensemble de features, on dit que l’on fait <em>une régression polynomiale</em>.</p>
+<p>La régression linéaire peut aussi facilement se transformer pour faire de la classification binaire.
+Une façon simple de faire serait de considérer <span class="math notranslate nohighlight">\(y \in \{-1, 1\}\)</span> et d’entraîner un modèle comme si on faisait de la régression sur <span class="math notranslate nohighlight">\(y\)</span>.
+Une méthode un peu plus complexe mais bien plus performante serait d’appliquer une <em>sigmoid</em> en sortie du modèle et d’entraîner
+le modèle en minimisant la <em>binary cross-entropy</em>.
+Cette méthode se nomme d’ailleurs la <a class="reference external" href="https://fr.wikipedia.org/wiki/R%C3%A9gression_logistique"><em>régression logistique</em></a> de part sa similarité avec la régression linéaire.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>La régression linéaire est un modèle qui prédit <span class="math notranslate nohighlight">\(y\)</span> en faisant une combinaison linéaire des features <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>La MSE et le R² sont deux bonnes métriques pour évaluer les performances d’une régression.</p></li>
+<li><p>Pour apprendre les paramètres de la régression linéaire, on peut utiliser la MSE comme fonction de perte.</p></li>
+<li><p>La régression linéaire a comme force qu’elle est simple et interprétable.</p></li>
+</ul>
+</div>
+<div class="section" id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.math.univ-toulouse.fr/~besse/Wikistat/pdf/st-l-inf-regsim.pdf">Régression linéaire, Univ de Toulouse</a></p></li>
+<li><p><a class="reference external" href="http://univ.ency-education.com/uploads/1/3/1/0/13102001/secg_lessons06-regression_lineaire.pdf">Régression linéaire, Univ D’Ency</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~aarti/Class/10315_Fall19/lecs/Lecture16.pdf">Régression linéaire régularisée, Carnegie Mellon University</a></p></li>
+<li><p><a class="reference external" href="https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html">California Housing dataset</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Coefficient de détermination, page wiki</a></p></li>
+<li><p><a class="reference external" href="https://fr.wikipedia.org/wiki/R%C3%A9gression_logistique">Régression logistique, page wiki</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours fondamentaux ML/module_1_introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02%20-%20Elements%20de%20definition.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Eléments de définition</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="05%20-%20Generalisation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Généralisation d’un modèle de Machine Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
