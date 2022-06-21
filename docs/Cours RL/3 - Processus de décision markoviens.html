@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processus de décision markoviens (MDPs) &#8212; IA-Z</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mener une recherche internet efficacement" href="../Cours%20annexes/mener_une_recherche.html" />
+    <link rel="prev" title="Introduction au Reinforcement learning" href="1%20-%20Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Statut
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/01%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/02%20-%20Elements%20de%20definition.html">
+     Eléments de définition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/03%20-%20Regression%20lineaire.html">
+     Introduction à la régression : la régression linéaire
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/05%20-%20Generalisation.html">
+     Généralisation d’un modèle de Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+     Régularisation &amp; tradeoff biais-variance : une introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/07%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+     Régularisation d’un modèle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/08%20-%20Compromis%20biais-variance.html">
+     Compromis biais-variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/11%20-%20Feature%20engineering%20%26%20cleaning.html">
+     Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/1_Introduction.html">
+   Chapitre I: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/2_DonneesTextuelles.html">
+   Etude des données textuelles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/3_ModStatLanguage.html">
+   Chapitre II: Notions générales
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/4_ModLangues.html">
+   Modèles de langues
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/5_Embedings.html">
+   Embeddings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NLP/7_bert.html">
+   BERT - Bidirectional Encoder Representations from Transformers
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1%20-%20Introduction.html">
+   Introduction au Reinforcement learning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Processus de décision markoviens (MDPs)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hors-série
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20annexes/mener_une_recherche.html">
+   Mener une recherche internet efficacement
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours RL/3 - Processus de décision markoviens.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours RL/3 - Processus de décision markoviens.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Processus de décision markoviens (MDPs)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elements-d-un-mdp">
+     Eléments d’un MDP
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notation-formelle">
+     Notation formelle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comportement-de-l-agent-dans-un-mdp">
+   Comportement de l’agent dans un MDP
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#episodique-vs-continu">
+     Episodique vs Continu
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#taches-episodiques">
+       Tâches épisodiques
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#taches-continues">
+       Tâches continues
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#facteur-de-devaluation-gamma">
+     Facteur de dévaluation
+     <span class="math notranslate nohighlight">
+      \(\gamma\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Processus de décision markoviens (MDPs)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Processus de décision markoviens (MDPs)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elements-d-un-mdp">
+     Eléments d’un MDP
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notation-formelle">
+     Notation formelle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comportement-de-l-agent-dans-un-mdp">
+   Comportement de l’agent dans un MDP
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#episodique-vs-continu">
+     Episodique vs Continu
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#taches-episodiques">
+       Tâches épisodiques
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#taches-continues">
+       Tâches continues
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#facteur-de-devaluation-gamma">
+     Facteur de dévaluation
+     <span class="math notranslate nohighlight">
+      \(\gamma\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources">
+   Sources
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="processus-de-decision-markoviens-mdps">
+<h1>Processus de décision markoviens (MDPs)<a class="headerlink" href="#processus-de-decision-markoviens-mdps" title="Permalink to this headline">¶</a></h1>
+<p>Les processus de décision markoviens (ou MDPs en anglais) constituent les bases-mêmes du <strong>reinforcement learning</strong>.</p>
+<p>Comme dit dans l’introduction, le but d’un agent intelligent est de prendre une décision et, si possible, une décision bénéfique pour l’agent, c’est-à-dire une décision rapprochant l’agent de l’objectif spécifié.</p>
+<div class="section" id="elements-d-un-mdp">
+<h2>Eléments d’un MDP<a class="headerlink" href="#elements-d-un-mdp" title="Permalink to this headline">¶</a></h2>
+<p>Un MDP comprend plusieurs éléments à savoir:</p>
+<ul class="simple">
+<li><p>Un agent</p></li>
+<li><p>Un environnement</p></li>
+<li><p>Des états (observations de l’environnement)</p></li>
+<li><p>Des actions</p></li>
+<li><p>Des récompenses</p></li>
+</ul>
+<img src="https://www.kdnuggets.com/images/mathworks-reinforcement-learning-fig1-543.jpg">
+<p>Ainsi, l’agent interagit avec l’environnement dans lequel il se trouve par le biais d’actions qui modifient l’état actuel et engendre une récompense en fonction du nouvel état acquis.</p>
+<div class="figure align-default" id="id1">
+<img alt="https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg" src="https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Schéma d’un MDP.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Ce processus de sélection d’une action <span class="math notranslate nohighlight">\(a\)</span> à partir d’un état <span class="math notranslate nohighlight">\(s\)</span> pour transitionner vers un nouvel état <span class="math notranslate nohighlight">\(s'\)</span> en recevant une récompense <span class="math notranslate nohighlight">\(r\)</span> survient de manière séquentielle, c’est-à-dire, le processus se répète et retourne un item appelé <strong>trajectoire</strong>.</p>
+<p>Une trajectoire est composée de telle sorte : <span class="math notranslate nohighlight">\((s, a, r, s')\)</span></p>
+<p>Ainsi, le <strong>but</strong> de l’agent est de maximiser les récompenses cumulatives obtenues de par ses interactions avec l’environnement.</p>
+</div>
+<div class="section" id="notation-formelle">
+<h2>Notation formelle<a class="headerlink" href="#notation-formelle" title="Permalink to this headline">¶</a></h2>
+<p>Tout ce que l’on vient d’énoncer peut être écrit de manière plus formelle afin d’écrire des formules pour calculer la récompense <span class="math notranslate nohighlight">\(r\)</span> pour une action <span class="math notranslate nohighlight">\(a\)</span> et un état <span class="math notranslate nohighlight">\(s\)</span> à un instant <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Les états forment un ensemble fini d’états noté <span class="math notranslate nohighlight">\(S\)</span>, de même pour l’ensemble d’actions <span class="math notranslate nohighlight">\(A\)</span> et l’ensemble des récompenses <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p>On dit que pour chaque instant <span class="math notranslate nohighlight">\(t\)</span>, l’agent reçoit une représentation de l’environnement noté <span class="math notranslate nohighlight">\(S_{t} \in S\)</span> et l’agent prendra une action <span class="math notranslate nohighlight">\(A_{t} \in A\)</span>. On a donc notre couple <span class="math notranslate nohighlight">\((S_{t}, A_{t})\)</span> qui va nous permettre de calculer la récompense pour le prochain état <span class="math notranslate nohighlight">\(S_{t+1}\)</span>.</p>
+<p>Un MDP fait l’hypothèse qu’un agent peut prendre les actions optimales <span class="math notranslate nohighlight">\(A_t\)</span> en se basant uniquement sur l’état courant <span class="math notranslate nohighlight">\(S_t\)</span> (sans l’information des états précédents).
+Cette hypothèse est valide dans beaucoup de cas, comme par exemple au jeu d’echec (le plateau donne toutes les informations nécessaires pour trouver le coup optimal).
+Elle peut être invalide dans certaines situations, où l’observation de l’environnement <span class="math notranslate nohighlight">\(S_t\)</span> manque d’information qui a pu être obtenue auparavant.
+Par exemple, on peut penser à un FPS, où la vue en première personne ne permet pas de voir l’ensemble du monde qui entoure le joueur.
+Naturellement, un joueur va retenir ce qu’il a observé dans le passer pour se construire une représentation mentale du monde dans lequel il joue.</p>
+<p>Si l’on veut se replacer un instant dans le schéma présenté plus haut:</p>
+<ul class="simple">
+<li><p>L’agent reçoit une représentation de l’environnement (<span class="math notranslate nohighlight">\(S_{t}\)</span>):</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<img alt="../../_images/rl_3_1.png" src="../../_images/rl_3_1.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Réception d’un état <span class="math notranslate nohighlight">\(S_t\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>L’agent prend une action (<span class="math notranslate nohighlight">\(A_{t}\)</span>) en fonction de <span class="math notranslate nohighlight">\(S_{t}\)</span>:</p></li>
+</ul>
+<div class="figure align-default" id="id3">
+<img alt="../../_images/rl_3_2.jpg" src="../../_images/rl_3_2.jpg" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Envoie d’une action <span class="math notranslate nohighlight">\(A_t\)</span>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>La récompense <span class="math notranslate nohighlight">\(R_{t}\)</span> n’est calculée que lors du prochain état.</p>
+<p>C’est-à-dire <span class="math notranslate nohighlight">\(R_t = f(A_{t-1}, S_{t-1})\)</span> ou <span class="math notranslate nohighlight">\(R_{t+1} = f(A_{t}, S_{t})\)</span>.
+C’est l’environnement qui spécifie lui-même le comportement de la fonction <span class="math notranslate nohighlight">\(f\)</span> qui calcule la récompense.
+Notez que cette fonction est inconnue pour l’agent qui va jouer avec l’environnement, son but est justement de mieux la saisir pour maximiser son <strong>gain</strong> (on en parle en dessous).</p>
+<p>L’agent reçoit donc la récompense <span class="math notranslate nohighlight">\(R_{t+1}\)</span> calculée à partir du couple <span class="math notranslate nohighlight">\((S_{t}, A_{t})\)</span>:</p>
+<div class="figure align-default" id="id4">
+<img alt="../../_images/rl_3_3.png" src="../../_images/rl_3_3.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Réception d’une récompense <span class="math notranslate nohighlight">\(R_{t+1}\)</span>.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Et l’agent entre dans un nouvel état <span class="math notranslate nohighlight">\(S_{t+1}\)</span> (i.e. une nouvelle représentation de l’environnement actualisé) dans lequel il aura encore à choisir une action parmi l’ensemble <span class="math notranslate nohighlight">\(A\)</span>.
+De la même façon que pour les récompenses <span class="math notranslate nohighlight">\(R\)</span>, l’agent ne connait généralement pas la fonction de transition qui a permis de passer de <span class="math notranslate nohighlight">\(S_t\)</span> à <span class="math notranslate nohighlight">\(S_{t+1}\)</span>.
+C’est à lui de comprendre le comportement de l’environnement à travers les intéractions qu’il a avec ce dernier.</p>
+<p>Avec tout ceci, vous devriez avoir une bonne base concernant l’intuition derrière les processus de décision markoviens qui construisent les premières pierres de l’édifice du reinforcement learning.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="comportement-de-l-agent-dans-un-mdp">
+<h1>Comportement de l’agent dans un MDP<a class="headerlink" href="#comportement-de-l-agent-dans-un-mdp" title="Permalink to this headline">¶</a></h1>
+<p>On vient de parler plus haut du concept de récompense cumulative. Pour rappel, un agent ne cherchera pas à maximiser la récompense à un instant <span class="math notranslate nohighlight">\(t\)</span> mais bien la cumulation de toutes les récompenses.</p>
+<p>On introduit alors ici, le concept de <strong>gain</strong> noté <span class="math notranslate nohighlight">\(G\)</span>, comme étant donc la cumulation de toutes les récompenses.</p>
+<p>Ainsi, pour un instant <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[G = R_t + R_{t+1} + R_{t+2} + R_{t+3} + ... + R_T\]</div>
+<p>où <span class="math notranslate nohighlight">\(T\)</span> est l’instant correspondant au dernier état.</p>
+<p><span class="math notranslate nohighlight">\(G\)</span> est alors un indicateur très important pour l’agent qui se déplace dans l’environnement puisque son but va être de maximiser cette variable. C’est donc en fonction de cette formule qu’il va être amené à prendre certaines actions.</p>
+<div class="section" id="episodique-vs-continu">
+<h2>Episodique vs Continu<a class="headerlink" href="#episodique-vs-continu" title="Permalink to this headline">¶</a></h2>
+<p>On peut différencier deux types de tâches intervenant dans les MDPs.</p>
+<div class="section" id="taches-episodiques">
+<h3>Tâches épisodiques<a class="headerlink" href="#taches-episodiques" title="Permalink to this headline">¶</a></h3>
+<p>Certaines tâches peuvent se découper en plus petites séquences que l’on appelle <strong>épisodes</strong>. C’est le cas notamment des jeux où chaque partie serait un épisode.</p>
+<p>Dans le cas d’une tâche épisodique, le calcul du gain comme présenté précédemment avec un instant final <span class="math notranslate nohighlight">\(T\)</span> fait complètement sens puisque l’on a bien une fin dans l’épisode (i.e. fin de la partie).</p>
+<img alt="https://mario.wiki.gallery/images/d/d1/Fireworks.gif" src="https://mario.wiki.gallery/images/d/d1/Fireworks.gif" />
+</div>
+<div class="section" id="taches-continues">
+<h3>Tâches continues<a class="headerlink" href="#taches-continues" title="Permalink to this headline">¶</a></h3>
+<p>En revanche, certaines tâches ne peuvent pas être découpées en épisodes, on parle de tâches <strong>continues</strong>.</p>
+<p>Ces tâches n’ont pas d’état de fin, elles continuent jusqu’à le programme soit stoppé. Par conséquent, on part du principe que <span class="math notranslate nohighlight">\(T = \infty\)</span>.</p>
+<p>Pour prendre un exemple concret, un robot apprenant à marcher tout seul dans un grand environnement physique serait considéré comme une tâche continue.</p>
+<img alt="https://miro.medium.com/max/700/1*-5XOp7v7ZVIa_DCTl1FicA.gif" src="https://miro.medium.com/max/700/1*-5XOp7v7ZVIa_DCTl1FicA.gif" />
+<p>Alors, qu’arrive-t-il au calcul du gain lorsque l’on fait face à une tâche continue ?</p>
+</div>
+</div>
+<div class="section" id="facteur-de-devaluation-gamma">
+<h2>Facteur de dévaluation <span class="math notranslate nohighlight">\(\gamma\)</span><a class="headerlink" href="#facteur-de-devaluation-gamma" title="Permalink to this headline">¶</a></h2>
+<p>Dans une tâche continue particulèrement, au lieu d’essayer de maximiser le gain, l’agent essaiera pour ce type de tâches, de maximiser la gain dévalué (<em>discounted return</em> en anglais).</p>
+<p>Afin de définir ce gain dévalué, on introduit <span class="math notranslate nohighlight">\(\gamma\)</span> en tant que facteur de dévaluation qui sera compris entre <span class="math notranslate nohighlight">\(0\)</span> et <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Ainsi, le gain dévalué est maintenant défini tel que :</p>
+<div class="math notranslate nohighlight">
+\[G = R_t + \gamma^1 R_{t+1} +  \gamma^2 R_{t+2} +  \gamma^2 R_{t+3} + ...\]</div>
+<div class="math notranslate nohighlight">
+\[G = \sum_{k=0}^{\infty}\gamma^k R_{t+k+1}\]</div>
+<p>Et voilà ! La formule peut sembler barbare mais lorsque l’on décompose, ce n’est pas si compliqué que ça.</p>
+<p>On peut remarquer que cette nouvelle définition du gain va conduire l’agent à se soucier plus des récompenses immédiates que des récompenses qui lui seront données pour des états lointains. Cela est dû au fait que la dévaluation (<span class="math notranslate nohighlight">\(\gamma\)</span>) est plus importante au fur et à mesure que l’agent parcourt l’environnement.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Un processus de décision markovien (MDP) est composé d’un agent, d’un environnement, d’états, d’actions et de récompenses.</p></li>
+<li><p>Il fait l’hypothèse que toute l’information nécessaire à l’agent pour prendre une action optimale est donnée par l’état courant de l’environnement <span class="math notranslate nohighlight">\(S_t\)</span>.</p></li>
+<li><p>Par le biais de ses actions sur l’environnement et en fonction de l’état dans lequel il se trouve, l’agent obtient des récompenses qui l’aident dans sa prise de décision.</p></li>
+<li><p>Pour faire sa décision, un <strong>gain</strong> est calculé sur la base des récompenses que l’agent obtient pour chaque état parcouru à un instant <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Parfois, la tâche n’est pas épisodique mais continue, donc on introduit un facteur de dévaluation <span class="math notranslate nohighlight">\(\gamma\)</span>.</p></li>
+</ul>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="sources">
+<h1>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h1>
+<p>Ce cours est inspiré de ressources diverses provenant d’Internet.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://deeplizard.com/learn/video/my207WNoeyA">https://deeplizard.com/learn/video/my207WNoeyA</a></p></li>
+<li><p><a class="reference external" href="https://fr.wikipedia.org/wiki/Apprentissage_par_renforcement">https://fr.wikipedia.org/wiki/Apprentissage_par_renforcement</a></p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours RL"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="1%20-%20Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction au Reinforcement learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../Cours%20annexes/mener_une_recherche.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mener une recherche internet efficacement</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
