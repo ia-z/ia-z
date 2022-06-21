@@ -16,7 +16,7 @@ Voir CV doit être :
 - Énumérer les titres (tels que Expérience) par ordre d'importance.
 - Dans les titres, énumérez les informations dans l'ordre chronologique inverse (les plus récentes en premier).
 - Mettre en évidence ton Github et ton Linkedin (avec de préférence des liens cliquables).
-- Mettre en évidence tes compétences personnelles : si tu es sportif de haut niveau, musicien cheuvronné, gamer de haut niveau n'hésite pas à le mettre en avant.
+- Mettre en évidence tes compétences personnelles : si tu es sportif de haut niveau, musicien chevronné, gamer de haut niveau n'hésite pas à le mettre en avant.
 
 Les erreurs à ne pas faire :
 
@@ -27,4 +27,4 @@ Les erreurs à ne pas faire :
 - Utiliser un style narratif.
 - Utiliser de l'argot ou des expressions familières.
 - Inclure l'âge ou le sexe.
-- Commencez chaque ligne par une date.
+- Commencer chaque ligne par une date.

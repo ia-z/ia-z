@@ -32,7 +32,7 @@ iA-Z est conçue pour fournir des enseignements destinés à un public déjà se
 
 #### Perimètre
 - La plateforme web a pour objectif de former et sensibiliser à la data science
--	Les enseignements apportés sont segmentés en notions, elles même découpées en cours
+-	Les enseignements apportés sont segmentés en notions, elles-mêmes découpées en cours
 -	Les cours ont pour but de donner une information claire, concise au possible et illustrée par des exemples
 -	Possibilité d’ajouter des ressources externes à la fin de chaque cours pour approfondir les cours disponibles sur la plateforme
 -	La plateforme web recense tous les éléments cités au-dessus

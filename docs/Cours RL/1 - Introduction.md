@@ -1,5 +1,5 @@
 # Introduction au Reinforcement learning
-Vous êtes un joueur capable d'intéragir avec un environnement.
+Vous êtes un joueur capable d'interagir avec un environnement.
 Vous voulez jouer les meilleurs coups à chaque fois que c'est à vous de prendre une décision.
 La seule chose qui vous intéresse, c'est qu'à la fin de la partie vous ayez le meilleur score possible.
 
@@ -34,22 +34,22 @@ Comment trouver à un instant précis quel est le déplacement optimal de ses me
 par terre et qu'il avance en avant ?
 
 C'est alors qu'entre en scène le **reinforcement learning**. Cette méthode d'apprentissage se distingue des autres
-paradigmes car ici l'agent apprend activement. L'agent intéragit avec l'environnement et apprends grâce à ses
-intéractions et aux retours que lui fournissent celles-ci. A chaque décision, l'agent reçoit une récompense
-et apprends petit à petit comment maximiser la somme des récompenses finales obtenues. Ainsi,
-nous n'avons plus besoin de donner les coups optimaux, **c'est l'agent qui apprends les coups optimaux tout seul**.
+paradigmes car ici l'agent apprend activement. L'agent interagit avec l'environnement et apprend grâce à ses
+interactions et aux retours que lui fournissent celles-ci. A chaque décision, l'agent reçoit une récompense
+et apprend petit à petit comment maximiser la somme des récompenses finales obtenues. Ainsi,
+nous n'avons plus besoin de donner les coups optimaux, **c'est l'agent qui apprend les coups optimaux tout seul**.
 
 Les enjeux principaux deviennent alors:
 
-* La création d'un environnement dans lequel un agent peut intéragir
+* La création d'un environnement dans lequel un agent peut interagir
 * Le choix des récompenses à donner en fonction du coup de l'agent et de l'état de l'environnement
 
 Le problème peut alors être bien plus simple à modéliser. Simuler une partie d'échec n'est pas trop compliqué.
-Donner une récompense de +1 lorsque l'agent gagne la partie, et -1 lorsque l'agent perds la partie est simple.
+Donner une récompense de +1 lorsque l'agent gagne la partie, et -1 lorsque l'agent perd la partie est simple.
 D'autres challenges apparaissent, mais ce paradigme a eu le temps de maturer et il existe maintenant des
 algorithmes d'entraînement solides permettant de faire face à ces challenges.
 
-Comment entraîner un agent à partir de ses intéractions ? Quelles sont les limites de ce mode d'entraînement ?
+Comment entraîner un agent à partir de ses interactions ? Quelles sont les limites de ce mode d'entraînement ?
 Comment choisir les récompenses ? Quels sont les challenges auxquels il faut faire face ?
 L'étude de ces questions est exactement le sujet du reinforcement learning !
 
