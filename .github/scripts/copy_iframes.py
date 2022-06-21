@@ -1,7 +1,17 @@
 import os
 import shutil
+import logging
 from argparse import ArgumentParser
 from typing import Callable
+
+# Logging informations
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ]
+)
 
 IFRAMES_FOLDER = "iframe_figures"
 
@@ -20,25 +30,27 @@ def copy_iframes(current_directory: str, root_directory: str, verbose: bool = Tr
         verbose (bool, optional): Verbose of the function. Defaults to True.
     """
     # Let the function raise exceptions if no 'iframe_figures' directory found.
-    assert IFRAMES_FOLDER in os.listdir(current_directory), f"No subdirectory '{IFRAMES_FOLDER}' found inside '{current_directory}'!"
+    if IFRAMES_FOLDER not in os.listdir(current_directory):
+        logging.warning("No iframes in %s", current_directory)
+        return
 
     # Define absolute path of iframes folder as it should be
     absolute_current_directory = os.path.abspath(current_directory)
     absolute_iframes_folder = os.path.join(absolute_current_directory, IFRAMES_FOLDER)
-    if verbose: print(f"Built iframes absolute path : '{absolute_iframes_folder}'.")
+    if verbose: logging.info("Built iframes absolute path : '%s'.", absolute_iframes_folder)
     # Define absolute root directory as it should be
     absolute_root_directory = os.path.abspath(root_directory)
-    if verbose: print(f"Built root absolute path : '{absolute_iframes_folder}'.")
+    if verbose: logging.info("Built root absolute path : '%s'.", absolute_root_directory)
     # Find common path in absolute directories
     common_path = os.path.commonpath([absolute_iframes_folder, absolute_root_directory])
-    complete_path = absolute_iframes_folder.split(common_path)[1]
-    website_path = os.path.join(absolute_root_directory, '_build', 'html', complete_path)
-    if verbose: print(f"Define website path where to make the copy : '{website_path}'.")
-    print(f"Copying '{complete_path}'.")
+    complete_path = absolute_iframes_folder.split(common_path)[-1]
+    website_path = f"{os.path.join(absolute_root_directory, '_build', 'html')}{complete_path}"
+    if verbose: logging.info("Define website path where to make the copy : '%s'.", website_path)
+    logging.info("Copying '%s' to %s", absolute_iframes_folder, website_path)
     shutil.copytree(absolute_iframes_folder, website_path)
-    print(f"Copied sucessfully '{complete_path}'.")
+    logging.info("Copied sucessfully to '%s'.", website_path)
 
-def apply_recursive(current_directory: str, applied_function: Callable[[str], None]):
+def apply_recursive(current_directory: str, applied_function: Callable[[str], None]) -> None:
     """Check recursively if 'iframe_figures' is in the 'current_directory'.
     If so, call the function `applied_function` with the path of the directory containing 'iframe_figures.
     If not, call this function recursively on all child directories.
@@ -49,7 +61,7 @@ def apply_recursive(current_directory: str, applied_function: Callable[[str], No
     """
     current_directory_subdirectories = [ dirname for dirname in os.listdir(current_directory) if os.path.isdir(os.path.join(current_directory, dirname)) ]
     for directory_name in current_directory_subdirectories:
-        if directory_name == IFRAMES_FOLDER: applied_function(directory_name)
+        if directory_name == IFRAMES_FOLDER: applied_function(current_directory)
         else: apply_recursive(os.path.join(current_directory, directory_name), applied_function)
 
 
