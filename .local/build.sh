@@ -2,10 +2,7 @@
 
 # Declare the source of venv for Linux/Windows (Fuck Mac =))
 python_source_activate=.venv/Scripts/activate
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ];
-then
-    python_source_activate=.venv/bin/activate
-fi
+[ "$(expr substr $(uname -s) 1 5)" == "Linux" ] && python_source_activate=.venv/bin/activate
 
 if [ -d "$(pwd)/.local" ]
 then
