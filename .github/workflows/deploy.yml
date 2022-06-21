@@ -28,6 +28,9 @@ jobs:
     # Build web project using jupyter-book
     - name: Build Jupyter-Book
       run: jupyter-book build .
+    # Copy iframes where we want to have iframes
+    - name: Copy iframes from compiled notebooks to website
+      run: python .github/scripts/copy_iframes.py . docs/
     # Upload the artifact to be used in next job
     - uses: actions/upload-artifact@v2
       with:

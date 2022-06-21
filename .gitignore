@@ -8,3 +8,6 @@ _build/
 venv/
 
 .DS_Store
+
+# Notebook outputs
+**/iframe_figures/
