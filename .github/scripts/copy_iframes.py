@@ -43,7 +43,7 @@ def copy_iframes(current_directory: str, root_directory: str, verbose: bool = Tr
     website_path = f"{os.path.join(absolute_root_directory, '_build', 'html')}{complete_path}"
     if verbose: logger.info("Define website path where to make the copy : '%s'.", website_path)
     logger.info("Copying '%s' to %s", absolute_iframes_folder, website_path)
-    #shutil.copytree(absolute_iframes_folder, website_path)
+    shutil.copytree(absolute_iframes_folder, website_path)
     logger.info("Copied sucessfully to '%s'.", website_path)
 
 def apply_recursive(current_directory: str, applied_function: Callable[[str], None]) -> None:
