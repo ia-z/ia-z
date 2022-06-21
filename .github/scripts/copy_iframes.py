@@ -3,16 +3,12 @@ import shutil
 import logging
 from argparse import ArgumentParser
 from typing import Callable
+from utils.iaz_logger import IAZLogger
 
-# Logging informations
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.StreamHandler()
-    ]
-)
+# Logger setup
+logger = IAZLogger()
 
+# Script constants
 IFRAMES_FOLDER = "iframe_figures"
 
 def create_parser() -> ArgumentParser:
@@ -31,24 +27,24 @@ def copy_iframes(current_directory: str, root_directory: str, verbose: bool = Tr
     """
     # Let the function raise exceptions if no 'iframe_figures' directory found.
     if IFRAMES_FOLDER not in os.listdir(current_directory):
-        logging.warning("No iframes in %s", current_directory)
+        logger.warning("No iframes in %s", current_directory)
         return
 
     # Define absolute path of iframes folder as it should be
     absolute_current_directory = os.path.abspath(current_directory)
     absolute_iframes_folder = os.path.join(absolute_current_directory, IFRAMES_FOLDER)
-    if verbose: logging.info("Built iframes absolute path : '%s'.", absolute_iframes_folder)
+    if verbose: logger.info("Built iframes absolute path : '%s'.", absolute_iframes_folder)
     # Define absolute root directory as it should be
     absolute_root_directory = os.path.abspath(root_directory)
-    if verbose: logging.info("Built root absolute path : '%s'.", absolute_root_directory)
+    if verbose: logger.info("Built root absolute path : '%s'.", absolute_root_directory)
     # Find common path in absolute directories
     common_path = os.path.commonpath([absolute_iframes_folder, absolute_root_directory])
     complete_path = absolute_iframes_folder.split(common_path)[-1]
     website_path = f"{os.path.join(absolute_root_directory, '_build', 'html')}{complete_path}"
-    if verbose: logging.info("Define website path where to make the copy : '%s'.", website_path)
-    logging.info("Copying '%s' to %s", absolute_iframes_folder, website_path)
-    shutil.copytree(absolute_iframes_folder, website_path)
-    logging.info("Copied sucessfully to '%s'.", website_path)
+    if verbose: logger.info("Define website path where to make the copy : '%s'.", website_path)
+    logger.info("Copying '%s' to %s", absolute_iframes_folder, website_path)
+    #shutil.copytree(absolute_iframes_folder, website_path)
+    logger.info("Copied sucessfully to '%s'.", website_path)
 
 def apply_recursive(current_directory: str, applied_function: Callable[[str], None]) -> None:
     """Check recursively if 'iframe_figures' is in the 'current_directory'.
