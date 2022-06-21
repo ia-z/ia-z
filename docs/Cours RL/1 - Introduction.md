@@ -1,4 +1,4 @@
-# Reinforcement learning
+# Introduction au Reinforcement learning
 Vous êtes un joueur capable d'intéragir avec un environnement.
 Vous voulez jouer les meilleurs coups à chaque fois que c'est à vous de prendre une décision.
 La seule chose qui vous intéresse, c'est qu'à la fin de la partie vous ayez le meilleur score possible.

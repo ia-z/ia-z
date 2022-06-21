@@ -13,15 +13,20 @@ Un MDP comprend plusieurs éléments à savoir:
 * Des actions
 * Des récompenses
 
+
 <img src="https://www.kdnuggets.com/images/mathworks-reinforcement-learning-fig1-543.jpg">
 
 Ainsi, l'agent interagit avec l'environnement dans lequel il se trouve par le biais d'actions qui modifient l'état actuel et engendre une récompense en fonction du nouvel état acquis.
 
+:::{figure-md}
 <img src="https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg">
+
+Schéma d'un MDP.
+:::
 
 Ce processus de sélection d'une action $a$ à partir d'un état $s$ pour transitionner vers un nouvel état $s'$ en recevant une récompense $r$ survient de manière séquentielle, c'est-à-dire, le processus se répète et retourne un item appelé **trajectoire**.
 
-Une trajectoire est composée de telle sorte : $(s, a, s', r)$
+Une trajectoire est composée de telle sorte : $(s, a, r, s')$
 
 Ainsi, le **but** de l'agent est de maximiser les récompenses cumulatives obtenues de par ses interactions avec l'environnement.
 
@@ -33,24 +38,45 @@ Les états forment un ensemble fini d'états noté $S$, de même pour l'ensemble
 
 On dit que pour chaque instant $t$, l'agent reçoit une représentation de l'environnement noté $S_{t} \in S$ et l'agent prendra une action $A_{t} \in A$. On a donc notre couple $(S_{t}, A_{t})$ qui va nous permettre de calculer la récompense pour le prochain état $S_{t+1}$.
 
+Un MDP fait l'hypothèse qu'un agent peut prendre les actions optimales $A_t$ en se basant uniquement sur l'état courant $S_t$ (sans l'information des états précédents).
+Cette hypothèse est valide dans beaucoup de cas, comme par exemple au jeu d'echec (le plateau donne toutes les informations nécessaires pour trouver le coup optimal).
+Elle peut être invalide dans certaines situations, où l'observation de l'environnement $S_t$ manque d'information qui a pu être obtenue auparavant.
+Par exemple, on peut penser à un FPS, où la vue en première personne ne permet pas de voir l'ensemble du monde qui entoure le joueur.
+Naturellement, un joueur va retenir ce qu'il a observé dans le passer pour se construire une représentation mentale du monde dans lequel il joue.
+
 Si l'on veut se replacer un instant dans le schéma présenté plus haut:
 * L'agent reçoit une représentation de l'environnement ($S_{t}$):
 
-<img src="./src/rl_3_1.png">
+:::{figure-md}
+<img src="src/rl_3_1.png">
 
+Réception d'un état $S_t$.
+:::
 * L'agent prend une action ($A_{t}$) en fonction de $S_{t}$:
 
-<img src="./src/rl_3_2.jpg">
+:::{figure-md}
+<img src="src/rl_3_2.jpg">
+
+Envoie d'une action $A_t$.
+:::
 
 La récompense $R_{t}$ n'est calculée que lors du prochain état.
 
-C'est-à-dire $R_t = f(A_{t-1}, S_{t-1})$ ou $R_{t+1} = f(A_{t}, S_{t})$
+C'est-à-dire $R_t = f(A_{t-1}, S_{t-1})$ ou $R_{t+1} = f(A_{t}, S_{t})$.
+C'est l'environnement qui spécifie lui-même le comportement de la fonction $f$ qui calcule la récompense.
+Notez que cette fonction est inconnue pour l'agent qui va jouer avec l'environnement, son but est justement de mieux la saisir pour maximiser son **gain** (on en parle en dessous).
 
 L'agent reçoit donc la récompense $R_{t+1}$ calculée à partir du couple $(S_{t}, A_{t})$:
 
-<img src="./src/rl_3_3.png">
+:::{figure-md}
+<img src="src/rl_3_3.png">
+
+Réception d'une récompense $R_{t+1}$.
+:::
 
 Et l'agent entre dans un nouvel état $S_{t+1}$ (i.e. une nouvelle représentation de l'environnement actualisé) dans lequel il aura encore à choisir une action parmi l'ensemble $A$.
+De la même façon que pour les récompenses $R$, l'agent ne connait généralement pas la fonction de transition qui a permis de passer de $S_t$ à $S_{t+1}$.
+C'est à lui de comprendre le comportement de l'environnement à travers les intéractions qu'il a avec ce dernier.
 
 Avec tout ceci, vous devriez avoir une bonne base concernant l'intuition derrière les processus de décision markoviens qui construisent les premières pierres de l'édifice du reinforcement learning.
 
@@ -107,14 +133,15 @@ Et voilà ! La formule peut sembler barbare mais lorsque l'on décompose, ce n'e
 
 On peut remarquer que cette nouvelle définition du gain va conduire l'agent à se soucier plus des récompenses immédiates que des récompenses qui lui seront données pour des états lointains. Cela est dû au fait que la dévaluation ($\gamma$) est plus importante au fur et à mesure que l'agent parcourt l'environnement.
 
-## Conclusion
+# Conclusion
 
 * Un processus de décision markovien (MDP) est composé d'un agent, d'un environnement, d'états, d'actions et de récompenses.
+* Il fait l'hypothèse que toute l'information nécessaire à l'agent pour prendre une action optimale est donnée par l'état courant de l'environnement $S_t$.
 * Par le biais de ses actions sur l'environnement et en fonction de l'état dans lequel il se trouve, l'agent obtient des récompenses qui l'aident dans sa prise de décision.
 * Pour faire sa décision, un **gain** est calculé sur la base des récompenses que l'agent obtient pour chaque état parcouru à un instant $t$.
 * Parfois, la tâche n'est pas épisodique mais continue, donc on introduit un facteur de dévaluation $\gamma$.
 
-## Sources
+# Sources
 
 Ce cours est inspiré de ressources diverses provenant d'Internet.
 * https://deeplizard.com/learn/video/my207WNoeyA
