@@ -52,6 +52,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Embeddings" href="5_Embedings.html" />
@@ -365,13 +367,47 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modeles-unigram-bigram-ngram">
-   Modèles unigram/bigram/ngram
+  <a class="reference internal nav-link" href="#modeles-n-gram">
+   Modèles N-gram
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimation-de-la-probabilite-maximale">
+     Estimation de la probabilité maximale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lissage-de-laplace-laplace-smoothing">
+     Lissage de Laplace (Laplace smoothing)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-1-smoothing">
+       Add-1 smoothing:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-k-smoothing">
+       Add-k smoothing:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unigram-prior-smoothing">
+       Unigram Prior smoothing:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lissage-de-good-turing-good-turing-smoothing">
+     Lissage de Good-Turing (Good-Turing smoothing)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perplexite">
-   Perplexité
+  <a class="reference internal nav-link" href="#evaluation-et-perplexite">
+   Evaluation et Perplexité
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -380,13 +416,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#classification-de-texte">
-     Classification de texte
+    <a class="reference internal nav-link" href="#generation-de-texte">
+     Génération de texte
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generation-de-texte">
-     Génération de texte
+    <a class="reference internal nav-link" href="#classification-de-texte">
+     Classification de texte
     </a>
    </li>
   </ul>
@@ -417,13 +453,47 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modeles-unigram-bigram-ngram">
-   Modèles unigram/bigram/ngram
+  <a class="reference internal nav-link" href="#modeles-n-gram">
+   Modèles N-gram
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimation-de-la-probabilite-maximale">
+     Estimation de la probabilité maximale
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lissage-de-laplace-laplace-smoothing">
+     Lissage de Laplace (Laplace smoothing)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-1-smoothing">
+       Add-1 smoothing:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#add-k-smoothing">
+       Add-k smoothing:
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unigram-prior-smoothing">
+       Unigram Prior smoothing:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lissage-de-good-turing-good-turing-smoothing">
+     Lissage de Good-Turing (Good-Turing smoothing)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perplexite">
-   Perplexité
+  <a class="reference internal nav-link" href="#evaluation-et-perplexite">
+   Evaluation et Perplexité
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -432,13 +502,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#classification-de-texte">
-     Classification de texte
+    <a class="reference internal nav-link" href="#generation-de-texte">
+     Génération de texte
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generation-de-texte">
-     Génération de texte
+    <a class="reference internal nav-link" href="#classification-de-texte">
+     Classification de texte
     </a>
    </li>
   </ul>
@@ -457,29 +527,614 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="sommaire">
 <h2>Sommaire<a class="headerlink" href="#sommaire" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="#modeles-unigram-bigram-ngram">Modèles unigram/bigram/ngram</a></p></li>
-<li><p><a class="reference external" href="#perplexite">Perplexité</a></p></li>
+<li><p><a class="reference external" href="#modeles-n-gram">Modèles N-gram</a></p>
+<ul>
+<li><p><a class="reference external" href="#estimation-de-la-probabilite-maximale">Estimation de la probabilité maximale</a></p></li>
+<li><p><a class="reference external" href="#lissage-de-laplace-laplace-smoothing">Lissage de Laplace (Laplace smoothing)</a></p></li>
+<li><p><a class="reference external" href="#lissage-de-good-turing-good-turing-smoothing">Lissage de Good-Turing (Good-Turing smoothing)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#evaluation-et-perplexite">Evaluation et Perplexité</a></p></li>
 <li><p><a class="reference external" href="#mise-en-pratique">Mise en pratique</a></p>
 <ul>
-<li><p><a class="reference external" href="#classification-de-texte">Classification de texte</a></p></li>
 <li><p><a class="reference external" href="#generation-de-texte">Génération de texte</a></p></li>
+<li><p><a class="reference external" href="#classification-de-texte">Classification de texte</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="modeles-unigram-bigram-ngram">
-<h2>Modèles unigram/bigram/ngram<a class="headerlink" href="#modeles-unigram-bigram-ngram" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modeles-n-gram">
+<h2>Modèles N-gram<a class="headerlink" href="#modeles-n-gram" title="Permalink to this headline">¶</a></h2>
+<p>Dans la continuité de la dernière partie, nous étudierons une autre facette des probabilités conditionnelles <em>(ou théorie bayésienne)</em>:</p>
+<p>La génération de modèles linguistique N-gram à partir de la fréquence des mots dans un texte, <em>souvenez vous de la <strong>loi des grands nombres</strong> qui stipule que l’on peut exprimer une probabilté comme une fréquence de réalisations</em>.</p>
+<p>On parle de modèle N-gram lorsque l’on souhaite entraîner un modèle linguistique à partir des N derniers mots, si on utilise que le mot précédent on parle alors de modèle bigram, et si on n’utilise aucun mot précédent alors on parle de modèle unigram…</p>
+<p>Un modèle linguistique permet d’estimer la probabilité d’obtenir un mot à partir des précédents.</p>
+<p>Ici on utilisera la méthode d’estimation de la probabilité maximale ou <em>Maximum Likelihood Estimation</em> afin de calculer la probabilité jointe d’obtenir des séquences de mots, ou N-gram.</p>
+<div class="section" id="estimation-de-la-probabilite-maximale">
+<h3>Estimation de la probabilité maximale<a class="headerlink" href="#estimation-de-la-probabilite-maximale" title="Permalink to this headline">¶</a></h3>
+<p>La probabilité d’obtenir un mot sachant les N-1 mots précédents est la suivante:</p>
+<div class="math notranslate nohighlight">
+\[ P(w_n|w_1, w_2, \cdots, w_{N-1}) = \frac{\#(w_1, w_2, \cdots, w_{N-1}, w_N)}{\#(w_1, w_2, \cdots, w_{N-1})} \]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\#(w_1, w_2, \cdots, w_{N-1}, w_N)\)</span>: La fréquence des N dernier mots (N-gram)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\#(w_1, w_2, \cdots, w_{N-1})\)</span>: La fréquence des N-1 dernier mots (N-1-gram)</p></li>
+</ul>
+<p>Nous connaissons donc la probabilité conditionnelle des variables aléatoires (ici des mots), mais nous ne connaissons pas la probabilité jointe de ces mots <span class="math notranslate nohighlight">\(P(x_1, \cdots, x_Z)\)</span> avec <span class="math notranslate nohighlight">\(Z\)</span> un entier représentant la longueur de la séquence de mots.</p>
+<p>Pour cela nous utiliserons la <strong>règle de chaîne</strong> qui stipule:</p>
+<div class="math notranslate nohighlight">
+\[ P(x,y) = P(x|y) . P(y) \]</div>
+<p>La généralisation à N variables aléatoires nous donne:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} P(x_1, \cdots, x_N)
+\\ = P(x_N \ | \ x_1, \cdots, x_{N-1}) \ . \ P(x_1, \cdots, x_{N-1})
+\\ = P(x_N \ | \ x_1, \cdots, x_{N-1}) \ . \ P(x_{N-1} \ | \ x_1, \cdots, x_{N-2}) \ . \ P(x_1, \cdots, x_{N-2})
+\\ = P(x_N | x_1, \cdots, x_{N-1}) \ . \ P(x_{N-1} | x_1, \cdots, x_{N-2}) \ . \ \cdots \ . \ P(x_2 | x_1) \ . \ P(x_1)\end{split}\]</div>
+<p>En d’autres termes:</p>
+<div class="math notranslate nohighlight">
+\[P\left(\bigcap_{k=1}^{N}x_k\right) = \prod_{k=1}^{N}P\left(x_k|\bigcap_{j=1}^{k-1}x_j\right)\]</div>
+<p>Cependant on peut simplifier cette formule puisque seuls les Z dernier mots comptent:</p>
+<div class="math notranslate nohighlight">
+\[ P(x_1, \cdots, x_N) = P(x_N \ | \ x_{N-Z+1}, \cdots, x_{N-1}) \ . \ P(x_{N-1} \ | \ x_{N-Z}, \cdots, x_{N-2}) \ . \ \cdots \ . \ P(x_2 \ | \ x_1) \ . \ P(x_1) \]</div>
 </div>
-<div class="section" id="perplexite">
-<h2>Perplexité<a class="headerlink" href="#perplexite" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lissage-de-laplace-laplace-smoothing">
+<h3>Lissage de Laplace (Laplace smoothing)<a class="headerlink" href="#lissage-de-laplace-laplace-smoothing" title="Permalink to this headline">¶</a></h3>
+<p>Lorsque l’on entraîne un modèle de langage à calculer les probabilités de chaque mots en fonction des N dernier mots on utilise la formule précédente:</p>
+<div class="math notranslate nohighlight">
+\[ P(w_n|w_1, w_2, \cdots, w_{N-1}) = \frac{\#(w_1, w_2, \cdots, w_{N-1}, w_N)}{\#(w_1, w_2, \cdots, w_{N-1})} \]</div>
+<p>Mais cette méthode a un énorme désavantage; lorsqu’une chaîne de mots spécifique n’est pas contenue dans le corpus d’entraînement alors la probabilité conditionnelle correspondante est de 0, en effet si un des facteurs est nul le produit des facteurs est nul (<em>anneau intègre</em>).</p>
+<div class="section" id="add-1-smoothing">
+<h4>Add-1 smoothing:<a class="headerlink" href="#add-1-smoothing" title="Permalink to this headline">¶</a></h4>
+<p>Pour régler ce problème on utilise le lissage de Laplace (<em>ou Laplace Smoothing</em>), cela consiste à ajouter 1 au numérateur, on suppose alors que chaque séquence de N-mots (N-gram) apparaît au moins une fois, puis on ajoute le cardinal de l’ensemble des séquences des N-gram (unique) du corpus <strong>|V|</strong> au dénominateur tel que:</p>
+<div class="math notranslate nohighlight">
+\[ P_L(w_N \ | \ w_1, w_2, \cdots, w_{N-1}) = \frac{\#(w_1, w_2, \cdots, w_{N-1}, w_N) + 1}{\#(w_1, w_2, \cdots, w_{N-1}) + |V|} \]</div>
+<p>Cependant cette méthode de lissage est sensible aux distorsions pour de grands corpus, par exemple:</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{to} | \text{want}) = \frac{608}{927} = 0.66 \]</div>
+<p>Avec le Lissage de Laplace cela devient:</p>
+<div class="math notranslate nohighlight">
+\[ P_L(\text{to} | \text{want}) = \frac{608+1}{927+1446} = 0.26 \]</div>
+</div>
+<div class="section" id="add-k-smoothing">
+<h4>Add-k smoothing:<a class="headerlink" href="#add-k-smoothing" title="Permalink to this headline">¶</a></h4>
+<p>On peut améliorer ce lissage en utilisant le <em>Add-k smoothing</em> qui consiste à remplacer la formule par:</p>
+<div class="math notranslate nohighlight">
+\[ P_L(w_N \ | \ w_1, w_2, \cdots, w_{N-1}) = \frac{\#(w_1, w_2, \cdots, w_{N-1}, w_N) + k}{\#(w_1, w_2, \cdots, w_{N-1}) + k|V|} \]</div>
+</div>
+<div class="section" id="unigram-prior-smoothing">
+<h4>Unigram Prior smoothing:<a class="headerlink" href="#unigram-prior-smoothing" title="Permalink to this headline">¶</a></h4>
+<p>Une extension du Add-k smoothing est d’utiliser la probabilié du mot <span class="math notranslate nohighlight">\(P(w_i)\)</span> au numérateur et de remplacer <strong>k|V|</strong> par <strong>m</strong> tel que:</p>
+<div class="math notranslate nohighlight">
+\[ P_L(w_N \ | \ w_1, w_2, \cdots, w_{N-1}) = \frac{\#(w_1, w_2, \cdots, w_{N-1}, w_N) + mP(w_N)}{\#(w_1, w_2, \cdots, w_{N-1}) + m} \]</div>
+</div>
+</div>
+<div class="section" id="lissage-de-good-turing-good-turing-smoothing">
+<h3>Lissage de Good-Turing (Good-Turing smoothing)<a class="headerlink" href="#lissage-de-good-turing-good-turing-smoothing" title="Permalink to this headline">¶</a></h3>
+<p>Une autre méthode de lissage plus sophistiquée est le Good-Turing smoothing qui consiste à considérer que la fréquence des variables aléatoires est la même que celles qui ont été observées autant de fois, et considérer que la fréquence des variables aléatoires non observées est la même que celles qui ont été observées qu’une seule fois.</p>
+<p>Ainsi le nombre total d’observations est:</p>
+<div class="math notranslate nohighlight">
+\[ N = \sum_{c=1}^{\infty} N_c . c \]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c\)</span>: Nombre de fois qu’un élément x a été observée.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_c\)</span>: Nombre d’élément ayant été observées c fois.</p></li>
+</ul>
+<p>Et la probabilité d’obtenir un élément non observée est:</p>
+<div class="math notranslate nohighlight">
+\[ P_{0}(x) = \frac{N_1}{N} \]</div>
+<p>Cependant si on calculait ainsi toutes nos probabilités on briserait une loi élémentaire qui stipule que:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{x \in D}P(x) = 1 \]</div>
+<p>C’est pourquoi on résout le dilemne en calculant la fréquence c de la manière suivante:</p>
+<div class="math notranslate nohighlight">
+\[ c^* = \frac{(c+1)N_{c+1}}{N_c} \]</div>
+<p>De cette manière on retrouve le nombre total d’observations:</p>
+<div class="math notranslate nohighlight">
+\[ N = \sum_{c=0}^{\infty}N_c . c^* = \sum_{c=0}^{\infty}N_c . c \]</div>
+<p>Et finalement la probabilité d’obtenir un élément x observé c fois est:</p>
+<div class="math notranslate nohighlight">
+\[ P_{c}(x) = \frac{c^*}{N} \]</div>
+</div>
+</div>
+<div class="section" id="evaluation-et-perplexite">
+<h2>Evaluation et Perplexité<a class="headerlink" href="#evaluation-et-perplexite" title="Permalink to this headline">¶</a></h2>
+<p>Comme nous l’avons vu la performance d’un modèle linguistique dépend:</p>
+<ul class="simple">
+<li><p>Du corpus de textes d’entraînement</p></li>
+<li><p>De la méthode d’estimation des probabilités conditionnelles (ici on a choisi MLE mais il existe d’autres méthodes)</p></li>
+<li><p>Du lissage associé à la méthode d’estimation (Laplace, Good-Turing)</p></li>
+</ul>
+<p>Ainsi nous devons évaluer les performances de notre modèle, pour cela il y a deux types d’évaluation:</p>
+<ul class="simple">
+<li><p>L’évaluation extrinsèque</p></li>
+<li><p>L’évaluation intrinsèque</p></li>
+</ul>
+<p>L’évaluation extrinséque ne consiste pas à évaluer le modèle directement mais à évaluer l’application end-to-end l’utilisant tel que la reconnaissance vocale, la traduction, ou encore la correction automatique…</p>
+<p>L’évaluation intrinsèque consiste à évaluer le modèle tel quel de manière isolée, nous étudierons uniquement l’évaluation intrinsèque qui nous intéresse ici:</p>
+<p>La mesure la plus populaire pour un modèle linguistique N-gram est la <strong>Perplexité</strong>, cette mesure permet de savoir à quel point le modèle est bon pour prédire le prochain mot dans les données de validation.</p>
+<p>Soit W = (<span class="math notranslate nohighlight">\(w_1, \cdots, w_N\)</span>) un vecteur de mots dans un corpus de validation (le texte). Alors la perplexité d’un modèle linguistique est:</p>
+<div class="math notranslate nohighlight">
+\[ PP(W) = \sqrt[N]{\frac{1}{P(w_1, \cdots, w_N)}} \]</div>
+<p>Plus cette valeur est basse, meilleur est le modèle.</p>
 </div>
 <div class="section" id="mise-en-pratique">
 <h2>Mise en pratique<a class="headerlink" href="#mise-en-pratique" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="classification-de-texte">
-<h3>Classification de texte<a class="headerlink" href="#classification-de-texte" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="generation-de-texte">
 <h3>Génération de texte<a class="headerlink" href="#generation-de-texte" title="Permalink to this headline">¶</a></h3>
+<p><em>Cette génération de texte se repose sur les formules vues précédemment: l’estimation de la probabilité maximale avec un lissage de Good-Turing</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.util</span> <span class="kn">import</span> <span class="n">ngrams</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">unidecode</span>
+
+<span class="k">def</span> <span class="nf">text_processing</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return cleaned text for Machine Learning &#39;&#39;&#39;</span>
+    <span class="n">REPLACE_BY_SPACE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[/()</span><span class="si">{}</span><span class="s1">\[\]\|@,;]&#39;</span><span class="p">)</span>
+    <span class="n">NEW_LINE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">BAD_SYMBOLS_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^a-z</span><span class="se">\&#39;</span><span class="s1"> #+_]&#39;</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">unidecode</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">NEW_LINE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">REPLACE_BY_SPACE_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">BAD_SYMBOLS_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">nltk.util</span> <span class="kn">import</span> <span class="n">ngrams</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;nltk&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countCorpus</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">dictTMP</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1">#add the last word from previous line</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ngrams</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    
+    <span class="c1">#count the frequency of the n-gram sentences</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">temp</span><span class="p">:</span>
+        <span class="n">sen</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">dictTMP</span><span class="p">[</span><span class="n">sen</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1">#then take out the last 3 words</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+    <span class="c1">#store the last few words for the next sentence pairing</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n2</span> <span class="o">-</span> <span class="n">n</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">token</span><span class="p">[</span><span class="n">n2</span> <span class="o">-</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="k">return</span> <span class="n">w</span><span class="p">,</span> <span class="n">dictTMP</span>
+
+<span class="c1">#loads the corpus for the dataset and makes the frequency count of quadgram ,bigram and trigram strings</span>
+<span class="k">def</span> <span class="nf">loadCorpus</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">quad_dict</span><span class="p">,</span> <span class="n">vocab_dict</span><span class="p">):</span>
+
+    <span class="n">w1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>    <span class="c1">#for storing the 3rd last word to be used for next token set</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>    <span class="c1">#for storing the 2nd last word to be used for next token set</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>    <span class="c1">#for storing the last word to be used for next token set</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1">#total no. of words in the corpus</span>
+    <span class="n">word_len</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1">#open the corpus file and read it line by line</span>
+    <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+
+                <span class="n">content</span> <span class="o">=</span> <span class="n">text_processing</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+                <span class="n">token</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="n">word_len</span> <span class="o">=</span> <span class="n">word_len</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">w3</span><span class="p">,</span> <span class="n">bi_dict</span> <span class="o">=</span> <span class="n">countCorpus</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">w3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">w2</span><span class="p">,</span> <span class="n">tri_dict</span> <span class="o">=</span> <span class="n">countCorpus</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="n">w1</span><span class="p">,</span> <span class="n">quad_dict</span> <span class="o">=</span> <span class="n">countCorpus</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">quad_dict</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+                <span class="c1">#add new unique words to the vocaulary set if available</span>
+                <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">token</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vocab_dict</span><span class="p">:</span>
+                        <span class="n">vocab_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">vocab_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span><span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">word_len</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#for finding the adjusted count c* in Good Turing Smoothing</span>
+<span class="k">def</span> <span class="nf">findGoodTuringAdjustCount</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">):</span>
+   
+    <span class="n">adjust_count</span> <span class="o">=</span> <span class="p">((((</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">nc_dict</span><span class="p">[</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">nc_dict</span><span class="p">[</span><span class="n">c</span><span class="p">]))</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">nc_dict</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">nc_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span>
+                    <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">((</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">nc_dict</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">nc_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+    <span class="k">return</span> <span class="n">adjust_count</span>
+
+<span class="c1">#creates dict for storing probable words with their probabilities for a n-gram sentence</span>
+<span class="k">def</span> <span class="nf">findNgramProbGT</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">,</span> <span class="n">n0_dict</span><span class="p">,</span> <span class="n">n1_dict</span><span class="p">,</span> <span class="n">n1_prob_dict</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n1_sen</span> <span class="ow">in</span> <span class="n">n1_dict</span><span class="p">:</span>
+        <span class="n">n1_token</span> <span class="o">=</span> <span class="n">n1_sen</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+        <span class="c1">#(n-1)-gram sentence for key</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span> <span class="n">n0_sen</span> <span class="o">=</span> <span class="n">n1_token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">n0_sen</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">n1_token</span><span class="p">[:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1">#find the probability</span>
+        <span class="c1">#Good Turing smoothing has been used</span>
+        <span class="n">n1_count</span> <span class="o">=</span> <span class="n">n1_dict</span><span class="p">[</span><span class="n">n1_sen</span><span class="p">]</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span> <span class="n">n0_count</span> <span class="o">=</span> <span class="n">vocab_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">n0_count</span> <span class="o">=</span> <span class="n">n0_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">n1_dict</span><span class="p">[</span><span class="n">n1_sen</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span>  <span class="ow">or</span> <span class="p">(</span><span class="n">n1_sen</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n1_dict</span><span class="p">):</span>
+            <span class="n">n1_count</span> <span class="o">=</span> <span class="n">findGoodTuringAdjustCount</span><span class="p">(</span> <span class="n">n1_dict</span><span class="p">[</span><span class="n">n1_sen</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">vocab_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span>  <span class="ow">or</span> <span class="p">(</span><span class="n">n0_sen</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vocab_dict</span><span class="p">):</span>
+                <span class="n">n0_count</span> <span class="o">=</span> <span class="n">findGoodTuringAdjustCount</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n0_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span>  <span class="ow">or</span> <span class="p">(</span><span class="n">n0_sen</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n0_dict</span><span class="p">):</span>
+                <span class="n">n0_count</span> <span class="o">=</span> <span class="n">findGoodTuringAdjustCount</span><span class="p">(</span><span class="n">n0_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">],</span> <span class="n">k</span><span class="p">,</span> <span class="n">nc_dict</span><span class="p">)</span>
+
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">n1_count</span> <span class="o">/</span> <span class="n">n0_count</span>
+
+        <span class="c1">#add the (n-1)-gram to the n-gram probabiltity dict</span>
+        <span class="k">if</span> <span class="n">n0_sen</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">n1_prob_dict</span><span class="p">:</span>
+            <span class="n">n1_prob_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">n1_prob_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">prob</span><span class="p">,</span><span class="n">n1_token</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n1_prob_dict</span><span class="p">[</span><span class="n">n0_sen</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">prob</span><span class="p">,</span><span class="n">n1_token</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+            
+    <span class="c1">#sort the probable word acc. to their probabilities</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">n1_prob_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n1_prob_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">n1_prob_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">n1_prob_dict</span><span class="p">[</span><span class="n">key</span><span class="p">],</span><span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)[:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#Warning ??</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Regression related stuff</span>
+<span class="c1">#calculate best fit line for simple regression </span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1">#finds the slope for the best fit line</span>
+<span class="k">def</span> <span class="nf">findBestFitSlope</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">((</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">m</span>
+      
+<span class="c1">#finds the intercept for the best fit line</span>
+<span class="k">def</span> <span class="nf">findBestFitIntercept</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="c1">## Find the count Nc for quadgrams and trigrams where c &gt; 5</span>
+<span class="c1">#token_len : total no. of ngram tokens</span>
+<span class="k">def</span> <span class="nf">findFrequencyOfFrequencyCount</span><span class="p">(</span><span class="n">ngram_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">token_len</span><span class="p">):</span>
+    <span class="c1">#for keeping count of &#39;c&#39; value i.e Nc</span>
+    <span class="n">nc_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1">#we find the value of Nc,c = 0 by V^n - (total n-gram tokens)</span>
+    <span class="n">nc_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span><span class="o">**</span><span class="n">n</span> <span class="o">-</span> <span class="n">token_len</span>
+    <span class="c1">#find the count Nc till c = k,we will take k = 5</span>
+    <span class="c1">#find counts for n-gram</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ngram_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nc_dict</span><span class="p">:</span>
+                <span class="n">nc_dict</span><span class="p">[</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nc_dict</span><span class="p">[</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1">#check if all the values of Nc are there in the nc_dict or not ,if there then return           </span>
+    <span class="n">val_present</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nc_dict</span><span class="p">:</span>
+            <span class="n">val_present</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">val_present</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nc_dict</span>
+    
+    <span class="c1">#now fill in the values of nc in case it is not there using regression upto c = 6</span>
+    <span class="c1">#we use :[ log(Nc) = blog(c) + a ] as the equation</span>
+
+    <span class="c1">#we first need to find data for regression that is values(Nc,c) we take 5 data points</span>
+    <span class="n">data_pts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1">#get first 5 counts value i.e c</span>
+    <span class="c1">#for quadgram</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ngram_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data_pts</span><span class="p">:</span>
+                <span class="n">data_pts</span><span class="p">[</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span>
+            <span class="k">break</span>
+            
+    <span class="c1">#now get Nc for those c values</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ngram_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">in</span> <span class="n">data_pts</span><span class="p">:</span>
+            <span class="n">data_pts</span><span class="p">[</span> <span class="n">ngram_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1">#make x ,y coordinates for regression </span>
+    <span class="n">x_coor</span> <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_pts</span> <span class="p">]</span>
+    <span class="n">y_coor</span> <span class="o">=</span> <span class="p">[</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">data_pts</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_pts</span> <span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_coor</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_coor</span> <span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+   
+
+    <span class="c1">#now do regression</span>
+    <span class="c1">#find the slope and intercept for the regression equation</span>
+    <span class="n">slope_m</span> <span class="o">=</span> <span class="n">findBestFitSlope</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">intercept_c</span> <span class="o">=</span> <span class="n">findBestFitIntercept</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">slope_m</span><span class="p">)</span>
+
+    <span class="c1">#now find the missing Nc terms and give them value using regression</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,(</span><span class="n">k</span><span class="o">+</span><span class="mi">2</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nc_dict</span><span class="p">:</span>
+            <span class="n">nc_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">slope_m</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept_c</span>
+    
+    <span class="k">return</span> <span class="n">nc_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#finds the word prediction usinng Backoff</span>
+<span class="k">def</span> <span class="nf">doPredictionBackoffGT</span><span class="p">(</span><span class="n">input_sen</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">quad_dict</span><span class="p">,</span> <span class="n">bi_prob_dict</span><span class="p">,</span> <span class="n">tri_prob_dict</span><span class="p">,</span> <span class="n">quad_prob_dict</span><span class="p">):</span>
+    <span class="c1">#split the input sentence into tokens</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">input_sen</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="c1">#if the input sen is found in any ngram then give the most probable word for that ngram</span>
+    <span class="c1">#if not then go to the lower order ngram</span>
+    <span class="k">if</span> <span class="n">input_sen</span> <span class="ow">in</span> <span class="n">quad_prob_dict</span> <span class="ow">and</span> <span class="n">quad_prob_dict</span><span class="p">[</span><span class="n">input_sen</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">quad_prob_dict</span><span class="p">[</span><span class="n">input_sen</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="ow">in</span> <span class="n">tri_prob_dict</span> <span class="ow">and</span> <span class="n">tri_prob_dict</span><span class="p">[</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">1</span><span class="p">:])][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">tri_prob_dict</span><span class="p">[</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="ow">in</span> <span class="n">bi_prob_dict</span> <span class="ow">and</span> <span class="n">bi_prob_dict</span><span class="p">[</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span> <span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">bi_prob_dict</span><span class="p">[</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="mi">2</span><span class="p">:])][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">pred</span>
+
+<span class="n">vocab_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>          <span class="c1">#for storing the different words with their frequencies    </span>
+<span class="n">bi_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>             <span class="c1">#for keeping count of sentences of two words</span>
+<span class="n">tri_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>            <span class="c1">#for keeping count of sentences of three words</span>
+<span class="n">quad_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>           <span class="c1">#for keeping count of sentences of four words</span>
+<span class="n">quad_prob_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+<span class="n">tri_prob_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+<span class="n">bi_prob_dict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+
+<span class="c1">#load the corpus for the dataset</span>
+<span class="n">train_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;corpus_1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;corpus_2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;corpus_3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;corpus_4.txt&#39;</span><span class="p">]</span>
+<span class="c1">#load corpus</span>
+<span class="n">token_len</span> <span class="o">=</span> <span class="n">loadCorpus</span><span class="p">(</span><span class="n">train_files</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">quad_dict</span><span class="p">,</span> <span class="n">vocab_dict</span><span class="p">)</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">V</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">)</span>
+<span class="n">quad_nc_dict</span> <span class="o">=</span> <span class="n">findFrequencyOfFrequencyCount</span><span class="p">(</span><span class="n">quad_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">quad_dict</span><span class="p">))</span>
+<span class="n">tri_nc_dict</span> <span class="o">=</span> <span class="n">findFrequencyOfFrequencyCount</span><span class="p">(</span><span class="n">tri_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tri_dict</span><span class="p">))</span>
+<span class="n">bi_nc_dict</span> <span class="o">=</span> <span class="n">findFrequencyOfFrequencyCount</span><span class="p">(</span><span class="n">bi_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bi_dict</span><span class="p">))</span>
+<span class="n">uni_nc_dict</span> <span class="o">=</span> <span class="n">findFrequencyOfFrequencyCount</span><span class="p">(</span><span class="n">bi_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">))</span>
+
+<span class="c1">#create quadgram probability dictionary</span>
+<span class="n">findNgramProbGT</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">quad_dict</span><span class="p">,</span> <span class="n">quad_prob_dict</span><span class="p">,</span> <span class="n">quad_nc_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1">#create trigram probability dictionary</span>
+<span class="n">findNgramProbGT</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">tri_prob_dict</span><span class="p">,</span> <span class="n">tri_nc_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">#create bigram probability dictionary</span>
+<span class="n">findNgramProbGT</span><span class="p">(</span><span class="n">vocab_dict</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">bi_prob_dict</span><span class="p">,</span> <span class="n">bi_nc_dict</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">input_sen</span> <span class="o">=</span> <span class="s2">&quot;Ceci est une phrase&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Phrase de test: &quot;</span><span class="p">,</span> <span class="n">input_sen</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">input_sen</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">doPredictionBackoffGT</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">bi_dict</span><span class="p">,</span> <span class="n">tri_dict</span><span class="p">,</span> <span class="n">quad_dict</span><span class="p">,</span> <span class="n">bi_prob_dict</span><span class="p">,</span> <span class="n">tri_prob_dict</span><span class="p">,</span> <span class="n">quad_prob_dict</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">prediction</span><span class="p">:</span>
+        <span class="n">input_sen</span> <span class="o">=</span> <span class="n">input_sen</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">prediction</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Prédiction:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">input_sen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Phrase de test:  Ceci est une phrase
+
+Prédiction:
+ Ceci est une phrase simple et energique
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="classification-de-texte">
+<h3>Classification de texte<a class="headerlink" href="#classification-de-texte" title="Permalink to this headline">¶</a></h3>
+<p>Pour calculer la probabilité d’obtenir une classe sachant un corpus de texte, on utilise le <strong>théorème de Bayes</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ P(C | w_1, \cdots, w_n) = \frac{P(C)P(w_1, \cdots, w_n | C)}{P(w_1, \cdots, w_n)} \]</div>
+<p>Or on connaît déjà <span class="math notranslate nohighlight">\(P(w_1, \cdots, w_n)\)</span> que l’on a calculé auparavant.</p>
+<p>En utilisant la <strong>règle de chaîne</strong> on obtient:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} P(C)P(w_1, \cdots, w_n | C) = P(C) . P(w_1|C) . P(w_2 | C, w_1) . \cdots . P(w_n | C, w_1, \cdots, w_{N-1})
+\\ \implies P(w_1, \cdots, w_n | C) = P(w_1|C) . P(w_2 | C, w_1) . \cdots . P(w_n | C, w_1, \cdots, w_{N-1})\end{split}\]</div>
+<p>On parle d’algorithme bayésien naïf (naive bayes) lorsque l’on suppose que les mots n’ont pas de corrélation entre eux, cet algorithme est de manière surprenante efficace et transforme la formule en:</p>
+<div class="math notranslate nohighlight">
+\[ P(w_1, \cdots, w_n | C) = P(w_1|C) . P(w_2 | C) . \cdots . P(w_n | C) = \prod_{k=1}^{N}P(w_k|C) \]</div>
+<p>Ainsi on obtient:</p>
+<div class="math notranslate nohighlight">
+\[ P(C | w_1, \cdots, w_N) = \frac{P(C) . \prod_{k=1}^{N}P(w_k|C)}{P(w_1, \cdots, w_n)} \]</div>
+<p>Ici nous testerons l’efficacité de l’algorithme bayésien naïf sur des SMS en les classant entre spam et normal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">unidecode</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">MultinomialNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Confusion matrix&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">tick_marks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span> <span class="k">if</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True label&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted label&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">NB_text_processing</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return cleaned text for Machine Learning &#39;&#39;&#39;</span>
+    <span class="n">REPLACE_BY_SPACE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[/()</span><span class="si">{}</span><span class="s1">\[\]\|@,;]&#39;</span><span class="p">)</span>
+    <span class="n">NEW_LINE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">BAD_SYMBOLS_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^a-z #+_]&#39;</span><span class="p">)</span>
+    <span class="n">STOPWORDS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">corpus</span><span class="o">.</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">))</span>
+    <span class="n">STEMMER</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">unidecode</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">NEW_LINE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">REPLACE_BY_SPACE_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">BAD_SYMBOLS_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">STEMMER</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">STOPWORDS</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">text</span>
+
+<span class="k">def</span> <span class="nf">NB_preprocessing</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return train, validation and test set &#39;&#39;&#39;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;v2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">NB_text_processing</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span> <span class="k">for</span> <span class="n">txt</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_features</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;v1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span><span class="n">train_size</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;train len:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test len:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
+
+<span class="k">def</span> <span class="nf">NB_Model</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Create a model based on Naive Bayes &#39;&#39;&#39;</span>
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">NB_preprocessing</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">classifier</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+    <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy:&#39;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+    <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ham&#39;</span><span class="p">,</span> <span class="s1">&#39;Spam&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">((</span><span class="s2">&quot;spam.csv&quot;</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="s1">&#39;v2&#39;</span><span class="p">]]</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>v2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ham</td>
+      <td>Go until jurong point, crazy.. Available only ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ham</td>
+      <td>Ok lar... Joking wif u oni...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>spam</td>
+      <td>Free entry in 2 a wkly comp to win FA Cup fina...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ham</td>
+      <td>U dun say so early hor... U c already then say...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ham</td>
+      <td>Nah I don't think he goes to usf, he lives aro...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NB_Model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>train len: 4736
+test len: 836
+Accuracy: 0.9868421052631579
+</pre></div>
+</div>
+<img alt="../../_images/4_ModLangues_9_1.png" src="../../_images/4_ModLangues_9_1.png" />
+</div>
+</div>
 </div>
 </div>
 </div>
