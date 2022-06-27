@@ -11,7 +11,7 @@ on:
 
 jobs:
 
-  dynamic-rendering:
+  rendering:
     name: Dynamic rendering
     runs-on: ubuntu-latest
     steps:
@@ -41,6 +41,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
+    # Deploy only if build succeeded
+    needs: [rendering]
     name: Build
     runs-on: ubuntu-latest
     steps:
