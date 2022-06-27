@@ -1,19 +1,12 @@
-<h3 align="center">iA-Z</h3>
+<h1 align="center">IA-Z</h1>
 <p align="center">
-  Cours & Ressources pour l'IA (en construction)
+  Cours & Ressources pour l'IA  (En construction) 
 </p>
 <p align="center">
   <a href="https://discord.gg/nmnuf6USVT">
-    <img alt="discord server invitation link" src="https://discord.com/assets/cb48d2a8d4991281d7a6a95d2f58195e.svg" style="width: 13%; height: 15%">
-  </a>
-  <a href="https://ia-z.github.io/ia-z/">
-    <img  src="https://pages.github.com/images/logo.svg" style="width: 15%; height: 15%">
+        <img alt="discord server invitation link" src="https://cdn.cdnlogo.com/logos/d/47/discord.svg" style="width: 25%">
   </a>
 </p>
-
-## Statut
-
-[![pages-build-deployment](https://github.com/ia-z/ia-z/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ia-z/ia-z/actions/workflows/pages/pages-build-deployment)
 
 ## Sommaire
 
@@ -26,9 +19,9 @@
 ---
 
 ## Presentation
-**iA-Z** est une plateforme en ligne offrant un enseignement complet en data science. Elle est destinée à un public ayant un bagage en mathématiques, python et sciences informatiques de niveau supérieur ou égal au BAC. 
+**IA-Z** est une plateforme en ligne offrant un enseignement complet en data science. Elle est destinée à un public ayant un bagage en mathématiques, python et sciences informatiques de niveau supérieur ou égal au BAC. 
 
-iA-Z est conçue pour fournir des enseignements destinés à un public déjà sensibilisé et dans l’optique de fournir la meilleure qualité de support pédagogique et didactique.
+IA-Z est conçue pour fournir des enseignements destinés à un public déjà sensibilisé et dans l’optique de fournir la meilleure qualité de support pédagogique et didactique.
 
 #### Perimètre
 - La plateforme web a pour objectif de former et sensibiliser à la data science
@@ -42,7 +35,7 @@ iA-Z est conçue pour fournir des enseignements destinés à un public déjà se
 ---
 ## Organisation
 
-- Nouveau membre du projet ia-z ? 
+- Nouveau membre du projet IA-Z ? 
 
   * Accèdez au document d'onboarding : ia-z/organisation/onboarding.md 
   * Accèdez au document de bonnes pratiques git : ia-z/organisation/workflow_git.md
@@ -60,7 +53,56 @@ Commencez par accepter le réglement et vous présenter dans le channel [#prése
 
 ## Equipe
 
-- [Anis Ayari](https://www.github.com/anisayari) (fondateur de la communauté DefendIntelligence)
-- [Admins](https://github.com/orgs/ia-z/teams/admins/members) (team pour tout ce qui est management)
-- [Reviewers](https://github.com/orgs/ia-z/teams/reviewers/members) (décident du plan, contenu et valident les PRs)
-- [Contributors](https://github.com/ia-z/ia-z/graphs/contributors)
+### Fondateur
+
+<p style="margin-top: 1%">
+  <a href="https://github.com/anisayari" style="display: flex; align-items : center; text-decoration: none; color: inherit;">
+    <img src="https://avatars.githubusercontent.com/u/10380894?v=4" style="width: 5%">
+    &nbsp;&nbsp;Anis Ayari
+  </a>
+</p>
+
+### Contributeurs
+
+<p style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1%">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Studioaxs" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;82153591?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;Studioaxs
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;MohamedBsh" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;40428556?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;MohamedBsh
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Otsutsukii" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;38628261?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;Otsutsukii
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Futurne" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;25549037?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;Futurne
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;LPauzies" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;26601532?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;LPauzies
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;EHadoux" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;1655646?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;EHadoux
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Serenalyw" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;65224852?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;Serenalyw
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;aminenaim" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;74571889?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;aminenaim
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;adriengoleb" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;55838700?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;adriengoleb
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;MHaurel" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;54206618?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+    &nbsp;&nbsp;MHaurel
+  </a>
+</p>

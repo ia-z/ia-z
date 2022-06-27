@@ -1,0 +1,26 @@
+{
+  "name": "ia-z",
+  "version": "1.0.0",
+  "description": "IA-Z DefendIntelligence",
+  "main": ".github/dynamic-rendering/render.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": ":"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ia-z/ia-z.git"
+  },
+  "author": "IA-Z",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ia-z/ia-z/issues"
+  },
+  "homepage": "https://github.com/ia-z/ia-z#readme",
+  "dependencies": {
+    "mustache": "^4.2.0",
+    "sync-request": "^6.1.0"
+  }
+}

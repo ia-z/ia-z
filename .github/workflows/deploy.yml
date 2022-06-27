@@ -11,8 +11,36 @@ on:
 
 jobs:
 
-  build:
+  dynamic-rendering:
+    name: Dynamic rendering
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout from main
+    - name: Checkout current repository to Master branch
+      uses: actions/checkout@v1
+    # Setup Node version
+    - name: Setup NodeJs 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+    # Cache the node_module to avoid build explosion
+    - name: Cache dependencies and build outputs to improve workflow execution time.
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-js-${{ hashFiles('package-lock.json') }}
+    # Install dependencies for dynamic rendering
+    - name: Install dependencies
+      run: npm install
+    # Generate the README.md file
+    - name: Generate README.md file
+      run: node .github/dynamic-rendering/render.js
+    - name: Commit and Push new README.md to the repository
+      uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  build:
     name: Build
     runs-on: ubuntu-latest
     steps:
