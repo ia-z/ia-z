@@ -9,6 +9,10 @@ on:
     branches:
       - main
 
+  # Schedule the job to everyday to refresh dynamic first page
+  schedule:
+    - cron: '0 0 * * *'
+
 jobs:
 
   rendering:
