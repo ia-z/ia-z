@@ -55,54 +55,54 @@ Commencez par accepter le réglement et vous présenter dans le channel [#prése
 
 ### Fondateur
 
-<p style="margin-top: 1%">
+<p style="margin-top: 2px">
   <a href="https://github.com/anisayari" style="display: flex; align-items : center; text-decoration: none; color: inherit;">
-    <img src="https://avatars.githubusercontent.com/u/10380894?v=4" style="width: 5%">
+    <img src="https://avatars.githubusercontent.com/u/10380894?v=4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;Anis Ayari
   </a>
 </p>
 
 ### Contributeurs
 
-<p style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1%">
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;Studioaxs" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;82153591?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+<p style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Studioaxs" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;82153591?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;Studioaxs
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;MohamedBsh" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;40428556?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;MohamedBsh" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;40428556?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;MohamedBsh
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;Otsutsukii" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;38628261?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Otsutsukii" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;38628261?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;Otsutsukii
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;Futurne" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;25549037?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Futurne" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;25549037?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;Futurne
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;LPauzies" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;26601532?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;LPauzies" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;26601532?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;LPauzies
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;EHadoux" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;1655646?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;EHadoux" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;1655646?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;EHadoux
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;Serenalyw" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;65224852?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;Serenalyw" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;65224852?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;Serenalyw
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;aminenaim" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;74571889?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;aminenaim" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;74571889?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;aminenaim
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;adriengoleb" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;55838700?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;adriengoleb" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;55838700?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;adriengoleb
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;MHaurel" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 20%">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;54206618?v&#x3D;4" style="width: 20%" style="margin-top: 5px">
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;MHaurel" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;54206618?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;MHaurel
   </a>
 </p>

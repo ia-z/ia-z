@@ -19,8 +19,8 @@ function getContributors() {
                 avatar: contributor.avatar_url,
                 login: contributor.login,
                 github_profile: contributor.html_url,
-                width_markup: "20%",
-                width_avatar: "20%"
+                width_markup: "150px",
+                width_avatar: "36px"
             }
         })
 }
