@@ -40,10 +40,9 @@ jobs:
     - name: Generate README.md file
       run: node .github/dynamic-rendering/render.js
     - name: Commit and Push new README.md to the repository
-      uses: mikeal/publish-to-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.SECRET_IA_Z }}*
-        BRANCH_NAME: 'main' # Default branch for IA-Z repository
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     # Deploy only if build succeeded
