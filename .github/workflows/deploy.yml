@@ -42,7 +42,7 @@ jobs:
     - name: Commit and Push new README.md to the repository
       uses: mikeal/publish-to-github-action@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}*
+        GITHUB_TOKEN: ${{ secrets.SECRET_IA_Z }}*
         BRANCH_NAME: 'main' # Default branch for IA-Z repository
 
   build:
