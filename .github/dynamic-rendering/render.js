@@ -27,10 +27,13 @@ function getContributors() {
 
 /** Define DATA to be rendered through Mustache */
 
+const contributors = getContributors()
+
 let DATA = {
     title: "IA-Z",
     isBuilding: true,
-    contributors: getContributors()
+    contributors: contributors,
+    contributors_length: contributors.length
 }
 
 /**
