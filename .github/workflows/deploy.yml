@@ -70,6 +70,8 @@ jobs:
       with:
         name: build-artifact
         path: _build
+    - name: Test
+      run: echo '${{ toJSON(github) }}'
 
   deploy:
     # Deploy only if build succeeded
