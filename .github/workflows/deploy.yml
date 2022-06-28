@@ -76,8 +76,8 @@ jobs:
   deploy:
     # Deploy only if build succeeded
     needs: [build]
-    # Deploy only if pull request has been pushed and merged
-    if: github.event_name == 'push'
+    # Deploy only if pull request has been pushed and merged or if triggered by scheduler
+    if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
 
     name: Deploy
     runs-on: ubuntu-latest
