@@ -11,7 +11,12 @@ parts:
         - glob: "docs/Cours fondamentaux ML/module_1_introduction/*"
   - caption: Traitement automatique de la langue
     chapters:
-    - glob: "docs/NLP/*"
+      - file: "docs/NLP/chapitre1_introduction/1_Introduction.md"
+        sections:
+        - glob: "docs/NLP/chapitre1_introduction/*"
+      - file: "docs/NLP/chapitre2_notionsgenerales/3_ModStatLangage.md"
+        sections:
+        - glob: "docs/NLP/chapitre2_notionsgenerales/*"
   - caption: Vision par ordinateur
     chapters:
     - glob: "docs/Cours_CV/*"
