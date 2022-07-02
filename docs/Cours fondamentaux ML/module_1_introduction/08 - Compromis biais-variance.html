@@ -160,35 +160,44 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../NLP/1_Introduction.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../NLP/chapitre1_introduction/1_Introduction.html">
    Chapitre I: Introduction
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../NLP/chapitre1_introduction/2_DonneesTextuelles.html">
+     Etude des données textuelles
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../NLP/2_DonneesTextuelles.html">
-   Etude des données textuelles
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../NLP/3_ModStatLanguage.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/3_ModStatLangage.html">
    Chapitre II: Notions générales
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../NLP/4_ModLangues.html">
-   Modèles de langues
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../NLP/5_Embedings.html">
-   Embeddings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../NLP/7_bert.html">
-   BERT - Bidirectional Encoder Representations from Transformers
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/4_ModLangues.html">
+     Modèles de langues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/5_Embedings.html">
+     Embeddings
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -673,12 +682,12 @@ pour rapidement converger vers une fonction <span class="math notranslate nohigh
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Modèle linéaire
 
 Petit jeu de données (50 exemples)
-Entraînement : 0.819
-Test: 0.613
+Entraînement : 0.841
+Test: 0.568
 
 Gros jeu de données (10000 exemples)
-Entraînement : 0.758
-Test: 0.731
+Entraînement : 0.753
+Test: 0.754
 </pre></div>
 </div>
 </div>
@@ -714,16 +723,14 @@ croît exponentiellement avec le nombre de dimensions de nos features.</em></p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K-Nearest Neighbor
 
 Petit jeu de données (50 exemples)
-Entraînement : 0.505
-Test: 0.300
+Entraînement : 0.478
+Test: -0.562
 
 Gros jeu de données (10000 exemples)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entraînement : 0.893
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test: 0.854
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entraînement : 0.892
+Test: 0.842
 </pre></div>
 </div>
 </div>
