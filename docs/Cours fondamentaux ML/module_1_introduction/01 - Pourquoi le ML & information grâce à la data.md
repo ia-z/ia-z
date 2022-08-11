@@ -94,7 +94,7 @@ C'est parce que les données sont faciles à générer et omni-présentes que le
 L'information qu'elles récupèrent est particulièrement rentable.
 
 **Il y a quand même des considérations éthiques lorsqu'il s'agit de manipuler des données privées.
-Nous ne rentrerons pas dans ce sujet, mais vous devriez toujours vous poser ce genre de questions avant de vous lancer dans une exploitation de données.**
+Nous ne rentrerons pas dans ce sujet dans ce chapitre, mais vous devriez toujours vous poser des questions sur votre utilisation et la sensibilité des données. Soyez toujours conscients de l'impact de votre utilisation de ces données !**
 
 ## Conclusion
 
