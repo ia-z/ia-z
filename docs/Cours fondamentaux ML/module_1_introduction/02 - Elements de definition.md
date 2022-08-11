@@ -1,6 +1,6 @@
 # Eléments de définition
 
-À l’intersection des statistiques et de l’informatique, le machine learning se préoccupe de la modélisation des données. Les grands principes de ce domaine ont émergé des statistiques fréquentistes ou bayésiennes, de l’intelligence artificielle ou encore du traitement du signal. Dans ce livre, nous considérons que le machine learning est la science de l’apprentissage automatique d’une fonction prédictive à partir d’un jeu d’observations de données étiquetées ou non.
+À l’intersection des statistiques et de l’informatique, le machine learning se préoccupe de la modélisation des données. Les grands principes de ce domaine ont émergé des statistiques [fréquentistes](https://dataanalyticspost.com/Lexique/approche-probabiliste-frequentiste/) ou [bayésiennes](https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne), de l’intelligence artificielle ou encore du traitement du signal. Dans ce livre, nous considérons que le machine learning est la science de l’apprentissage automatique d’une fonction prédictive à partir d’un jeu d’observations de données étiquetées ou non.
 
 Ce chapitre se veut une **introduction aux concepts et aux premières définitions qui fondent le machine learning**, et en propose plusieurs approches, décrites et illustrées.
 
@@ -51,7 +51,7 @@ Il existe de nombreux types de tâches de classification que vous pouvez rencont
 
 Dans le domaine de l'apprentissage statistique, la régression permet d'**approcher une variable quantitative** à partir d'autres qui lui sont corrélées.
 
-La régression s'articule autour d'algorithmes simples, qui sont souvent utilisés dans la finance, l'investissement et autres, et établit la relation entre une seule variable dépendante de plusieurs variables indépendantes. 
+La régression s'articule autour d'algorithmes simples, qui sont souvent utilisés dans la finance, l'investissement et autres, et établit la relation entre une seule variable dépendante de plusieurs variables indépendantes. Par exemple prévoir le prix d'un appartement en fonction de ses caractéristiques.
 
 Il existe plusieurs algorithmes pour la régression:
 •	Régression linéaire
@@ -62,7 +62,7 @@ Il existe plusieurs algorithmes pour la régression:
 
 •	etc.
 
-Le modèle de régression le plus connu est le modèle de régression linéaire.
+Le modèle de régression le plus connu est le modèle de régression linéaire illustré ci-dessous :
 
 ![image](https://user-images.githubusercontent.com/55838700/157339195-b7585660-1e87-467c-8eb5-b589f493f9d1.png)
 
@@ -78,9 +78,9 @@ La différence la plus significative entre la régression et la classification e
 
 •	Un algorithme de **classification** peut prédire une valeur continue si elle se présente sous la forme d'une probabilité d'étiquette de classe
 
-Considérons un ensemble de données contenant des informations sur les étudiants d'une université particulière. Un algorithme de régression peut être utilisé dans ce cas pour prédire la taille de tout élève en fonction de son poids, de son sexe, de son régime alimentaire ou de sa matière principale. Nous utilisons la régression dans ce cas car la hauteur est une **quantité continue**. Il existe un nombre infini de valeurs possibles pour la taille d'une personne.
+Considérons un ensemble de données contenant des informations sur les étudiants d'une université particulière. Un algorithme de régression peut être utilisé dans ce cas pour prédire la taille de tout élève en fonction de son poids, de son sexe, de son régime alimentaire ou de sa matière principale. Nous utilisons la régression dans ce cas car la taille est une **quantité continue**. Il existe un nombre infini de valeurs possibles pour la taille d'une personne.
 
-Au contraire, la classification peut être utilisée pour analyser si un e-mail est un spam ou non. L'algorithme vérifie les mots-clés dans un e-mail et l'adresse de l'expéditeur est essaie de déterminer la probabilité que l'e-mail soit un spam. De même, alors qu'un modèle de régression peut être utilisé pour prédire la température du lendemain, nous pouvons utiliser un algorithme de classification pour déterminer s'il fera froid ou chaud en fonction des valeurs de température données.
+Au contraire, la classification peut être utilisée pour analyser si un e-mail est un spam ou non. L'algorithme vérifie les mots-clés dans un e-mail et l'adresse de l'expéditeur pour déterminer la probabilité que l'e-mail soit un spam. De même, alors qu'un modèle de régression peut être utilisé pour prédire la température du lendemain, nous pouvons utiliser un algorithme de classification pour déterminer s'il fera froid ou chaud en fonction des valeurs de température données.
  
  ![Capture](https://miro.medium.com/max/1400/1*wH09k0DhF4JQhVMymtVQHQ.jpeg)
 Comprendre la différence entre les algorithmes de régression et de classification peut vous aider à appliquer les concepts d'apprentissage automatique de manière plus précise. Certains algorithmes peuvent nécessiter à la fois des approches de classification et de régression, c'est pourquoi une connaissance approfondie des deux est cruciale.
@@ -103,13 +103,13 @@ Ci-dessous, un exemple de Dataset de données numériques qui regroupe des exemp
 
 Par convention, on dit que notre Dataset contient m exemples, c’est-à-dire **m** lignes. Si vous avez visité 3 appartements, alors m=3. On note également **n** le nombre de features dans notre Dataset, c’est-à-dire le nombre de colonnes (**hormis la colonne y**). Si vous avez noté 3 caractéristiques pour vos appartement (Surface, qualité, ville), alors n=3.
  
-Le prix est notre variable cible « target » tandis que la surface en m2, le nombre de chambres et la qualité sont des variables « features ».
+Le prix est notre variable cible « target » tandis que la surface en m², le nombre de chambres et la qualité sont des variables « features ».
 
-Quand on développe un **programme de vision par ordinateur**, les features de notre Dataset changent de format et peuvent être **les caractéristiques des pixels présents sur l’image** ou dans une vidéo. Dans le cadre de notre exemple de début de chapitre (classification chien/chat), nos données sont des images de chiens ou de chats. Ces données sont labellisées, c'est à dire que l'on va associer une classe à ces images. Notre target est la classe cible, c'est à dire image de chien ou image de chat.
+Quand on développe un **programme de vision par ordinateur**, les features de notre Dataset changent de format et peuvent être **les caractéristiques des pixels présents sur l’image** (ou dans une vidéo). Dans le cadre de notre exemple de début de chapitre (classification chien/chat), nos données sont des images de chiens ou de chats. Ces données sont labellisées, c'est à dire que l'on va associer une classe à ces images. Notre target est la classe cible, c'est à dire image de chien ou image de chat.
 
 ![image](https://user-images.githubusercontent.com/55838700/157762744-98c7af47-3122-42af-817f-088266790225.png)
 
-Les data sets sont donc des ensembles de caractéristiques dont le format et la structure varient **selon le type de données manipulé**.
+Les datasets sont donc des ensembles de caractéristiques dont le format et la structure varient **selon le type de données manipulé**.
 
 Avec de tels datasets, il devient possible de prédire de nouvelles valeurs y à partir de valeurs de x en développant un modèle de classification supervisé selon la problématique à traiter.
 
@@ -121,18 +121,18 @@ Néanmoins, ce n’est pas parce que l’on parle d’apprentissage non supervis
 
 ![image](https://user-images.githubusercontent.com/55838700/157058262-55717286-3591-41d5-8e55-27375f1c2389.png)
 
-En apprentissage supervisé on fournit des milliers d’images de chiens à l’algorithme avec le label ’chien’. De cette manière, si on lui fournit une autre image quelconque il pourra déterminer si elle représente un chat ou pas. En apprentissage non supervisé, **aucun label n’est fourni**, en traitant des milliers d’images, l’algorithme doit être en mesurer de créer de lui-même une catégorie ‘’chien’’, même s’il ne sait pas ce qu’est cela représente, il remarquera les similarités entre les images. L’algorithme a seulement regroupé toutes les images de chiens ensemble car elles avaient toutes un certain nombre de points communs : taille, quatre pattes, forme du visage, forme du museau, etc… (On remarque facilement qu’à l’intérieur d’une catégorie peuvent se trouver plusieurs sous-catégories; par exemple dans la catégorie « chien » peuvent se trouver différentes races de chiens).
+En apprentissage supervisé on fournit des milliers d’images de chiens à l’algorithme avec le label ’chien’. De cette manière, si on lui fournit une autre image quelconque il pourra déterminer si elle représente un chien ou pas. En apprentissage non supervisé, **aucun label n’est fourni**, en traitant des milliers d’images, l’algorithme doit être en mesurer de créer de lui-même une catégorie ‘’chien’’, même s’il ne sait pas ce que cela représente, il remarquera les similarités entre les images. L’algorithme a seulement regroupé toutes les images de chiens ensemble car elles avaient toutes un certain nombre de points communs : taille, quatre pattes, forme du visage, forme du museau, etc… (On remarque facilement qu’à l’intérieur d’une catégorie peuvent se trouver plusieurs sous-catégories; par exemple dans la catégorie « chien » peuvent se trouver différentes races de chiens).
 
 #### 1.2.1 Différences avec supervisé
 
-L’apprentissage non supervisé est principalement utilisé en matière de clusterisation, procédé destiné à regrouper un ensemble d’éléments hétérogènes sous forme de sous groupes homogènes ou liés par des caractéristiques communes. La machine **fait alors elle même les rapprochements** en fonction de ces caractéristiques qu’elle est en mesure de repérer sans nécessiter d’intervention externe. De cette capacité à effectuer de la clusterisation découle également la possibilité de mettre au point un système de recommandation (le système peut par exemple recommander un livre ou un film à un utilisateur en fonction des goûts d’utilisateurs partageant des caractéristiques communes) ainsi que la possibilité de mettre au point un système de détection d’anomalies.
+L’apprentissage non supervisé est principalement utilisé en matière de **clusterisation**, procédé destiné à regrouper un ensemble d’éléments hétérogènes sous forme de sous groupes homogènes ou liés par des caractéristiques communes. La machine **fait alors elle même les rapprochements** en fonction de ces caractéristiques qu’elle est en mesure de repérer sans nécessiter d’intervention externe. De cette capacité à effectuer de la clusterisation découle également la possibilité de mettre au point un système de recommandation (le système peut par exemple recommander un livre ou un film à un utilisateur en fonction des goûts d’utilisateurs partageant des caractéristiques communes) ainsi que la possibilité de mettre au point un système de détection d’anomalies.
 
 ![image](https://user-images.githubusercontent.com/55838700/156841799-c882f919-d5db-48e0-99da-0c38341feb70.png)
 
 
 #### 1.2.2 Clustering
 
-Le problème d’apprentissage non supervisé le plus fréquent est la segmentation (en anglais le clustering), c’est l’étape où l’on essaie de **séparer les données en catégories**. C’est la pierre angulaire de l’apprentissage non supervisé. C’est à la fois sa plus grande contrainte et sa plus grande force. C’est ce qui fait que l’on fait le parallèle entre l’apprentissage non supervisé et la façon humaine de raisonner puisque l’intelligence artificielle est alors autonome. Il n’y a pas besoin d’intervention humaine préalable pour créer les catégories, ce qui est exactement le cas pour les humains ! On a appris nous-mêmes à distinguer les objets que l’on voit, à savoir que tel animal est un lapin ou un chat par exemple !
+Le problème d’apprentissage non supervisé le plus fréquent est la **segmentation (en anglais le clustering)**, c’est l’étape où l’on essaie de **séparer les données en catégories**. C’est la pierre angulaire de l’apprentissage non supervisé. C’est à la fois sa plus grande contrainte et sa plus grande force. C’est ce qui fait que l’on fait le parallèle entre l’apprentissage non supervisé et la façon humaine de raisonner puisque l’intelligence artificielle est alors autonome. Il n’y a pas besoin d’intervention humaine préalable pour créer les catégories, ce qui est exactement le cas pour les humains ! On a appris nous-mêmes à distinguer les objets que l’on voit, à savoir que tel animal est un lapin ou un chat par exemple !
 
 ![Capture](https://user.oc-static.com/upload/2017/05/12/14946001500306_P3C1-2.png)
 
