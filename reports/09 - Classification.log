@@ -58,14 +58,14 @@ fig.add_trace(
 fig.add_trace(
     go.Scatter(x=train_set[0][train_labels == 0], y=train_set[1][train_labels==0], mode="markers",
       marker=dict(color="rgb(2,48,71)"), #showlegend = False,
-       name="Entrainement: 0"
+       name="entraînement: 0"
     )
 )
 
 fig.add_trace(
     go.Scatter(x=train_set[0][train_labels == 1], y=train_set[1][train_labels==1], mode="markers",
       marker=dict(color="rgb(255,158,2)"), #showlegend = False,
-       name="Entrainement: 1"
+       name="entraînement: 1"
     )
 )
 

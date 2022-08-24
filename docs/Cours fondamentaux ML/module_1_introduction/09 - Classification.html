@@ -523,51 +523,52 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="classification-k-nearest-neighbours">
 <h1>Classification: K-nearest-neighbours<a class="headerlink" href="#classification-k-nearest-neighbours" title="Permalink to this headline">¶</a></h1>
-<p>Si vous vous rapplez du chapitre 2, le Machine Learning peut être utilisé pour deux tâches: la régression et la classification. Nous avons introduit la régression dans le chapitre précédent, il est donc temps de présenter la classification.
-L’approche la plus simple et intuitive est de partir du principe que les points de données de même catégorie se ressemblent. En partant de cette hypothèse, nous pouvons créer un modèle qui va commparer le point que nous souhaitons prédire (<span class="math notranslate nohighlight">\(x_{new}\)</span>) avec ceux qui sont déjà connu et aggréger les plus proches.
-C’est exactement ce que fait K-nearest-neighbours (“k voisins les plus proches”). Il va d’abord stocker les données d’entrainment avec leurs labels respectifs. Ensuite, lors de la prédiction, il va trouver les <span class="math notranslate nohighlight">\(k\)</span> voisins les plus proches et aggréger leur labels respectifs.</p>
+<p>Si vous vous rappelez du chapitre 2, le Machine Learning peut être utilisé pour deux tâches: la régression et la classification. Nous avons introduit la régression dans le chapitre précédent, il est donc temps de présenter la classification.
+L’approche la plus simple et intuitive est de partir du principe que les points de données de même catégorie se ressemblent. En partant de cette hypothèse, nous pouvons créer un modèle qui va comparer le point que nous souhaitons prédire (<span class="math notranslate nohighlight">\(x_{new}\)</span>) avec ceux qui sont déjà connus et aggréger les plus proches.
+C’est exactement ce que fait l’algorithme K-nearest-neighbours (“k voisins les plus proches”). Il va d’abord stocker les données d’entraînement avec leurs labels respectifs. Ensuite, lors de la prédiction, il va trouver les <span class="math notranslate nohighlight">\(k\)</span> voisins les plus proches et aggréger leur labels respectifs.</p>
 <div class="section" id="k-nearest-neighbours">
 <h2>K-nearest-neighbours<a class="headerlink" href="#k-nearest-neighbours" title="Permalink to this headline">¶</a></h2>
-<p>Il faudra résoudre plusieurs problèmes avant de pouvoir utiliser kNN. En effet, il faut déterminer le nombre de voisins (<span class="math notranslate nohighlight">\(k\)</span>) à prendre en compte, la façon de calculer les distances ainsi que la façon d’aggréger les voisins.</p>
+<p>Il faudra résoudre plusieurs problèmes avant de pouvoir utiliser KNN. En effet, il faut déterminer le nombre de voisins (<span class="math notranslate nohighlight">\(k\)</span>) à prendre en compte, la façon de calculer les distances ainsi que la façon d’aggréger les voisins.</p>
 <div class="section" id="mesure-de-distance">
 <h3>Mesure de Distance<a class="headerlink" href="#mesure-de-distance" title="Permalink to this headline">¶</a></h3>
-<p>Nous pouvons utiliser n’importe quelle formule tel que l’Euclidienne (l2-norm), Manahttan (l1-norm) et plus. Le mesure la plus simple est la distance euclidienne qui calcule la distance dans l’espace cartésien.</p>
+<p>Nous pouvons utiliser plusieurs méthodes de mesure différentes comme la mesure Euclidienne (l2-norm), celle de Manhattan (l1-norm), et d’autres. Le mesure la plus simple est la distance euclidienne qui calcule la distance dans l’espace cartésien.</p>
 <div class="math notranslate nohighlight">
 \[distance(x_{new},x_n)=\sqrt{\sum_{a=1}^A(x_{new,a}-x_{n,a})^2}\]</div>
 <p><span class="math notranslate nohighlight">\(A\)</span> représente tous les attributs.</p>
-<p>Par facilité nous pouvons omettre la racine carrée et réecrire la formule en utilisant des vecteurs:</p>
+<p>Par facilité nous pouvons omettre la racine carrée et réécrire la formule en utilisant des vecteurs:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
     distance(x_{new},x_n)^2 &amp;= \sum_{a=1}^A(x_{new,a}-x_{n,a})^2 \\
     &amp;= \sum_{a=1}^A(x_{new,a}-x_{n,a})^T(x_{new,a}-x_{a,d}) \\
     &amp;= (x_{new}-x_n)^T(x_{new}-x_n)
 \end{align}\end{split}\]</div>
-<p>Cette formulation est la plus répendue et est pratique car les ordinateurs sont particulièrement performant dans le calcul vectoriel.</p>
+<p>Cette formulation est la plus répendue et est pratique car les ordinateurs sont particulièrement performants pour le calcul vectoriel.</p>
 <p>Il est aussi possible de calculer la distance dans un autre espace grâce aux kernels. Cependant, cette méthode ne sera pas expliqué dans ce module.</p>
 <blockquote>
-<div><p>Vous aurez remarqué que la distance d’un point s’évalue sur base de la différence entre chaque attribut. C’est pour cette raison qu’il faut de préférence normaliser les données quand on utilise KNN. Imaginons que nous avons un attributs dont les valeurs se trouvet entre 0 et 1, et un autre entre -100 et 100. Le second attribut aura plus de poids dans la mesure de distance car il aura de plus grande valeurs comparé au premier.
+<div><p>Vous aurez remarqué que la distance d’un point s’évalue sur base de la différence entre chaque attribut. C’est pour cette raison qu’il faut de préférence normaliser les données quand on utilise KNN. Imaginons que nous avons un attributs dont les valeurs se trouvent entre 0 et 1, et un autre entre -100 et 100. Le second attribut aura plus de poids dans la mesure de distance car il aura de plus grande valeurs comparé au premier.
 Par exemple nous avons deux point; (0.5, 50) et (0.45, 0). La distance entre les deux premier attributs est de <span class="math notranslate nohighlight">\((0.5-0.45)²=0.0025\)</span> et entre les deuxièmes <span class="math notranslate nohighlight">\((50-0)²=2500\)</span>. Ils auront donc une distance de 2500.0025 entre les deux alors qu’ils sont très proche dans le premier attribut.
-La normalisation est encore plus importante quand on décide d’utiliser des poids lors de l’aggrégation</p>
+La normalisation est encore plus importante quand on décide d’utiliser des poids lors de l’aggrégation.</p>
 </div></blockquote>
 </div>
 <div class="section" id="nombre-de-voisins">
 <h3>Nombre de voisins<a class="headerlink" href="#nombre-de-voisins" title="Permalink to this headline">¶</a></h3>
 <p>Maintenant que nous savons comment la distance sera mesurée il faut savoir combien de voisins nous devons prendre en compte. Pour voir les délimitations (bordures de décisions) entre 2 classes, nous pouvons créer un graphiques comme celui qui suit. Ce graphique présente les deux catégories ainsi que la bordure de décision.</p>
-<p>Nous pouvons voir que si nous utilisons 1 voisin, nous avons une poches dans les bleus où le point sera classifié comme orange. Utiliser 5 voisins semble suivre la forme de nos données alors qu’en utiliser plus linéarise la bordure. Bien que la meilleur façon de choisir le nombre de voisins en utilisants des mesures tel que l’accuracy ou le F1-score, créer un graphique nous permet de visualier la bordure et de comprendre le modèle.</p>
 <div class="figure align-default" id="ks-fig">
 <a class="reference internal image-reference" href="../../../_images/ks.png"><img alt="Influence du nombre de voisins sur la bordure de décision" src="../../../_images/ks.png" style="width: 750px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Influence du nombre de voisins sur la bordure de décision</span><a class="headerlink" href="#ks-fig" title="Permalink to this image">¶</a></p>
 </div>
+<p>Nous pouvons voir que si nous utilisons 1 voisin, nous avons une poches dans les bleus où le point sera classifié comme orange. Utiliser 5 voisins semble suivre la forme de nos données alors qu’en utiliser plus linéarise la bordure. Bien que la meilleur façon de choisir le nombre de voisins en utilisants des mesures tel que l’accuracy ou le F1-score, créer un graphique nous permet de visualier la bordure et de comprendre le modèle.</p>
 <p><strong>Une image est présente pour montrer l’impact du nombre de voisins</strong></p>
-<p>Il est dont primordial de déterminer le nombre obtimal de voision à prendre en compte. Le plus efficace et simple, et d’utiliser les données d’entrainement pour trouver ce nombre. Nous pouvons déterminer une liste de nombres des voisins, et d’entrainer chaque version avec l’ensemble d’entrainement et de l’évaluer sur l’ensemble de validation. La version du modèle la plus performante est celle que nous garderons.</p>
-<p>Un autre facteur déterminant est la balance des données. Si notre dataset d’entrainement n’est pas balancé et que nous avons 10 points qui sont de class 1 et 90 de class 2, utiliser un k &gt; 10 va toujours prédire 2.</p>
+<p>Il est dont primordial de déterminer le nombre optimal de voisins à prendre en compte. Le plus efficace et simple est d’utiliser les données d’entraînement pour trouver ce nombre. Nous pouvons déterminer une liste de nombres des voisins et entraîner chaque version avec l’ensemble d’entraînement et de l’évaluer sur l’ensemble de validation. La version du modèle la plus performante est celle que nous garderons.</p>
+<p>Un autre facteur déterminant est la balance des données. Si notre dataset d’entraînement n’est pas balancé et que nous avons 10 points qui sont de classe 1 et 90 de classe 2, utiliser un k &gt; 10 va toujours prédire 2.</p>
 </div>
 <div class="section" id="agregation-des-resultats">
 <h3>Agrégation des résultats<a class="headerlink" href="#agregation-des-resultats" title="Permalink to this headline">¶</a></h3>
 <p>La dernière chose à déterminer est la façon dont on va aggréger les voisins. KNN est utilisé plus souvent dans les tâches de classification mais ce modèle peut aussi être utilisé pour de la régression.</p>
 <div class="section" id="classification">
 <h4>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h4>
-<p>La plus simple est d’attribuer la classe qui est la plus présente dans les voisins qui ont été selectionné. Dans certain cas, on voudra prendre la distance des voisins en compte. Il est possible que notre point soit collé a deux points d’une classe mais qu’il ait 3 voisins assez distant. Si nous utilisons la méthode précente, le point sera classifié comme appartenant à la même class que les trois points distant. Ce problème peut-être résolu en prenant la distance en compte. Pour ce faire, on attribue un poids à chaque vote, tel que l’inverse de la distance, les deux points proche auront l’avantage et notre nouveau point sera correctement classifié.</p>
+<p>Le plus simple est d’attribuer la classe qui est la plus présente dans les voisins qui ont été selectionnés. Dans certain cas, on voudra prendre la distance des voisins en compte. En effet, il est possible que sur 5 voisins, notre point soit collé à deux points d’une classe mais qu’il ait 3 autres voisins assez distants. Si nous utilisons la première méthode, le point sera classifié comme appartenant à la même classe que les trois points distant. Ce problème peut-être résolu en prenant la distance en compte. Pour ce faire, on attribue un poids à chaque point. Si l’influence d’un voisin est inversement proportionnelle à sa distance, le nouveau point sera correctement classifié
+chaque vote, tel que l’inverse de la distance, les deux points proches auront l’avantage et notre nouveau point sera correctement classifié.</p>
 </div>
 <div class="section" id="regression">
 <h4>Régression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h4>
@@ -576,29 +577,29 @@ La normalisation est encore plus importante quand on décide d’utiliser des po
 </div>
 <div class="section" id="point-important">
 <h3>Point Important<a class="headerlink" href="#point-important" title="Permalink to this headline">¶</a></h3>
-<p>Nous savons que dans le cadre de la classification, KNN part du principe que les échantillons d’une même catégorie sont proche l’un de l’autre et que, idéalement, les données d’entrainement sont balancée. Un autre point important à prendre en compte est ce qu’on appel “la malédiction de la dimensionnalité”. Le volume d’une espace de données augumente exponentielement avec le nombre d’attributs, ainsi nous avons besoin d’une quantité exponentielle d’échantillons, sinon nous aurons des espaces quasi vide et la distance entre chaque échantillon augumentera. KNN évalue la distance entre un point et un autre en fonction de la distance dans chaque attribut (<span class="math notranslate nohighlight">\((x_{new,a}-x_{n,a})^2\)</span>), il sera donc de plus en plus difficile pour KNN de trouver les voisins correctement.</p>
+<p>Nous savons que dans le cadre de la classification, KNN part du principe que les échantillons d’une même catégorie sont proches les uns des autres et que, idéalement, les données d’entraînement sont équilibrée. Un autre point important à prendre en compte est ce qu’on appelle “la malédiction de la dimensionnalité”. Le volume d’une espace de données augumente exponentielement avec le nombre d’attributs, ainsi nous avons besoin d’une quantité exponentielle d’échantillons, sinon nous aurons des espaces quasi vides et la distance entre chaque échantillon augmentera. KNN évalue la distance entre un point et un autre en fonction de la distance dans chaque attribut (<span class="math notranslate nohighlight">\((x_{new,a}-x_{n,a})^2\)</span>), il sera donc de plus en plus difficile pour KNN de trouver les voisins correctement.</p>
 </div>
 </div>
 <div class="section" id="a-retenir">
 <h2>À retenir<a class="headerlink" href="#a-retenir" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Lors de la classification, Knn part du principe que les échantillons de la même catégorie sont proches l’un de l’autre.</p></li>
+<li><p>Lors de la classification, KNN part du principe que les échantillons de la même catégorie sont proches l’un de l’autre.</p></li>
 <li><p>KNN est un modèle assez simple mais qui est modulable afin de correspondre le plus possible à notre tâche.</p></li>
-<li><p>Il faut faire attention à la balance de l’ensemble d’entrainement.</p></li>
-<li><p>Ce modèle peut-être utilisé pour la classification ainsi que la régression.</p></li>
+<li><p>Il faut faire attention à l’équilibre de l’ensemble d’entraînement.</p></li>
+<li><p>Ce modèle peut-être utilisé pour des tâches de classification ainsi que de régression.</p></li>
 </ul>
 </div>
 <div class="section" id="implementation">
 <h2>4. Implémentation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>Pour faciliter l’implémentation nous allons utiliser numpy. Nous allons aussi suivre l’architecture de scikit learn (Sklean), c’est à dire que notre modele possède une fonction <strong>.fit</strong> pour l’entrainer et <strong>.predict</strong> pour la prédiction.</p>
+<p>Pour faciliter l’implémentation nous allons utiliser numpy. Nous allons aussi suivre l’architecture de scikit learn (Sklearn), c’est à dire que notre modèle possède une fonction <strong>.fit</strong> pour l’entraîner et <strong>.predict</strong> pour la prédiction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">-- Création de l&#39;ensemble de donnée --</span>
-<span class="sd">Notez que j&#39;utilise une distribution normal ce qui permet d&#39;avoir tous les points d&#39;une même class relativement proche.</span>
-<span class="sd">De plus, je génère un ensemble balancé.</span>
+<span class="sd">-- Création de l&#39;ensemble de données --</span>
+<span class="sd">Notez que j&#39;utilise une distribution normale ce qui permet d&#39;avoir tous les points d&#39;une même classe relativement proches.</span>
+<span class="sd">De plus, je génère un ensemble équilibré.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">elements</span> <span class="o">=</span> <span class="mi">50</span>
@@ -654,13 +655,13 @@ La normalisation est encore plus importante quand on décide d’utiliser des po
 </div>
 </div>
 </div>
-<p>Maintenant que nous avons un modèle et une méthode de génération de données, nous pouvons l’utiliser pour faire des prédictions. Nous allons générer 10 points de chaque classe. Vu que nous avons un ensemble blancé et binaire, nous pouvons utiliser l’accuracy. Cette mesure calcule le pourcentage de mauvaise prédiction.</p>
+<p>Maintenant que nous avons un modèle et une méthode de génération de données, nous pouvons l’utiliser pour faire des prédictions. Nous allons générer 10 points de chaque classe. Vu que nous avons un ensemble équilibré et binaire, nous pouvons utiliser l’accuracy. Cette mesure calcule le pourcentage de mauvaise prédiction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># On génère les données d&#39;entrainement et on &quot;fit&quot; le modèle</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># On génère les données d&#39;entraînement et on &quot;fit&quot; le modèle</span>
 <span class="n">train_set</span><span class="p">,</span> <span class="n">train_labels</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
 
-<span class="c1"># Ensuite on le test en générant le set de test </span>
+<span class="c1"># Ensuite on le teste en générant le set de test </span>
 <span class="n">elements</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">test_set</span><span class="p">,</span> <span class="n">test_labels</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
     
@@ -679,7 +680,7 @@ La normalisation est encore plus importante quand on décide d’utiliser des po
 </div>
 </div>
 </div>
-<p>Nous avons deux erreurs sur les 20 points, ce qui donne une accuracy de 0.1. C’est plutôt pas mal. Pour comprendre d’où elles viennent, nous pouvons tracer la bordure avec les points d’entrainements et de test.</p>
+<p>Nous avons deux erreurs sur les 20 points, ce qui donne une accuracy de 0.1. C’est plutôt pas mal. Pour comprendre d’où elles viennent, nous pouvons tracer la bordure avec les points d’entraînements et de test.</p>
 <!--
 import numpy as np
 import matplotlib.pyplot as plt
@@ -788,14 +789,14 @@ plt.show()
 <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
     <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">train_set</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">train_labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">train_set</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">train_labels</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span>
       <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;rgb(2,48,71)&quot;</span><span class="p">),</span> <span class="c1">#showlegend = False,</span>
-       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Entrainement: 0&quot;</span>
+       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;entraînement: 0&quot;</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
     <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">train_set</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">train_labels</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">train_set</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">train_labels</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span>
       <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;rgb(255,158,2)&quot;</span><span class="p">),</span> <span class="c1">#showlegend = False,</span>
-       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Entrainement: 1&quot;</span>
+       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;entraînement: 1&quot;</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
@@ -840,10 +841,10 @@ plt.show()
 </div>
 </div>
 </div>
-<p>Ce bout de code nous donne le graphique qui suit. Nous pouvons voir que que les deux erreurs sont de point qui devaient être des 1 mais sont des prédit comme étant des deux. On voit que c’est liée à la bordure de décision. On peut toujours adapter le nombre de voisins afin de réduire l’erreur mais il faut faire attention à l’overfitting!</p>
+<p>Ce bout de code nous donne le graphique qui suit. Nous pouvons voir que que les deux erreurs sont deux points qui devaient être des 1 des prédit comme étant des 2. On voit que c’est lié à la bordure de décision. On peut toujours adapter le nombre de voisins afin de réduire l’erreur mais il faut faire attention à l’overfitting!</p>
 <div class="figure align-default" id="model-fig">
 <a class="reference internal image-reference" href="../../../_images/bordure_décision_knn.png"><img alt="Influence du nombre de voisins sur la bordure de décision" src="../../../_images/bordure_décision_knn.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Bordure de décision de notre modèle avec les données d’entrainements et de test.</span><a class="headerlink" href="#model-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Bordure de décision de notre modèle avec les données d’entraînements et de test.</span><a class="headerlink" href="#model-fig" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="sources">
