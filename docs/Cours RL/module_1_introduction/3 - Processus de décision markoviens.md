@@ -147,4 +147,4 @@ Ce cours est inspiré de ressources diverses provenant d'Internet.
 * https://deeplizard.com/learn/video/my207WNoeyA
 * https://fr.wikipedia.org/wiki/Apprentissage_par_renforcement
 
-
+Ecrit par <a href="https://github.com/MHaurel" target="_blank">MHaurel</a>

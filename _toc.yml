@@ -22,7 +22,12 @@ parts:
     - glob: "docs/Cours_CV/*"
   - caption: Apprentissage par renforcement
     chapters:
-    - glob: "docs/Cours RL/*"
+      - file : "docs/Cours RL/module_1_introduction/1 - Introduction.md"
+        sections:
+        - glob: "docs/Cours RL/module_1_introduction/*"
+      - file : "docs/Cours RL/module_2_notions_avancees/Algorithmes de RL.md"
+        sections:
+        - glob: "docs/Cours RL/module_2_notions_avancees/*"
   - caption: Hors-série
     chapters:
     - glob: "docs/Cours annexes/*"
