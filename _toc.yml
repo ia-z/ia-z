@@ -25,7 +25,7 @@ parts:
       - file : "docs/Cours RL/module_1_introduction/1 - Introduction.md"
         sections:
         - glob: "docs/Cours RL/module_1_introduction/*"
-      - file : "docs/Cours RL/module_2_notions_avancees/Algorithmes de RL.md"
+      - file : "docs/Cours RL/module_2_notions_avancees/6 - Algorithmes de RL.md"
         sections:
         - glob: "docs/Cours RL/module_2_notions_avancees/*"
   - caption: Hors-série
