@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clustering &#8212; IA-Z</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Feature Engineering" href="11%20-%20Feature%20engineering%20%26%20cleaning.html" />
+    <link rel="prev" title="Classification: K-nearest-neighbours" href="09%20-%20Classification.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02%20-%20Elements%20de%20definition.html">
+     Eléments de définition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03%20-%20Regression%20lineaire.html">
+     Introduction à la régression : la régression linéaire
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05%20-%20Generalisation.html">
+     Généralisation d’un modèle de Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+     Régularisation &amp; tradeoff biais-variance : une introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+     Régularisation d’un modèle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08%20-%20Compromis%20biais-variance.html">
+     Compromis biais-variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09%20-%20Classification.html">
+     Classification: K-nearest-neighbours
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20-%20Feature%20engineering%20%26%20cleaning.html">
+     Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../NLP/chapitre1_introduction/1_Introduction.html">
+   Chapitre I: Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../NLP/chapitre1_introduction/2_DonneesTextuelles.html">
+     Etude des données textuelles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/3_ModStatLangage.html">
+   Chapitre II: Notions générales
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/4_ModLangues.html">
+     Modèles de langues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/5_Embedings.html">
+     Embeddings
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20RL/1%20-%20Introduction.html">
+   Introduction au Reinforcement learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20RL/3%20-%20Processus%20de%20d%C3%A9cision%20markoviens.html">
+   Processus de décision markoviens (MDPs)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20RL/5%20-%20Monte%20Carlo.html">
+   Monte-Carlo
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hors-série
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20annexes/mener_une_recherche.html">
+   Mener une recherche internet efficacement
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/docs/Cours fondamentaux ML/module_1_introduction/10 - Clustering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours fondamentaux ML/module_1_introduction/10 - Clustering.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/Cours fondamentaux ML/module_1_introduction/10 - Clustering.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kmeans">
+   Kmeans
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#en-detail">
+     En détail
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#soucis-et-solutions">
+     Soucis et Solutions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initlisation-des-centroids">
+       Initlisation des centroids
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#choix-du-nombre-de-cluster">
+       Choix du nombre de cluster
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limites">
+   Limites
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#affectation-stricte">
+     Affectation stricte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#malediction-de-la-dimensionnalite">
+     Malédiction de la dimensionnalité
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-retenir">
+   À retenir
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implémentation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sources">
+     Sources
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Clustering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kmeans">
+   Kmeans
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#en-detail">
+     En détail
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#soucis-et-solutions">
+     Soucis et Solutions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initlisation-des-centroids">
+       Initlisation des centroids
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#choix-du-nombre-de-cluster">
+       Choix du nombre de cluster
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limites">
+   Limites
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#affectation-stricte">
+     Affectation stricte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#malediction-de-la-dimensionnalite">
+     Malédiction de la dimensionnalité
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-retenir">
+   À retenir
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implémentation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sources">
+     Sources
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="clustering">
+<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<p>Si vous vous rappelez bien du chapitre “Eléments de définition”, il y a trois types principaux de Machine Learning; Supervisé, non supervisé et par renforcement. Jusqu’à maintenant nous n’avions que des cas d’apprentissage supervisé (nous avions les labels), il est donc temps de parler de l’apprentissage non-supervisé (nous n’avons pas les labels).</p>
+<p>Imaginons que nous avons des images de chiens et de chats qui ne sont pas étiquettées (“Sans labels” dans l’image). Une solution serait de payer des gens pour ajouter les labels, mais elle est couteuse en temps et en argent. Une autre est d’utiliser du clustering. Cette approche va essayer de créer des groupes (clusters) en utilisant les données (“Avec labels” dans l’image).</p>
+<p><img alt="image" src="../../../_images/clustering_dataset.png" /></p>
+<p>Une idée serait de partir du principe que les données de même classe (chiens et chats) sont proches dans l’espace définit par les pixels de l’image. Pour les regrouper, nous pourrions avoir deux points, un pour les chiens et un pour les chats. Nous classifierons l’image en fonction du point duquel elle est le plus proche. La question est donc: Comment trouver ces points?</p>
+<p>La réponse est simple, en utilsant Kmeans!</p>
+<div class="section" id="kmeans">
+<h2>Kmeans<a class="headerlink" href="#kmeans" title="Permalink to this headline">¶</a></h2>
+<p>L’algorithme se base sur ce qu’on appel des centroids, ce sont des points qui seront placé au milieu des clusters. Chaque échantillon fait partie de la catégorie dont le centroid est le plus proche. La procédure se passe en deux parties</p>
+<ol class="simple">
+<li><p>Attribution des échantillons aux clusters</p></li>
+<li><p>Mise à jour des centroids</p></li>
+</ol>
+<div class="section" id="en-detail">
+<h3>En détail<a class="headerlink" href="#en-detail" title="Permalink to this headline">¶</a></h3>
+<p>Afin de nous faciliter la tâche, nous allons introduire une matrice binaire <span class="math notranslate nohighlight">\(z\)</span> qui est de taille <span class="math notranslate nohighlight">\(N\times K\)</span>, <span class="math notranslate nohighlight">\(N\)</span> détermine le nombre de points de données et <span class="math notranslate nohighlight">\(K\)</span> le nombre de clusters que nous cherchons. De cette façon, l’entrée <span class="math notranslate nohighlight">\(z_{1,1}=0\)</span> voudra dire que <span class="math notranslate nohighlight">\(x_1\)</span> n’est pas dans le cluster 1, et <span class="math notranslate nohighlight">\(z_{1,2}=1\)</span> représente l’appartenance du point <span class="math notranslate nohighlight">\(x_1\)</span> au cluster 2. Nous avons donc la contrainte qu’il ne peut y avoir que une entrée qui vaut 1 et le reste doit être 0, mathématiquement, cela donne <span class="math notranslate nohighlight">\(\sum_k z_{n,k} = 1\)</span>.
+<br> Maintenant que cela est clair, nous pouvons (enfin) décrire l’algorithme.</p>
+<p>Les centroids sont intialisé arbitrairement. Ensuite nous calculons la distance entre chaque point et les centroids. Admettons que pour le premier point, le second centroid est le plus proche alors son entrée <span class="math notranslate nohighlight">\(z_{0,1}\)</span> (les indexs commencent à 0) devient 1. Une fois la matrice <span class="math notranslate nohighlight">\(z\)</span> mise à jour, nous pouvons calculer les coordonnées de chaque centroid en prenant la moyenne des coordonnées des points qui lui sont attribués:</p>
+<div class="math notranslate nohighlight">
+\[\mu_k = \frac{\sum_{n=1}^N z_{nk}\textbf{x}_n}{\sum_{n=1}^N z_{nk}}\]</div>
+<p>Ici, <span class="math notranslate nohighlight">\(z\)</span> nous permet de suivre simplement les attributions et de mettre les coordonnées à jour. En effet, si <span class="math notranslate nohighlight">\(z_{n,k}=0\)</span> alors il ne sera pas pris en compte dans la moyenne et si c’est 1 alors on le prends en compte. Une fois les centroids mis à jour, nous recomençons la phase d’assignation en calculant les distances.</p>
+<p>Le GIF qui suit permet de voir l’évolution de <span class="math notranslate nohighlight">\(z\)</span> en regardant les couleurs des points ainsi que les centroids en bleu.</p>
+<p><img alt="SegmentLocal" src="../../../_images/clustering_gif.gif" /></p>
+<blockquote>
+<div><p>L’algorithme</p>
+<ol class="simple">
+<li><p>On initialise les centroids <span class="math notranslate nohighlight">\(\mu_n\)</span>. (Pour l’instant nous le faisons aléatoirement)</p></li>
+<li><p>On attribue le cluster de chaque données <span class="math notranslate nohighlight">\(x_n\)</span> au centroid le plus proche et remplissons la matrice <span class="math notranslate nohighlight">\(z\)</span>.<br> Comme avec Knn. nous pouvons prendre la mesure de distance qui nous convient le mieux. Dans notre cas nous utiliserons l’euclidienne.</p></li>
+<li><p>On met les centroids à jour en calculant la moyenne des points présent dans le cluster :
+<span class="math notranslate nohighlight">\(\mu_k = \frac{\sum_{n=1}^N z_{nk}\textbf{x}_n}{\sum_{n=1}^N z_{nk}}\)</span></p></li>
+<li><p>On retourne au point 2, jusqu’à ce que <span class="math notranslate nohighlight">\(z\)</span> ne change plus.</p></li>
+</ol>
+</div></blockquote>
+<p>Ce problème peut-être décrit par une fonction de couts que nous voulons minimiser:</p>
+<div class="math notranslate nohighlight">
+\[\min\sum_n\sum_k z_{n,k} (x_n-\mu_k)^T(x_n-\mu_k)\]</div>
+<div class="math notranslate nohighlight">
+\[\textbf{s.t.: } z_{n,k}\in \{0,1\} \text{ et } \sum_k z_{n,k} = 1 \]</div>
+<p>La partie du haut représente le but; minimizer la distance entre les centroids <span class="math notranslate nohighlight">\(\mu_k\)</span> et les données qui y sont liées. Ainsi, <span class="math notranslate nohighlight">\(z_{n,k}\)</span> sera 1 si <span class="math notranslate nohighlight">\(x_n\)</span> appartient au centroid <span class="math notranslate nohighlight">\(\mu_k\)</span> et la distance sera prise en compte. Si <span class="math notranslate nohighlight">\(z_{n,k}\)</span> est 0, alors la distance ne sera pas prise en compte car <span class="math notranslate nohighlight">\(x_n\)</span> appartient a un autre centroid. La partie du bas représente les contraintes, la première dit que les valeurs dans <span class="math notranslate nohighlight">\(z\)</span> doivent être soit 0 soit 1. La deuxième dit que seulement un centroid peut être attribué à un point de donnée.</p>
+<p>Le but est de rendre la somme des distances la plus petite possible. Kmeans va converger à chaque fois mais vu que les centroids sont initilisés aléatoirement et que le problême n’est pas convex (une seule solution) chaque fois que nous lançons Kmeans nous aurons potentiellement une solution différente.</p>
+</div>
+<div class="section" id="soucis-et-solutions">
+<h3>Soucis et Solutions<a class="headerlink" href="#soucis-et-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Il y a deux problèmes majeurs, comment déterminer le nombre de clusters. Dans certains cas nous avons énorméments de données sans labels et il est impossible de déterminer le nombre de cluster présent. Le deuxième est l’initialisation des centroids. Vu que l’initilisation a un impact majeur sur la solution finale, il faut le faire de manière intelligent sans risquer de trop biaiser le résultat.</p>
+<div class="section" id="initlisation-des-centroids">
+<h4>Initlisation des centroids<a class="headerlink" href="#initlisation-des-centroids" title="Permalink to this headline">¶</a></h4>
+<p>Il existe plusieurs approches plus ou moins efficaces comme l’initilisation aléatoire dans une certaine “zone”, prendre <span class="math notranslate nohighlight">\(K\)</span> points dans les données et utiliser leur position comme centroid. Dans les deux cas, nous avons potentiellement des centroids très proche l’un de l’autre, ce qui ralentit la convergence. L’approche la plus efficace (à ce jour) se nomme kmeans++ et est celle utilisée par la libraire Scikit-Learn.</p>
+<p>L’idée est assez simple, nous choisissons un point dans <span class="math notranslate nohighlight">\(X\)</span> aléatoirement et utilisons ses coordonnées comme coordonnées pour <span class="math notranslate nohighlight">\(\mu_1\)</span>. Ensuite nous trouvons le point le plus éloigné de <span class="math notranslate nohighlight">\(\mu_1\)</span> et l’utilisons pour déterminer <span class="math notranslate nohighlight">\(\mu_2\)</span>. Puis, nous trouvons le points le plus éloigné de <span class="math notranslate nohighlight">\(\mu_1\)</span> et <span class="math notranslate nohighlight">\(\mu_2\)</span>, etc.</p>
+<p>Cette approche nous donne une approximation <span class="math notranslate nohighlight">\(O(logK)\)</span> de la réponse finale.</p>
+</div>
+<div class="section" id="choix-du-nombre-de-cluster">
+<h4>Choix du nombre de cluster<a class="headerlink" href="#choix-du-nombre-de-cluster" title="Permalink to this headline">¶</a></h4>
+<p>Il existe plusieurs approches, celle décrite ici est basé sur ce qu’on appele la variance intra-cluster. La variance d’un cluster est déterminé par la distance moyenne entre un centroid et les points qui y sont liée. On peut la calculer en utilisant cette formule:</p>
+<div class="math notranslate nohighlight">
+\[W_k:=\frac{1}{|\mu_k|}\sum_{x\in \mu_k}(x-\mu_k)^2\]</div>
+<p><span class="math notranslate nohighlight">\(|\mu_k|\)</span> est le nombre de points liée au centroid <span class="math notranslate nohighlight">\(\mu_k\)</span>, ce facteur nous permet de normaliser le résulat de façon à être entre 0 et 1. La somme calcule la distance total entre un centroid et les points qui sont liée à lui.</p>
+<p>La variance total <span class="math notranslate nohighlight">\(W\)</span> est la somme de tous les <span class="math notranslate nohighlight">\(W_k\)</span>.</p>
+<p>Le but est de choisir le nombre de cluster <span class="math notranslate nohighlight">\(K\)</span> qui minimise <span class="math notranslate nohighlight">\(W\)</span>.</p>
+<blockquote>
+<div><p>Étant donnée que nous n’avons pas les labels, il n’est, la plupart du temps, pas possible d’évaluer un algorithm de clustering. Il faudra soit lui faire confiance ou regarder par soit même. De plus, on sait que Kmeans va toujours converger, il va donc toujours donner une infomation. Dans le cas des images de chien et de chat, il trouvera autant de cluster qu’il y a d’images si on le lui demande. Il faut donc être prudent lors de l’utilisation de l’algorithm.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="limites">
+<h2>Limites<a class="headerlink" href="#limites" title="Permalink to this headline">¶</a></h2>
+<p>Bien que puissant et pratique, Kmeans n’est pas parfait.</p>
+<div class="section" id="affectation-stricte">
+<h3>Affectation stricte<a class="headerlink" href="#affectation-stricte" title="Permalink to this headline">¶</a></h3>
+<p>Kmeans fait de <strong>l’affectation souple</strong>, c’est à dire qu’il détermine si un point appartient ou pas dans une certaine catégorie. Ceci peut-être problématique dans le cas où un point est a équidistance entre deux centroids. La façon dont on règle ce problème peut avoir une réel importance sur la performance du modèle. Imaginons, que nous voulons déterminer deux catégories de maladies dont l’une est bénine et l’autre mortel. Le choix de classifier un point comme bénin ou mortel ne peut pas se faire aléatoirement.</p>
+<p>Dans ce cas nous préfèrerons utiliser de <strong>l’affectation souple</strong>. Cette approche donne une probabilité qu’un point appartient à une catégorie, ce qui nous permet de faire une meilleure analyse et interprétation du modèle. Si on reprend l’exemple d’au dessus, si un point a une probabilité de 49% de posséder la maladie mortel et 51% de posséder la maladie bénine, on pourrait préfèrer classifier le patient comme portant la maladie mortel afin de réduire le risque de faux négatifs.</p>
+<p>Le modèle de base et le plus utilisé est le Gaussian Mixture Model. Ce modèle part de l’hypothèse que les données sont généré par des distributions normales. Il va donc essayer de trouver le variance et la moyenne de ces distributions, ce qui permet de déterminer la probabilité qu’une point appartient à une catégorie.</p>
+</div>
+<div class="section" id="malediction-de-la-dimensionnalite">
+<h3>Malédiction de la dimensionnalité<a class="headerlink" href="#malediction-de-la-dimensionnalite" title="Permalink to this headline">¶</a></h3>
+<p>Comme nous l’avosn vu dans le chapitre précédent, les modèles basé sur le calcul de distance souffrent de la maladie de la dimenstionalité. Ainsi, Kmeans ne fonctionnera pas ou moins bien quand on utilise beaucoup de données. Il est relativement facile de faire une analyse statistiques des données quand nous avons les labels et de filtrer les attributs. Malheureusment, ce n’est pas possible quand on utilise Kmeans. Nous n’avons pas de labels donc nous ne pouvons pas obtenir l’utilité de chaque attribut.</p>
+<p>La solution est d’utiliser des algorithmes qui ne sont pas autant atteint. Une méthode relativement simple est l’algorithm ClustVarSel. Cependant, nous devons introduire la notions de BIC avant de décrire l’algorithm. Le BIC est un critère qui évalue la complexité du modèle en prenant le résulat du modèle en compte. La complexité du modèle est définie comme le nombre de paramètres à évaluer. ClustVarSel est basé sur des Gaussian Mixture Model et nous devons évaluer <span class="math notranslate nohighlight">\(c_k\)</span> paramètres. <span class="math notranslate nohighlight">\(c_k\)</span> est calculé en suivant le formule qui suit:</p>
+<div class="math notranslate nohighlight">
+\[c_k=K\times D+(K-1)+K\times D \times (D+1)/2\]</div>
+<p><span class="math notranslate nohighlight">\(K\)</span> est le nombre de clusters et <span class="math notranslate nohighlight">\(D\)</span> le nombre de dimensions des données.</p>
+<p>Sans entréer dans les détails, chaque Gaussien requiert:</p>
+<ol class="simple">
+<li><p>Une matrice de covariance nécessitant <span class="math notranslate nohighlight">\(D \times (D+1)/2\)</span> éléments</p></li>
+<li><p>Un vecteur de moyenne de <span class="math notranslate nohighlight">\(D\)</span> éléments</p></li>
+<li><p>Un “mixing weight”</p></li>
+</ol>
+<p>Le point 1 explique <span class="math notranslate nohighlight">\(K\times D \times (D+1)/2\)</span>, ensuite nous avons besoin de <span class="math notranslate nohighlight">\(K\)</span> vecteurs de <span class="math notranslate nohighlight">\(D\)</span> éléments et <span class="math notranslate nohighlight">\(K\)</span> mixing weights, ce qui explique <span class="math notranslate nohighlight">\(K\times D+(K-1)\)</span>. Nous avons utilisé une astuce pour les mixing weights, vu que la somme de ces poids est de 1, nous pouvons calculer <span class="math notranslate nohighlight">\(K-1\)</span> poids et le dernier est 1 moins la somme des poids. La partie importante pour ClustVarSel est que plus nous ajoutons de features (<span class="math notranslate nohighlight">\(D\)</span>), plus le complexité augumente.</p>
+<p>Le BIC est calculé par l’equation qui suit:</p>
+<div class="math notranslate nohighlight">
+\[BIC_K=-ln p(X|.)-\frac{1}{2}c_K ln N\]</div>
+<p><span class="math notranslate nohighlight">\(p(x|.)\)</span> est la probabilité qu’un point appartienne à un clusters.</p>
+<p>Nous avons donc un moyen d’évaluer la qualité d’un modèle en prenant en compte le qualité de la prédiction et la complexité du modèle. Le but de ClustVarSel est de selectionner les attributs qui minimisent le BIC. Il existe deux versions, soit on utilise tous les attributs et on en enlèves, ou on commence avec aucun attribut et on les ajoutes.</p>
+<p>Dans le cas où on commence avec aucun attribut, ClustVarSel fonctionne en deux étapes:</p>
+<blockquote>
+<div><ol class="simple">
+<li><p>Ajout éventuel d’un attribut</p></li>
+<li><p>Suppression éventuel d’un attribut</p></li>
+</ol>
+</div></blockquote>
+<p>Dans la première étape, nous entrainons un modèle pour chaque attributs qui n’a pas encore été sélectionné en l’ajoutant à la liste des attributs selectionné. Le modèle est évalué et nous gardons l’attribut qui a le BIC minimum. Dans certains cas, ajouter un attribut ne change pas ou augumente le BIC, dans ce cas, nous n’ajoutons pas d’attributs.</p>
+<p>Ensuite, si nous avons plus de 1 attribut, nous entrainons un modèle pour chaque attribut sauf que cette fois nous retirons un attributs. Si le BIC est meilleur en retirant un attribut, nous le retirons.</p>
+<p>Donc si nous avons selectionné <span class="math notranslate nohighlight">\(n\)</span> attributs et qu’il nous en reste <span class="math notranslate nohighlight">\(i\)</span>. La phase d’ajout requière <span class="math notranslate nohighlight">\(n+i\)</span> entrainements avec chaque <span class="math notranslate nohighlight">\(n+1\)</span> éléments. La phase de suppressions requiert <span class="math notranslate nohighlight">\(n\)</span> entrainements avec <span class="math notranslate nohighlight">\(n-1\)</span> éléments.</p>
+<p>Cette approche nous permet de faire de la sélection d’attributs. Malheureusement elle requiert une certaine puissance de calculs et nécessite d’être lançé plusieurs fois afin de stabiliser la selection. De plus, cette méthode souffre du même problème que Kmeans, elle va toujours trouver un résulats, peut-importe le nombre de clusters. Si nous ne savons pas combien de cluster nous avons, nous devons lancer le modèle plusieurs fois pour chaque nombre de clusters.</p>
+</div>
+</div>
+<div class="section" id="a-retenir">
+<h2>À retenir<a class="headerlink" href="#a-retenir" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Un algorithm de clustering nous donnera toujours une solution, même si ce n’est pas la bonne.</p></li>
+<li><p>Le choix de l’initialisation des centroids et du nombre de cluster est primordial.</p></li>
+<li><p>Il n’y a aucun moyen de tester l’algorithm, nous devons donc nous fier aux scores tels que la variance intra-cluster ou le BIC</p></li>
+<li><p>Le clustering dépend de l’initialisation qui est stochastique, il est courant de faire tourner l’algorithm plusieurs fois afin de stabiliser le résultat.</p></li>
+</ul>
+</div>
+<div class="section" id="implementation">
+<h2>Implémentation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>L’implémentation se fera en plusieurs parties. Nous allons d’abord implémenter le modèle et le tester. Ensuite nous implémenterons l’intra cluster variance afin de déterminer le nombre de clusters à utiliser.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># L&#39;implémentation requiert seulement numpy. plotly est utilisé pour les graphiques. </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Une fois numpy importé, nous devons générer les données. L’hypothèse pour utiliser Kmeans est que les données d’une même catégorie sont proches dans un espace cartésien. Nous devons donc générer nos données en suivant cette hypothèse. Pour ce faire, nous allons utiliser une distribution normal avec une variance de 0.55. La moyenne pour la catégorie 0 est de 0 et de 1 pour les 1. Nous pouvons déterminer le nombre de données que nous voulons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
+    <span class="n">rng</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+
+    <span class="n">classes_x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">elements</span><span class="p">))</span>
+    <span class="n">classes_y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">elements</span><span class="p">))</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">elements</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">elements</span><span class="p">)))</span>
+    <span class="n">dset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">elements</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">dset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">classes_x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes_y</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">dset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">classes_x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">classes_y</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">dset</span><span class="p">,</span> <span class="n">labels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pour l’implémentation, nous allons suivre le même pattern que lors de l’implémentation de KNN. Vu que les deux algorothmes dépendent de la distance, leurs implémentation est relativement similaire.
+Afin de simplifier le code, les centroids sont intialisé de façon a être entre le minimum et le maximum des coordonées en x et y.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Kmeans</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="n">K</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Fonction utilisé pour entrainer le modèle</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># Point 1: Initilisation des centroids</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+
+        <span class="n">prev_z</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">curr_z</span> <span class="o">=</span> <span class="kc">None</span>
+      
+        <span class="k">while</span> <span class="nb">type</span><span class="p">(</span><span class="n">prev_z</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">prev_z</span> <span class="o">!=</span> <span class="n">curr_z</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">prev_z</span> <span class="o">=</span> <span class="n">curr_z</span>
+            <span class="n">curr_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">))</span>
+            
+            <span class="c1"># Point 2: On calcule les distances et on remplit z</span>
+            <span class="k">for</span> <span class="n">ind_point</span><span class="p">,</span> <span class="n">dpoint</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">ind_centr</span><span class="p">,</span> <span class="n">centroid</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">):</span>
+                    <span class="n">dist</span><span class="p">[</span><span class="n">ind_centr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">dpoint</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>                
+                <span class="n">curr_z</span><span class="p">[</span><span class="n">ind_point</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dist</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+            
+            <span class="c1"># Point 3: Mise à jour des centroids</span>
+            <span class="k">for</span> <span class="n">ind_centr</span><span class="p">,</span> <span class="n">centroid</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">):</span> 
+                <span class="n">new_centr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centroid</span><span class="p">))</span>
+
+                <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centroid</span><span class="p">)):</span>
+                    <span class="n">new_centr</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">curr_z</span><span class="p">[:,</span> <span class="n">ind_centr</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="n">dim</span><span class="p">])</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">curr_z</span><span class="p">[:,</span> <span class="n">ind_centr</span><span class="p">])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">[</span><span class="n">ind_centr</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_centr</span>
+                            
+    <span class="c1"># Fonction appelé pour prédire        </span>
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_point</span><span class="p">,</span> <span class="n">get_dist</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dists</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">dp</span> <span class="ow">in</span> <span class="n">data_point</span><span class="p">:</span>
+            <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">:</span>
+                <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">point</span><span class="p">))</span>
+
+            <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">))</span>
+            <span class="n">dists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">distances</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="n">get_dist</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">preds</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+    
+    <span class="c1"># Calcul de la distance</span>
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Maintenant que le modèle est implémenté, nous pouvons l’essayer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>
+
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]))</span><span class="o">/</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]))</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]))</span><span class="o">/</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,:])</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]))</span>
+
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">-- Plot --</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">fig0</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">color</span><span class="o">=</span><span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;rgb(2,48,71)&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb(255,158,2)&quot;</span><span class="p">])</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">kmeans</span><span class="o">.</span><span class="n">centroids</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">y</span><span class="o">=</span><span class="n">kmeans</span><span class="o">.</span><span class="n">centroids</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Centroid 0&quot;</span><span class="p">,</span><span class="s2">&quot;Centroid 1&quot;</span><span class="p">],</span> <span class="n">symbol_sequence</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;square&quot;</span><span class="p">],</span> <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;rgb(2,48,71)&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb(255,158,2)&quot;</span><span class="p">])</span>
+
+<span class="n">fig1</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;DarkSlateGrey&#39;</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">))</span>
+
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fig0</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="image" src="../../../_images/clustering_resultat.png" /></p>
+<p>Nous pouvons voir que les centroids semblent être bien placé, qu’en est t’il de la réalité?
+Nous allons tricher un peu, nous avons les labels donc nous savons quels points sont ensemble et ceux qui ne le sont pas. De plus nous savons que les 50 premiers points et les 50 derniers points forment un groupe. Il nous suffit de faire la somme des deux groupes, dans le meilleur des cas nous aurons un groupe qui est 50 (tous des 1) et l’autre 0 (tous des 0).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">predictions</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">tmp_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">Group1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span><span class="si">}</span><span class="s2"> Group2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">50</span><span class="p">:])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:
+Group1: 47 Group2: 6
+1:
+Group1: 47 Group2: 10
+2:
+Group1: 47 Group2: 6
+3:
+Group1: 3 Group2: 44
+4:
+Group1: 47 Group2: 10
+5:
+Group1: 47 Group2: 10
+6:
+Group1: 3 Group2: 44
+7:
+Group1: 3 Group2: 40
+8:
+Group1: 3 Group2: 40
+9:
+Group1: 3 Group2: 40
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nous pouvons voir que les clusters ne sont pas les mêmes à chaque essai alors que les données restent inchangé. Aussi, vous pouvez voir que les clusters ont des tailles différentes. Maintenant, essayons avec des nombre de clusters différents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">predictions</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">tmp_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">len_groups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">len_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">distance</span><span class="p">[</span><span class="n">predictions</span> <span class="o">==</span> <span class="n">k</span><span class="p">])</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04079967360261118
+0.09089912280701753
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.16442645074224022
+0.31023639953172866
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nous pouvons voir qu’utiliser deux clusters donne la plus petite variance intra-cluster. Cependant nous pouvons voir qu’utiliser 3 clusters donne une variance basse aussi.</p>
+<p>Et voilà, maintenant tu sais implémenter et utiliser Kmeans ainsi qu’évaluer sa performance grâce au intra-cluster variance. Tu connais aussi ses problèmes et les possibles solutions.</p>
+<div class="section" id="sources">
+<h3>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Le cours “Statistical Learning for Big Data” (MVE441) de Chalmers University of Technology.</p></li>
+<li><p>La page wikipédia du BIC: <a class="reference external" href="https://fr.wikipedia.org/wiki/Crit%C3%A8re_d%27information_bay%C3%A9sien">https://fr.wikipedia.org/wiki/Critère_d’information_bayésien</a></p></li>
+<li><p>Pour ClustVarSel: Maugis, C., Celeux, G., Martin-Magniette M. (2009) Variable Selection for Clustering With Gaussian Mixture Models. Biometrics, 65(3), 701-709.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours fondamentaux ML/module_1_introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="09%20-%20Classification.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Classification: K-nearest-neighbours</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="11%20-%20Feature%20engineering%20%26%20cleaning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Feature Engineering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
