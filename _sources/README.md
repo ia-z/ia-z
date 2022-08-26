@@ -107,13 +107,13 @@ Merci à nos 11 contributeurs d'avoir apporté leur pierre à l'édifice !
     <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;74571889?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;aminenaim
   </a>
-  <a href="https:&#x2F;&#x2F;github.com&#x2F;adriengoleb" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
-    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;55838700?v&#x3D;4" style="width: 36px; margin-top: 2px">
-    &nbsp;&nbsp;adriengoleb
-  </a>
   <a href="https:&#x2F;&#x2F;github.com&#x2F;MHaurel" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
     <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;54206618?v&#x3D;4" style="width: 36px; margin-top: 2px">
     &nbsp;&nbsp;MHaurel
+  </a>
+  <a href="https:&#x2F;&#x2F;github.com&#x2F;adriengoleb" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
+    <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;55838700?v&#x3D;4" style="width: 36px; margin-top: 2px">
+    &nbsp;&nbsp;adriengoleb
   </a>
   <a href="https:&#x2F;&#x2F;github.com&#x2F;TheBats" style="display: flex; align-items : center; text-decoration: none; color: inherit; width: 150px">
     <img src="https:&#x2F;&#x2F;avatars.githubusercontent.com&#x2F;u&#x2F;35220472?v&#x3D;4" style="width: 36px; margin-top: 2px">
