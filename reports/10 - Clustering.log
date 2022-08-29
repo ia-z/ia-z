@@ -32,8 +32,10 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['for k in [2,3,4,5]:', '    tmp_model = Kmeans(k)', '    tmp_model.fit(data.T)', '    predictions, distance = tmp_model.predict(data.T, True)', '    ']
-...
-['    ', '    for i in range(k):', '        total += 1/len_groups[i]+np.sum(distance[predictions == k])', '        ', '    print(total)']
+for i in range(10):
+    tmp_model = Kmeans(2)
+    tmp_model.fit(data.T)
+    predictions, distance = tmp_model.predict(data.T, True)
+    print(f"{i}:\nGroup1: {np.sum(predictions[:50])} Group2: {np.sum(predictions[50:])}")
 -------------------
 
