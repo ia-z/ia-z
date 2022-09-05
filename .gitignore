@@ -1,9 +1,16 @@
 # Build artefacts from jupyter-book
 _build/
 *.ipynb_checkpoints
+*.pyc
 
 # Virtual env
 .venv/
 venv/
 
 .DS_Store
+
+# Notebook outputs
+**/iframe_figures/
+
+# Mustache rendering
+node_modules/

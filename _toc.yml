@@ -6,16 +6,28 @@ root: README
 parts:
   - caption: Apprentissage automatique
     chapters:
-    - glob: "docs/Cours fondamentaux ML/*"
+      - file: "docs/Cours fondamentaux ML/module_1_introduction/01 - Pourquoi le ML & information grâce à la data.md"
+        sections:
+        - glob: "docs/Cours fondamentaux ML/module_1_introduction/*"
   - caption: Traitement automatique de la langue
     chapters:
-    - glob: "docs/NLP/*"
+      - file: "docs/NLP/chapitre1_introduction/1_Introduction.md"
+        sections:
+        - glob: "docs/NLP/chapitre1_introduction/*"
+      - file: "docs/NLP/chapitre2_notionsgenerales/3_ModStatLangage.md"
+        sections:
+        - glob: "docs/NLP/chapitre2_notionsgenerales/*"
   - caption: Vision par ordinateur
     chapters:
     - glob: "docs/Cours_CV/*"
   - caption: Apprentissage par renforcement
     chapters:
-    - glob: "docs/Cours RL/*"
+      - file : "docs/Cours RL/module_1_introduction/1 - Introduction.md"
+        sections:
+        - glob: "docs/Cours RL/module_1_introduction/*"
+      - file : "docs/Cours RL/module_2_notions_avancees/6 - Algorithmes de RL.md"
+        sections:
+        - glob: "docs/Cours RL/module_2_notions_avancees/*"
   - caption: Hors-série
     chapters:
     - glob: "docs/Cours annexes/*"

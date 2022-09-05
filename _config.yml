@@ -3,13 +3,13 @@
 
 title: IA-Z
 author: Communauté IA-Z
-logo: logo.jpeg
-exclude_patterns: [_build, "**.ipynb_checkpoints", .venv, venv, organisation]
+logo: _static/img/logo.jpeg
+exclude_patterns: [_build, "**.ipynb_checkpoints", .venv, venv, organisation, node_modules, package.json, package-lock.json, .local, .github]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: off
+  execute_notebooks: auto
 
 # Define the name of the latex output file for PDF builds
 latex:

@@ -9,10 +9,44 @@ on:
     branches:
       - main
 
+  # Schedule the job to everyday to refresh dynamic first page
+  schedule:
+    - cron: '0 0 * * *'
+
 jobs:
 
-  build:
+  rendering:
+    name: Dynamic rendering
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout from main
+    - name: Checkout current repository to Master branch
+      uses: actions/checkout@v1
+    # Setup Node version
+    - name: Setup NodeJs 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+    # Cache the node_module to avoid build explosion
+    - name: Cache dependencies and build outputs to improve workflow execution time.
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-js-${{ hashFiles('package-lock.json') }}
+    # Install dependencies for dynamic rendering
+    - name: Install dependencies
+      run: npm install
+    # Generate the README.md file
+    - name: Generate README.md file
+      run: node .github/dynamic-rendering/render.js
+    - name: Commit and Push new README.md to the repository
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
+  build:
+    # Deploy only if build succeeded
+    needs: [rendering]
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +62,9 @@ jobs:
     # Build web project using jupyter-book
     - name: Build Jupyter-Book
       run: jupyter-book build .
+    # Copy iframes where we want to have iframes
+    - name: Copy iframes from compiled notebooks to website
+      run: python .github/scripts/copy_iframes.py . docs/
     # Upload the artifact to be used in next job
     - uses: actions/upload-artifact@v2
       with:
@@ -37,8 +74,8 @@ jobs:
   deploy:
     # Deploy only if build succeeded
     needs: [build]
-    # Deploy only if pull request has been pushed and merged
-    if: github.event_name == 'push'
+    # Deploy only if pull request has been pushed and merged or if triggered by scheduler
+    if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
 
     name: Deploy
     runs-on: ubuntu-latest

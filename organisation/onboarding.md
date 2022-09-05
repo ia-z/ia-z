@@ -15,7 +15,7 @@ Nous souhaitons préciser tout de même que nous n’avons pas la prétention d�
 
 # Organisation
 
-L’ensemble des cours est rassemblé sur un repo Github à l’adresse suivante : https://github.com/ia-z/ia-z
+L’ensemble des cours est rassemblé sur un repo Github à l’adresse suivante : https://github.com/ia-z/ia-z.
 Les membres fondateurs du projet s'occupent de la gestion globale du projet (gestion du Github, décisions importantes, …)
 
 (Remarque #1 : A terme ce serait bien que des personnes dans la core-team ou hors core-team puissent s'occuper de la communication des cours et prendre part aux décisions importantes).
@@ -40,11 +40,11 @@ N’hésitez pas à faire part à l’équipe de toute remarque ou suggestion é
 # Vision actuelle du projet
 
 Nous voulons à terme proposer des cours sur un site internet qui traitent des grands domaines de l’IA, particulièrement du Machine Learning. Notre volonté est de traiter de manière complète les fondamentaux de chaque discipline au travers de cours écrits et d’exercices pratiques régulièrement répartis dans les chapitres pour ne pas seulement enseigner des connaissances mais inculquer des compétences.
-Étant donné que le projet est un projet sur le long terme qui n’en est qu’à ses débuts, il a été choisi de se focaliser en premier lieu sur la production des ressources écrites, en commençant par les fondamentaux. Les cours, écrits en markdown, seront simplement compilés sur une Github page. Lorsque nous aurons produit suffisamment de cours de manière suffisamment complète nous pourrons nous attaquer aux exercices. De même, les cours seront très liés à la programmation, mais nous avons choisi de nous concentrer pleinement sur les notions théoriques pour l’instant.
+Étant donné que le projet est un projet sur le long terme qui n’en est qu’à ses débuts, il a été choisi de se focaliser en premier lieu sur la production des ressources écrites, en commençant par les fondamentaux. Les cours, écrits en markdown, seront simplement compilés sur une Github page. Lorsque nous aurons produit suffisamment de cours de manière suffisamment complète nous pourrons nous attaquer à la production d'exercices De même, les cours seront très liés à la programmation, mais nous avons choisi de nous concentrer pleinement sur les notions théoriques pour l’instant.
 
 # Comment publier un cours
 
-En premier lieu, il faut informer le reste des membres de votre équipe que vous voulez travailler sur l’un des chapitres au programme. Vous pouvez également soumettre vos propositions de plan et de chapitres à aborder. Chaque cours est dirigé par un membre possédant des connaissances solides sur le sujet : un chap' leader. Lorsque vous avez son aval, vous pouvez commencer à rédiger. 
+En premier lieu, il faut informer le reste des membres de votre équipe que vous voulez travailler sur l’un des chapitres au programme. Vous pouvez également soumettre vos propositions de plan et de chapitres à aborder (Tous les plans de cours sont disponible dans la section Projets du repo github). Chaque cours est dirigé par un membre possédant des connaissances solides sur le sujet : un *chap' leader*. Lorsque vous avez son aval, vous pouvez commencer à rédiger. 
 Lorsque vous obtenez un premier jet pertinent, vous pouvez alors le charger sur Github au travers d’une Pull Request (PR) et inviter les autres membres à relire votre production.
 Votre document sera ainsi relu, corrigé, puis, quand il sera satisfaisant, sera ajouté au reste des cours sur le repo Github.
 
