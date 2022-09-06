@@ -42,7 +42,7 @@ jupyter-book==0.12.3
 jupyter-cache==0.4.3
 jupyter-client==7.2.2
 jupyter-core==4.9.2
-jupyter-server==1.16.0
+jupyter-server==1.17.0
 jupyter-server-mathjax==0.2.5
 jupyter-sphinx==0.3.2
 jupyterlab==3.3.3
