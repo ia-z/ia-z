@@ -1,0 +1,92 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import re
+import nltk
+import gensim
+import warnings
+import unidecode
+from gensim.models import Word2Vec
+from nltk.tokenize import sent_tokenize
+ 
+def text_processing(text):
+    ''' Return cleaned text for Machine Learning '''
+    REPLACE_BY_SPACE_RE = re.compile('[/(){}\[\]\|@,;]')
+    NEW_LINE = re.compile('\n')
+    BAD_SYMBOLS_RE = re.compile('[^a-z\' #+_]')
+
+    text = text.lower()
+    text = unidecode.unidecode(text)
+    text = NEW_LINE.sub(' ',text)
+    text = REPLACE_BY_SPACE_RE.sub('',text)
+    text = BAD_SYMBOLS_RE.sub(' ',text)
+    return text
+    
+#nltk.download('punkt')
+warnings.filterwarnings(action = 'ignore')
+    
+total_text = ""
+data = []
+
+#  Reads files
+train_files = ['data/corpus_1.txt', 'data/corpus_2.txt', 'data/corpus_3.txt', 'data/corpus_4.txt']
+
+for file_path in train_files:
+    with open(file_path,'r', encoding="utf-8") as file:
+        for line in file:
+            tmp = line
+            tmp = tmp.replace("\n", " ")
+            total_text = total_text + tmp
+                
+for s in sent_tokenize(total_text):
+    temp = []
+
+    # tokenize the sentence into data
+    content = text_processing(s)
+    token = content.split()
+    data.append(token)
+    
+# Create CBOW model
+model1 = gensim.models.Word2Vec(data, min_count = 1, vector_size = 100, window = 5)
+ 
+# Print results
+print("=== Modèle CBOW ===")
+print("Similarité cosinus entre 'jour' " + "et 'stylo' - CBOW : ", model1.wv.similarity('jour', 'stylo'))
+print("Top 10 mots corrélés à 'jour' - CBOW : ", model1.wv.most_similar('jour', topn=5))
+ 
+# Create Skip Gram model
+model2 = gensim.models.Word2Vec(data, min_count = 1, vector_size = 100, window = 5, sg = 1)
+ 
+# Print results
+print("\n=== Modèle Skip Gram ===")
+print("Similarité cosinus entre 'jour' " + "et 'stylo' - Skip Gram : ", model2.wv.similarity('jour', 'stylo'))
+print("Top 10 mots corrélés à 'jour' - Skip Gram : ", model2.wv.most_similar('jour', topn=5))
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mre[39;00m
+[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnltk[39;00m
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mgensim[39;00m
+[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mwarnings[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'nltk'
+ModuleNotFoundError: No module named 'nltk'
+

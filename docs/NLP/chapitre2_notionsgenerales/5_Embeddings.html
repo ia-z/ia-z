@@ -1,0 +1,1606 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embeddings &#8212; IA-Z</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Computer Vision" href="../../Cours_CV/0_intro.html" />
+    <link rel="prev" title="Modèles de langues" href="4_ModLangues.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/01%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/02%20-%20Elements%20de%20definition.html">
+     Eléments de définition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/03%20-%20Regression%20lineaire.html">
+     Introduction à la régression : la régression linéaire
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/05%20-%20Generalisation.html">
+     Généralisation d’un modèle de Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+     Régularisation &amp; tradeoff biais-variance : une introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/07%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+     Régularisation d’un modèle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/08%20-%20Compromis%20biais-variance.html">
+     Compromis biais-variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/09%20-%20Classification.html">
+     Classification: K-nearest-neighbours
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/10%20-%20Clustering.html">
+     Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/11%20-%20Feature%20engineering%20%26%20cleaning.html">
+     Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapitre1_introduction/1_Introduction.html">
+   Chapitre I: Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapitre1_introduction/2_DonneesTextuelles.html">
+     Etude des données textuelles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="3_ModStatLangage.html">
+   Chapitre II: Notions générales
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="4_ModLangues.html">
+     Modèles de langues
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Embeddings
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Cours%20RL/module_1_introduction/1%20-%20Introduction.html">
+   Introduction au Reinforcement learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20RL/module_1_introduction/3%20-%20Processus%20de%20d%C3%A9cision%20markoviens.html">
+     Processus de décision markoviens (MDPs)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Cours%20RL/module_2_notions_avancees/6%20-%20Algorithmes%20de%20RL.html">
+   Algorithmes de RL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20RL/module_2_notions_avancees/7%20-%20Monte%20Carlo.html">
+     Monte-Carlo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hors-série
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Cours%20annexes/mener_une_recherche.html">
+   Mener une recherche internet efficacement
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/docs/NLP/chapitre2_notionsgenerales/5_Embeddings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/NLP/chapitre2_notionsgenerales/5_Embeddings.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ia-z/ia-z/master?urlpath=tree/docs/NLP/chapitre2_notionsgenerales/5_Embeddings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sommaire">
+   Sommaire
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qu-est-ce-qu-un-embedding">
+   Qu’est ce qu’un embedding ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mesure-de-la-similarite">
+   Mesure de la similarité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#word2vec">
+   Word2Vec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modele-skipgram">
+     Modèle: skipgram
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hierarchical-softmax">
+       Hierarchical Softmax:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modele-sac-de-mots-continus">
+     Modèle: sac de mots continus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mise-en-pratique">
+     Mise en pratique:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glove-global-vectors">
+   GloVe: Global Vectors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#co-occurence-de-mots">
+     Co-occurence de mots:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#association-avec-des-vecteurs">
+     Association avec des vecteurs:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Mise en pratique:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne">
+   Exploration de topics: t-Distributed Stochastic Neighbor Embedding (t-SNE)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paranthese-sur-le-gaussian">
+     Paranthèse sur le Gaussian:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#divergence-de-kullback-leibler">
+     Divergence de Kullback-Leibler:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Mise en pratique:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Embeddings</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sommaire">
+   Sommaire
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qu-est-ce-qu-un-embedding">
+   Qu’est ce qu’un embedding ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mesure-de-la-similarite">
+   Mesure de la similarité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#word2vec">
+   Word2Vec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modele-skipgram">
+     Modèle: skipgram
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hierarchical-softmax">
+       Hierarchical Softmax:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modele-sac-de-mots-continus">
+     Modèle: sac de mots continus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mise-en-pratique">
+     Mise en pratique:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glove-global-vectors">
+   GloVe: Global Vectors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#co-occurence-de-mots">
+     Co-occurence de mots:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#association-avec-des-vecteurs">
+     Association avec des vecteurs:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Mise en pratique:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne">
+   Exploration de topics: t-Distributed Stochastic Neighbor Embedding (t-SNE)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paranthese-sur-le-gaussian">
+     Paranthèse sur le Gaussian:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#divergence-de-kullback-leibler">
+     Divergence de Kullback-Leibler:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Mise en pratique:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="embeddings">
+<h1>Embeddings<a class="headerlink" href="#embeddings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sommaire">
+<h2>Sommaire<a class="headerlink" href="#sommaire" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#qu-est-ce-qu-un-embedding">Qu’est ce qu’un embedding ?</a></p></li>
+<li><p><a class="reference external" href="#mesure-de-la-similarite">Mesure de la similarité</a></p></li>
+<li><p><a class="reference external" href="#word2vec">Word2Vec</a></p>
+<ul>
+<li><p><a class="reference external" href="#modele-skipgram">Modèle: skipgram</a></p></li>
+<li><p><a class="reference external" href="#modele-sac-de-mots-continus">Modèle: sac de mots continus</a></p></li>
+<li><p><a class="reference external" href="#id1">Mise en pratique</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#glove-global-vectors">Glove: Global Vectors</a></p>
+<ul>
+<li><p><a class="reference external" href="#co-occurence-de-mots">Co-occurence de mots</a></p></li>
+<li><p><a class="reference external" href="#association-avec-des-vecteurs">Association avec des vecteurs</a></p></li>
+<li><p><a class="reference external" href="#mise-en-pratique">Mise en pratique</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne">Exploration de topics: t-Distributed Stochastic Neighbor Embedding (t-SNE)</a></p>
+<ul>
+<li><p><a class="reference external" href="#paranthese-sur-le-gaussian">Paranthèse sur le Gaussian</a></p></li>
+<li><p><a class="reference external" href="#divergence-de-kullback-leibler">Divergence de Kullback-Leibler</a></p></li>
+<li><p><a class="reference external" href="#id2">Mise en pratique</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="qu-est-ce-qu-un-embedding">
+<h2>Qu’est ce qu’un embedding ?<a class="headerlink" href="#qu-est-ce-qu-un-embedding" title="Permalink to this headline">¶</a></h2>
+<p>Un embedding est une représentation mathématique d’un objet ou d’un concept sous la forme d’un vecteur le permettant ainsi d’être évalué par un programme informatique, et plus particulièrement un réseau de neurones.</p>
+<p>Pour illustrer ce qu’est un embedding nous prendrons pour exemple: une voiture, une moto et un être humain:</p>
+<ul class="simple">
+<li><p>Une voiture possède 4 roues et est un véhicule, nous lui attribuons donc le vecteur: [1, 1, 1, 1, 1]</p></li>
+<li><p>Une moto possède 2 roues et est un véhicule, nous lui attribuons le vecteur: [1, 0, 0, 1, 1]</p></li>
+<li><p>Enfin un humain ne possède pas de roue et n’est pas un véhicule, donc: [0, 0, 0, 0, 0]</p></li>
+</ul>
+<p align="center"> <b>Exemple d'embedding simpliste</b>
+<img src="https://user-images.githubusercontent.com/65224852/186540909-8b3257a5-4e3c-499d-a556-1f4308e43196.png">
+</p>
+<p>C’est une manière de représenter les données cependant il en existe d’autres comme le sac de mots, par rapport aux phrases, que l’on a étudié dans le chapitre sur la modélisation statistique du langage.</p>
+<p>Ainsi la machine peut comparer les données et les interpréter, pour comparer deux embeddings nous utilisons une mesure de similarité.</p>
+<p>Il faut cependant avoir à l’esprit que les meilleurs algorithmes d’embedding ne fournissent pas des caractéristiques bien précises à analyser tel que le nombre de roues ou le sexe d’une personne, au lieu de cela c’est une combinaison de facteurs qui est utilisé et leur étude permet notamment de combattre les biais en machine learning dans le cadre du NLP.</p>
+</div>
+<div class="section" id="mesure-de-la-similarite">
+<h2>Mesure de la similarité<a class="headerlink" href="#mesure-de-la-similarite" title="Permalink to this headline">¶</a></h2>
+<p>La mesure de similarité la plus courante pour comparer deux vecteurs est la similarité cosinus (ou cosine similarity).</p>
+<p>Pour obtenir la similarité cosinus on part d’un produit vectoriel:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} &amp;A \cdot B = \left\| A \right\| \left\| B \right\| cos(\theta)
+\\ \implies &amp;cos(\theta) = \frac{A \cdot B}{\left\| A \right\| \left\| B \right\|}
+\\ \implies &amp;cos(\theta) = \frac{\sum_{i=1}^nA_iB_i}{\sqrt{\sum_{i=1}^nA_i^2}\sqrt{\sum_{i=1}^nB_i^2}}
+\end{align}\end{split}\]</div>
+<p>Suivant la valeur de <span class="math notranslate nohighlight">\(cos(\theta)\)</span> on étudie la similarité des vecteurs A et B:</p>
+<ul class="simple">
+<li><p>Lorsque <span class="math notranslate nohighlight">\(cos(\theta)\)</span> tend vers 1 les deux vecteurs sont colinéaires de facteur positif, en d’autres termes similaires.</p></li>
+<li><p>Lorsque <span class="math notranslate nohighlight">\(cos(\theta)\)</span> tend vers 0 les deux vecteurs sont orthogonaux, soit non similaire</p></li>
+<li><p>Lorsque <span class="math notranslate nohighlight">\(cos(\theta)\)</span> tend vers -1 les deux vecteurs sont colinéaires de facteur négatif, soit opposés.</p></li>
+</ul>
+<p>Maintenant utilisons cette mesure de similarité sur notre exemple précédent pour étudier la proximité des vecteurs:</p>
+<p><strong>Comparaison Voiture et Moto:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V \cdot M = 1*1 + 1*0 + 1*0 + 1*1 + 1*1 = 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\left\| V \right\| \left\| M \right\| = \sqrt{1^2 + 1^2 + 1^2 + 1^2 + 1^2} \sqrt{1^2 + 0^2 + 0^2 + 1^2 + 1^2} = \sqrt{5} \sqrt{3} = \sqrt{15}\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\implies cos(\theta) = \frac{V \cdot M}{\left\| V \right\| \left\| M \right\|} = \frac{3}{\sqrt{15}} \simeq 0,7746\)</span></p>
+<p><strong>Comparaison Voiture et Humain:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V \cdot M = 1*0 + 1*0 + 1*0 + 1*0 + 1*0 = 0\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\implies cos(\theta) = 0\)</span></p>
+<p>Sans surprise la moto a plus de similarité avec la voiture que l’humain.</p>
+</div>
+<div class="section" id="word2vec">
+<h2>Word2Vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h2>
+<p align="center"> <i>Pour cette partie il est fortement recommandé d'avoir étudié les réseaux de neurones et les calculs sous-jacents tel que la backpropagation.
+<p>Source de cette partie: <a class="reference external" href="https://arxiv.org/pdf/1411.2738.pdf">https://arxiv.org/pdf/1411.2738.pdf</a>.</i></p></p>
+<p>Word2Vec est une famille d’algorithmes ayant pour but de fournir des embeddings de grande qualité, nous étudierons ici deux algorithmes: le modèle skipgram et le modèle sac de mots continus (ou continuous bag of words).</p>
+<div class="section" id="modele-skipgram">
+<h3>Modèle: skipgram<a class="headerlink" href="#modele-skipgram" title="Permalink to this headline">¶</a></h3>
+<p>L’algorithme skipgram de Word2Vec prend en entrée un mot et à partir de ce mot reconstitue un contexte composé de T mots (T étant la taille du contexte visé), pour cela le modèle utilise un réseau de neurone feed-forward à une seule couche avec un <strong>Hierarchical Softmax</strong> afin d’obtenir une représentation vectorielle optimisée <em>(aussi nommé embedding)</em> du mot <span class="math notranslate nohighlight">\(w_n\)</span>.</p>
+<p align="center"> <b>Architecture Word2Vec: skipgram</b>
+<img src="https://user-images.githubusercontent.com/65224852/186547778-0844025a-9ebe-49c1-a43f-7539dc2228bf.png">
+</p>
+<p>L’objectif de l’entraînement est d’optimiser cette fonction:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}E &amp;= -log \, p(w_{n-T}, \cdots, w_{n+T}|w_n)
+\\ &amp;= -log\prod_{t=-T}^T p(w_{n+t}|w_n)\end{align}\end{split}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w_n\)</span>: Mot d’indice n.</p></li>
+<li><p><span class="math notranslate nohighlight">\(M\)</span>: Cardinal de l’ensemble des mots.</p></li>
+</ul>
+<p>Le softmax habituel est trop coûteux à calculer en raison du trop grand nombre de mots, la formule serait la suivante:</p>
+<div class="math notranslate nohighlight">
+\[p(w_{n+t}|w_n) = \frac{v'_{w_{n+t}} \,^\top v_{w_n}}{\sum_{i=1}^M \exp(v'_{w_i} \,^\top v_{w_n})}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span>: Contexte de taille T (<em>voir comme un intervalle</em>) pour un mot en position n.</p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{w_n}\)</span>: vecteur pris en entrée du mot d’indice n.</p></li>
+<li><p><span class="math notranslate nohighlight">\(v'_{w_n}\)</span>: vecteur de sortie du mot d’indice n.</p></li>
+</ul>
+<div class="section" id="hierarchical-softmax">
+<h4>Hierarchical Softmax:<a class="headerlink" href="#hierarchical-softmax" title="Permalink to this headline">¶</a></h4>
+<p>Le Hierarchical Softmax est une méthode plus efficace pour calculer le softmax grâce à sa complexité <span class="math notranslate nohighlight">\(O(log(M))\)</span> tandis que le softmax a une complexité <span class="math notranslate nohighlight">\(O(M)\)</span>.</p>
+<p>Pour cela on considère le réseau de neurones comme un <strong>arbre binaire de Huffman</strong> <em>(possède strictement deux enfants par noeud)</em> où chaque feuille représente un mot du vocabulaire, il existe un unique chemin de la racine au mot et ce chemin est utilisé pour calculer la probabilité des mots.</p>
+<p align="center"> <b>Hierarchical Softmax: Arbre binaire de Huffman</b>
+<img src="https://user-images.githubusercontent.com/65224852/186721250-a73309b6-1ec8-4910-a557-29c6429ad4b3.png" width=600 height=300>
+</p>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n(w, j)\)</span>: j-éme noeud du chemin au mot <span class="math notranslate nohighlight">\(w\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L(w)\)</span>: Longueur du chemin au mot <span class="math notranslate nohighlight">\(w\)</span>.</p></li>
+</ul>
+<p>Dans ce modèle il n’y a pas de vecteur de sortie au niveau des feuilles mais chaque noeud correspond à un vecteur, <em>(il y en a en tout <span class="math notranslate nohighlight">\(M-1\)</span>)</em>, le but est d’optimiser le vecteur de la racine qui correspond au mot <span class="math notranslate nohighlight">\(w_n\)</span>.</p>
+<p>La probabilité d’obtenir un mot est la suivante:</p>
+<div class="math notranslate nohighlight">
+\[p(w | w_n) = \prod_{j=1}^{L(w_n)-1} \sigma([n(w,j+1) = ch(n(w,j))] \cdot v'_{n(w,j)} \,^\top v_{w_n})\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(ch(n)\)</span>: est l’enfant de gauche du noeud n.</p></li>
+<li><p><span class="math notranslate nohighlight">\(v'_{n(w,j)}\)</span>: représentation vectorielle du noeud j.</p></li>
+<li><p><span class="math notranslate nohighlight">\([n(w,j+1) = ch(n(w,j))]\)</span>: vaut 1 si vrai sinon -1.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma(x) = \frac{1}{1+e^{-x}}\)</span>: fonction d’activation sigmoid.</p></li>
+</ul>
+<p>Pour comprendre cette formule nous utiliserons un exemple où l’on calcule la probabilité d’obtenir <span class="math notranslate nohighlight">\(w_2\)</span> d’après le schéma précédent, il faut voir le calcul de cette probabilité comme une marche aléatoire de noeud en noeud.</p>
+<p>Pour chaque noeud <em>(incluant la racine)</em> nous définissons la probabilité d’aller à droite ou à gauche pour un noeud <span class="math notranslate nohighlight">\(j\)</span> de la manière suivante:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation} \begin{cases} p(j, left) = \sigma(v'_j \cdot \,^\top v_{w_n})
+\\ p(j, right) = 1 - \sigma(v'_j \cdot \,^\top v_{w_n}) = \sigma(-v'_j \cdot \,^\top v_{w_n}) \end{cases} \end{equation}\end{split}\]</div>
+<p>Ainsi la probabilité d’obtenir <span class="math notranslate nohighlight">\(w_2\)</span> est:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} p(w_2 | w_n) &amp;= p(n(w_2, 1), left) \cdot p(n(w_2, 2), left) \cdot p(n(w_2, 3), right)
+\\ &amp;= \sigma(v'_{n(w_2, 1)} \,^\top v_{w_n}) \cdot \sigma(v'_{n(w_2, 2)} \,^\top v_{w_n}) \cdot \sigma(v'_{n(w_2, 3)} \,^\top v_{w_n}) \end{align}\end{split}\]</div>
+<p>Et cette marche aléatoire défini une distribution multinomiale parmis tous les mots du vocabulaire.</p>
+</div>
+</div>
+<div class="section" id="modele-sac-de-mots-continus">
+<h3>Modèle: sac de mots continus<a class="headerlink" href="#modele-sac-de-mots-continus" title="Permalink to this headline">¶</a></h3>
+<p>Ce modèle a un fonctionnement opposé au modèle skipgram, il prend en entrée un contexte de <span class="math notranslate nohighlight">\(T\)</span> mots et donne la probabilité d’obtenir un mot spécifique pour ce contexte, pour cela le modèle utilise un réseau de neurone feed-forward à une seule couche afin d’obtenir une représentation vectorielle optimisée des mots du contexte <span class="math notranslate nohighlight">\((w_{n-T}, \cdots, w_{n+T})\)</span>.</p>
+<p align="center"> <b>Architecture Word2Vec: sac de mots continus</b>
+<img src="https://user-images.githubusercontent.com/65224852/186798004-27c63a1a-c868-4088-bc92-1c091db86dbb.png">
+</p>
+<p>L’objectif de l’entraînement est d’optimiser cette fonction:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}E &amp;= -log \, p(w_n | w_{n-T}, \cdots, w_{n+T})
+\\ &amp;=-v'_{w_n} \cdot \,^\top h + log \sum_{j=1}^M exp(v'_{w_j} \cdot \,^\top h)\end{align}\end{split}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v'_{w_n}\)</span>: représentation vectorielle de sortie du mot n.</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span>: moyenne des vecteurs pris en entrée:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[h = \frac{1}{T}(v_{w_{n-T}} + v_{w_{n-T+1}} + \cdots + v_{w_{n+T}})\]</div>
+</div>
+<div class="section" id="mise-en-pratique">
+<h3>Mise en pratique:<a class="headerlink" href="#mise-en-pratique" title="Permalink to this headline">¶</a></h3>
+<p>Dans cette partie nous essayerons de comparer les représentations vectorielles de différents mots à l’aide de Word2Vec et de la similarité cosinus.</p>
+<p>Pour cela nous utiliserons la librairie Gensim et ntlk, pour installer les requirements tapez:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">nltk</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">gensim</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">unidecode</span>
+</pre></div>
+</div>
+<p>Le dataset utilisé est un petit corpus de textes présent dans la page github, il n’est pas suffisament grand pour avoir de bonnes corrélations mais une petite idée.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">gensim</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">unidecode</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+ 
+<span class="k">def</span> <span class="nf">text_processing</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Return cleaned text for Machine Learning &#39;&#39;&#39;</span>
+    <span class="n">REPLACE_BY_SPACE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[/()</span><span class="si">{}</span><span class="s1">\[\]\|@,;]&#39;</span><span class="p">)</span>
+    <span class="n">NEW_LINE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">BAD_SYMBOLS_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^a-z</span><span class="se">\&#39;</span><span class="s1"> #+_]&#39;</span><span class="p">)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">unidecode</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">NEW_LINE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">REPLACE_BY_SPACE_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">BAD_SYMBOLS_RE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+    
+<span class="c1">#nltk.download(&#39;punkt&#39;)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span> <span class="o">=</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+    
+<span class="n">total_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#  Reads files</span>
+<span class="n">train_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;data/corpus_1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;data/corpus_2.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;data/corpus_3.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;data/corpus_4.txt&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">train_files</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">line</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="n">total_text</span> <span class="o">=</span> <span class="n">total_text</span> <span class="o">+</span> <span class="n">tmp</span>
+                
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">total_text</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># tokenize the sentence into data</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">text_processing</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    
+<span class="c1"># Create CBOW model</span>
+<span class="n">model1</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Word2Vec</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">min_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+ 
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Modèle CBOW ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Similarité cosinus entre &#39;jour&#39; &quot;</span> <span class="o">+</span> <span class="s2">&quot;et &#39;stylo&#39; - CBOW : &quot;</span><span class="p">,</span> <span class="n">model1</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="s1">&#39;jour&#39;</span><span class="p">,</span> <span class="s1">&#39;stylo&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 10 mots corrélés à &#39;jour&#39; - CBOW : &quot;</span><span class="p">,</span> <span class="n">model1</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;jour&#39;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+ 
+<span class="c1"># Create Skip Gram model</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Word2Vec</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">min_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+ 
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Modèle Skip Gram ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Similarité cosinus entre &#39;jour&#39; &quot;</span> <span class="o">+</span> <span class="s2">&quot;et &#39;stylo&#39; - Skip Gram : &quot;</span><span class="p">,</span> <span class="n">model2</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="s1">&#39;jour&#39;</span><span class="p">,</span> <span class="s1">&#39;stylo&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 10 mots corrélés à &#39;jour&#39; - Skip Gram : &quot;</span><span class="p">,</span> <span class="n">model2</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;jour&#39;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">re</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">nltk</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">gensim</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;nltk&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dans cette situation skip gram a de meilleures performances que CBOW.</p>
+<p>Skip-gram fonctionne bien avec de petites quantités de données d’entraînement, et représente bien les mots rares ou les phrases.</p>
+<p>Tandis que CBOW est beaucoup plus rapide à entraîner que le modèle skip-gram, et possède une précision légérement meilleure pour les mots fréquents.</p>
+</div>
+</div>
+<div class="section" id="glove-global-vectors">
+<h2>GloVe: Global Vectors<a class="headerlink" href="#glove-global-vectors" title="Permalink to this headline">¶</a></h2>
+<p align="center"> <i>Source de cette partie: <a href="https://aclanthology.org/D14-1162.pdf">https://aclanthology.org/D14-1162.pdf</a></i></p>
+<p>A l’instar de Word2Vec, GloVe vise à fournir des embeddings de grande qualité à partir de la distribution de probabilité des mots dans un corpus donné.</p>
+<p>GloVe signifie <em>Global Vectors</em> puisque dans ce modèle les statistiques globales du corpus sont capturées directement par le modèle.</p>
+<p>La question est de savoir comment à partir de ces statistiques on peut obtenir du sens pour les mots sous forme de vecteur.</p>
+<div class="section" id="co-occurence-de-mots">
+<h3>Co-occurence de mots:<a class="headerlink" href="#co-occurence-de-mots" title="Permalink to this headline">¶</a></h3>
+<p>Tout débute avec les probabilités de co-occurence de mots, notons:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span>: matrice de co-occurence de mots.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_{i,j}\)</span>: nombre de fois qu’un mot <span class="math notranslate nohighlight">\(j\)</span> apparaît dans le contexte d’un mot <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_i = \sum_k^M X_{i,k}\)</span> le nombre de fois qu’un mot quelconque <span class="math notranslate nohighlight">\(k\)</span> apparaît dans le contexte du mot <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{i,j} = P(j|i) = \frac{X_{i,j}}{X_i}\)</span> la probabilité qu’un mot <span class="math notranslate nohighlight">\(j\)</span> apparaît dans contexte d’un mot <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>D’après ces notations et une série d’exemples basées sur des phases en thermodynamique <em>(glace, vapeur, solide…)</em> on observe le tableau suivant:</p>
+<p align="center"> <b>Tableau de probabilités de co-occurence</b>
+<img src="https://user-images.githubusercontent.com/65224852/188535001-079ccb85-4bc7-463c-895b-4910e979c217.png">
+</p>
+<p>Comme on pourrait s’y attendre: le mot <strong>glace</strong> apparaît plus fréquemment avec le mot <strong>solide</strong> que le mot <strong>gas</strong>, tandis que le mot <strong>vapeur</strong> apparaît plus fréquemment avec le mot <strong>gas</strong> qu’avec le mot <strong>solide</strong>, les deux mots apparaissent à part égale avec le mot <strong>eau</strong> et enfin le mot <strong>fashion</strong> n’apparaît presque jamais.</p>
+<p>Le ratio de probabilités de co-occurence est capable de distinguer des mots corrélés par rapport à des mots non corrélés.</p>
+<p>Ainsi un bon point de départ pour l’apprentissage de représentations vectorielles de mots devrait être le ratio des probabilités de co-occurence plutôt que les probabilités elle-même.</p>
+</div>
+<div class="section" id="association-avec-des-vecteurs">
+<h3>Association avec des vecteurs:<a class="headerlink" href="#association-avec-des-vecteurs" title="Permalink to this headline">¶</a></h3>
+<p>Soit le modèle général:</p>
+<div class="math notranslate nohighlight">
+\[F(w_i, w_j, \tilde{w}_k) = \frac{P_{i,k}}{P_{j,k}}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w_i\)</span>: vecteur du mot <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{w}_i\)</span>: vecteur d’un mot <span class="math notranslate nohighlight">\(i\)</span> d’un contexte séparé.</p></li>
+</ul>
+<p>On souhaite encoder l’information présent dans le ratio <span class="math notranslate nohighlight">\(\frac{P_{i,k}}{P_{j,k}}\)</span> et puisque les espaces vectoriels sont des structures linéaires la manière la plus naturelle de le faire est de prendre la différence des vecteurs:</p>
+<div class="math notranslate nohighlight">
+\[F(w_i - w_j, \tilde{w}_k) = \frac{P_{i,k}}{P_{j,k}}\]</div>
+<p>Puis on pose:</p>
+<div class="math notranslate nohighlight">
+\[F((w_i - w_j) \,^\top \tilde{w}_k) = \frac{P_{i,k}}{P_{j,k}}\]</div>
+<p>La distinction entre un mot et un mot du contexte est arbitraire, nous sommes libre d’échanger les deux rôles. Ainsi <span class="math notranslate nohighlight">\(w \leftrightarrow \tilde{w}\)</span> et <span class="math notranslate nohighlight">\(X \leftrightarrow X \,^\top\)</span>, le modèle doit donc être invariant à cette modification mais ce n’est pas le cas avec la formule précédente.</p>
+<p>On résout le problème en posant:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} F((w_i - w_j) \,^\top \tilde{w}_k) &amp;= \frac{F(w_i \,^\top \tilde{w}_k)}{F(w_j \,^\top \tilde{w}_k)} = \frac{P_{i,k}}{P_{j,k}}
+\\ \implies F(w_i \,^\top \tilde{w}_k) &amp;= P_{i,k} = \frac{X_{i,k}}{X_i} \end{align}
+\\ \implies F = exp \quad \text{ et } \quad w_i \,^\top \tilde{w}_k = log(P_{i,k}) = log(X_{i,k}) - log(X_i)\end{split}\]</div>
+<p>Enfin pour que cette équation possède une symétrie par l’échange des contextes il faudrait modifier <span class="math notranslate nohighlight">\(log(X_i)\)</span>, ce terme est indépendant de <span class="math notranslate nohighlight">\(k\)</span> donc il peut être absorbé dans un biais <span class="math notranslate nohighlight">\(b_i\)</span> pour <span class="math notranslate nohighlight">\(w_i\)</span>, puis nous ajoutons un biais <span class="math notranslate nohighlight">\(\tilde{b}_k\)</span> pour <span class="math notranslate nohighlight">\(\tilde{w}_k\)</span>, restorant la symétrie.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} \implies w_i \,^\top \tilde{w}_k + log(X_i) &amp;= log(X_{i,k})
+\\ \implies w_i \,^\top \tilde{w}_k + b_i + \tilde{b}_k &amp;= log(X_{i,k}) \end{align}\end{split}\]</div>
+<p>C’est une simplification drastique de la toute première équation <em>(le modèle général)</em> et mal définie puisque le logarithme diverge en 0.</p>
+<p>C’est pourquoi GloVe utilise un modèle de régression des moindres carrés pondérés, remplaçant l’équation précédente en un problème des moindres carrés pondéré par une fonction <span class="math notranslate nohighlight">\(f\)</span> tel que:</p>
+<div class="math notranslate nohighlight">
+\[J = \sum_{i,j=1}^V f(X_{i,j}) \, (w_i \,^\top \tilde{w}_k + b_i + \tilde{b}_j - log(X_{i,j}))^2\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V\)</span>: taille du vocabulaire.</p></li>
+</ul>
+<p>La fonction <span class="math notranslate nohighlight">\(f\)</span> doit obéir à certaines régles tel que:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(0) = 0\)</span> rendant <span class="math notranslate nohighlight">\(lim_{x \rightarrow 0} \, f(x) \, log^2(x)\)</span> fini.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> ne doit pas être décroissante.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> doit être relativement petite pour de grandes valeurs de x.</p></li>
+</ul>
+<p>Un grand nombre de fonctions satisfont ces propriétés mais une classe de fonctions fonctionne plutôt bien et est paramétrisée de la sorte:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation} f(x) = \begin{cases} (x/x_{\text{max}})^\alpha \quad &amp;\text{si } x &lt; x_{\text{max}}
+\\ 1 \quad &amp;\text{sinon} \end{cases} \end{equation}\end{split}\]</div>
+<p>De manière empirique les paramétres retenus sont <span class="math notranslate nohighlight">\(\alpha = 3/4\)</span> et <span class="math notranslate nohighlight">\(x_{\text{max}} = 100\)</span>.</p>
+</div>
+<div class="section" id="id1">
+<h3>Mise en pratique:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Pour cette mise en pratique nous recoderons entièrement l’algorithme étant donné que les packages en ligne ne fonctionnent pas.</p>
+<p>Habituellement on télécharge un fichier texte contenant les vecteurs d’une version pré-entraînée de GloVe.</p>
+<p><em>Aucune version n’est disponible sur pip et cloner le repertoire de l’université de Stanford: <a class="reference external" href="https://github.com/stanfordnlp/GloVe">https://github.com/stanfordnlp/GloVe</a> ne permet pas d’être compilé sous Windows à cause de &lt;pthread.h&gt;.</em></p>
+<p>Pour mener à bien notre implémentation de GloVe il faudra installer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gensim</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">dataclasses</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">h5py</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">tqdm</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#=== Etape 0- Données d&#39;entraînement ===#</span>
+
+<span class="kn">import</span> <span class="nn">gensim.downloader</span> <span class="k">as</span> <span class="nn">api</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;text8&quot;</span><span class="p">)</span>
+<span class="n">corpus</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="n">corpus</span> <span class="o">=</span> <span class="n">corpus</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100000</span><span class="p">]</span>
+
+<span class="c1">#Nous entraînerons l&#39;algorithme sur les 100000 premier mots</span>
+<span class="c1">#étant donné que le temps d&#39;apprentissage peut être très long !&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1">#=== Paramétres ===#</span>
+
+<span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1">#100000 normalement</span>
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num_partitions</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">cooccurrence_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">output_filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;glove.pth&quot;</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">embedding_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c1">#=== Etape 1- Compter les paires co-occurente ===#</span>
+
+<span class="sd">&quot;&quot;&quot;Il faut déterminer le vocabulaire, c&#39;est un ensemble de tokens associés</span>
+<span class="sd">à un entier, si un token n&#39;appartient pas au corpus il est représenté par &#39;unk&#39;.</span>
+<span class="sd">Nous n&#39;utiliserons qu&#39;un subset de tokens: le top k des tokens les plus fréquents&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Vocabulary</span><span class="p">:</span>
+    <span class="n">token2index</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span> <span class="c1">#Dictionnaire qui associe un token à un entier.</span>
+    <span class="n">index2token</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span> <span class="c1">#Dictionnaire qui associe un entier à un token.</span>
+    <span class="n">token_counts</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span> <span class="c1">#Liste où la i-éme valeur est le nombe de token avec l&#39;index i.</span>
+    <span class="n">_unk_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Entier pour les tokens inconnus.</span>
+    
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+        <span class="c1">#Ajoute un token au vocabulaire.</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">index2token</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">token_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token_counts</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">[</span><span class="n">token</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">get_topk_subset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="c1">#Créer un vocabulaire avec le top k des tokens.</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">token</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_counts</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">token</span><span class="p">]],</span>
+            <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span>
+            <span class="n">token2index</span><span class="o">=</span><span class="p">{</span><span class="n">token</span><span class="p">:</span> <span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">k</span><span class="p">])},</span>
+            <span class="n">index2token</span><span class="o">=</span><span class="p">{</span><span class="n">index</span><span class="p">:</span> <span class="n">token</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">k</span><span class="p">])},</span>
+            <span class="n">token_counts</span><span class="o">=</span><span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">token_counts</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">[</span><span class="n">token</span><span class="p">]]</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1">#Mélange aléatoirement les tokens et indices.</span>
+        <span class="n">new_index</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))]</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">new_index</span><span class="p">)</span>
+        <span class="n">new_token_counts</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">token</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">new_index</span><span class="p">):</span>
+            <span class="n">new_token_counts</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_counts</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">token</span><span class="p">]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">index2token</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token_counts</span> <span class="o">=</span> <span class="n">new_token_counts</span>
+
+    <span class="k">def</span> <span class="nf">get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">index2token</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid index.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index2token</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">unk_token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unk_token</span>
+    
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unk_token</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token2index</span><span class="p">)</span>
+    
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Vectorizer</span><span class="p">:</span>
+    <span class="n">vocab</span><span class="p">:</span> <span class="n">Vocabulary</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_corpus</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;Créer un vocabulaire en ajoutant tous les tokens dans le corpus,</span>
+<span class="sd">        puis le top vocab_size est selectionné pour créer un nouveau vocabulaire,</span>
+<span class="sd">        ensuite on mélange.&quot;&quot;&quot;</span>
+        
+        <span class="n">vocab</span> <span class="o">=</span> <span class="n">Vocabulary</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">:</span>
+            <span class="n">vocab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="n">vocab_subset</span> <span class="o">=</span> <span class="n">vocab</span><span class="o">.</span><span class="n">get_topk_subset</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">)</span>
+        <span class="n">vocab_subset</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">vocab_subset</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corpus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#=== Etape 1B- Scan des fenêtres de contexte ===#</span>
+
+<span class="sd">&quot;&quot;&quot;Scanner l&#39;ensemble des données pour établir le nombre possible de paires</span>
+<span class="sd">co-occurente pourrait surcharger la RAM, c&#39;est pourquoi on découpe en plusieurs</span>
+<span class="sd">scans, de plus pour préserver le compte entre chaque scan on utilisera une</span>
+<span class="sd">librairie h5py pour sauvegarder de grosse quantités de données.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">CooccurrenceEntries</span><span class="p">:</span>
+    <span class="n">vectorized_corpus</span><span class="p">:</span> <span class="nb">list</span>
+    <span class="n">vectorizer</span><span class="p">:</span> <span class="n">Vectorizer</span>
+    
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">vectorizer</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">vectorized_corpus</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">corpus</span><span class="p">),</span>
+            <span class="n">vectorizer</span><span class="o">=</span><span class="n">vectorizer</span>
+        <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">validate_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">):</span>
+        <span class="n">is_unk</span> <span class="o">=</span> <span class="n">index</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">unk_token</span>
+        <span class="k">if</span> <span class="n">lower</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="ow">not</span> <span class="n">is_unk</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">is_unk</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">lower</span> <span class="ow">and</span> <span class="n">index</span> <span class="o">&lt;=</span> <span class="n">upper</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">window_size</span><span class="p">,</span>
+        <span class="n">num_partitions</span><span class="p">,</span>
+        <span class="n">chunk_size</span><span class="p">,</span>
+        <span class="n">output_directory</span><span class="o">=</span><span class="s2">&quot;.&quot;</span>
+    <span class="p">):</span>
+        <span class="n">partition_step</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span> <span class="o">//</span> <span class="n">num_partitions</span>
+        <span class="n">split_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">split_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">partition_step</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocab</span><span class="p">):</span>
+            <span class="n">split_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">split_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">partition_step</span><span class="p">)</span>
+        <span class="n">split_points</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocab</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">partition_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">split_points</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
+            <span class="n">index_lower</span> <span class="o">=</span> <span class="n">split_points</span><span class="p">[</span><span class="n">partition_id</span><span class="p">]</span>
+            <span class="n">index_upper</span> <span class="o">=</span> <span class="n">split_points</span><span class="p">[</span><span class="n">partition_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">cooccurr_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorized_corpus</span><span class="p">))):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_index</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">vectorized_corpus</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="n">index_lower</span><span class="p">,</span>
+                    <span class="n">index_upper</span>
+                <span class="p">):</span>
+                    <span class="k">continue</span>
+                
+                <span class="n">context_lower</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">context_upper</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorized_corpus</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">context_lower</span><span class="p">,</span> <span class="n">context_upper</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_index</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">vectorized_corpus</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                        <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="o">-</span><span class="mi">1</span>
+                    <span class="p">):</span>
+                        <span class="k">continue</span>
+                    <span class="n">cooccurr_counts</span><span class="p">[(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorized_corpus</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorized_corpus</span><span class="p">[</span><span class="n">j</span><span class="p">])]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">)</span>
+
+            <span class="n">cooccurr_dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">cooccurr_counts</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">cooccurr_count</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cooccurr_counts</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="n">cooccurr_dataset</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cooccurr_count</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">partition_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="n">output_directory</span><span class="p">,</span>
+                        <span class="s2">&quot;cooccurrence.hdf5&quot;</span>
+                    <span class="p">),</span>
+                    <span class="s2">&quot;w&quot;</span>
+                <span class="p">)</span>
+                <span class="n">dataset</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span>
+                    <span class="s2">&quot;cooccurrence&quot;</span><span class="p">,</span>
+                    <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cooccurr_counts</span><span class="p">),</span> <span class="mi">3</span><span class="p">),</span>
+                    <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                    <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">prev_len</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">prev_len</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+                <span class="n">dataset</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">cooccurr_counts</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">dataset</span><span class="p">[</span><span class="n">prev_len</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">len</span><span class="p">()]</span> <span class="o">=</span> <span class="n">cooccurr_dataset</span>
+        
+        <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_directory</span><span class="p">,</span> <span class="s2">&quot;vocab.pkl&quot;</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocab</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">CooccurrenceDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="n">token_ids</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+    <span class="n">cooccurr_counts</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">token_ids</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">cooccurr_counts</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span>
+    
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_ids</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#=== Etape 1C- Utilisation du code pour compter les paires ===#</span>
+
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="o">.</span><span class="n">from_corpus</span><span class="p">(</span>
+    <span class="n">corpus</span><span class="o">=</span><span class="n">corpus</span><span class="p">,</span>
+    <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">)</span>
+
+<span class="n">cooccurrence</span> <span class="o">=</span> <span class="n">CooccurrenceEntries</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span>
+    <span class="n">corpus</span><span class="o">=</span><span class="n">corpus</span><span class="p">,</span>
+    <span class="n">vectorizer</span><span class="o">=</span><span class="n">vectorizer</span><span class="p">)</span>
+
+<span class="n">cooccurrence</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
+    <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span>
+    <span class="n">num_partitions</span><span class="o">=</span><span class="n">num_partitions</span><span class="p">,</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">,</span>
+    <span class="n">output_directory</span><span class="o">=</span><span class="n">cooccurrence_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#=== Etape 2- Création du modèle ===#</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">HDF5DataLoader</span><span class="p">:</span>
+    <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">device</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">dataset</span><span class="p">:</span> <span class="n">h5py</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">iter_batches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">iter_chunks</span><span class="p">())</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+            <span class="n">chunked_dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">chunk</span><span class="p">]</span>
+            <span class="n">dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+                <span class="n">dataset</span><span class="o">=</span><span class="n">CooccurrenceDataset</span><span class="p">(</span>
+                    <span class="n">token_ids</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">chunked_dataset</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">long</span><span class="p">(),</span>
+                    <span class="n">cooccurr_counts</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">chunked_dataset</span><span class="p">[:,</span>
+                        <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+                <span class="p">),</span>
+                <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+                <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+                <span class="n">batch</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">]</span>
+                <span class="k">yield</span> <span class="n">batch</span>
+
+    <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_name</span><span class="p">]</span>
+            <span class="k">yield</span>
+            
+<span class="k">class</span> <span class="nc">GloVe</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
+            <span class="n">num_embeddings</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
+            <span class="n">embedding_dim</span><span class="o">=</span><span class="n">embedding_size</span><span class="p">,</span>
+            <span class="n">sparse</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight_tilde</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
+            <span class="n">num_embeddings</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
+            <span class="n">embedding_dim</span><span class="o">=</span><span class="n">embedding_size</span><span class="p">,</span>
+            <span class="n">sparse</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span>
+                <span class="n">vocab_size</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bias_tilde</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span>
+                <span class="n">vocab_size</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weighting_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">x_max</span><span class="p">)</span><span class="o">.</span><span class="n">float_power</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_tilde</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">loss</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias_tilde</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">log</span><span class="p">())</span><span class="o">.</span><span class="n">square</span><span class="p">()</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weighting_func</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">loss</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">loss</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#=== Etape 2B- Entraînement du modèle ===#</span>
+
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">HDF5DataLoader</span><span class="p">(</span>
+    <span class="n">filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cooccurrence_dir</span><span class="p">,</span> <span class="s2">&quot;cooccurrence.hdf5&quot;</span><span class="p">),</span>
+    <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;cooccurrence&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">device</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GloVe</span><span class="p">(</span>
+    <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span>
+    <span class="n">embedding_size</span><span class="o">=</span><span class="n">embedding_size</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">x_max</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adagrad</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span>
+    <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span>
+<span class="p">)</span>
+<span class="k">with</span> <span class="n">dataloader</span><span class="o">.</span><span class="n">open</span><span class="p">():</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)):</span>
+        <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">dataloader</span><span class="o">.</span><span class="n">iter_batches</span><span class="p">()):</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span>
+                <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">batch</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_loss</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: loss = </span><span class="si">{</span><span class="n">epoch_loss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">output_filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.models.keyedvectors</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cooccurrence_dir</span><span class="p">,</span> <span class="s2">&quot;vocab.pkl&quot;</span><span class="p">),</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">keyed_vectors</span> <span class="o">=</span> <span class="n">KeyedVectors</span><span class="p">(</span><span class="n">vector_size</span><span class="o">=</span><span class="n">embedding_size</span><span class="p">)</span>
+<span class="n">keyed_vectors</span><span class="o">.</span><span class="n">add_vectors</span><span class="p">(</span>
+    <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">vocab</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">)],</span>
+    <span class="n">weights</span><span class="o">=</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">weight_tilde</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Similarité entre woman et man:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">keyed_vectors</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="s2">&quot;woman&quot;</span><span class="p">,</span> <span class="s2">&quot;man&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;computer&quot;</span><span class="p">,</span> <span class="s2">&quot;united&quot;</span><span class="p">,</span> <span class="s2">&quot;early&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mots les plus similaires de </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="n">most_similar_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">keyed_vectors</span><span class="o">.</span><span class="n">similar_by_word</span><span class="p">(</span><span class="n">word</span><span class="p">)]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">most_similar_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Similarité entre woman et man:
+0.028059274
+Mots les plus similaires de computer:
+[&#39;work&#39;, &#39;willers&#39;, &#39;exercising&#39;, &#39;fundamental&#39;, &#39;emphasizing&#39;, &#39;contradictions&#39;, &#39;stabbed&#39;, &#39;voyages&#39;, &#39;basic&#39;, &#39;beard&#39;]
+Mots les plus similaires de united:
+[&#39;chronologically&#39;, &#39;essentiallly&#39;, &#39;sinking&#39;, &#39;auguste&#39;, &#39;contested&#39;, &#39;lyman&#39;, &#39;conceal&#39;, &#39;nebraska&#39;, &#39;disprove&#39;, &#39;armoured&#39;]
+Mots les plus similaires de early:
+[&#39;confidence&#39;, &#39;produce&#39;, &#39;elected&#39;, &#39;theoretic&#39;, &#39;harmonious&#39;, &#39;gellius&#39;, &#39;ayers&#39;, &#39;climatology&#39;, &#39;analogy&#39;, &#39;templeton&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Les résultats semblent étrange mais la raison est que je n’ai utilisé qu’un tout petit dataset, en effet la taille du dataset est d’une importance capitale pour entraîner des modèles en NLP.</p>
+<p>Voici les résultats d’un autre utilisateur sur l’ensemble du dataset <em>(plus d’une journée d’entraînement)</em>:</p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/65224852/188748546-000f1293-26a7-42a7-834f-6722aadc8587.png">
+</p>
+</div>
+</div>
+<div class="section" id="exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne">
+<h2>Exploration de topics: t-Distributed Stochastic Neighbor Embedding (t-SNE)<a class="headerlink" href="#exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne" title="Permalink to this headline">¶</a></h2>
+<p align="center"> <i>Source de cette partie: <a href="https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf</a></i></p>
+<p>t-SNE est un algorithme d’apprentissage non supervisé permettant d’analyser des données décrites dans des espaces à forte dimensionnalité pour les représenter dans des espaces à deux ou trois dimensions, cet algorithme facilite la visualisation de données.</p>
+<p>Plus précisément cet algorithme trouve des patterns dans les données basé sur la similarité des représentations vectorielles (embeddings): les données proches dans l’espace original ont une probabilité élevée d’avoir une représentation proche dans le nouvel espace, dans le cadre du NLP on appelle ces regroupements des <strong>topics</strong>.</p>
+<p>t-SNE calcule donc une mesure de similarité entre des paires d’instances (ici mots) dans un espace à forte dimensionnalité et à la fois dans un espace à faible dimensionnalité, qu’il essaie ensuite d’optimiser à l’aide d’une fonction de coût.</p>
+<p>L’objectif est de déterminer la probabilité que des points <em>(voir les vecteurs comme des points)</em> dans un espace donné choisissent d’autres points comme voisin afin d’obtenir la distribution de probabilités des voisins dans les deux espaces et de les rendres aussi similaire que possible en minimisant leur <strong>Divergence de Kullback-Leibler</strong> (KLD).</p>
+<p>Soit:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span>: vecteur représentatif d’un mot i dans l’espace à forte dimensionalité.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span>: vecteur représentatif d’un mot i dans l’espace à faible dimensionalité.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_{j|i}\)</span>: probabilité d’obtenir un voisin j par rapport à i dans l’espace à forte dimensionalité.</p></li>
+<li><p><span class="math notranslate nohighlight">\(q_{j|i}\)</span>:probabilité d’obtenir un voisin j par rapport à i dans l’espace à faible dimensionalité.</p></li>
+</ul>
+<p>On pose:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} p_{j|i} &amp;= \frac{exp(-\|x_i - x_j\|^2 \, / \, 2\sigma_i^2)}{\sum_{k \not= i} exp(-\|x_i - x_j\|^2 \, / \, 2\sigma_i^2)} \qquad p_{i|i} = 0
+\\ q_{j|i} &amp;= \frac{exp(-\|y_i - y_j\|^2)}{\sum_{k \not= i} exp(-\|y_i - y_j\|^2)} \qquad q_{i|i} = 0 \end{align}\end{split}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma_i\)</span>: variance du Gaussian centrée sur le point <span class="math notranslate nohighlight">\(x_i\)</span>, on la trouve en effectuant une recherche binaire.</p></li>
+</ul>
+<div class="section" id="paranthese-sur-le-gaussian">
+<h3>Paranthèse sur le Gaussian:<a class="headerlink" href="#paranthese-sur-le-gaussian" title="Permalink to this headline">¶</a></h3>
+<p>Le Gaussian <em>(dont la représentation est la courbe de Gauss)</em> est une fonction de la forme <span class="math notranslate nohighlight">\(f(x) = exp(-x^2)\)</span> auquel on ajoute des extensions paramétriques:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \alpha \, exp\left(-\frac{(x - \beta)^2}{2c^2}\right)\]</div>
+<p>Avec:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> et <span class="math notranslate nohighlight">\(\beta\)</span>: constantes réelles non nulles.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span>: hauteur du sommet de la courbe.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span>: position du centre du sommet de la courbe.</p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span>: déviation stantard, largeur de la courbe.</p></li>
+</ul>
+<p>Le Gaussian est souvent utilisé pour représenter la densité de probabilités de variables aléatoires normalement distribuées, dans ce cas la fonction sera de la forme:</p>
+<div class="math notranslate nohighlight">
+\[y(x) = \frac{1}{\sigma \sqrt{2 \pi}} \, exp\left(-\frac{1}{2} \left(\frac{x-m}{\sigma}\right)^2\right)\]</div>
+<p>Avec:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m = \beta\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2 = c^2\)</span></p></li>
+</ul>
+<p align="center"> <b>Représentation du Gaussian</b>
+<img src="https://user-images.githubusercontent.com/65224852/188928348-ee388eaa-9fbf-4043-b952-d04b9f415369.jpg">
+</p>
+</div>
+<div class="section" id="divergence-de-kullback-leibler">
+<h3>Divergence de Kullback-Leibler:<a class="headerlink" href="#divergence-de-kullback-leibler" title="Permalink to this headline">¶</a></h3>
+<p>Si l’ensemble des points <span class="math notranslate nohighlight">\(y_i\)</span> et <span class="math notranslate nohighlight">\(y_j\)</span> modélisent correctement la similarité entre les données de haute dimension <span class="math notranslate nohighlight">\(x_i\)</span> et <span class="math notranslate nohighlight">\(x_j\)</span>, les probabilités conditionnelles <span class="math notranslate nohighlight">\(p_{j|i}\)</span> et <span class="math notranslate nohighlight">\(q_{j|i}\)</span> seront égales.</p>
+<p>Une manière de mesurer l’écart entre le modèle <span class="math notranslate nohighlight">\(q_{j|i}\)</span> et <span class="math notranslate nohighlight">\(p_{j|i}\)</span> est d’utiliser la divergence de Kullback-Leibler <em>(qui dans ce cas est égal à la cross-entropy plus une constante additive)</em>.</p>
+<p>t-SNE minimise la divergences de Kullback-Leibler sur tous les points en utilisant une descente de gradiant, la fonction de coût C est la suivante:</p>
+<div class="math notranslate nohighlight">
+\[C = KL(P | Q) = \sum_i \sum_j p_{i|j} log \frac{p_{i|j}}{q_{i|j}}\]</div>
+<p>Où:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span>: distribution de probabilités jointes de l’ensemble des points <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span>: distribution de probabilités jointes de l’ensemble des points <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ul>
+<p>Il reste encore des points à élucider mais vous avez l’idée générale de comment fonctionne l’algorithme t-SNE.</p>
+</div>
+<div class="section" id="id2">
+<h3>Mise en pratique:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Dans cette mise en pratique nous visualiserons la représentation de mots sous forme de points en 2 dimensions, pour cela nous utiliserons une version pré-entraînée de GloVe et en particulier la liste des vecteurs que cette version a calculée.</p>
+<p>De plus Scikit-learn a la gentillesse de nous fournir une fonction t-SNE, c’est pourquoi nous l’utiliserons, pour installer les dépendences tapez:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sklearn</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">seaborn</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">keras</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scipy</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">spatial</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">embeddings_index</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;glove.6B.300d.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="c1">#Peut être téléchargé sur: https://nlp.stanford.edu/data/glove.6B.zip</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">value</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+    <span class="n">embeddings_index</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">coefs</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">find_similar_word</span><span class="p">(</span><span class="n">emmbedes</span><span class="p">):</span>
+    <span class="n">nearest</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">embeddings_index</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">embeddings_index</span><span class="p">[</span><span class="n">word</span><span class="p">],</span> <span class="n">emmbedes</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">nearest</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 10 des mots similaires à &#39;livre&#39;:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">find_similar_word</span><span class="p">(</span><span class="n">embeddings_index</span><span class="p">[</span><span class="s1">&#39;book&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">:</span><span class="mi">11</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distance euclidienne entre le mot &#39;livre&#39; et &#39;nouvelle&#39;:&quot;</span><span class="p">,</span> <span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">embeddings_index</span><span class="p">[</span><span class="s1">&#39;book&#39;</span><span class="p">],</span> <span class="n">embeddings_index</span><span class="p">[</span><span class="s1">&#39;novel&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distance euclidienne entre le mot &#39;livre&#39; et &#39;pomme&#39;:&quot;</span><span class="p">,</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">embeddings_index</span><span class="p">[</span><span class="s1">&#39;book&#39;</span><span class="p">],</span> <span class="n">embeddings_index</span><span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 10 des mots similaires à &#39;livre&#39;:
+[&#39;books&#39;, &#39;author&#39;, &#39;published&#39;, &#39;novel&#39;, &#39;wrote&#39;, &#39;memoir&#39;, &#39;describes&#39;, &#39;biography&#39;, &#39;illustrated&#39;, &#39;autobiography&#39;]
+
+Distance euclidienne entre le mot &#39;livre&#39; et &#39;nouvelle&#39;: 4.99204683303833
+Distance euclidienne entre le mot &#39;livre&#39; et &#39;pomme&#39;: 8.160760879516602
+</pre></div>
+</div>
+</div>
+</div>
+<p>Puisque la distance entre un livre et une nouvelle est proche alors on devine que l’algorithme t-SNE les représentera relativement proche dans l’espace à faible dimension.</p>
+<p>Par contre le livre et la pomme étant deux notions totalement différentes, ils devraient être représenté comme éloignés.</p>
+<p>Maintenant prenons une sélection de 10 mots et observons leur répartition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#dimension du résultat</span>
+
+<span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="s1">&#39;novel&#39;</span><span class="p">,</span> <span class="s1">&#39;autobiography&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;human&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="s1">&#39;airplane&#39;</span><span class="p">,</span> <span class="s1">&#39;ecology&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">Y</span><span class="p">:</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">embeddings_index</span><span class="p">[</span><span class="n">word</span><span class="p">])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">tsne_result</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">tsne_result</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">tsne_result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;tsne_1&#39;</span><span class="p">:</span> <span class="n">tsne_result</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;tsne_2&#39;</span><span class="p">:</span> <span class="n">tsne_result</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">Y</span><span class="p">})</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;tsne_1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;tsne_2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tsne_result_df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">lim</span> <span class="o">=</span> <span class="p">(</span><span class="n">tsne_result</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">tsne_result</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">lim</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">lim</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 300)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Seren\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\manifold\_t_sne.py:800: FutureWarning: The default initialization in TSNE will change from &#39;random&#39; to &#39;pca&#39; in 1.2.
+  warnings.warn(
+C:\Users\Seren\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\manifold\_t_sne.py:810: FutureWarning: The default learning rate in TSNE will change from 200.0 to &#39;auto&#39; in 1.2.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x250f8e2e770&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/5_Embeddings_14_3.png" src="../../../_images/5_Embeddings_14_3.png" />
+</div>
+</div>
+<p>Cette répartion semble bonne pour plusieurs raisons:</p>
+<ul class="simple">
+<li><p>On observe que les mots “livre”, “nouvelle” et “autobiographie” sont rassemblés en bas à gauche ce qui est logique puisqu’ils sont corrélés.</p></li>
+<li><p>On observe aussi que les mots “voiture” et “avion” sont proche dans le coin supérieur.</p></li>
+<li><p>Enfin les mots “écologie” et “voiture” ou “avion” sont opposés, en effet la voiture et l’avion polluent.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/NLP/chapitre2_notionsgenerales"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="4_ModLangues.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modèles de langues</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../Cours_CV/0_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Computer Vision</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -203,7 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/5_Embedings.html">
+    <a class="reference internal" href="../../NLP/chapitre2_notionsgenerales/5_Embeddings.html">
      Embeddings
     </a>
    </li>
@@ -818,25 +818,25 @@ Nous allons tricher un peu, nous avons les labels donc nous savons quels points 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:
-Group1: 47 Group2: 6
+Group1: 47 Group2: 10
 1:
-Group1: 3 Group2: 40
+Group1: 47 Group2: 10
 2:
-Group1: 3 Group2: 44
+Group1: 3 Group2: 40
 3:
 Group1: 3 Group2: 40
 4:
 Group1: 47 Group2: 6
 5:
-Group1: 3 Group2: 40
+Group1: 47 Group2: 6
 6:
-Group1: 3 Group2: 44
+Group1: 47 Group2: 6
 7:
-Group1: 47 Group2: 10
+Group1: 3 Group2: 44
 8:
-Group1: 3 Group2: 40
-9:
 Group1: 47 Group2: 10
+9:
+Group1: 3 Group2: 40
 </pre></div>
 </div>
 </div>
@@ -860,11 +860,11 @@ Group1: 47 Group2: 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04079967360261118
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04014452027298274
 0.09255510571300045
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1839/3725657014.py:31: RuntimeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1997/3725657014.py:31: RuntimeWarning:
 
 invalid value encountered in double_scalars
 </pre></div>
@@ -879,30 +879,17 @@ invalid value encountered in double_scalars
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="nn">Input In [3],</span> in <span class="ni">Kmeans.fit</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">for</span> <span class="n">ind_centr</span><span class="p">,</span> <span class="n">centroid</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">dist</span><span class="p">[</span><span class="n">ind_centr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">dpoint</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>                
-<span class="ne">---&gt; </span><span class="mi">24</span>     <span class="n">curr_z</span><span class="p">[</span><span class="n">ind_point</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dist</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="ne">---&gt; </span><span class="mi">23</span>         <span class="n">dist</span><span class="p">[</span><span class="n">ind_centr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">dpoint</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>                
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">curr_z</span><span class="p">[</span><span class="n">ind_point</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dist</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1"># Point 3: Mise à jour des centroids</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">for</span> <span class="n">ind_centr</span><span class="p">,</span> <span class="n">centroid</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">):</span> 
 
-<span class="nn">File &lt;__array_function__ internals&gt;:180,</span> in <span class="ni">argmin</span><span class="nt">(*args, **kwargs)</span>
+<span class="nn">Input In [3],</span> in <span class="ni">Kmeans.distance</span><span class="nt">(self, x_new, x)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/numpy/core/fromnumeric.py:1312,</span> in <span class="ni">argmin</span><span class="nt">(a, axis, out, keepdims)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1225</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1226</span><span class="sd"> Returns the indices of the minimum values along an axis.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1227</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1309</span><span class="sd"> (2, 1, 4)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1310</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1311</span> <span class="n">kwds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keepdims&#39;</span><span class="p">:</span> <span class="n">keepdims</span><span class="p">}</span> <span class="k">if</span> <span class="n">keepdims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">_NoValue</span> <span class="k">else</span> <span class="p">{}</span>
-<span class="ne">-&gt; </span><span class="mi">1312</span> <span class="k">return</span> <span class="n">_wrapfunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;argmin&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.6/x64/lib/python3.10/site-packages/numpy/core/fromnumeric.py:51,</span> in <span class="ni">_wrapfunc</span><span class="nt">(obj, method, *args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="ne">---&gt; </span><span class="mi">51</span> <span class="k">def</span> <span class="nf">_wrapfunc</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="n">bound</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="n">bound</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">File &lt;__array_function__ internals&gt;:177,</span> in <span class="ni">dot</span><span class="nt">(*args, **kwargs)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
