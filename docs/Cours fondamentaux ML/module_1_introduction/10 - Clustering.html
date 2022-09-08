@@ -818,23 +818,23 @@ Nous allons tricher un peu, nous avons les labels donc nous savons quels points 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:
-Group1: 47 Group2: 10
+Group1: 47 Group2: 6
 1:
-Group1: 47 Group2: 10
+Group1: 3 Group2: 44
 2:
 Group1: 3 Group2: 40
 3:
 Group1: 3 Group2: 40
 4:
-Group1: 47 Group2: 6
-5:
-Group1: 47 Group2: 6
-6:
-Group1: 47 Group2: 6
-7:
 Group1: 3 Group2: 44
-8:
+5:
 Group1: 47 Group2: 10
+6:
+Group1: 47 Group2: 10
+7:
+Group1: 47 Group2: 6
+8:
+Group1: 3 Group2: 44
 9:
 Group1: 3 Group2: 40
 </pre></div>
@@ -860,11 +860,12 @@ Group1: 3 Group2: 40
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04014452027298274
-0.09255510571300045
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04079967360261118
+0.11834619281427791
+0.16294429708222813
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1997/3725657014.py:31: RuntimeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1861/3725657014.py:31: RuntimeWarning:
 
 invalid value encountered in double_scalars
 </pre></div>
@@ -888,8 +889,6 @@ invalid value encountered in double_scalars
 <span class="nn">Input In [3],</span> in <span class="ni">Kmeans.distance</span><span class="nt">(self, x_new, x)</span>
 <span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="nn">File &lt;__array_function__ internals&gt;:177,</span> in <span class="ni">dot</span><span class="nt">(*args, **kwargs)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
