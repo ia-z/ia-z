@@ -818,25 +818,25 @@ Nous allons tricher un peu, nous avons les labels donc nous savons quels points 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:
-Group1: 47 Group2: 6
-1:
 Group1: 3 Group2: 44
+1:
+Group1: 47 Group2: 6
 2:
-Group1: 3 Group2: 40
+Group1: 47 Group2: 10
 3:
 Group1: 3 Group2: 40
 4:
-Group1: 3 Group2: 44
+Group1: 47 Group2: 10
 5:
-Group1: 47 Group2: 10
-6:
-Group1: 47 Group2: 10
-7:
-Group1: 47 Group2: 6
-8:
 Group1: 3 Group2: 44
-9:
+6:
 Group1: 3 Group2: 40
+7:
+Group1: 3 Group2: 44
+8:
+Group1: 47 Group2: 10
+9:
+Group1: 47 Group2: 6
 </pre></div>
 </div>
 </div>
@@ -861,36 +861,11 @@ Group1: 3 Group2: 40
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04079967360261118
-0.11834619281427791
+0.09255510571300045
 0.16294429708222813
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1861/3725657014.py:31: RuntimeWarning:
-
-invalid value encountered in double_scalars
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">predictions</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">tmp_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="nn">Input In [3],</span> in <span class="ni">Kmeans.fit</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">for</span> <span class="n">ind_centr</span><span class="p">,</span> <span class="n">centroid</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">23</span>         <span class="n">dist</span><span class="p">[</span><span class="n">ind_centr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">dpoint</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>                
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">curr_z</span><span class="p">[</span><span class="n">ind_point</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dist</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1"># Point 3: Mise à jour des centroids</span>
-
-<span class="nn">Input In [3],</span> in <span class="ni">Kmeans.distance</span><span class="nt">(self, x_new, x)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.31966454598033545
 </pre></div>
 </div>
 </div>
