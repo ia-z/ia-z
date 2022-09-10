@@ -1,15 +1,41 @@
 # Eléments de définition
-
-À l’intersection des statistiques et de l’informatique, le machine learning se préoccupe de la modélisation des données. Les grands principes de ce domaine ont émergé des statistiques fréquentistes ou bayésiennes, de l’intelligence artificielle ou encore du traitement du signal. Dans ce livre, nous considérons que le machine learning est la science de l’apprentissage automatique d’une fonction prédictive à partir d’un jeu d’observations de données étiquetées ou non.
+À l’intersection des statistiques et de l’informatique, le machine learning se préoccupe de la modélisation des données.
+Les grands principes de ce domaine ont émergé des statistiques fréquentistes ou bayésiennes, de l’intelligence artificielle ou encore du traitement du signal.
+Le machine learning est la science de l’apprentissage automatique d’une fonction prédictive à partir d’un jeu d’observations de données étiquetées ou non.
 
 Ce chapitre se veut une **introduction aux concepts et aux premières définitions qui fondent le machine learning**, et en propose plusieurs approches, décrites et illustrées.
 
-## 1. Plusieurs approches en ML
+## Le jeu de données : la source de connaissances
+En machine learning, tout part d'un jeu de données.
+Les données sont la clef de la connaissance, elles sont une image du fonctionnement du monde au moment où elles ont été récoltées.
+Voici quelques petits exemples pour illustrer l'utilité des données :
+* Mesurer la trajectoire d'un lancer de balle dans l'espace permet de mieux comprendre le fonctionnement de la gravité.
+* Lire l'ensemble des livres d'une certaine époque permet de mieux comprendre comment s'exprimaient les populations de cette époque.
+* Comparer les achats de tous les clients d'un site marchand permet de mieux sélectionner les items à recommander aux futurs clients.
 
-Le machine learning est un champ assez vaste, et nous dressons dans cette section une liste des plus grandes classes de problèmes auxquels il s’intéresse. Une description précise de chaque approche sera apportée, toujours illustrée d'exemples précis. Chaque approche a ses spécificités et permet de répondre à des objectifs précis. 
+A travers les données, on peut déceler des comportements statistiques intéressants et en tirer de l'information.
+**L'objectif du machine learning est d'extraire les connaissances contenues dans un jeu de données et de les synthétiser au sein d'un modèle.**
 
-### 2.1 Supervisé
+Cependant, attention à ne pas tirer de conclusions hatives à partir d'un jeu de données.
+Les données ne sont pas neutres par essence.
+La façon dont elles ont été récoltées, le contexte, et des données manquantes externes peuvent totalement altérer l'information que vous avez extrait d'un jeu de données.
+Ainsi, des biais statistiques peuvent être insérés et pointer vers des conclusions dramatiquement fausses.
+Par exemple, on pourrait se dire que le chocolat rend plus intelligent car la plupart des personnes ayant reçu un prix nobel en [consomment](https://www.youtube.com/watch?v=z_cACapt3Hc).
+Cependant, c'est oublié le facteur important ici : les pays les plus riches sont à la fois ceux qui investissent le plus dans la recherche et aussi ceux qui ont le plus accès au chocolat.
 
+## Le modèle : la synthèse des connaissances
+
+## Notions d'apprentissage
+### Le modèle
+
+### La fonction de perte
+
+## Plusieurs approches en ML
+Le machine learning est un champ assez vaste, et nous dressons dans cette section une liste des plus grandes classes de problèmes auxquels il s’intéresse.
+Une description précise de chaque approche sera apportée, toujours illustrée d'exemples précis.
+Chaque approche a ses spécificités et permet de répondre à des objectifs précis.
+
+### Apprentissage Supervisé
 Qu’il s’agisse des types d’apprentissage supervisé ou non supervisé, tout part d’un jeu de données très important. Et quand on dit « très important », cela peut signifier jusqu’à plusieurs millions d'images ou plusieurs millions de documents. C’est à partir de cette base que l’algorithme peut apprendre.  
 Avec l’apprentissage supervisé, la machine peut apprendre à faire une certaine tâche en étudiant des exemples de cette tâche. Par exemple, elle peut apprendre à reconnaître une photo de chien après qu’on lui ait montré des millions de photos de chiens. Ou bien, elle peut apprendre à traduire le français en chinois après avoir vu des millions d’exemples de traduction français-chinois. 
 
@@ -20,8 +46,8 @@ D’une manière générale, la machine peut apprendre une relation f: x-->y qui
 Dans le cadre de l’apprentissage supervisé, la machine connaît déjà les réponses qu’on attend d’elle. Elle travaille à partir de données étiquetées. Reprenons l’exemple d’une application destinée à reconnaître les chiens et les chats. Pour l’entraîner, on lui présente des images étiquetés comme « chien » ou « chat ». Par des techniques issues des statistiques et des probabilités, l’algorithme comprend alors quelles sont les caractéristiques qui permettent de classer ces images dans chacune des catégories. Ainsi, au fur et à mesure qu’on lui présentera de nouvelles images, il pourra les identifier, en donnant un score de probabilité. Par exemple : « cette image a 95 % de chances de représenter un chat. » Et ses premières réponses seront corrigées à la main, pour qu’il s’améliore au fur et à mesure.
 
 Cette méthode permet de réaliser deux types de tâches :
--	**Classification** 
--	**Régression**
+- **Classification** 
+- **Régression**
 
 #### 1.1.1 Enjeux Classification VS Régression
 
