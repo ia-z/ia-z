@@ -824,19 +824,19 @@ Group1: 47 Group2: 6
 2:
 Group1: 3 Group2: 44
 3:
-Group1: 47 Group2: 10
+Group1: 3 Group2: 40
 4:
-Group1: 3 Group2: 44
+Group1: 47 Group2: 10
 5:
-Group1: 47 Group2: 10
-6:
-Group1: 47 Group2: 10
-7:
-Group1: 47 Group2: 10
-8:
 Group1: 47 Group2: 6
+6:
+Group1: 3 Group2: 44
+7:
+Group1: 3 Group2: 44
+8:
+Group1: 3 Group2: 44
 9:
-Group1: 47 Group2: 10
+Group1: 47 Group2: 6
 </pre></div>
 </div>
 </div>
@@ -861,11 +861,9 @@ Group1: 47 Group2: 10
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04079967360261118
-0.09255510571300045
-0.16605847463232862
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1840/3725657014.py:31: RuntimeWarning:
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1849/3725657014.py:31: RuntimeWarning:
 
 invalid value encountered in double_scalars
 </pre></div>
@@ -887,10 +885,8 @@ invalid value encountered in double_scalars
 <span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1"># Point 3: Mise à jour des centroids</span>
 
 <span class="nn">Input In [3],</span> in <span class="ni">Kmeans.distance</span><span class="nt">(self, x_new, x)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="c1"># Calcul de la distance</span>
-<span class="ne">---&gt; </span><span class="mi">55</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
