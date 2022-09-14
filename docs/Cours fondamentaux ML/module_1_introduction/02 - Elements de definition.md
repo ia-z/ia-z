@@ -1,16 +1,37 @@
-# Eléments de définition
+# Éléments de définition
 À l’intersection des statistiques et de l’informatique, le machine learning se préoccupe de la modélisation des données.
-Les grands principes de ce domaine ont émergé des statistiques fréquentistes ou bayésiennes, de l’intelligence artificielle ou encore du traitement du signal.
+Les grands principes de ce domaine ont émergé des statistiques fréquentistes et bayésiennes, de l’intelligence artificielle ou encore du traitement du signal.
 Le machine learning est la science de l’apprentissage automatique d’une fonction prédictive à partir d’un jeu d’observations de données étiquetées ou non.
 
 Ce chapitre se veut une **introduction aux concepts et aux premières définitions qui fondent le machine learning**, et en propose plusieurs approches, décrites et illustrées.
+
+## Donnée, jeux de données et caractéristiques
+Une `donnée` est une quantité ou observation mesurable.
+Cela peut être la taille d'un individu, une image, du texte... À peu près n'importe quoi !
+
+On peut récolter plusieurs données et les regrouper dans un jeu de données afin d'en étudier le fonctionnement d'un phénomène que l'on souhaiterai caractériser.
+Par exemple, on pourrait mesurer la taille des adultes en France et regrouper ces mesures dans un `jeu de données` (*dataset* en anglais).
+On dit alors que les données sont des `exemples` du dataset (ou *sample* en anglais).
+
+Traditionnellement, on visualise un dataset à l'aide d'un tableau où les lignes sont les différents exemples et les colonnes sont les différentes mesures récupérées sur chaque exemple.
+
+| Individu ID 	| Taille 	| Couleur des cheveux 	| Couleur des yeux 	|
+|-------------	|--------	|---------------------	|------------------	|
+| 1           	| 1.75   	| Brun                	| Marron           	|
+| 2           	| 1.92   	| Blond               	| Bleu             	|
+| ...         	|        	|                     	|                  	|
+
+Comme vous le voyez, il est possible de récolter plusieurs données pour un même individu.
+Lorsqu'un exemple a plusieurs données attribuées, on parle alors de ses données comme de ses `caractéristiques` (*features* en anglais).
+On dit que les exemples sont de dimension $3$ dans notre cas, car ils ont $3$ caractéristiques.
+Dans le cas d'une image de 64x64 pixels, cette image peut être considéré comme un exemple avec 4096 caractéristiques !
 
 ## Le jeu de données : la source de connaissances
 En machine learning, tout part d'un jeu de données.
 Les données sont la clef de la connaissance, elles sont une image du fonctionnement du monde au moment où elles ont été récoltées.
 Voici quelques petits exemples pour illustrer l'utilité des données :
 * Mesurer la trajectoire d'un lancer de balle dans l'espace permet de mieux comprendre le fonctionnement de la gravité.
-* Lire l'ensemble des livres d'une certaine époque permet de mieux comprendre comment s'exprimaient les populations de cette époque.
+* Lire l'ensemble des livres du XVIIe siècle permet de mieux comprendre comment s'exprimaient les populations de cette époque.
 * Comparer les achats de tous les clients d'un site marchand permet de mieux sélectionner les items à recommander aux futurs clients.
 
 A travers les données, on peut déceler des comportements statistiques intéressants et en tirer de l'information.
@@ -24,45 +45,70 @@ Par exemple, on pourrait se dire que le chocolat rend plus intelligent car la pl
 Cependant, c'est oublié le facteur important ici : les pays les plus riches sont à la fois ceux qui investissent le plus dans la recherche et aussi ceux qui ont le plus accès au chocolat.
 
 ## Le modèle : la synthèse des connaissances
+Une fois les données récoltées, on souhaite généralement traduire les informations qui nous intéressent en un `modèle`.
+**Le modèle synthétise les connaissances contenues dans le jeu de données.**
+Il exprime mathématiquement les relations du dataset, sous forme de fonction.
+Pour revenir sur les exemples précédents, un modèle :
+* Caractérise l'évolution de la position d'une balle après son lancer.
+* Capture la distribution de probabilité que suivent les mots de la langue française du XVIIe.
+* Regroupe les items d'un site marchand qui sont achetés par les mêmes catégories de personnes.
 
-## Notions d'apprentissage
-### Le modèle
+Le modèle permet d'expliquer les données.
+Il n'a pas à être parfait *(et il ne l'est jamais en pratique)*, mais on espère qu'il sera suffisamment bon pour mieux comprendre les relations qu'il caractérise ou simplement pour nous être utile pour la tâche souhaitée.
 
-### La fonction de perte
+## Apprentissage automatique
+On sait que le but du ML est de produire un modèle qui capture les relations d'un dataset.
+Pour y arriver, on dit que l'on `entraîne` un modèle sur un jeu de données, à l'aide d'un `algorithme d'apprentissage automatique` (*Machine Learning algorithm*).
+
+Le domaine du ML regroupe beaucoup de modèles et d'algorithmes différents dans le but de couvrir un maximum de datasets possibles.
+Connaître les cas d'applications de chaque modèle et algorithme d'apprentissage est un bon moyen pour rapidement déployer des solutions à un problème donné.
+
+Afin de bien apprendre, un modèle a besoin de beaucoup de données.
+C'est pourquoi il est courant de rencontrer des modèles entraînés à partir de millions d'images ou de documents.
+Plus un dataset contient d'exemples divers et plus il sera possible de modéliser des relations complexes entre nos données.
 
 ## Plusieurs approches en ML
 Le machine learning est un champ assez vaste, et nous dressons dans cette section une liste des plus grandes classes de problèmes auxquels il s’intéresse.
 Une description précise de chaque approche sera apportée, toujours illustrée d'exemples précis.
 Chaque approche a ses spécificités et permet de répondre à des objectifs précis.
 
-### Apprentissage Supervisé
-Qu’il s’agisse des types d’apprentissage supervisé ou non supervisé, tout part d’un jeu de données très important. Et quand on dit « très important », cela peut signifier jusqu’à plusieurs millions d'images ou plusieurs millions de documents. C’est à partir de cette base que l’algorithme peut apprendre.  
-Avec l’apprentissage supervisé, la machine peut apprendre à faire une certaine tâche en étudiant des exemples de cette tâche. Par exemple, elle peut apprendre à reconnaître une photo de chien après qu’on lui ait montré des millions de photos de chiens. Ou bien, elle peut apprendre à traduire le français en chinois après avoir vu des millions d’exemples de traduction français-chinois. 
+### Apprentissage supervisé
+Avec l’apprentissage supervisé, le modèle est entraîné à reproduire une sortie souhaitée.
+Par exemple, il peut apprendre à distinguer les photos de chien et de chat après qu’on lui ait montré des milliers de photos des deux catégories.
+Ou bien, il peut apprendre à traduire le français en chinois après avoir vu des centaines de milliers d’exemples de traduction français-chinois. 
 
-D’une manière générale, la machine peut apprendre une relation f: x-->y qui relie x à y en ayant analysé des millions d’exemples d’associations.
+Concrètement, on a un dataset $\mathcal{D} = (x_i, y_i)_{1 ... N}$ de $N$ couples où $x_i$ est un ensemble de `caractéristiques` et $y$ l'`étiquette` correspondante.
+En reprenant l'exemple précédent, nos $x_i$ pourraient être les images de chien et de chat et $y_i$ la catégorie (chien ou chat) de l'image.
+On entraîne alors un modèle $f$ tel que $f(x) \approx y$.
 
 ![Capture](https://machinelearnia.com/wp-content/uploads/2019/06/apprentissage-supervise-2-.png)
- 
-Dans le cadre de l’apprentissage supervisé, la machine connaît déjà les réponses qu’on attend d’elle. Elle travaille à partir de données étiquetées. Reprenons l’exemple d’une application destinée à reconnaître les chiens et les chats. Pour l’entraîner, on lui présente des images étiquetés comme « chien » ou « chat ». Par des techniques issues des statistiques et des probabilités, l’algorithme comprend alors quelles sont les caractéristiques qui permettent de classer ces images dans chacune des catégories. Ainsi, au fur et à mesure qu’on lui présentera de nouvelles images, il pourra les identifier, en donnant un score de probabilité. Par exemple : « cette image a 95 % de chances de représenter un chat. » Et ses premières réponses seront corrigées à la main, pour qu’il s’améliore au fur et à mesure.
+
+Dans le cadre de l’apprentissage supervisé, la machine connaît déjà les réponses qu’on attend d’elle.
+Elle travaille à partir de données étiquetées.
+Reprenons l’exemple d’une application destinée à reconnaître les chiens et les chats.
+Pour l’entraîner, on lui présente des images étiquetés comme « chien » ou « chat ».
+Par des techniques issues des statistiques et des probabilités, l’algorithme comprend alors quelles sont les caractéristiques qui permettent de classer ces images dans chacune des catégories.
+Ainsi, au fur et à mesure qu’on lui présentera de nouvelles images, il pourra les identifier, en donnant un score de probabilité.
+Par exemple : « cette image a 95 % de chances de représenter un chat. » Et ses premières réponses seront corrigées à la main, pour qu’il s’améliore au fur et à mesure.
 
 Cette méthode permet de réaliser deux types de tâches :
-- **Classification** 
-- **Régression**
+* **Classification** 
+* **Régression**
 
-#### 1.1.1 Enjeux Classification VS Régression
+#### Enjeux Classification VS Régression
 
-Une première grande distinction à faire en machine learning est la différence entre **apprentissage supervisé** et **non supervisé**. En anglais, ces deux notions se nomment respectivement "supervised learning" et "unsupervised learning".
+Une première grande distinction à faire en machine learning est la différence entre **apprentissage supervisé** et **non supervisé**.
+En anglais, ces deux notions se nomment respectivement "supervised learning" et "unsupervised learning".
 
 Si le modèle est un modèle supervisé, il peut-être de 2 types ou sous-catégories : modèle de régression ou de classification.
 
 
 ![Capture](https://assets.moncoachdata.com/v7/moncoachdata.com/wp-content/uploads/2020/01/segmentation-machine-learning.png?w=1242)
 
- 
-Pour bien comprendre la différence, allons plus dans le détail :
+Pour bien comprendre la différence, allons plus dans le détail.
 
 
-######  1.1.1.1.1  Classification
+#### Classification
 
 La classification est une tâche qui nécessite l'utilisation d'algorithmes d'apprentissage automatique qui apprennent à attribuer une étiquette de classe aux exemples du domaine du problème. Revenons une nouvelle fois sur notre problématique de détection de chat et de chien.
 
@@ -73,20 +119,17 @@ Imaginons un système de classification d'images de chiens et de chats. En entr�
 Il existe de nombreux types de tâches de classification que vous pouvez rencontrer dans l'apprentissage automatique et des approches spécialisées de la modélisation qui peuvent être utilisées pour chacune. Ces approches seront étudiées plus en détail à la suite du cours.
 
 
-######  1.1.1.1.2  Régression
+#### Régression
 
 Dans le domaine de l'apprentissage statistique, la régression permet d'**approcher une variable quantitative** à partir d'autres qui lui sont corrélées.
 
 La régression s'articule autour d'algorithmes simples, qui sont souvent utilisés dans la finance, l'investissement et autres, et établit la relation entre une seule variable dépendante de plusieurs variables indépendantes. 
 
 Il existe plusieurs algorithmes pour la régression:
-•	Régression linéaire
-
-•	Régression polynomiale
-
-•	Régression quantile
-
-•	etc.
+* Régression linéaire
+* Régression polynomiale
+* Régression quantile
+* etc.
 
 Le modèle de régression le plus connu est le modèle de régression linéaire.
 
@@ -99,10 +142,8 @@ Prédire le nombre de clics sur un lien ou prédire le rendement d’un plant de
 ##### 1.1.1.1.3 Classification vs Regression
 
 La différence la plus significative entre la régression et la classification est que si la régression aide à prédire une quantité continue, la classification prédit des étiquettes de classe discrètes. Il existe également des similitudes entre les deux types d'algorithmes d'apprentissage automatique.
-
-•	Un algorithme de **régression** peut prédire une valeur discrète qui se présente sous la forme d'une quantité entière
-
-•	Un algorithme de **classification** peut prédire une valeur continue si elle se présente sous la forme d'une probabilité d'étiquette de classe
+* Un algorithme de **régression** peut prédire une valeur discrète qui se présente sous la forme d'une quantité entière
+* Un algorithme de **classification** peut prédire une valeur continue si elle se présente sous la forme d'une probabilité d'étiquette de classe
 
 Considérons un ensemble de données contenant des informations sur les étudiants d'une université particulière. Un algorithme de régression peut être utilisé dans ce cas pour prédire la taille de tout élève en fonction de son poids, de son sexe, de son régime alimentaire ou de sa matière principale. Nous utilisons la régression dans ce cas car la hauteur est une **quantité continue**. Il existe un nombre infini de valeurs possibles pour la taille d'une personne.
 
@@ -205,7 +246,7 @@ Le Reinforcement Learning a affiché des performances spectaculaires ces derniè
 
 Un cours est d'ailleurs entièrement dédié à ce vaste sujet.
 
-### 2. Pour aller plus loin
+## Pour aller plus loin
 
 Dans cette dernière partie, nous pouvons aller plus loin et nous intéresser à la partie **semi-supervisée** du machine learning.
 
@@ -218,12 +259,9 @@ Pour en savoir davantage sur l'apprentissage semi-supervisé, vous pouvez consul
 - cet article qui explique en quoi ce type d'apprentissage peut être utile : https://fr.theastrologypage.com/why-is-semi-supervised-learning-helpful-model
 
 
-### 3. Sources
-
-Ci-dessous quelques sources web empruntées dans le cadre de la réalisation de ce chapitre :
-
-https://www.actuia.com/vulgarisation/difference-entre-apprentissage-supervise-apprentissage-non-supervise/
-
-https://machinelearnia.com/apprentissage-supervise-4-etapes/
-
-https://dataanalyticspost.com/Lexique/reduction-de-dimensionnalite/
+## Sources
+* [Le chocolat ne rend pas plus intelligent](https://www.youtube.com/watch?v=z_cACapt3Hc)
+* [Tout les modèles sont faux, certains sont utiles](https://fr.abcdef.wiki/wiki/All_models_are_wrong)
+* https://www.actuia.com/vulgarisation/difference-entre-apprentissage-supervise-apprentissage-non-supervise/
+* https://machinelearnia.com/apprentissage-supervise-4-etapes/
+* https://dataanalyticspost.com/Lexique/reduction-de-dimensionnalite/
