@@ -560,66 +560,65 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="clustering">
 <h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
-<p>Si vous vous rappelez bien du chapitre “Eléments de définition”, il y a trois types principaux de Machine Learning; l’apprentissage Supervisé, non supervisé et par renforcement. Jusqu’à maintenant nous n’avions que des cas d’apprentissage supervisé (nous avions les labels associés aux données), il est donc temps de parler de l’apprentissage non-supervisé (nous n’avons plus de labels).</p>
-<p>Imaginons que nous avons des images de chiens et de chats qui ne sont pas étiquettées (“Sans labels” dans l’image). Une solution pour différencier ces deux classes serait de payer des gens pour ajouter les labels, mais elle est couteuse en temps et en argent. Une autre est d’utiliser du clustering. Cette approche va essayer de créer des groupes (clusters) en utilisant les données (“Avec labels” dans l’image).</p>
+<p>Si vous vous rappelez bien du chapitre “Eléments de définition”, il y a trois types principaux de Machine Learning; Supervisé, non supervisé et par renforcement. Jusqu’à maintenant nous n’avions que des cas d’apprentissage supervisé (nous avions les labels), il est donc temps de parler de l’apprentissage non-supervisé (nous n’avons pas les labels).</p>
+<p>Imaginons que nous avons des images de chiens et de chats qui ne sont pas étiquettées (“Sans labels” dans l’image). Une solution serait de payer des gens pour ajouter les labels, mais elle est couteuse en temps et en argent. Une autre est d’utiliser du clustering. Cette approche va essayer de créer des groupes (clusters) en utilisant les données (“Avec labels” dans l’image).</p>
 <p><img alt="image" src="../../../_images/clustering_dataset.png" /></p>
 <p>Une idée serait de partir du principe que les données de même classe (chiens et chats) sont proches dans l’espace définit par les pixels de l’image. Pour les regrouper, nous pourrions avoir deux points, un pour les chiens et un pour les chats. Nous classifierons l’image en fonction du point duquel elle est le plus proche. La question est donc: Comment trouver ces points?</p>
 <p>La réponse est simple, en utilsant Kmeans!</p>
 <div class="section" id="kmeans">
 <h2>Kmeans<a class="headerlink" href="#kmeans" title="Permalink to this headline">¶</a></h2>
-<p>L’algorithme se base sur ce qu’on appelle des <strong>centroids</strong>, ce sont des points qui seront placés au milieu des clusters. Chaque échantillon fait partie de la catégorie dont le centroid est le plus proche. La procédure se passe en deux parties</p>
+<p>L’algorithme se base sur ce qu’on appel des centroids, ce sont des points qui seront placé au milieu des clusters. Chaque échantillon fait partie de la catégorie dont le centroid est le plus proche. La procédure se passe en deux parties</p>
 <ol class="simple">
 <li><p>Attribution des échantillons aux clusters</p></li>
 <li><p>Mise à jour des centroids</p></li>
 </ol>
-<p>En mettant à jour plusieurs dois les centroids, on peut alors tendre vers une situation où toutes les images de chien se retrouvent isolées dans un cluster, et celles de chats dans un autre. On vient alors de différencier, sans avoir à labelliser les images, 2 classes distinctes.</p>
 <div class="section" id="en-detail">
 <h3>En détail<a class="headerlink" href="#en-detail" title="Permalink to this headline">¶</a></h3>
 <p>Afin de nous faciliter la tâche, nous allons introduire une matrice binaire <span class="math notranslate nohighlight">\(z\)</span> qui est de taille <span class="math notranslate nohighlight">\(N\times K\)</span>, <span class="math notranslate nohighlight">\(N\)</span> détermine le nombre de points de données et <span class="math notranslate nohighlight">\(K\)</span> le nombre de clusters que nous cherchons. De cette façon, l’entrée <span class="math notranslate nohighlight">\(z_{1,1}=0\)</span> voudra dire que <span class="math notranslate nohighlight">\(x_1\)</span> n’est pas dans le cluster 1, et <span class="math notranslate nohighlight">\(z_{1,2}=1\)</span> représente l’appartenance du point <span class="math notranslate nohighlight">\(x_1\)</span> au cluster 2. Nous avons donc la contrainte qu’il ne peut y avoir que une entrée qui vaut 1 et le reste doit être 0, mathématiquement, cela donne <span class="math notranslate nohighlight">\(\sum_k z_{n,k} = 1\)</span>.
 <br> Maintenant que cela est clair, nous pouvons (enfin) décrire l’algorithme.</p>
-<p>La position des centroids est initialisée arbitrairement. Ensuite nous calculons la distance entre chaque point et les centroids. Admettons que pour le premier point, le second centroid est le plus proche alors son entrée <span class="math notranslate nohighlight">\(z_{0,1}\)</span> (les indexs commencent à 0) devient 1. Une fois la matrice <span class="math notranslate nohighlight">\(z\)</span> mise à jour, nous pouvons calculer les coordonnées de chaque centroid en prenant la moyenne des coordonnées des points qui lui sont attribués:</p>
+<p>Les centroids sont intialisé arbitrairement. Ensuite nous calculons la distance entre chaque point et les centroids. Admettons que pour le premier point, le second centroid est le plus proche alors son entrée <span class="math notranslate nohighlight">\(z_{0,1}\)</span> (les indexs commencent à 0) devient 1. Une fois la matrice <span class="math notranslate nohighlight">\(z\)</span> mise à jour, nous pouvons calculer les coordonnées de chaque centroid en prenant la moyenne des coordonnées des points qui lui sont attribués:</p>
 <div class="math notranslate nohighlight">
 \[\mu_k = \frac{\sum_{n=1}^N z_{nk}\textbf{x}_n}{\sum_{n=1}^N z_{nk}}\]</div>
-<p>Ici, <span class="math notranslate nohighlight">\(z\)</span> nous permet de suivre simplement les attributions et de mettre les coordonnées à jour. En effet, si <span class="math notranslate nohighlight">\(z_{n,k}=0\)</span> alors il ne sera pas pris en compte dans la moyenne et si c’est 1 alors on le prends en compte. Une fois les centroids mis à jour, nous recommençons la phase d’assignation en calculant les distances.</p>
+<p>Ici, <span class="math notranslate nohighlight">\(z\)</span> nous permet de suivre simplement les attributions et de mettre les coordonnées à jour. En effet, si <span class="math notranslate nohighlight">\(z_{n,k}=0\)</span> alors il ne sera pas pris en compte dans la moyenne et si c’est 1 alors on le prends en compte. Une fois les centroids mis à jour, nous recomençons la phase d’assignation en calculant les distances.</p>
 <p>Le GIF qui suit permet de voir l’évolution de <span class="math notranslate nohighlight">\(z\)</span> en regardant les couleurs des points ainsi que les centroids en bleu.</p>
 <p><img alt="SegmentLocal" src="../../../_images/clustering_gif.gif" /></p>
 <blockquote>
 <div><p>L’algorithme</p>
 <ol class="simple">
 <li><p>On initialise les centroids <span class="math notranslate nohighlight">\(\mu_n\)</span>. (Pour l’instant nous le faisons aléatoirement)</p></li>
-<li><p>On attribue à chaque donnée le cluster dont le centroid est le plus proche, et on remplis la matrice <span class="math notranslate nohighlight">\(z\)</span>.<br> Comme avec Knn. nous pouvons prendre la mesure de distance qui nous convient le mieux. Dans notre cas nous utiliserons l’euclidienne.</p></li>
+<li><p>On attribue le cluster de chaque données <span class="math notranslate nohighlight">\(x_n\)</span> au centroid le plus proche et remplissons la matrice <span class="math notranslate nohighlight">\(z\)</span>.<br> Comme avec Knn. nous pouvons prendre la mesure de distance qui nous convient le mieux. Dans notre cas nous utiliserons l’euclidienne.</p></li>
 <li><p>On met les centroids à jour en calculant la moyenne des points présent dans le cluster :
 <span class="math notranslate nohighlight">\(\mu_k = \frac{\sum_{n=1}^N z_{nk}\textbf{x}_n}{\sum_{n=1}^N z_{nk}}\)</span></p></li>
 <li><p>On retourne au point 2, jusqu’à ce que <span class="math notranslate nohighlight">\(z\)</span> ne change plus.</p></li>
 </ol>
 </div></blockquote>
-<p>Ce problème peut-être décrit par une fonction de coût que nous voulons minimiser:</p>
+<p>Ce problème peut-être décrit par une fonction de couts que nous voulons minimiser:</p>
 <div class="math notranslate nohighlight">
 \[\min\sum_n\sum_k z_{n,k} (x_n-\mu_k)^T(x_n-\mu_k)\]</div>
 <div class="math notranslate nohighlight">
 \[\textbf{s.t.: } z_{n,k}\in \{0,1\} \text{ et } \sum_k z_{n,k} = 1 \]</div>
-<p>La partie du haut représente le but; minimiser la distance entre les centroids <span class="math notranslate nohighlight">\(\mu_k\)</span> et les données qui y sont liées. Ainsi, <span class="math notranslate nohighlight">\(z_{n,k}\)</span> sera 1 si <span class="math notranslate nohighlight">\(x_n\)</span> appartient au centroid <span class="math notranslate nohighlight">\(\mu_k\)</span> et la distance sera prise en compte. Si <span class="math notranslate nohighlight">\(z_{n,k}\)</span> est 0, alors la distance ne sera pas prise en compte car <span class="math notranslate nohighlight">\(x_n\)</span> appartient à un autre centroid. La partie du bas représente les contraintes, la première dit que les valeurs dans <span class="math notranslate nohighlight">\(z\)</span> doivent être soit 0, soit 1. La deuxième dit que seulement un centroid peut être attribué à un point de donnée.</p>
-<p>Le but est de rendre la somme des distances la plus petite possible. Kmeans va converger à chaque fois mais vu que les centroids sont initialisés aléatoirement et que le problême n’est pas convexe (une seule solution) chaque fois que nous lançons Kmeans nous aurons potentiellement une solution différente.</p>
+<p>La partie du haut représente le but; minimizer la distance entre les centroids <span class="math notranslate nohighlight">\(\mu_k\)</span> et les données qui y sont liées. Ainsi, <span class="math notranslate nohighlight">\(z_{n,k}\)</span> sera 1 si <span class="math notranslate nohighlight">\(x_n\)</span> appartient au centroid <span class="math notranslate nohighlight">\(\mu_k\)</span> et la distance sera prise en compte. Si <span class="math notranslate nohighlight">\(z_{n,k}\)</span> est 0, alors la distance ne sera pas prise en compte car <span class="math notranslate nohighlight">\(x_n\)</span> appartient a un autre centroid. La partie du bas représente les contraintes, la première dit que les valeurs dans <span class="math notranslate nohighlight">\(z\)</span> doivent être soit 0 soit 1. La deuxième dit que seulement un centroid peut être attribué à un point de donnée.</p>
+<p>Le but est de rendre la somme des distances la plus petite possible. Kmeans va converger à chaque fois mais vu que les centroids sont initilisés aléatoirement et que le problême n’est pas convex (une seule solution) chaque fois que nous lançons Kmeans nous aurons potentiellement une solution différente.</p>
 </div>
 <div class="section" id="soucis-et-solutions">
 <h3>Soucis et Solutions<a class="headerlink" href="#soucis-et-solutions" title="Permalink to this headline">¶</a></h3>
-<p>Il y a deux problèmes majeurs, comment déterminer le nombre de clusters. Dans certains cas nous avons énormément de données sans labels et il est impossible de déterminer le nombre de clusters présents. Le deuxième est l’initialisation des centroids. Vu que l’initilisation a un impact majeur sur la solution finale, il faut le faire de manière intelligente sans risquer de trop biaiser le résultat.</p>
+<p>Il y a deux problèmes majeurs, comment déterminer le nombre de clusters. Dans certains cas nous avons énorméments de données sans labels et il est impossible de déterminer le nombre de cluster présent. Le deuxième est l’initialisation des centroids. Vu que l’initilisation a un impact majeur sur la solution finale, il faut le faire de manière intelligent sans risquer de trop biaiser le résultat.</p>
 <div class="section" id="initlisation-des-centroids">
 <h4>Initlisation des centroids<a class="headerlink" href="#initlisation-des-centroids" title="Permalink to this headline">¶</a></h4>
-<p>Il existe plusieurs approches plus ou moins efficaces comme l’initilisation aléatoire dans une certaine “zone”, prendre <span class="math notranslate nohighlight">\(K\)</span> points dans les données et utiliser leurs positions comme centroids. Dans les deux cas, nous avons potentiellement des centroids très proche l’un de l’autre, ce qui ralentit la convergence. L’approche la plus efficace (à ce jour) se nomme kmeans++ et est celle qu’utilise la libraire Scikit-Learn.</p>
+<p>Il existe plusieurs approches plus ou moins efficaces comme l’initilisation aléatoire dans une certaine “zone”, prendre <span class="math notranslate nohighlight">\(K\)</span> points dans les données et utiliser leur position comme centroid. Dans les deux cas, nous avons potentiellement des centroids très proche l’un de l’autre, ce qui ralentit la convergence. L’approche la plus efficace (à ce jour) se nomme kmeans++ et est celle utilisée par la libraire Scikit-Learn.</p>
 <p>L’idée est assez simple, nous choisissons un point dans <span class="math notranslate nohighlight">\(X\)</span> aléatoirement et utilisons ses coordonnées comme coordonnées pour <span class="math notranslate nohighlight">\(\mu_1\)</span>. Ensuite nous trouvons le point le plus éloigné de <span class="math notranslate nohighlight">\(\mu_1\)</span> et l’utilisons pour déterminer <span class="math notranslate nohighlight">\(\mu_2\)</span>. Puis, nous trouvons le points le plus éloigné de <span class="math notranslate nohighlight">\(\mu_1\)</span> et <span class="math notranslate nohighlight">\(\mu_2\)</span>, etc.</p>
 <p>Cette approche nous donne une approximation <span class="math notranslate nohighlight">\(O(logK)\)</span> de la réponse finale.</p>
 </div>
 <div class="section" id="choix-du-nombre-de-cluster">
 <h4>Choix du nombre de cluster<a class="headerlink" href="#choix-du-nombre-de-cluster" title="Permalink to this headline">¶</a></h4>
-<p>Il existe plusieurs approches, celle décrite ici est basée sur ce qu’on appelle la variance intra-cluster. La variance d’un cluster est déterminée par la distance moyenne entre un centroid et les points qui y sont liés. On peut la calculer en utilisant cette formule:</p>
+<p>Il existe plusieurs approches, celle décrite ici est basé sur ce qu’on appele la variance intra-cluster. La variance d’un cluster est déterminé par la distance moyenne entre un centroid et les points qui y sont liée. On peut la calculer en utilisant cette formule:</p>
 <div class="math notranslate nohighlight">
 \[W_k:=\frac{1}{|\mu_k|}\sum_{x\in \mu_k}(x-\mu_k)^2\]</div>
-<p><span class="math notranslate nohighlight">\(|\mu_k|\)</span> est le nombre de points liés au centroid <span class="math notranslate nohighlight">\(\mu_k\)</span>, ce facteur nous permet de normaliser le résulat de façon à être entre 0 et 1. La somme calcule la distance total entre un centroid et les points qui sont liés à lui.</p>
-<p>La variance totale <span class="math notranslate nohighlight">\(W\)</span> est la somme de tous les <span class="math notranslate nohighlight">\(W_k\)</span>.</p>
-<p>Le but est de choisir le nombre de clusters <span class="math notranslate nohighlight">\(K\)</span> qui minimise <span class="math notranslate nohighlight">\(W\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(|\mu_k|\)</span> est le nombre de points liée au centroid <span class="math notranslate nohighlight">\(\mu_k\)</span>, ce facteur nous permet de normaliser le résulat de façon à être entre 0 et 1. La somme calcule la distance total entre un centroid et les points qui sont liée à lui.</p>
+<p>La variance total <span class="math notranslate nohighlight">\(W\)</span> est la somme de tous les <span class="math notranslate nohighlight">\(W_k\)</span>.</p>
+<p>Le but est de choisir le nombre de cluster <span class="math notranslate nohighlight">\(K\)</span> qui minimise <span class="math notranslate nohighlight">\(W\)</span>.</p>
 <blockquote>
-<div><p>Étant donné que nous n’avons pas les labels, il n’est, la plupart du temps, pas possible d’évaluer un algorithme de clustering. Il faudra soit lui faire confiance ou regarder par soi même. De plus, on sait que Kmeans va toujours converger, il va donc toujours donner une information. Dans le cas des images de chien et de chat, il trouvera autant de cluster qu’il y a d’images si on le lui demande. Il faut donc être prudent lors de l’utilisation de l’algorithme.</p>
+<div><p>Étant donnée que nous n’avons pas les labels, il n’est, la plupart du temps, pas possible d’évaluer un algorithm de clustering. Il faudra soit lui faire confiance ou regarder par soit même. De plus, on sait que Kmeans va toujours converger, il va donc toujours donner une infomation. Dans le cas des images de chien et de chat, il trouvera autant de cluster qu’il y a d’images si on le lui demande. Il faut donc être prudent lors de l’utilisation de l’algorithm.</p>
 </div></blockquote>
 </div>
 </div>
@@ -629,29 +628,29 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Bien que puissant et pratique, Kmeans n’est pas parfait.</p>
 <div class="section" id="affectation-stricte">
 <h3>Affectation stricte<a class="headerlink" href="#affectation-stricte" title="Permalink to this headline">¶</a></h3>
-<p>Kmeans fait de <strong>l’affectation souple</strong>, c’est à dire qu’il détermine si un point appartient ou pas à une certaine catégorie. Ceci peut-être problématique dans le cas où un point est a équidistance entre deux centroids. La façon dont on règle ce problème peut avoir une réelle importance sur la performance du modèle. Imaginons, que nous voulons déterminer deux catégories de maladies dont l’une est bénigne et l’autre mortelle. Le choix de classifier un point comme bénin ou mortel ne peut pas se faire aléatoirement.</p>
-<p>Dans ce cas nous préfèrerons utiliser de <strong>l’affectation souple</strong>. Cette approche donne une probabilité qu’un point appartienne à une catégorie, ce qui nous permet de faire une meilleure analyse et interprétation du modèle. Si on reprend l’exemple précédent, si un point a une probabilité de 49% de posséder la maladie mortelle et 51% de posséder la maladie bénine, on pourrait préférer classifier le patient comme portant la maladie mortelle afin de réduire le risque de faux négatifs.</p>
-<p>Le modèle de base et le plus utilisé est le Gaussian Mixture Model. Ce modèle part de l’hypothèse que les données sont générées par des distributions normales. Il va donc essayer de trouver le variance et la moyenne de ces distributions, ce qui permet de déterminer la probabilité qu’une point appartient à une catégorie.</p>
+<p>Kmeans fait de <strong>l’affectation souple</strong>, c’est à dire qu’il détermine si un point appartient ou pas dans une certaine catégorie. Ceci peut-être problématique dans le cas où un point est a équidistance entre deux centroids. La façon dont on règle ce problème peut avoir une réel importance sur la performance du modèle. Imaginons, que nous voulons déterminer deux catégories de maladies dont l’une est bénine et l’autre mortel. Le choix de classifier un point comme bénin ou mortel ne peut pas se faire aléatoirement.</p>
+<p>Dans ce cas nous préfèrerons utiliser de <strong>l’affectation souple</strong>. Cette approche donne une probabilité qu’un point appartient à une catégorie, ce qui nous permet de faire une meilleure analyse et interprétation du modèle. Si on reprend l’exemple d’au dessus, si un point a une probabilité de 49% de posséder la maladie mortel et 51% de posséder la maladie bénine, on pourrait préfèrer classifier le patient comme portant la maladie mortel afin de réduire le risque de faux négatifs.</p>
+<p>Le modèle de base et le plus utilisé est le Gaussian Mixture Model. Ce modèle part de l’hypothèse que les données sont généré par des distributions normales. Il va donc essayer de trouver le variance et la moyenne de ces distributions, ce qui permet de déterminer la probabilité qu’une point appartient à une catégorie.</p>
 </div>
 <div class="section" id="malediction-de-la-dimensionnalite">
 <h3>Malédiction de la dimensionnalité<a class="headerlink" href="#malediction-de-la-dimensionnalite" title="Permalink to this headline">¶</a></h3>
-<p>Comme nous l’avons vu dans le chapitre précédent, les modèles basés sur le calcul de distance souffrent de la maladie de la dimensionnalité. Ainsi, Kmeans ne fonctionnera pas ou moins bien quand on utilise beaucoup de données. Il est relativement facile de faire une analyse statistique des données quand nous avons les labels et de filtrer les attributs. Malheureusement, ce n’est pas possible quand on utilise Kmeans. Nous n’avons pas de labels donc nous ne pouvons pas obtenir l’utilité de chaque attribut.</p>
-<p>La solution est d’utiliser des algorithmes qui ne sont pas aussi sensibles que Kmeans. Une méthode relativement simple est l’algorithme ClustVarSel. Cependant, nous devons introduire la notions de BIC avant de décrire cet algorithme. Le BIC est un critère qui évalue la complexité du modèle en prenant le résulat du modèle en compte. La complexité du modèle est définie comme le nombre de paramètres à évaluer. ClustVarSel est basé sur des Gaussian Mixture Model et nous devons évaluer <span class="math notranslate nohighlight">\(c_k\)</span> paramètres. <span class="math notranslate nohighlight">\(c_k\)</span> est calculé en suivant le formule qui suit:</p>
+<p>Comme nous l’avosn vu dans le chapitre précédent, les modèles basé sur le calcul de distance souffrent de la maladie de la dimenstionalité. Ainsi, Kmeans ne fonctionnera pas ou moins bien quand on utilise beaucoup de données. Il est relativement facile de faire une analyse statistiques des données quand nous avons les labels et de filtrer les attributs. Malheureusment, ce n’est pas possible quand on utilise Kmeans. Nous n’avons pas de labels donc nous ne pouvons pas obtenir l’utilité de chaque attribut.</p>
+<p>La solution est d’utiliser des algorithmes qui ne sont pas autant atteint. Une méthode relativement simple est l’algorithm ClustVarSel. Cependant, nous devons introduire la notions de BIC avant de décrire l’algorithm. Le BIC est un critère qui évalue la complexité du modèle en prenant le résulat du modèle en compte. La complexité du modèle est définie comme le nombre de paramètres à évaluer. ClustVarSel est basé sur des Gaussian Mixture Model et nous devons évaluer <span class="math notranslate nohighlight">\(c_k\)</span> paramètres. <span class="math notranslate nohighlight">\(c_k\)</span> est calculé en suivant le formule qui suit:</p>
 <div class="math notranslate nohighlight">
 \[c_k=K\times D+(K-1)+K\times D \times (D+1)/2\]</div>
 <p><span class="math notranslate nohighlight">\(K\)</span> est le nombre de clusters et <span class="math notranslate nohighlight">\(D\)</span> le nombre de dimensions des données.</p>
-<p>Sans entrer dans les détails, chaque Gaussien requiert:</p>
+<p>Sans entréer dans les détails, chaque Gaussien requiert:</p>
 <ol class="simple">
 <li><p>Une matrice de covariance nécessitant <span class="math notranslate nohighlight">\(D \times (D+1)/2\)</span> éléments</p></li>
 <li><p>Un vecteur de moyenne de <span class="math notranslate nohighlight">\(D\)</span> éléments</p></li>
 <li><p>Un “mixing weight”</p></li>
 </ol>
-<p>Le point 1 explique <span class="math notranslate nohighlight">\(K\times D \times (D+1)/2\)</span>, ensuite nous avons besoin de <span class="math notranslate nohighlight">\(K\)</span> vecteurs de <span class="math notranslate nohighlight">\(D\)</span> éléments et <span class="math notranslate nohighlight">\(K\)</span> mixing weights, ce qui explique <span class="math notranslate nohighlight">\(K\times D+(K-1)\)</span>. Nous avons utilisé une astuce pour les mixing weights, vu que la somme de ces poids est de 1, nous pouvons calculer <span class="math notranslate nohighlight">\(K-1\)</span> poids et le dernier est 1 moins la somme des poids. La partie importante pour ClustVarSel est que plus nous ajoutons de features (<span class="math notranslate nohighlight">\(D\)</span>), plus le complexité augmente.</p>
+<p>Le point 1 explique <span class="math notranslate nohighlight">\(K\times D \times (D+1)/2\)</span>, ensuite nous avons besoin de <span class="math notranslate nohighlight">\(K\)</span> vecteurs de <span class="math notranslate nohighlight">\(D\)</span> éléments et <span class="math notranslate nohighlight">\(K\)</span> mixing weights, ce qui explique <span class="math notranslate nohighlight">\(K\times D+(K-1)\)</span>. Nous avons utilisé une astuce pour les mixing weights, vu que la somme de ces poids est de 1, nous pouvons calculer <span class="math notranslate nohighlight">\(K-1\)</span> poids et le dernier est 1 moins la somme des poids. La partie importante pour ClustVarSel est que plus nous ajoutons de features (<span class="math notranslate nohighlight">\(D\)</span>), plus le complexité augumente.</p>
 <p>Le BIC est calculé par l’equation qui suit:</p>
 <div class="math notranslate nohighlight">
 \[BIC_K=-ln p(X|.)-\frac{1}{2}c_K ln N\]</div>
 <p><span class="math notranslate nohighlight">\(p(x|.)\)</span> est la probabilité qu’un point appartienne à un clusters.</p>
-<p>Nous avons donc un moyen d’évaluer la qualité d’un modèle en prenant en compte la qualité de la prédiction et la complexité du modèle. Le but de ClustVarSel est de selectionner les attributs qui minimisent le BIC. Il existe deux versions, soit on utilise tous les attributs et on en enlèves, ou on commence avec aucun attribut et on les ajoute.</p>
+<p>Nous avons donc un moyen d’évaluer la qualité d’un modèle en prenant en compte le qualité de la prédiction et la complexité du modèle. Le but de ClustVarSel est de selectionner les attributs qui minimisent le BIC. Il existe deux versions, soit on utilise tous les attributs et on en enlèves, ou on commence avec aucun attribut et on les ajoutes.</p>
 <p>Dans le cas où on commence avec aucun attribut, ClustVarSel fonctionne en deux étapes:</p>
 <blockquote>
 <div><ol class="simple">
@@ -659,24 +658,24 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Suppression éventuel d’un attribut</p></li>
 </ol>
 </div></blockquote>
-<p>Dans la première étape, nous entraînons un modèle pour chaque attributs qui n’a pas encore été sélectionné en l’ajoutant à la liste des attributs selectionné. Le modèle est évalué et nous gardons l’attribut qui a le BIC minimum. Dans certains cas, ajouter un attribut ne change pas ou augumente le BIC, dans ce cas, nous n’ajoutons pas d’attributs.</p>
-<p>Ensuite, si nous avons plus de 1 attribut, nous entraînons un modèle pour chaque attribut sauf que cette fois nous retirons un attributs. Si le BIC est meilleur en retirant un attribut, nous le retirons.</p>
-<p>Donc si nous avons selectionné <span class="math notranslate nohighlight">\(n\)</span> attributs et qu’il nous en reste <span class="math notranslate nohighlight">\(i\)</span>. La phase d’ajout requière <span class="math notranslate nohighlight">\(n+i\)</span> entraînements avec chaque <span class="math notranslate nohighlight">\(n+1\)</span> éléments. La phase de suppressions requiert <span class="math notranslate nohighlight">\(n\)</span> entraînements avec <span class="math notranslate nohighlight">\(n-1\)</span> éléments.</p>
-<p>Cette approche nous permet de faire de la sélection d’attributs. Malheureusement elle requiert une certaine puissance de calcul et nécessite d’être lançé plusieurs fois afin de stabiliser la sélection. De plus, cette méthode souffre du même problème que Kmeans, elle va toujours trouver un résulats, peu importe le nombre de clusters. Si nous ne savons pas combien de clusters nous avons, nous devons lancer le modèle plusieurs fois pour chaque nombre de clusters.</p>
+<p>Dans la première étape, nous entrainons un modèle pour chaque attributs qui n’a pas encore été sélectionné en l’ajoutant à la liste des attributs selectionné. Le modèle est évalué et nous gardons l’attribut qui a le BIC minimum. Dans certains cas, ajouter un attribut ne change pas ou augumente le BIC, dans ce cas, nous n’ajoutons pas d’attributs.</p>
+<p>Ensuite, si nous avons plus de 1 attribut, nous entrainons un modèle pour chaque attribut sauf que cette fois nous retirons un attributs. Si le BIC est meilleur en retirant un attribut, nous le retirons.</p>
+<p>Donc si nous avons selectionné <span class="math notranslate nohighlight">\(n\)</span> attributs et qu’il nous en reste <span class="math notranslate nohighlight">\(i\)</span>. La phase d’ajout requière <span class="math notranslate nohighlight">\(n+i\)</span> entrainements avec chaque <span class="math notranslate nohighlight">\(n+1\)</span> éléments. La phase de suppressions requiert <span class="math notranslate nohighlight">\(n\)</span> entrainements avec <span class="math notranslate nohighlight">\(n-1\)</span> éléments.</p>
+<p>Cette approche nous permet de faire de la sélection d’attributs. Malheureusement elle requiert une certaine puissance de calculs et nécessite d’être lançé plusieurs fois afin de stabiliser la selection. De plus, cette méthode souffre du même problème que Kmeans, elle va toujours trouver un résulats, peut-importe le nombre de clusters. Si nous ne savons pas combien de cluster nous avons, nous devons lancer le modèle plusieurs fois pour chaque nombre de clusters.</p>
 </div>
 </div>
 <div class="section" id="a-retenir">
 <h2>À retenir<a class="headerlink" href="#a-retenir" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Un algorithme de clustering nous donnera toujours une solution, même si ce n’est pas la bonne.</p></li>
+<li><p>Un algorithm de clustering nous donnera toujours une solution, même si ce n’est pas la bonne.</p></li>
 <li><p>Le choix de l’initialisation des centroids et du nombre de cluster est primordial.</p></li>
-<li><p>Il n’y a aucun moyen de tester l’algorithme, nous devons donc nous fier aux scores tels que la variance intra-cluster ou le BIC</p></li>
-<li><p>Le clustering dépend de l’initialisation qui est stochastique, il est courant de faire tourner l’algorithme plusieurs fois afin de stabiliser le résultat.</p></li>
+<li><p>Il n’y a aucun moyen de tester l’algorithm, nous devons donc nous fier aux scores tels que la variance intra-cluster ou le BIC</p></li>
+<li><p>Le clustering dépend de l’initialisation qui est stochastique, il est courant de faire tourner l’algorithm plusieurs fois afin de stabiliser le résultat.</p></li>
 </ul>
 </div>
 <div class="section" id="implementation">
 <h2>Implémentation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>L’implémentation se fera en plusieurs parties. Nous allons d’abord implémenter le modèle et le tester. Ensuite nous implémenterons la variance intra cluster afin de déterminer le nombre de clusters à utiliser.</p>
+<p>L’implémentation se fera en plusieurs parties. Nous allons d’abord implémenter le modèle et le tester. Ensuite nous implémenterons l’intra cluster variance afin de déterminer le nombre de clusters à utiliser.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># L&#39;implémentation requiert seulement numpy. plotly est utilisé pour les graphiques. </span>
@@ -687,7 +686,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>Une fois numpy importé, nous devons générer les données. L’hypothèse pour utiliser Kmeans suppose que les données d’une même catégorie sont proches dans un espace cartésien. Nous devons donc générer nos données en suivant cette hypothèse. Pour ce faire, nous allons utiliser une distribution normale avec une variance de 0.55. La moyenne pour la catégorie 0 est de 0 et de 1 pour les 1. Nous pouvons déterminer le nombre de données que nous voulons.</p>
+<p>Une fois numpy importé, nous devons générer les données. L’hypothèse pour utiliser Kmeans est que les données d’une même catégorie sont proches dans un espace cartésien. Nous devons donc générer nos données en suivant cette hypothèse. Pour ce faire, nous allons utiliser une distribution normal avec une variance de 0.55. La moyenne pour la catégorie 0 est de 0 et de 1 pour les 1. Nous pouvons déterminer le nombre de données que nous voulons.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="mi">50</span>
@@ -710,8 +709,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>Pour l’implémentation, nous allons suivre le même pattern que lors de l’implémentation de KNN. Vu que les deux algorithmes dépendent de la distance, leurs implémentation est relativement similaire.
-Afin de simplifier le code, les centroids sont intialisés de façon a être entre le minimum et le maximum des coordonnées en x et y.</p>
+<p>Pour l’implémentation, nous allons suivre le même pattern que lors de l’implémentation de KNN. Vu que les deux algorothmes dépendent de la distance, leurs implémentation est relativement similaire.
+Afin de simplifier le code, les centroids correspondent à des points choisit au hasard.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Kmeans</span><span class="p">:</span>
@@ -719,11 +718,11 @@ Afin de simplifier le code, les centroids sont intialisés de façon a être ent
         <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="n">K</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c1"># Fonction utilisée pour entraîner le modèle</span>
+    <span class="c1"># Fonction utilisé pour entrainer le modèle</span>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="c1"># Point 1: Initilisation des centroids</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span> <span class="c1">#np.random.uniform(np.min(data), np.max(data), size=(self.K, len(data[0])))</span>
+        
         <span class="n">prev_z</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">curr_z</span> <span class="o">=</span> <span class="kc">None</span>
       
@@ -748,7 +747,7 @@ Afin de simplifier le code, les centroids sont intialisés de façon a être ent
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">[</span><span class="n">ind_centr</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_centr</span>
                             
-    <span class="c1"># Fonction appelée pour prédire       </span>
+    <span class="c1"># Fonction appelé pour prédire        </span>
     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_point</span><span class="p">,</span> <span class="n">get_dist</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">preds</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">dists</span> <span class="o">=</span> <span class="p">[]</span>
@@ -758,7 +757,7 @@ Afin de simplifier le code, les centroids sont intialisés de façon a être ent
 
             <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">centroids</span><span class="p">:</span>
                 <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">point</span><span class="p">))</span>
-
+            
             <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">))</span>
             <span class="n">dists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">distances</span><span class="p">))</span>
         
@@ -769,7 +768,7 @@ Afin de simplifier le code, les centroids sont intialisés de façon a être ent
     
     <span class="c1"># Calcul de la distance</span>
     <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">x_new</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,12 +798,22 @@ Afin de simplifier le code, les centroids sont intialisés de façon a être ent
                   <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">))</span>
 
 <span class="n">fig2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fig0</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;iframe&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe
+    scrolling="no"
+    width="100%"
+    height="545px"
+    src="iframe_figures/figure_4.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
-<p><img alt="image" src="../../../_images/clustering_resultat.png" /></p>
-<p>Nous pouvons voir que les centroids semblent être bien placé, qu’en est-t-il en réalité?
+<p>Nous pouvons voir que les centroids semblent être bien placé, qu’en est t’il de la réalité?
 Nous allons tricher un peu, nous avons les labels donc nous savons quels points sont ensemble et ceux qui ne le sont pas. De plus nous savons que les 50 premiers points et les 50 derniers points forment un groupe. Il nous suffit de faire la somme des deux groupes, dans le meilleur des cas nous aurons un groupe qui est 50 (tous des 1) et l’autre 0 (tous des 0).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,60 +821,48 @@ Nous allons tricher un peu, nous avons les labels donc nous savons quels points 
     <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
     <span class="n">predictions</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">tmp_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">Group1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span><span class="si">}</span><span class="s2"> Group2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">50</span><span class="p">:])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> -&gt; Group1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span><span class="si">}</span><span class="s2"> Group2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">50</span><span class="p">:])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:
-Group1: 3 Group2: 44
-1:
-Group1: 3 Group2: 40
-2:
-Group1: 47 Group2: 6
-3:
-Group1: 47 Group2: 10
-4:
-Group1: 3 Group2: 40
-5:
-Group1: 47 Group2: 6
-6:
-Group1: 47 Group2: 10
-7:
-Group1: 47 Group2: 6
-8:
-Group1: 47 Group2: 6
-9:
-Group1: 47 Group2: 6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 -&gt; Group1: 47 Group2: 6
+1 -&gt; Group1: 47 Group2: 6
+2 -&gt; Group1: 47 Group2: 6
+3 -&gt; Group1: 47 Group2: 6
+4 -&gt; Group1: 47 Group2: 6
+5 -&gt; Group1: 3 Group2: 44
+6 -&gt; Group1: 47 Group2: 6
+7 -&gt; Group1: 3 Group2: 44
+8 -&gt; Group1: 3 Group2: 40
+9 -&gt; Group1: 3 Group2: 44
 </pre></div>
 </div>
 </div>
 </div>
-<p>Nous pouvons voir que les clusters ne sont pas les mêmes à chaque essai alors que les données restent inchangées. Aussi, vous pouvez voir que les clusters ont des tailles différentes. Maintenant, essayons avec un nombre de clusters différent.</p>
+<p>Nous pouvons voir que les clusters ne sont pas les mêmes à chaque essai alors que les données restent inchangé. Aussi, vous pouvez voir que les clusters ont des tailles différentes. Maintenant, essayons avec des nombre de clusters différents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
     <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">Kmeans</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
     <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
     <span class="n">predictions</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">tmp_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    
+   
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">len_groups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
-    
+
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">len_groups</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">distance</span><span class="p">[</span><span class="n">predictions</span> <span class="o">==</span> <span class="n">k</span><span class="p">])</span>
-        
+
     <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04079967360261118
-0.09255510571300045
-0.16025641025641024
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.312767094017094
+0.09251559251559252
+0.16544566544566544
+0.28713040771864307
 </pre></div>
 </div>
 </div>
