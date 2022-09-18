@@ -152,6 +152,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/09%20-%20Classification%20avec%20KNN.html">
+     Classification avec KNN
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/10%20-%20Clustering.html">
      Clustering
     </a>
@@ -551,7 +556,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Ainsi, l’agent interagit avec l’environnement dans lequel il se trouve par le biais d’actions qui modifient l’état actuel et engendre une récompense en fonction du nouvel état acquis.</p>
 <div class="figure align-default" id="id1">
 <img alt="https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg" src="https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Schéma d’un MDP.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Schéma d’un MDP.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Ce processus de sélection d’une action <span class="math notranslate nohighlight">\(a\)</span> à partir d’un état <span class="math notranslate nohighlight">\(s\)</span> pour transitionner vers un nouvel état <span class="math notranslate nohighlight">\(s'\)</span> en recevant une récompense <span class="math notranslate nohighlight">\(r\)</span> survient de manière séquentielle, c’est-à-dire, le processus se répète et retourne un item appelé <strong>trajectoire</strong>.</p>
 <p>Une trajectoire est composée de telle sorte : <span class="math notranslate nohighlight">\((s, a, r, s')\)</span></p>
@@ -573,14 +578,14 @@ Naturellement, un joueur va retenir ce qu’il a observé dans le passer pour se
 </ul>
 <div class="figure align-default" id="id2">
 <img alt="../../../_images/rl_3_1.png" src="../../../_images/rl_3_1.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Réception d’un état <span class="math notranslate nohighlight">\(S_t\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Réception d’un état <span class="math notranslate nohighlight">\(S_t\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>L’agent prend une action (<span class="math notranslate nohighlight">\(A_{t}\)</span>) en fonction de <span class="math notranslate nohighlight">\(S_{t}\)</span>:</p></li>
 </ul>
 <div class="figure align-default" id="id3">
 <img alt="../../../_images/rl_3_2.jpg" src="../../../_images/rl_3_2.jpg" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Envoie d’une action <span class="math notranslate nohighlight">\(A_t\)</span>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Envoie d’une action <span class="math notranslate nohighlight">\(A_t\)</span>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p>La récompense <span class="math notranslate nohighlight">\(R_{t}\)</span> n’est calculée que lors du prochain état.</p>
 <p>C’est-à-dire <span class="math notranslate nohighlight">\(R_t = f(A_{t-1}, S_{t-1})\)</span> ou <span class="math notranslate nohighlight">\(R_{t+1} = f(A_{t}, S_{t})\)</span>.
@@ -589,7 +594,7 @@ Notez que cette fonction est inconnue pour l’agent qui va jouer avec l’envir
 <p>L’agent reçoit donc la récompense <span class="math notranslate nohighlight">\(R_{t+1}\)</span> calculée à partir du couple <span class="math notranslate nohighlight">\((S_{t}, A_{t})\)</span>:</p>
 <div class="figure align-default" id="id4">
 <img alt="../../../_images/rl_3_3.png" src="../../../_images/rl_3_3.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Réception d’une récompense <span class="math notranslate nohighlight">\(R_{t+1}\)</span>.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Réception d’une récompense <span class="math notranslate nohighlight">\(R_{t+1}\)</span>.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <p>Et l’agent entre dans un nouvel état <span class="math notranslate nohighlight">\(S_{t+1}\)</span> (i.e. une nouvelle représentation de l’environnement actualisé) dans lequel il aura encore à choisir une action parmi l’ensemble <span class="math notranslate nohighlight">\(A\)</span>.
 De la même façon que pour les récompenses <span class="math notranslate nohighlight">\(R\)</span>, l’agent ne connait généralement pas la fonction de transition qui a permis de passer de <span class="math notranslate nohighlight">\(S_t\)</span> à <span class="math notranslate nohighlight">\(S_{t+1}\)</span>.
