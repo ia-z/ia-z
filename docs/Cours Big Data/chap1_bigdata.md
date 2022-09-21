@@ -114,9 +114,9 @@ Le disque dur est un élément indispensable de votre machine. C’est là que t
 
 Examinons ci-après quelques formats de stockage des données, du simple fichier texte aux bases de données sophistiquées :
 
-Vous avez déjà joué à un jeu sur un ordinateur ou une tablette ? De nombreux jeux informatiques gardent la trace de vos meilleurs scores pour vous aider à mesurer vos progrès personnels.
+- Vous avez déjà joué à un jeu sur un ordinateur ou une tablette ? De nombreux jeux informatiques gardent la trace de vos meilleurs scores pour vous aider à mesurer vos progrès personnels.
 
-Un jeu peut enregistrer vos meilleurs scores dans un fichier texte sur l'ordinateur.
+Un jeu peut enregistrer vos meilleurs scores dans un **fichier texte** sur l'ordinateur.
 
 Ce fichier peut être aussi simple que celui ci-dessous listant les scores sur 100 d’un joueur.
 
@@ -124,7 +124,7 @@ Ce fichier peut être aussi simple que celui ci-dessous listant les scores sur 1
 
 Et si le jeu souhaite également enregistrer la date du meilleur score et le niveau atteint ? Chaque ligne du fichier devra stocker plusieurs éléments d'information connexes. Nous appelons cela des données "tabulaires", car chaque ligne est comme une ligne d'un tableau et chaque ligne comporte plusieurs colonnes.
 
-Un format courant pour stocker des données tabulaires dans des fichiers texte est le format CSV (comma-separated values).
+- Un autre format courant pour stocker des données tabulaires dans des fichiers texte est le format **CSV (comma-separated values)**.
 
 ![image](https://user-images.githubusercontent.com/55838700/191488560-c21cd771-0703-4f23-a0ee-1eca103807ac.png)
 
@@ -132,13 +132,13 @@ La première ligne du fichier déclare les colonnes "date", "level » et « sc
 
 Les fichiers CSV sont un format courant, et il existe donc de nombreux outils capables de lire et d'écrire des fichiers CSV. Certains de ces outils sont destinés à l'utilisateur, comme les tableurs. Pour les développeurs, il existe des bibliothèques dans les langages de programmation pour lire et écrire des fichiers CSV à partir de leurs applications.
 
-Un tableur est un outil permettant de stocker, d'organiser et d'analyser des données. Les tableurs peuvent généralement ouvrir une variété de formats de fichiers texte populaires (comme CSV, TSV et XLS) et enregistrer les données dans ces formats.
+- **Un tableur** est un outil permettant de stocker, d'organiser et d'analyser des données. Les tableurs peuvent généralement ouvrir une variété de formats de fichiers texte populaires (comme CSV, TSV et XLS) et enregistrer les données dans ces formats.
 
 ![image](https://user-images.githubusercontent.com/55838700/191488643-84728f32-d4d1-4881-a810-f32b31d440d4.png)
 
 Cependant, les applications n'utilisent pas les feuilles de calcul comme mécanisme de stockage des données, car une application de feuille de calcul est un outil pour les personnes, pas pour les programmes.
 
-La plupart des applications stockent des données dans une base de données, un système qui stocke des données sur un ordinateur de manière à pouvoir y accéder, les mettre à jour, les interroger et les supprimer facilement.
+- La plupart des applications stockent des données dans **une base de données**, un système qui stocke des données sur un ordinateur de manière à pouvoir y accéder, les mettre à jour, les interroger et les supprimer facilement.
 
 Une base de données stocke également les données dans des fichiers. Cependant, le système de gestion de la base de données s'occupe de tous les détails pour nous, comme la division des données en fichiers de taille appropriée et la mémorisation des données stockées dans chaque fichier.
 
@@ -146,7 +146,7 @@ Pour interagir avec la base de données, en tant que programmeurs ou analystes d
 
 ![image](https://user-images.githubusercontent.com/55838700/191488729-81e04172-625f-43df-94df-63a20ed03bc5.png)
 
-Il existe également des systèmes de stockage qui fonctionnent avec une connexion internet. Aujourd’hui le Cloud à le vent en poupe par exemple.Avec le Cloud, il devient très simple de partager ses documents d’un simple clic ou via des outils de communication comme Gmail par exemple.
+Il existe également des systèmes de stockage qui fonctionnent avec une connexion internet. Aujourd’hui le **Cloud** à le vent en poupe par exemple.Avec le Cloud, il devient très simple de partager ses documents d’un simple clic ou via des outils de communication comme Gmail par exemple.
 Cet outil fonctionne avec une connexion internet, il dispose d’une bonne capacité de stockage mais reste la plupart du temps payant dés lors que l’on augmente sa capacité de stockage, comme les autres moyens de stockage d’ailleurs !
 
 ![image](https://user-images.githubusercontent.com/55838700/191488757-7bf5b5d5-53c8-4bc3-980c-9cbd0b92ed0f.png)
