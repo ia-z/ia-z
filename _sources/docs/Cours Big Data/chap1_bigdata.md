@@ -8,11 +8,11 @@ Avant de plonger dans le monde passionnant des Big Data, ce chapitre introductif
 
 ## 1.1 - Un peu d’histoire
 
-En informatique, les données sont  [des informations](https://translate.google.com/website?sl=en&tl=fr&hl=fr&prev=search&u=https://searchsqlserver.techtarget.com/definition/information)  qui ont été traduites sous une forme efficace pour le mouvement ou le traitement. Par rapport aux ordinateurs et aux supports de transmission d'aujourd'hui, les données sont des informations converties sous  forme [numérique ](https://www-techtarget-com.translate.goog/whatis/definition/digital?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc)[binaire](https://www-techtarget-com.translate.goog/whatis/definition/binary?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc)   . Il est acceptable que les données soient utilisées comme sujet singulier ou comme sujet pluriel. [Les données brutes](https://www-techtarget-com.translate.goog/searchdatamanagement/definition/raw-data?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc) sont un terme utilisé pour décrire les données dans leur format numérique le plus élémentaire.
+En informatique, les données sont  des informations qui ont été traduites sous une forme efficace pour le mouvement ou le traitement. Par rapport aux ordinateurs et aux supports de transmission d'aujourd'hui, les données sont des informations converties sous  forme numérique binaire. Il est acceptable que les données soient utilisées comme sujet singulier ou comme sujet pluriel. Les données brutes sont un terme utilisé pour décrire les données dans leur format numérique le plus élémentaire.
 
-Le concept de données dans le contexte de l'informatique trouve ses racines au milieu du 20 sicèle dans les travaux de Claude Shannon, un mathématicien américain connu comme le père de la théorie de l'information. Il a inauguré des concepts numériques binaires basés sur l'application de la logique [booléenne](https://www-techtarget-com.translate.goog/whatis/definition/Boolean?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc) à deux valeurs aux circuits électroniques. 
+Le concept de données dans le contexte de l'informatique trouve ses racines au milieu du 20 sicèle dans les travaux de Claude Shannon, un mathématicien américain connu comme le père de la théorie de l'information. Il a inauguré des concepts numériques binaires basés sur l'application de la logique booléenne à deux valeurs aux circuits électroniques. 
 
-Très tôt, l'importance des données dans l'informatique d'entreprise est devenue évidente par la popularité des termes « traitement des données » et « traitement électronique des données », qui, pendant un certain temps, en sont venus à englober toute la gamme de ce que l'on appelle aujourd'hui [les technologies de l'information](https://www-techtarget-com.translate.goog/searchdatacenter/definition/IT?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc) . Au cours de l'histoire de l'informatique d'entreprise, une spécialisation s'est produite et une profession de données distincte a émergé parallèlement à la croissance du traitement des données d'entreprise.
+Très tôt, l'importance des données dans l'informatique d'entreprise est devenue évidente par la popularité des termes « traitement des données » et « traitement électronique des données », qui, pendant un certain temps, en sont venus à englober toute la gamme de ce que l'on appelle aujourd'hui les technologies de l'information . Au cours de l'histoire de l'informatique d'entreprise, une spécialisation s'est produite et une profession de données distincte a émergé parallèlement à la croissance du traitement des données d'entreprise.
 
 ## 1.2 - Qu’est-ce qu’une donnée ?
 
@@ -24,13 +24,11 @@ Quelle que soit votre problématique, vous devez toujours rester attentif aux ob
 
 Les données sont donc omniprésentes autour de nous. Mais qu’est-ce exactement qu’une donnée ? On va partit sur un exemple simple : des balles de tennis
 
-![College Josquin des Pres CONDE SUR ESCAUT » Recyclage des balles de tennis](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.001.jpeg)
+![image](https://user-images.githubusercontent.com/55838700/191488104-cdb20cd1-1f5f-42c1-b17f-f9bfd9f618e8.png)
 
 Que pouvons nous en dire ? Ce sont des balles de tennis. L’une des premières choses que l’on sait est donc qu’elles sont utilisées pour jouer… au tennis. Par ailleurs, le tennis est un sport, qui peut être individuel ou collectif ce qui nous permet de placer la balle de tennis dans une ou plusieurs **taxonomies (classifications)**
 
 Même les objets d’apparence banale révèlent en réalité une quantité de données importantes qui leurs sont attachées. Vous aussi, vous avez un nom de famille, une date de naissance, un poids, une taille, une nationalité, etc. Toutes ces choses, éléments sont des données.
-
-
 
 
 Dans l’exemple ci-dessus, nous pouvons déjà constater qu’il y a différents types de données. Il y a principalement des données **qualitatives** et des données **quantitatives**.
@@ -44,7 +42,7 @@ Cependant, vous allez rencontrer d’autres types de données :
 - Les **données discrètes** sont des données dénombrables. Ex: le nombre de balles de tennis. Il ne peut y avoir qu’un nombre entier de balles de tennis  (il ne peut pas y avoir 0,3 balles de tennis). Le résultat d’un test ou une pointure de chaussure constituent d’autres exemples.
 - Les **données continues** sont des données numériques non entières. Ex: le diamètre des balles de tennis (ex: 6,30 cm, 6,50 cm, 6,60 cm), ou la taille précise de votre pied (en opposition à la pointure, qui elle est discrète). Toutes les valeurs sont admises.
 
-![](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.002.png)
+![image](https://user-images.githubusercontent.com/55838700/191488169-1b2f6700-69ae-4d50-b5b7-de33b8bc6017.png)
 
 Quand elles sont collectées et structurées, les données deviennent très utiles. Structurons les dans le tableau ci-dessous :
 
@@ -54,6 +52,7 @@ Quand elles sont collectées et structurées, les données deviennent très util
 |État|Usagé|
 |Diamètre|635 mm|
 |Prix (par balle)|2,50 €|
+
 Mais ces données n’ont pas de sens exploitées individuellement. Pour faire émerger l’information, nous devons les interpréter.
 
 Prenons la taille : Un diamètre de 630 mm ne signifie rien. Il devient intéressant quand il est comparé à une autre donnée, un autre diamètre. Dans certains sports, il y a une réglementation pour les équipements. La taille minimale d’une balle de tennis en compétition est de 63,5 mm. Nous ne pouvons donc pas utiliser cette balle en compétition. C’est une information. En revanche, ce n’est toujours pas de la connaissance. La connaissance est créée lorsque l’information est apprise, appliquée et comprise.
@@ -74,15 +73,16 @@ L’un des formats les plus couramment utilisé pour l’échange de données es
 
 C’est un format simplifié pour l’ordinateur et lisible par des tableurs. Vous noterez que les mots sont entourés de guillemets, ce qui les distingues en tant que texte (chaîne de caractères dans le langage informatique), alors que les nombres n’ont pas de guillemets. À noter qu’il existe beaucoup d’autres formats structurés et lisibles par une machine.
 
-![Structured Data vs. Unstructured Data | NBN Minds](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.003.jpeg)
+![image](https://user-images.githubusercontent.com/55838700/191488285-aae2acb8-cafe-4032-9e09-091bf0acd60f.png)
 
-## 1.4 - Comment collecter des données ?
+## 1.4 - Comment collecter des données ?
 
 Les données peuvent être collectées de plusieurs façons. Le moyen le plus simple est l'observation directe.
 
 **Exemple : Compter le nombre de voitures sur la route** 
 
-![Combien y-a-t-il de voitures dans le monde? - Transitions & Energies](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.004.jpeg)
+![image](https://user-images.githubusercontent.com/55838700/191488349-34cf10dc-d899-4d49-8850-a85f3fa2a26b.png)
+
 
 Vous voulez savoir combien de voitures passent à un certain point sur une route dans un intervalle de 10 minutes.
 
@@ -120,15 +120,13 @@ Un jeu peut enregistrer vos meilleurs scores dans un fichier texte sur l'ordinat
 
 Ce fichier peut être aussi simple que celui ci-dessous listant les scores sur 100 d’un joueur.
 
-![](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.005.png)
+![image](https://user-images.githubusercontent.com/55838700/191488501-81c09e87-5322-4a73-89f1-ff5ba0a63d27.png)
 
 Et si le jeu souhaite également enregistrer la date du meilleur score et le niveau atteint ? Chaque ligne du fichier devra stocker plusieurs éléments d'information connexes. Nous appelons cela des données "tabulaires", car chaque ligne est comme une ligne d'un tableau et chaque ligne comporte plusieurs colonnes.
 
 Un format courant pour stocker des données tabulaires dans des fichiers texte est le format CSV (comma-separated values).
 
-![Une image contenant texte
-
-Description générée automatiquement](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.006.png)
+![image](https://user-images.githubusercontent.com/55838700/191488560-c21cd771-0703-4f23-a0ee-1eca103807ac.png)
 
 La première ligne du fichier déclare les colonnes "date", "level » et « score ». Les lignes suivantes contiennent les lignes de données réelles, avec la date en premier, puis le niveau, puis le score, tous séparés par des virgules.
 
@@ -136,9 +134,7 @@ Les fichiers CSV sont un format courant, et il existe donc de nombreux outils ca
 
 Un tableur est un outil permettant de stocker, d'organiser et d'analyser des données. Les tableurs peuvent généralement ouvrir une variété de formats de fichiers texte populaires (comme CSV, TSV et XLS) et enregistrer les données dans ces formats.
 
-![Une image contenant table
-
-Description générée automatiquement](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.007.png)
+![image](https://user-images.githubusercontent.com/55838700/191488643-84728f32-d4d1-4881-a810-f32b31d440d4.png)
 
 Cependant, les applications n'utilisent pas les feuilles de calcul comme mécanisme de stockage des données, car une application de feuille de calcul est un outil pour les personnes, pas pour les programmes.
 
@@ -148,12 +144,12 @@ Une base de données stocke également les données dans des fichiers. Cependant
 
 Pour interagir avec la base de données, en tant que programmeurs ou analystes de données, nous utilisons souvent un langage d'interrogation. Le langage d'interrogation le plus populaire est le SQL (Structured Query Language).
 
-![Gestion de bases de données pour un meilleur rendement | Lijnco](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.008.jpeg)
+![image](https://user-images.githubusercontent.com/55838700/191488729-81e04172-625f-43df-94df-63a20ed03bc5.png)
 
 Il existe également des systèmes de stockage qui fonctionnent avec une connexion internet. Aujourd’hui le Cloud à le vent en poupe par exemple.Avec le Cloud, il devient très simple de partager ses documents d’un simple clic ou via des outils de communication comme Gmail par exemple.
 Cet outil fonctionne avec une connexion internet, il dispose d’une bonne capacité de stockage mais reste la plupart du temps payant dés lors que l’on augmente sa capacité de stockage, comme les autres moyens de stockage d’ailleurs !
 
-![Sécurité des données en Cloud Computing - Archives Factory %Titre %Page  %Separateur %Titre du site](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.009.png)
+![image](https://user-images.githubusercontent.com/55838700/191488757-7bf5b5d5-53c8-4bc3-980c-9cbd0b92ed0f.png)
 
 L’un des plus connu est Google Drive mais ils en existe des centaines, plus ou moins sécurisés et qui respectent votre confidentialité. Là encore, il va falloir apprendre à les paramétrer !
 
