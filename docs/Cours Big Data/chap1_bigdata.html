@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.4 - Comment collecter des données ? &#8212; IA-Z</title>
+    <title>Chapitre 1 – Eléments de définition &#8212; IA-Z</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -387,30 +387,46 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   <strong>
-    1.4 - Comment collecter des données ?
-   </strong>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#un-peu-dhistoire">
+   1.1 - Un peu d’histoire
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exemple-compter-le-nombre-de-voitures-sur-la-route">
-     <strong>
-      Exemple : Compter le nombre de voitures sur la route
-     </strong>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quest-ce-quune-donnee">
+   1.2 - Qu’est-ce qu’une donnée ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#donnees-non-structurees-contre-donnees-structurees">
+   1.3 - Données non structurées contre données structurées
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-donnees-non-structurees">
+     1.3.1 - Les données non-structurées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-donnees-structurees">
+     1.3.2 - Les données structurées
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comment-collecter-des-donnees">
+   1.4 - Comment collecter des données ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recensement-ou-echantillon">
    <strong>
     Recensement ou échantillon
    </strong>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exemple-echantillon-de-100-voitures-sur-la-route">
      <strong>
       Exemple : Echantillon de 100 voitures sur la route
@@ -418,6 +434,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#une-fois-les-donnees-collectees-il-faut-les-stocker">
+   1.5 - Une fois les données collectées, il faut les stocker.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   1.6 - Conclusion
+  </a>
  </li>
 </ul>
 
@@ -429,7 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>1.4 - Comment collecter des données ?</h1>
+                <h1>Chapitre 1 – Eléments de définition</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -439,30 +465,46 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   <strong>
-    1.4 - Comment collecter des données ?
-   </strong>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#un-peu-dhistoire">
+   1.1 - Un peu d’histoire
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exemple-compter-le-nombre-de-voitures-sur-la-route">
-     <strong>
-      Exemple : Compter le nombre de voitures sur la route
-     </strong>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quest-ce-quune-donnee">
+   1.2 - Qu’est-ce qu’une donnée ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#donnees-non-structurees-contre-donnees-structurees">
+   1.3 - Données non structurées contre données structurées
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-donnees-non-structurees">
+     1.3.1 - Les données non-structurées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#les-donnees-structurees">
+     1.3.2 - Les données structurées
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comment-collecter-des-donnees">
+   1.4 - Comment collecter des données ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recensement-ou-echantillon">
    <strong>
     Recensement ou échantillon
    </strong>
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exemple-echantillon-de-100-voitures-sur-la-route">
      <strong>
       Exemple : Echantillon de 100 voitures sur la route
@@ -470,6 +512,16 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#une-fois-les-donnees-collectees-il-faut-les-stocker">
+   1.5 - Une fois les données collectées, il faut les stocker.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   1.6 - Conclusion
+  </a>
  </li>
 </ul>
 
@@ -482,13 +534,17 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <p>Plus un modèle d’<strong>Intelligence artificielle</strong> rencontre des données, plus il peut devenir intelligent. En ce sens, les modèles d’<strong>IA sont</strong> se nourrissent de <strong>Big Data</strong>, tout comme les cerveaux humains <strong>sont</strong> formés par les données accumulées grâce <strong>à</strong> de multiples expériences.</p>
 <p>C’est dans ce contexte que cette partie du cours décrit de manière synthétique ce que peut apporter la valorisation des données au service de l’intelligence artificielle.</p>
-<p><strong>Chapitre 1 – Eléments de définition</strong></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="chapitre-1-elements-de-definition">
+<h1>Chapitre 1 – Eléments de définition<a class="headerlink" href="#chapitre-1-elements-de-definition" title="Permalink to this headline">¶</a></h1>
 <p>Avant de plonger dans le monde passionnant des Big Data, ce chapitre introductif définit ainsi quelques éléments de définition de l’or noir du 21ème siècle : la donnée !</p>
-<p><strong>1.1 - Un peu d’histoire</strong></p>
+<div class="section" id="un-peu-dhistoire">
+<h2>1.1 - Un peu d’histoire<a class="headerlink" href="#un-peu-dhistoire" title="Permalink to this headline">¶</a></h2>
 <p>En informatique, les données sont  <a class="reference external" href="https://translate.google.com/website?sl=en&amp;tl=fr&amp;hl=fr&amp;prev=search&amp;u=https://searchsqlserver.techtarget.com/definition/information">des informations</a>  qui ont été traduites sous une forme efficace pour le mouvement ou le traitement. Par rapport aux ordinateurs et aux supports de transmission d’aujourd’hui, les données sont des informations converties sous  forme <a class="reference external" href="https://www-techtarget-com.translate.goog/whatis/definition/digital?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">numérique </a><a class="reference external" href="https://www-techtarget-com.translate.goog/whatis/definition/binary?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">binaire</a>   . Il est acceptable que les données soient utilisées comme sujet singulier ou comme sujet pluriel. <a class="reference external" href="https://www-techtarget-com.translate.goog/searchdatamanagement/definition/raw-data?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">Les données brutes</a> sont un terme utilisé pour décrire les données dans leur format numérique le plus élémentaire.</p>
 <p>Le concept de données dans le contexte de l’informatique trouve ses racines au milieu du 20 sicèle dans les travaux de Claude Shannon, un mathématicien américain connu comme le père de la théorie de l’information. Il a inauguré des concepts numériques binaires basés sur l’application de la logique <a class="reference external" href="https://www-techtarget-com.translate.goog/whatis/definition/Boolean?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">booléenne</a> à deux valeurs aux circuits électroniques.</p>
 <p>Très tôt, l’importance des données dans l’informatique d’entreprise est devenue évidente par la popularité des termes « traitement des données » et « traitement électronique des données », qui, pendant un certain temps, en sont venus à englober toute la gamme de ce que l’on appelle aujourd’hui <a class="reference external" href="https://www-techtarget-com.translate.goog/searchdatacenter/definition/IT?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">les technologies de l’information</a> . Au cours de l’histoire de l’informatique d’entreprise, une spécialisation s’est produite et une profession de données distincte a émergé parallèlement à la croissance du traitement des données d’entreprise.</p>
-<p><strong>1.2 - Qu’est-ce qu’une donnée ?</strong></p>
+</div>
+<div class="section" id="quest-ce-quune-donnee">
+<h2>1.2 - Qu’est-ce qu’une donnée ?<a class="headerlink" href="#quest-ce-quune-donnee" title="Permalink to this headline">¶</a></h2>
 <p>La plupart d’entre nous ne manipulent pas des données pour leur simple plaisir, certains en manipulent sans même le savoir. Elles sont utilisées à dessein ou pour rendre visible des phénomènes.</p>
 <p>Vous commencerez la plupart du temps à partir d’une problématique de type : «Combien de fois le soleil brille dans ma ville natale?» ou «Comment mon gouvernement dépense-t-il son argent? Et d’où proviennent les fonds? ». Une question est un bon point de départ pour explorer des données, cela permettra de préciser votre recherche et vous aidera à détecter des tendances intéressantes. Comprendre qui seront les personnes intéressées par votre problématique vous aidera également à définir le public auquel vous vous adressez, et vous aidera à modéliser votre projet.</p>
 <p>Quelle que soit votre problématique, vous devez toujours rester attentif aux observations inattendues, aux résultats inhabituels, ou à tout ce qui pourra vous surprendra. Souvent, les phénomènes les plus intéressants ne sont pas ceux que vous recherchez.</p>
@@ -534,37 +590,45 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>Prenons la taille : Un diamètre de 630 mm ne signifie rien. Il devient intéressant quand il est comparé à une autre donnée, un autre diamètre. Dans certains sports, il y a une réglementation pour les équipements. La taille minimale d’une balle de tennis en compétition est de 63,5 mm. Nous ne pouvons donc pas utiliser cette balle en compétition. C’est une information. En revanche, ce n’est toujours pas de la connaissance. La connaissance est créée lorsque l’information est apprise, appliquée et comprise.</p>
-<p><strong>1.3 - Données non structurées contre données structurées</strong></p>
-<p><strong>1.3.1 - Les données non-structurées</strong></p>
+</div>
+<div class="section" id="donnees-non-structurees-contre-donnees-structurees">
+<h2>1.3 - Données non structurées contre données structurées<a class="headerlink" href="#donnees-non-structurees-contre-donnees-structurees" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="les-donnees-non-structurees">
+<h3>1.3.1 - Les données non-structurées<a class="headerlink" href="#les-donnees-non-structurees" title="Permalink to this headline">¶</a></h3>
 <p>« Il y a 5 balles de tennis usagées avec un diamètre de 64 mm à 0,5 € chacune » est une phrase facilement compréhensible pour un humain, mais compliquée à comprendre par un ordinateur. La phrase ci-dessus est considérée comme de la donnée non structurée. Elle n’a pas de structure sous-jacente. La tournure de la phrase pourrait être changée et il n’est pas évident de déterminer quel mot correspond à quelle donnée. De la même manière, les PDFs et les images peuvent contenir des informations interprétables par l’oeil humain, mais ne pas être compréhensibles par un ordinateur.</p>
-<p><strong>1.3.2 - Les données structurées</strong></p>
+</div>
+<div class="section" id="les-donnees-structurees">
+<h3>1.3.2 - Les données structurées<a class="headerlink" href="#les-donnees-structurees" title="Permalink to this headline">¶</a></h3>
 <p>Les ordinateurs sont fondamentalement très différents des humains. Il peut être extrêmement difficile pour une machine d’extraire des données provenant de certaines sources. Certaines tâches facilement réalisables par un individu sont encore difficilement exécutables par les machines. Par exemple, l’interprétation d’un texte encapsulé dans une image est toujours un défi pour l’ordinateur. Si l’on veut que l’ordinateur analyse la donnée, il faut qu’il soit capable de la lire et de la traiter. <strong>Ce qui signifie qu’elle doit être structurée dans un format lisible par la machine.</strong></p>
 <p>L’un des formats les plus couramment utilisé pour l’échange de données est le format CSV. Le CSV sépare les données par des virgules. De la donnée transcrite en CSV pourrait ressembler à cela :</p>
 <p>“quantité”, “couleur”, “condition”, “objet”, “catégorie”, “diamètre(mm)”, “prix unitaire (€)” 5,”jaune”,”usagé”,”balle”,”tennis”,65,0.36</p>
 <p>C’est un format simplifié pour l’ordinateur et lisible par des tableurs. Vous noterez que les mots sont entourés de guillemets, ce qui les distingues en tant que texte (chaîne de caractères dans le langage informatique), alors que les nombres n’ont pas de guillemets. À noter qu’il existe beaucoup d’autres formats structurés et lisibles par une machine.</p>
 <p><img alt="Structured Data vs. Unstructured Data | NBN Minds" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.003.jpeg" /></p>
+</div>
+</div>
 <div class="section" id="comment-collecter-des-donnees">
-<h1><strong>1.4 - Comment collecter des données ?</strong><a class="headerlink" href="#comment-collecter-des-donnees" title="Permalink to this headline">¶</a></h1>
+<h2>1.4 - Comment collecter des données ?<a class="headerlink" href="#comment-collecter-des-donnees" title="Permalink to this headline">¶</a></h2>
 <p>Les données peuvent être collectées de plusieurs façons. Le moyen le plus simple est l’observation directe.</p>
-<div class="section" id="exemple-compter-le-nombre-de-voitures-sur-la-route">
-<h2><strong>Exemple : Compter le nombre de voitures sur la route</strong><a class="headerlink" href="#exemple-compter-le-nombre-de-voitures-sur-la-route" title="Permalink to this headline">¶</a></h2>
+<p><strong>Exemple : Compter le nombre de voitures sur la route</strong></p>
 <p><img alt="Combien y-a-t-il de voitures dans le monde? - Transitions &amp; Energies" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.004.jpeg" /></p>
 <p>Vous voulez savoir combien de voitures passent à un certain point sur une route dans un intervalle de 10 minutes.</p>
 <p>Donc : placez-vous près de cette route et comptez les voitures qui passent en 10 minutes.</p>
 <p>Vous voudrez peut-être compter de nombreux intervalles de 10 minutes à différents moments de la journée et à différents jours également !</p>
 <p>Nous recueillons des données en faisant une enquête.</p>
 </div>
-</div>
 <div class="section" id="recensement-ou-echantillon">
-<h1><strong>Recensement ou échantillon</strong><a class="headerlink" href="#recensement-ou-echantillon" title="Permalink to this headline">¶</a></h1>
+<h2><strong>Recensement ou échantillon</strong><a class="headerlink" href="#recensement-ou-echantillon" title="Permalink to this headline">¶</a></h2>
 <p>Un <strong>recensement</strong> consiste à collecter des données pour <strong>chaque</strong> membre du groupe (l’ensemble de la “population”).</p>
 <p>Un <strong>échantillon</strong> est lorsque nous recueillons des données uniquement pour <strong>les membres sélectionnés</strong> du groupe.</p>
 <div class="section" id="exemple-echantillon-de-100-voitures-sur-la-route">
-<h2><strong>Exemple : Echantillon de 100 voitures sur la route</strong><a class="headerlink" href="#exemple-echantillon-de-100-voitures-sur-la-route" title="Permalink to this headline">¶</a></h2>
+<h3><strong>Exemple : Echantillon de 100 voitures sur la route</strong><a class="headerlink" href="#exemple-echantillon-de-100-voitures-sur-la-route" title="Permalink to this headline">¶</a></h3>
 <p>Vous pouvez demander (toutes les 100 voitures) quelle est leur marque. C’est un recensement.</p>
 <p>Ou vous pouvez simplement choisir les voitures qui seront sur la route uniquement l’après-midi. C’est un échantillon.</p>
 <p>Un recensement est précis, mais difficile à faire. Un échantillon n’est pas aussi précis, mais peut être assez bon, et c’est beaucoup plus facile.</p>
-<p><strong>1.5 - Une fois les données collectées, il faut les stocker.</strong></p>
+</div>
+</div>
+<div class="section" id="une-fois-les-donnees-collectees-il-faut-les-stocker">
+<h2>1.5 - Une fois les données collectées, il faut les stocker.<a class="headerlink" href="#une-fois-les-donnees-collectees-il-faut-les-stocker" title="Permalink to this headline">¶</a></h2>
 <p>Le stockage, mais aussi la sauvegarde, de ses données peut très vite s’avérer comme un véritable casse-tête si l’on ne maîtrise pas cette notion importante de l’informatique.</p>
 <p>Tous les contenus que l’on crée ou que l’on télécharge sur ses machines, ordinateurs, tablettes, smartphones et autres objets connectés, que ce soient des photos, des lettres, des documents administratifs, des factures et j’en passe… doivent être stockés pour les utiliser.</p>
 <p>Le stockage fait référence à des méthodes et technologies utilisées pour stocker des données numériques. Cela s’applique à tous les différents types d’appareils numériques, et pour cela des supports bien connus comme les disques durs, les clés USB et quantité d’autres moyens sont à notre disposition.</p>
@@ -592,7 +656,9 @@ const thebe_selector_output = ".output, .cell_output"
 Cet outil fonctionne avec une connexion internet, il dispose d’une bonne capacité de stockage mais reste la plupart du temps payant dés lors que l’on augmente sa capacité de stockage, comme les autres moyens de stockage d’ailleurs !</p>
 <p><img alt="Sécurité des données en Cloud Computing - Archives Factory %Titre %Page  %Separateur %Titre du site" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.009.png" /></p>
 <p>L’un des plus connu est Google Drive mais ils en existe des centaines, plus ou moins sécurisés et qui respectent votre confidentialité. Là encore, il va falloir apprendre à les paramétrer !</p>
-<p><strong>1.6 - Conclusion</strong></p>
+</div>
+<div class="section" id="conclusion">
+<h2>1.6 - Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>Nous avons introduit quelques concepts essentiels, les principaux enjeux qui apparaissent constamment dans les discussions autour de la donnée, l’or noir du 21ème siècle. Dans les prochains chapitres nous rentrerons dans les détails sur comment les données peuvent être modélisées, et nous irons plus loin avec l’avènement des données massives ou « Big Data ». Enfin, nous verrons quelle est la place et comment l’intelligence artificielle arrive à s’imbriquer avec ces données complexes !</p>
 </div>
 </div>
