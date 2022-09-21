@@ -1,4 +1,4 @@
-﻿Plus un modèle d'**Intelligence artificielle** rencontre des données, plus il peut devenir intelligent. En ce sens, les modèles d'**IA sont** se nourrissent de **Big Data**, tout comme les cerveaux humains **sont** formés par les données accumulées grâce **à** de multiples expériences.
+﻿Plus un modèle d'**Intelligence artificielle** rencontre des données, plus il peut devenir intelligent. En ce sens, les modèles d'**IA**se nourrissent de **Big Data**, tout comme les cerveaux humains **sont** formés par les données accumulées grâce **à** de multiples expériences.
 
 C’est dans ce contexte que cette partie du cours décrit de manière synthétique ce que peut apporter la valorisation des données au service de l’intelligence artificielle.
 
