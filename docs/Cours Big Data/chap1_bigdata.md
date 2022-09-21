@@ -2,11 +2,11 @@
 
 C’est dans ce contexte que cette partie du cours décrit de manière synthétique ce que peut apporter la valorisation des données au service de l’intelligence artificielle.
 
-**Chapitre 1 – Eléments de définition**
+# Chapitre 1 – Eléments de définition
 
 Avant de plonger dans le monde passionnant des Big Data, ce chapitre introductif définit ainsi quelques éléments de définition de l’or noir du 21ème siècle : la donnée !
 
-**1.1 - Un peu d’histoire**
+## 1.1 - Un peu d’histoire
 
 En informatique, les données sont  [des informations](https://translate.google.com/website?sl=en&tl=fr&hl=fr&prev=search&u=https://searchsqlserver.techtarget.com/definition/information)  qui ont été traduites sous une forme efficace pour le mouvement ou le traitement. Par rapport aux ordinateurs et aux supports de transmission d'aujourd'hui, les données sont des informations converties sous  forme [numérique ](https://www-techtarget-com.translate.goog/whatis/definition/digital?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc)[binaire](https://www-techtarget-com.translate.goog/whatis/definition/binary?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc)   . Il est acceptable que les données soient utilisées comme sujet singulier ou comme sujet pluriel. [Les données brutes](https://www-techtarget-com.translate.goog/searchdatamanagement/definition/raw-data?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc) sont un terme utilisé pour décrire les données dans leur format numérique le plus élémentaire.
 
@@ -14,7 +14,7 @@ Le concept de données dans le contexte de l'informatique trouve ses racines au 
 
 Très tôt, l'importance des données dans l'informatique d'entreprise est devenue évidente par la popularité des termes « traitement des données » et « traitement électronique des données », qui, pendant un certain temps, en sont venus à englober toute la gamme de ce que l'on appelle aujourd'hui [les technologies de l'information](https://www-techtarget-com.translate.goog/searchdatacenter/definition/IT?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=fr&_x_tr_pto=sc) . Au cours de l'histoire de l'informatique d'entreprise, une spécialisation s'est produite et une profession de données distincte a émergé parallèlement à la croissance du traitement des données d'entreprise.
 
-**1.2 - Qu’est-ce qu’une donnée ?**
+## 1.2 - Qu’est-ce qu’une donnée ?
 
 La plupart d’entre nous ne manipulent pas des données pour leur simple plaisir, certains en manipulent sans même le savoir. Elles sont utilisées à dessein ou pour rendre visible des phénomènes.
 
@@ -58,13 +58,13 @@ Mais ces données n’ont pas de sens exploitées individuellement. Pour faire �
 
 Prenons la taille : Un diamètre de 630 mm ne signifie rien. Il devient intéressant quand il est comparé à une autre donnée, un autre diamètre. Dans certains sports, il y a une réglementation pour les équipements. La taille minimale d’une balle de tennis en compétition est de 63,5 mm. Nous ne pouvons donc pas utiliser cette balle en compétition. C’est une information. En revanche, ce n’est toujours pas de la connaissance. La connaissance est créée lorsque l’information est apprise, appliquée et comprise.
 
-**1.3 - Données non structurées contre données structurées**
+## 1.3 - Données non structurées contre données structurées
 
-**1.3.1 - Les données non-structurées**
+### 1.3.1 - Les données non-structurées
 
 « Il y a 5 balles de tennis usagées avec un diamètre de 64 mm à 0,5 € chacune » est une phrase facilement compréhensible pour un humain, mais compliquée à comprendre par un ordinateur. La phrase ci-dessus est considérée comme de la donnée non structurée. Elle n’a pas de structure sous-jacente. La tournure de la phrase pourrait être changée et il n’est pas évident de déterminer quel mot correspond à quelle donnée. De la même manière, les PDFs et les images peuvent contenir des informations interprétables par l’oeil humain, mais ne pas être compréhensibles par un ordinateur.
 
-**1.3.2 - Les données structurées**
+### 1.3.2 - Les données structurées
 
 Les ordinateurs sont fondamentalement très différents des humains. Il peut être extrêmement difficile pour une machine d’extraire des données provenant de certaines sources. Certaines tâches facilement réalisables par un individu sont encore difficilement exécutables par les machines. Par exemple, l’interprétation d’un texte encapsulé dans une image est toujours un défi pour l’ordinateur. Si l’on veut que l’ordinateur analyse la donnée, il faut qu’il soit capable de la lire et de la traiter. **Ce qui signifie qu’elle doit être structurée dans un format lisible par la machine.**
 
@@ -75,9 +75,13 @@ L’un des formats les plus couramment utilisé pour l’échange de données es
 C’est un format simplifié pour l’ordinateur et lisible par des tableurs. Vous noterez que les mots sont entourés de guillemets, ce qui les distingues en tant que texte (chaîne de caractères dans le langage informatique), alors que les nombres n’ont pas de guillemets. À noter qu’il existe beaucoup d’autres formats structurés et lisibles par une machine.
 
 ![Structured Data vs. Unstructured Data | NBN Minds](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.003.jpeg)
-## **1.4 - Comment collecter des données ?**
+
+## 1.4 - Comment collecter des données ?
+
 Les données peuvent être collectées de plusieurs façons. Le moyen le plus simple est l'observation directe.
-### **Exemple : Compter le nombre de voitures sur la route** 
+
+**Exemple : Compter le nombre de voitures sur la route** 
+
 ![Combien y-a-t-il de voitures dans le monde? - Transitions & Energies](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.004.jpeg)
 
 Vous voulez savoir combien de voitures passent à un certain point sur une route dans un intervalle de 10 minutes.
@@ -98,7 +102,7 @@ Ou vous pouvez simplement choisir les voitures qui seront sur la route uniquemen
 
 Un recensement est précis, mais difficile à faire. Un échantillon n'est pas aussi précis, mais peut être assez bon, et c'est beaucoup plus facile.
 
-**1.5 - Une fois les données collectées, il faut les stocker.**
+## 1.5 - Une fois les données collectées, il faut les stocker.
 
 Le stockage, mais aussi la sauvegarde, de ses données peut très vite s’avérer comme un véritable casse-tête si l’on ne maîtrise pas cette notion importante de l’informatique.
 
@@ -153,7 +157,7 @@ Cet outil fonctionne avec une connexion internet, il dispose d’une bonne capac
 
 L’un des plus connu est Google Drive mais ils en existe des centaines, plus ou moins sécurisés et qui respectent votre confidentialité. Là encore, il va falloir apprendre à les paramétrer !
 
-**1.6 - Conclusion**
+## 1.6 - Conclusion
 
 Nous avons introduit quelques concepts essentiels, les principaux enjeux qui apparaissent constamment dans les discussions autour de la donnée, l’or noir du 21ème siècle. Dans les prochains chapitres nous rentrerons dans les détails sur comment les données peuvent être modélisées, et nous irons plus loin avec l’avènement des données massives ou « Big Data ». Enfin, nous verrons quelle est la place et comment l’intelligence artificielle arrive à s’imbriquer avec ces données complexes !
 
