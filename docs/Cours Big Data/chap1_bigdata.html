@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.4 - Comment collecter des données ? &#8212; IA-Z</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">IA-Z</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Sommaire
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage automatique
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/01%20-%20Pourquoi%20le%20ML%20%26%20information%20gr%C3%A2ce%20%C3%A0%20la%20data.html">
+   Pourquoi le Machine Learning ?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/02%20-%20Elements%20de%20definition.html">
+     Eléments de définition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/03%20-%20Regression%20lineaire.html">
+     Introduction à la régression : la régression linéaire
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/05%20-%20Generalisation.html">
+     Généralisation d’un modèle de Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/06%20-%20R%C3%A9gularisation%20%26%20tradeoff%20biais-variance%20-%20une%20introduction.html">
+     Régularisation &amp; tradeoff biais-variance : une introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/07%20-%20R%C3%A9gularisation%20d%27un%20mod%C3%A8le.html">
+     Régularisation d’un modèle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/08%20-%20Compromis%20biais-variance.html">
+     Compromis biais-variance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/09%20-%20Classification.html">
+     Classification: K-nearest-neighbours
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/09%20-%20Classification%20avec%20KNN.html">
+     Classification avec KNN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/10%20-%20Clustering.html">
+     Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20fondamentaux%20ML/module_1_introduction/11%20-%20Feature%20engineering%20%26%20cleaning.html">
+     Feature Engineering
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Traitement automatique de la langue
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../NLP/chapitre1_introduction/1_Introduction.html">
+   Chapitre I: Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../NLP/chapitre1_introduction/2_DonneesTextuelles.html">
+     Etude des données textuelles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../NLP/chapitre2_notionsgenerales/3_ModStatLangage.html">
+   Chapitre II: Notions générales
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../NLP/chapitre2_notionsgenerales/4_ModLangues.html">
+     Modèles de langues
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../NLP/chapitre2_notionsgenerales/5_Embeddings.html">
+     Embeddings
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vision par ordinateur
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/0_intro.html">
+   Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/1_Image_processing.html">
+   Section 1 Image processing techniques
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/2_ML_CV.html">
+   Machine Learning for Computer Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/3_CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/4_Modern_CNN.html">
+   Modern Convolutional Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours_CV/5_CV_tasks.html">
+   Computer Vision tasks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Apprentissage par renforcement
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Cours%20RL/module_1_introduction/1%20-%20Introduction.html">
+   Introduction au Reinforcement learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20RL/module_1_introduction/3%20-%20Processus%20de%20d%C3%A9cision%20markoviens.html">
+     Processus de décision markoviens (MDPs)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Cours%20RL/module_2_notions_avancees/6%20-%20Algorithmes%20de%20RL.html">
+   Algorithmes de RL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Cours%20RL/module_2_notions_avancees/7%20-%20Monte%20Carlo.html">
+     Monte-Carlo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hors-série
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Cours%20annexes/mener_une_recherche.html">
+   Mener une recherche internet efficacement
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/Cours Big Data/chap1_bigdata.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ia-z/ia-z"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ia-z/ia-z/issues/new?title=Issue%20on%20page%20%2Fdocs/Cours Big Data/chap1_bigdata.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    1.4 - Comment collecter des données ?
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exemple-compter-le-nombre-de-voitures-sur-la-route">
+     <strong>
+      Exemple : Compter le nombre de voitures sur la route
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recensement-ou-echantillon">
+   <strong>
+    Recensement ou échantillon
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exemple-echantillon-de-100-voitures-sur-la-route">
+     <strong>
+      Exemple : Echantillon de 100 voitures sur la route
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1.4 - Comment collecter des données ?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    1.4 - Comment collecter des données ?
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exemple-compter-le-nombre-de-voitures-sur-la-route">
+     <strong>
+      Exemple : Compter le nombre de voitures sur la route
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recensement-ou-echantillon">
+   <strong>
+    Recensement ou échantillon
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exemple-echantillon-de-100-voitures-sur-la-route">
+     <strong>
+      Exemple : Echantillon de 100 voitures sur la route
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p>Plus un modèle d’<strong>Intelligence artificielle</strong> rencontre des données, plus il peut devenir intelligent. En ce sens, les modèles d’<strong>IA sont</strong> se nourrissent de <strong>Big Data</strong>, tout comme les cerveaux humains <strong>sont</strong> formés par les données accumulées grâce <strong>à</strong> de multiples expériences.</p>
+<p>C’est dans ce contexte que cette partie du cours décrit de manière synthétique ce que peut apporter la valorisation des données au service de l’intelligence artificielle.</p>
+<p><strong>Chapitre 1 – Eléments de définition</strong></p>
+<p>Avant de plonger dans le monde passionnant des Big Data, ce chapitre introductif définit ainsi quelques éléments de définition de l’or noir du 21ème siècle : la donnée !</p>
+<p><strong>1.1 - Un peu d’histoire</strong></p>
+<p>En informatique, les données sont  <a class="reference external" href="https://translate.google.com/website?sl=en&amp;tl=fr&amp;hl=fr&amp;prev=search&amp;u=https://searchsqlserver.techtarget.com/definition/information">des informations</a>  qui ont été traduites sous une forme efficace pour le mouvement ou le traitement. Par rapport aux ordinateurs et aux supports de transmission d’aujourd’hui, les données sont des informations converties sous  forme <a class="reference external" href="https://www-techtarget-com.translate.goog/whatis/definition/digital?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">numérique </a><a class="reference external" href="https://www-techtarget-com.translate.goog/whatis/definition/binary?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">binaire</a>   . Il est acceptable que les données soient utilisées comme sujet singulier ou comme sujet pluriel. <a class="reference external" href="https://www-techtarget-com.translate.goog/searchdatamanagement/definition/raw-data?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">Les données brutes</a> sont un terme utilisé pour décrire les données dans leur format numérique le plus élémentaire.</p>
+<p>Le concept de données dans le contexte de l’informatique trouve ses racines au milieu du 20 sicèle dans les travaux de Claude Shannon, un mathématicien américain connu comme le père de la théorie de l’information. Il a inauguré des concepts numériques binaires basés sur l’application de la logique <a class="reference external" href="https://www-techtarget-com.translate.goog/whatis/definition/Boolean?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">booléenne</a> à deux valeurs aux circuits électroniques.</p>
+<p>Très tôt, l’importance des données dans l’informatique d’entreprise est devenue évidente par la popularité des termes « traitement des données » et « traitement électronique des données », qui, pendant un certain temps, en sont venus à englober toute la gamme de ce que l’on appelle aujourd’hui <a class="reference external" href="https://www-techtarget-com.translate.goog/searchdatacenter/definition/IT?_x_tr_sl=en&amp;_x_tr_tl=fr&amp;_x_tr_hl=fr&amp;_x_tr_pto=sc">les technologies de l’information</a> . Au cours de l’histoire de l’informatique d’entreprise, une spécialisation s’est produite et une profession de données distincte a émergé parallèlement à la croissance du traitement des données d’entreprise.</p>
+<p><strong>1.2 - Qu’est-ce qu’une donnée ?</strong></p>
+<p>La plupart d’entre nous ne manipulent pas des données pour leur simple plaisir, certains en manipulent sans même le savoir. Elles sont utilisées à dessein ou pour rendre visible des phénomènes.</p>
+<p>Vous commencerez la plupart du temps à partir d’une problématique de type : «Combien de fois le soleil brille dans ma ville natale?» ou «Comment mon gouvernement dépense-t-il son argent? Et d’où proviennent les fonds? ». Une question est un bon point de départ pour explorer des données, cela permettra de préciser votre recherche et vous aidera à détecter des tendances intéressantes. Comprendre qui seront les personnes intéressées par votre problématique vous aidera également à définir le public auquel vous vous adressez, et vous aidera à modéliser votre projet.</p>
+<p>Quelle que soit votre problématique, vous devez toujours rester attentif aux observations inattendues, aux résultats inhabituels, ou à tout ce qui pourra vous surprendra. Souvent, les phénomènes les plus intéressants ne sont pas ceux que vous recherchez.</p>
+<p>Les données sont donc omniprésentes autour de nous. Mais qu’est-ce exactement qu’une donnée ? On va partit sur un exemple simple : des balles de tennis</p>
+<p><img alt="College Josquin des Pres CONDE SUR ESCAUT » Recyclage des balles de tennis" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.001.jpeg" /></p>
+<p>Que pouvons nous en dire ? Ce sont des balles de tennis. L’une des premières choses que l’on sait est donc qu’elles sont utilisées pour jouer… au tennis. Par ailleurs, le tennis est un sport, qui peut être individuel ou collectif ce qui nous permet de placer la balle de tennis dans une ou plusieurs <strong>taxonomies (classifications)</strong></p>
+<p>Même les objets d’apparence banale révèlent en réalité une quantité de données importantes qui leurs sont attachées. Vous aussi, vous avez un nom de famille, une date de naissance, un poids, une taille, une nationalité, etc. Toutes ces choses, éléments sont des données.</p>
+<p>Dans l’exemple ci-dessus, nous pouvons déjà constater qu’il y a différents types de données. Il y a principalement des données <strong>qualitatives</strong> et des données <strong>quantitatives</strong>.</p>
+<ul class="simple">
+<li><p>Les <strong>données qualitatives</strong> se réfèrent à la qualité : La description d’une couleur, de textures et l’aspect d’un objet, la description d’une expérience sont toutes des données qualitatives. Par exemple, nos balles de tennis sont sphériques et jaunes.</p></li>
+<li><p>Les <strong>données quantitatives</strong> sont des données qui se réfèrent aux chiffres. Ex : Le nombre de balles de tennis, la taille, le prix, le nombre de jongles maximum avec cette balle.</p></li>
+</ul>
+<p>Cependant, vous allez rencontrer d’autres types de données :</p>
+<ul class="simple">
+<li><p>Les <strong>données catégorielles</strong> permettent de classer les objets que vous traitez par catégories. Dans notre exemple, l’aspect « usagé » serait une catégorie au sein de la typologie suivante : « nouveau », « usagé », « cassé », etc.</p></li>
+<li><p>Les <strong>données discrètes</strong> sont des données dénombrables. Ex: le nombre de balles de tennis. Il ne peut y avoir qu’un nombre entier de balles de tennis  (il ne peut pas y avoir 0,3 balles de tennis). Le résultat d’un test ou une pointure de chaussure constituent d’autres exemples.</p></li>
+<li><p>Les <strong>données continues</strong> sont des données numériques non entières. Ex: le diamètre des balles de tennis (ex: 6,30 cm, 6,50 cm, 6,60 cm), ou la taille précise de votre pied (en opposition à la pointure, qui elle est discrète). Toutes les valeurs sont admises.</p></li>
+</ul>
+<p><img alt="" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.002.png" /></p>
+<p>Quand elles sont collectées et structurées, les données deviennent très utiles. Structurons les dans le tableau ci-dessous :</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Couleur</p></th>
+<th class="text-align:left head"><p>Jaune</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Catégories</p></td>
+<td class="text-align:left"><p>Sport, Tennis</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>État</p></td>
+<td class="text-align:left"><p>Usagé</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Diamètre</p></td>
+<td class="text-align:left"><p>635 mm</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Prix (par balle)</p></td>
+<td class="text-align:left"><p>2,50 €</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Mais ces données n’ont pas de sens exploitées individuellement. Pour faire émerger l’information, nous devons les interpréter.</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Prenons la taille : Un diamètre de 630 mm ne signifie rien. Il devient intéressant quand il est comparé à une autre donnée, un autre diamètre. Dans certains sports, il y a une réglementation pour les équipements. La taille minimale d’une balle de tennis en compétition est de 63,5 mm. Nous ne pouvons donc pas utiliser cette balle en compétition. C’est une information. En revanche, ce n’est toujours pas de la connaissance. La connaissance est créée lorsque l’information est apprise, appliquée et comprise.</p>
+<p><strong>1.3 - Données non structurées contre données structurées</strong></p>
+<p><strong>1.3.1 - Les données non-structurées</strong></p>
+<p>« Il y a 5 balles de tennis usagées avec un diamètre de 64 mm à 0,5 € chacune » est une phrase facilement compréhensible pour un humain, mais compliquée à comprendre par un ordinateur. La phrase ci-dessus est considérée comme de la donnée non structurée. Elle n’a pas de structure sous-jacente. La tournure de la phrase pourrait être changée et il n’est pas évident de déterminer quel mot correspond à quelle donnée. De la même manière, les PDFs et les images peuvent contenir des informations interprétables par l’oeil humain, mais ne pas être compréhensibles par un ordinateur.</p>
+<p><strong>1.3.2 - Les données structurées</strong></p>
+<p>Les ordinateurs sont fondamentalement très différents des humains. Il peut être extrêmement difficile pour une machine d’extraire des données provenant de certaines sources. Certaines tâches facilement réalisables par un individu sont encore difficilement exécutables par les machines. Par exemple, l’interprétation d’un texte encapsulé dans une image est toujours un défi pour l’ordinateur. Si l’on veut que l’ordinateur analyse la donnée, il faut qu’il soit capable de la lire et de la traiter. <strong>Ce qui signifie qu’elle doit être structurée dans un format lisible par la machine.</strong></p>
+<p>L’un des formats les plus couramment utilisé pour l’échange de données est le format CSV. Le CSV sépare les données par des virgules. De la donnée transcrite en CSV pourrait ressembler à cela :</p>
+<p>“quantité”, “couleur”, “condition”, “objet”, “catégorie”, “diamètre(mm)”, “prix unitaire (€)” 5,”jaune”,”usagé”,”balle”,”tennis”,65,0.36</p>
+<p>C’est un format simplifié pour l’ordinateur et lisible par des tableurs. Vous noterez que les mots sont entourés de guillemets, ce qui les distingues en tant que texte (chaîne de caractères dans le langage informatique), alors que les nombres n’ont pas de guillemets. À noter qu’il existe beaucoup d’autres formats structurés et lisibles par une machine.</p>
+<p><img alt="Structured Data vs. Unstructured Data | NBN Minds" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.003.jpeg" /></p>
+<div class="section" id="comment-collecter-des-donnees">
+<h1><strong>1.4 - Comment collecter des données ?</strong><a class="headerlink" href="#comment-collecter-des-donnees" title="Permalink to this headline">¶</a></h1>
+<p>Les données peuvent être collectées de plusieurs façons. Le moyen le plus simple est l’observation directe.</p>
+<div class="section" id="exemple-compter-le-nombre-de-voitures-sur-la-route">
+<h2><strong>Exemple : Compter le nombre de voitures sur la route</strong><a class="headerlink" href="#exemple-compter-le-nombre-de-voitures-sur-la-route" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Combien y-a-t-il de voitures dans le monde? - Transitions &amp; Energies" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.004.jpeg" /></p>
+<p>Vous voulez savoir combien de voitures passent à un certain point sur une route dans un intervalle de 10 minutes.</p>
+<p>Donc : placez-vous près de cette route et comptez les voitures qui passent en 10 minutes.</p>
+<p>Vous voudrez peut-être compter de nombreux intervalles de 10 minutes à différents moments de la journée et à différents jours également !</p>
+<p>Nous recueillons des données en faisant une enquête.</p>
+</div>
+</div>
+<div class="section" id="recensement-ou-echantillon">
+<h1><strong>Recensement ou échantillon</strong><a class="headerlink" href="#recensement-ou-echantillon" title="Permalink to this headline">¶</a></h1>
+<p>Un <strong>recensement</strong> consiste à collecter des données pour <strong>chaque</strong> membre du groupe (l’ensemble de la “population”).</p>
+<p>Un <strong>échantillon</strong> est lorsque nous recueillons des données uniquement pour <strong>les membres sélectionnés</strong> du groupe.</p>
+<div class="section" id="exemple-echantillon-de-100-voitures-sur-la-route">
+<h2><strong>Exemple : Echantillon de 100 voitures sur la route</strong><a class="headerlink" href="#exemple-echantillon-de-100-voitures-sur-la-route" title="Permalink to this headline">¶</a></h2>
+<p>Vous pouvez demander (toutes les 100 voitures) quelle est leur marque. C’est un recensement.</p>
+<p>Ou vous pouvez simplement choisir les voitures qui seront sur la route uniquement l’après-midi. C’est un échantillon.</p>
+<p>Un recensement est précis, mais difficile à faire. Un échantillon n’est pas aussi précis, mais peut être assez bon, et c’est beaucoup plus facile.</p>
+<p><strong>1.5 - Une fois les données collectées, il faut les stocker.</strong></p>
+<p>Le stockage, mais aussi la sauvegarde, de ses données peut très vite s’avérer comme un véritable casse-tête si l’on ne maîtrise pas cette notion importante de l’informatique.</p>
+<p>Tous les contenus que l’on crée ou que l’on télécharge sur ses machines, ordinateurs, tablettes, smartphones et autres objets connectés, que ce soient des photos, des lettres, des documents administratifs, des factures et j’en passe… doivent être stockés pour les utiliser.</p>
+<p>Le stockage fait référence à des méthodes et technologies utilisées pour stocker des données numériques. Cela s’applique à tous les différents types d’appareils numériques, et pour cela des supports bien connus comme les disques durs, les clés USB et quantité d’autres moyens sont à notre disposition.</p>
+<p>Le disque dur est un élément indispensable de votre machine. C’est là que tout est stocké : le système d’exploitation, les applications et vos fichiers personnels eux y sont stockés automatiquement si l’appareil a été configuré pour.</p>
+<p>Examinons ci-après quelques formats de stockage des données, du simple fichier texte aux bases de données sophistiquées :</p>
+<p>Vous avez déjà joué à un jeu sur un ordinateur ou une tablette ? De nombreux jeux informatiques gardent la trace de vos meilleurs scores pour vous aider à mesurer vos progrès personnels.</p>
+<p>Un jeu peut enregistrer vos meilleurs scores dans un fichier texte sur l’ordinateur.</p>
+<p>Ce fichier peut être aussi simple que celui ci-dessous listant les scores sur 100 d’un joueur.</p>
+<p><img alt="" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.005.png" /></p>
+<p>Et si le jeu souhaite également enregistrer la date du meilleur score et le niveau atteint ? Chaque ligne du fichier devra stocker plusieurs éléments d’information connexes. Nous appelons cela des données “tabulaires”, car chaque ligne est comme une ligne d’un tableau et chaque ligne comporte plusieurs colonnes.</p>
+<p>Un format courant pour stocker des données tabulaires dans des fichiers texte est le format CSV (comma-separated values).</p>
+<p>![Une image contenant texte</p>
+<p>Description générée automatiquement](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.006.png)</p>
+<p>La première ligne du fichier déclare les colonnes “date”, “level » et « score ». Les lignes suivantes contiennent les lignes de données réelles, avec la date en premier, puis le niveau, puis le score, tous séparés par des virgules.</p>
+<p>Les fichiers CSV sont un format courant, et il existe donc de nombreux outils capables de lire et d’écrire des fichiers CSV. Certains de ces outils sont destinés à l’utilisateur, comme les tableurs. Pour les développeurs, il existe des bibliothèques dans les langages de programmation pour lire et écrire des fichiers CSV à partir de leurs applications.</p>
+<p>Un tableur est un outil permettant de stocker, d’organiser et d’analyser des données. Les tableurs peuvent généralement ouvrir une variété de formats de fichiers texte populaires (comme CSV, TSV et XLS) et enregistrer les données dans ces formats.</p>
+<p>![Une image contenant table</p>
+<p>Description générée automatiquement](Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.007.png)</p>
+<p>Cependant, les applications n’utilisent pas les feuilles de calcul comme mécanisme de stockage des données, car une application de feuille de calcul est un outil pour les personnes, pas pour les programmes.</p>
+<p>La plupart des applications stockent des données dans une base de données, un système qui stocke des données sur un ordinateur de manière à pouvoir y accéder, les mettre à jour, les interroger et les supprimer facilement.</p>
+<p>Une base de données stocke également les données dans des fichiers. Cependant, le système de gestion de la base de données s’occupe de tous les détails pour nous, comme la division des données en fichiers de taille appropriée et la mémorisation des données stockées dans chaque fichier.</p>
+<p>Pour interagir avec la base de données, en tant que programmeurs ou analystes de données, nous utilisons souvent un langage d’interrogation. Le langage d’interrogation le plus populaire est le SQL (Structured Query Language).</p>
+<p><img alt="Gestion de bases de données pour un meilleur rendement | Lijnco" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.008.jpeg" /></p>
+<p>Il existe également des systèmes de stockage qui fonctionnent avec une connexion internet. Aujourd’hui le Cloud à le vent en poupe par exemple.Avec le Cloud, il devient très simple de partager ses documents d’un simple clic ou via des outils de communication comme Gmail par exemple.
+Cet outil fonctionne avec une connexion internet, il dispose d’une bonne capacité de stockage mais reste la plupart du temps payant dés lors que l’on augmente sa capacité de stockage, comme les autres moyens de stockage d’ailleurs !</p>
+<p><img alt="Sécurité des données en Cloud Computing - Archives Factory %Titre %Page  %Separateur %Titre du site" src="docs/Cours Big Data/Aspose.Words.44ac981f-77cd-4f18-a47e-5037547d0174.009.png" /></p>
+<p>L’un des plus connu est Google Drive mais ils en existe des centaines, plus ou moins sécurisés et qui respectent votre confidentialité. Là encore, il va falloir apprendre à les paramétrer !</p>
+<p><strong>1.6 - Conclusion</strong></p>
+<p>Nous avons introduit quelques concepts essentiels, les principaux enjeux qui apparaissent constamment dans les discussions autour de la donnée, l’or noir du 21ème siècle. Dans les prochains chapitres nous rentrerons dans les détails sur comment les données peuvent être modélisées, et nous irons plus loin avec l’avènement des données massives ou « Big Data ». Enfin, nous verrons quelle est la place et comment l’intelligence artificielle arrive à s’imbriquer avec ces données complexes !</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/Cours Big Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Communauté IA-Z<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
