@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -118,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../../Cours%20fondamentaux%20ML/module_1_introduction/02%20-%20Elements%20de%20definition.html">
-     Eléments de définition
+     Éléments de définition
     </a>
    </li>
    <li class="toctree-l2">
@@ -846,15 +847,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">re</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">nltk</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">gensim</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Modèle CBOW ===
+Similarité cosinus entre &#39;jour&#39; et &#39;stylo&#39; - CBOW :  0.85024124
+Top 10 mots corrélés à &#39;jour&#39; - CBOW :  [(&#39;encore&#39;, 0.9996173977851868), (&#39;alors&#39;, 0.9996070861816406), (&#39;fut&#39;, 0.9996036291122437), (&quot;qu&#39;on&quot;, 0.9995915293693542), (&#39;oui&#39;, 0.9995855689048767)]
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;nltk&#39;
+=== Modèle Skip Gram ===
+Similarité cosinus entre &#39;jour&#39; et &#39;stylo&#39; - Skip Gram :  0.8073238
+Top 10 mots corrélés à &#39;jour&#39; - Skip Gram :  [(&#39;lendemain&#39;, 0.9945391416549683), (&#39;lire&#39;, 0.9927944540977478), (&#39;ecrit&#39;, 0.9927003383636475), (&#39;point&#39;, 0.9919275045394897), (&#39;francais&#39;, 0.9918561577796936)]
 </pre></div>
 </div>
 </div>

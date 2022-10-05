@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -118,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="02%20-%20Elements%20de%20definition.html">
-     Eléments de définition
+     Éléments de définition
     </a>
    </li>
    <li class="toctree-l2">
@@ -721,12 +722,12 @@ pour rapidement converger vers une fonction <span class="math notranslate nohigh
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Modèle linéaire
 
 Petit jeu de données (50 exemples)
-Entraînement : 0.791
-Test: 0.637
+Entraînement : 0.792
+Test: 0.620
 
 Gros jeu de données (10000 exemples)
-Entraînement : 0.754
-Test: 0.750
+Entraînement : 0.756
+Test: 0.741
 </pre></div>
 </div>
 </div>
@@ -762,16 +763,16 @@ croît exponentiellement avec le nombre de dimensions de nos features.</em></p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K-Nearest Neighbor
 
 Petit jeu de données (50 exemples)
-Entraînement : 0.479
-Test: 0.182
+Entraînement : 0.419
+Test: 0.373
 
 Gros jeu de données (10000 exemples)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entraînement : 0.896
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entraînement : 0.897
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test: 0.840
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test: 0.836
 </pre></div>
 </div>
 </div>
@@ -850,7 +851,7 @@ Petit à petit, l’erreur liée à son biais diminue, mais celle liée à la va
 On peut distinguer alors les deux régimes de sous-apprentissage et de sur-apprentissage.</p>
 <div class="figure align-default" id="biais-variance-fig">
 <img alt="tradeoff biais-variance" src="../../../_images/biais_variance.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Visualisation du compromis biais-variance.
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Visualisation du compromis biais-variance.
 Inspiré de l’image libre de droit <a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK543534/figure/ch8.Fig3/">ici</a>.</span><a class="headerlink" href="#biais-variance-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>En pratique, on préfère prendre un modèle faiblement biaisé et ajouter de la régularisation afin de réduire petit à petit le sur-apprentissage.</p>

@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -56,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Généralisation d’un modèle de Machine Learning" href="05%20-%20Generalisation.html" />
-    <link rel="prev" title="Eléments de définition" href="02%20-%20Elements%20de%20definition.html" />
+    <link rel="prev" title="Éléments de définition" href="02%20-%20Elements%20de%20definition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="02%20-%20Elements%20de%20definition.html">
-     Eléments de définition
+     Éléments de définition
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -647,17 +648,14 @@ On parle alors de régression multiple.</p>
 <p>Le modèle effectue donc une combinaison linéaire de toutes les features pour produire une valeur finale représentant la valeur prédite.
 L’apprentissage de ce modèle se fait en déterminant les <span class="math notranslate nohighlight">\(D+1\)</span> valeurs du vecteur <span class="math notranslate nohighlight">\(a = (a_1, a_2, \dotsc, a_D)\)</span> et du biais <span class="math notranslate nohighlight">\(b\)</span>,
 ce sont ses paramètres.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -685,7 +683,7 @@ ce sont ses paramètres.</p>
     scrolling="no"
     width="100%"
     height="545px"
-    src="iframe_figures/figure_2.html"
+    src="iframe_figures/figure_7.html"
     frameborder="0"
     allowfullscreen
 ></iframe>
@@ -735,7 +733,7 @@ on peut afficher le tracé de quelques droites dans le cas où <span class="math
     scrolling="no"
     width="100%"
     height="545px"
-    src="iframe_figures/figure_3.html"
+    src="iframe_figures/figure_8.html"
     frameborder="0"
     allowfullscreen
 ></iframe>
@@ -783,7 +781,7 @@ on peut afficher le tracé de quelques droites dans le cas où <span class="math
     scrolling="no"
     width="100%"
     height="545px"
-    src="iframe_figures/figure_4.html"
+    src="iframe_figures/figure_9.html"
     frameborder="0"
     allowfullscreen
 ></iframe>
@@ -1059,7 +1057,7 @@ Cette méthode se nomme d’ailleurs la <a class="reference external" href="http
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Eléments de définition</p>
+            <p class="prev-next-title">Éléments de définition</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05%20-%20Generalisation.html" title="next page">
