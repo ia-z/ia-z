@@ -586,7 +586,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Ce modèle part du principe que les données proches dans un espace forment un groupe qui appartient à une certaine catégorie. Le but est simple, nous devons trouver les points les plus proches de celui que nous souhaitons classifier et mettre leurs catégories en commun. Par exemple, on peut classifier un point comme étant de la classe la plus présente dans ces voisins. C’est cette approche qui est utilisé dans le gif qui suit.</p>
 <div class="figure align-default" id="fonc-fig">
 <a class="reference internal image-reference" href="../../../_images/knn_gif.gif"><img alt="Fonctionnement de Knn" src="../../../_images/knn_gif.gif" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Fonctionnement de KNN</span><a class="headerlink" href="#fonc-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Fonctionnement de KNN</span><a class="headerlink" href="#fonc-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Les lignes représentent les voisins sélectionné et leur catégorie. Vu que nous avons 4 points bleu et 1 point orange, notre point devient bleu. Ce GIF présente KNN avec 5 voisins, mais pourquoi 5 et pas 1 ou 10? De plus, je parle de distance mais comment est-elle calculée?
 C’est sur ces deux points que la prochaine partie va se concentrer.</p>
@@ -626,7 +626,7 @@ La normalisation est encore plus importante quand on décide d’utiliser des po
 <p>Maintenant que nous savons comment la distance sera mesurée il faut savoir combien de voisins nous devons prendre en compte. Pour voir les délimitations (bordures de décisions) entre 2 classes, nous pouvons créer un graphiques comme celui qui suit. Ce graphique présente les deux catégories ainsi que la bordure de décision.</p>
 <div class="figure align-default" id="ks-fig">
 <a class="reference internal image-reference" href="../../../_images/bordure_decision_knn.svg"><img alt="Influence du nombre de voisins sur la bordure de décision" src="../../../_images/bordure_decision_knn.svg" width="750" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Influence du nombre de voisins sur la bordure de décision</span><a class="headerlink" href="#ks-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Influence du nombre de voisins sur la bordure de décision</span><a class="headerlink" href="#ks-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Nous pouvons voir que si nous utilisons 1 voisin, nous avons une poche dans les bleus où le point sera classifié comme orange. Utiliser 5 voisins semble suivre la forme de nos données alors qu’en utiliser plus linéarise la bordure. Bien que la meilleur façon de choisir le nombre de voisins en utilisants des mesures tel que l’accuracy ou le F1-score, créer un graphique nous permet de visualier la bordure et de comprendre le modèle.</p>
 <p>Il est dont primordial de déterminer le nombre optimal de voisins à prendre en compte. Le plus efficace et simple est d’utiliser les données d’entraînement pour trouver ce nombre. Nous pouvons déterminer une liste de nombres des voisins et entraîner chaque version avec l’ensemble d’entraînement et de l’évaluer sur l’ensemble de validation. La version du modèle la plus performante est celle que nous garderons.</p>
