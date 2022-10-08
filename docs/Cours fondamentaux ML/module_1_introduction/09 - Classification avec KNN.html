@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Clustering" href="10%20-%20Clustering.html" />
-    <link rel="prev" title="Classification: K-nearest-neighbours" href="09%20-%20Classification.html" />
+    <link rel="prev" title="Compromis biais-variance" href="08%20-%20Compromis%20biais-variance.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -145,11 +145,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="08%20-%20Compromis%20biais-variance.html">
      Compromis biais-variance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09%20-%20Classification.html">
-     Classification: K-nearest-neighbours
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -576,7 +571,36 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="classification-avec-knn">
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
+<span class="kn">from</span> <span class="nn">plotly.io._base_renderers</span> <span class="kn">import</span> <span class="n">IFrameRenderer</span>
+
+
+<span class="k">class</span> <span class="nc">CumulIFrameRenderer</span><span class="p">(</span><span class="n">IFrameRenderer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">max_number</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">html_directory</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">html_directory</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">html_directory</span><span class="p">):</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="n">number</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+            <span class="n">max_number</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_number</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">html_directory</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;figure_</span><span class="si">{</span><span class="n">max_number</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">.html&#39;</span><span class="p">)</span>
+
+
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="p">[</span><span class="s1">&#39;iframe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CumulIFrameRenderer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="classification-avec-knn">
 <h1>Classification avec KNN<a class="headerlink" href="#classification-avec-knn" title="Permalink to this headline">¶</a></h1>
 <p>Si vous vous rapplez du chapitre 2, le Machine Learning peut être utilisé pour deux tâches: la régression et la classification. Nous avons introduit la régression dans le chapitre précédent, il est donc temps de présenter la classification.</p>
 <p>Comme son nom l’indique, le but est de catégoriser des points de données comme étant malades ou sains, un chiffre entre 0 et 9, des bus, avions, etc. La différence principale entre la régression et la classification est que le modèle prédit des entiers et non des nombres réels.</p>
@@ -586,7 +610,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Ce modèle part du principe que les données proches dans un espace forment un groupe qui appartient à une certaine catégorie. Le but est simple, nous devons trouver les points les plus proches de celui que nous souhaitons classifier et mettre leurs catégories en commun. Par exemple, on peut classifier un point comme étant de la classe la plus présente dans ces voisins. C’est cette approche qui est utilisé dans le gif qui suit.</p>
 <div class="figure align-default" id="fonc-fig">
 <a class="reference internal image-reference" href="../../../_images/knn_gif.gif"><img alt="Fonctionnement de Knn" src="../../../_images/knn_gif.gif" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Fonctionnement de KNN</span><a class="headerlink" href="#fonc-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Fonctionnement de KNN</span><a class="headerlink" href="#fonc-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Les lignes représentent les voisins sélectionné et leur catégorie. Vu que nous avons 4 points bleu et 1 point orange, notre point devient bleu. Ce GIF présente KNN avec 5 voisins, mais pourquoi 5 et pas 1 ou 10? De plus, je parle de distance mais comment est-elle calculée?
 C’est sur ces deux points que la prochaine partie va se concentrer.</p>
@@ -626,7 +650,7 @@ La normalisation est encore plus importante quand on décide d’utiliser des po
 <p>Maintenant que nous savons comment la distance sera mesurée il faut savoir combien de voisins nous devons prendre en compte. Pour voir les délimitations (bordures de décisions) entre 2 classes, nous pouvons créer un graphiques comme celui qui suit. Ce graphique présente les deux catégories ainsi que la bordure de décision.</p>
 <div class="figure align-default" id="ks-fig">
 <a class="reference internal image-reference" href="../../../_images/bordure_decision_knn.svg"><img alt="Influence du nombre de voisins sur la bordure de décision" src="../../../_images/bordure_decision_knn.svg" width="750" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Influence du nombre de voisins sur la bordure de décision</span><a class="headerlink" href="#ks-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Influence du nombre de voisins sur la bordure de décision</span><a class="headerlink" href="#ks-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Nous pouvons voir que si nous utilisons 1 voisin, nous avons une poche dans les bleus où le point sera classifié comme orange. Utiliser 5 voisins semble suivre la forme de nos données alors qu’en utiliser plus linéarise la bordure. Bien que la meilleur façon de choisir le nombre de voisins en utilisants des mesures tel que l’accuracy ou le F1-score, créer un graphique nous permet de visualier la bordure et de comprendre le modèle.</p>
 <p>Il est dont primordial de déterminer le nombre optimal de voisins à prendre en compte. Le plus efficace et simple est d’utiliser les données d’entraînement pour trouver ce nombre. Nous pouvons déterminer une liste de nombres des voisins et entraîner chaque version avec l’ensemble d’entraînement et de l’évaluer sur l’ensemble de validation. La version du modèle la plus performante est celle que nous garderons.</p>
@@ -851,13 +875,15 @@ Vous l’aurez compris, si votre jeu de données est trop gros, KNN ne sera peut
     scrolling="no"
     width="820px"
     height="820"
-    src="iframe_figures/figure_3.html"
+    src="iframe_figures/figure_7.html"
     frameborder="0"
     allowfullscreen
 ></iframe>
 </div></div>
 </div>
-<p>Nous pouvons voir sur le graphique que que les deux erreurs sont deux points qui devaient être des 1 des prédit comme étant des 2. On voit que c’est lié à la bordure de décision. On peut toujours adapter le nombre de voisins afin de réduire l’erreur mais il faut faire attention à l’overfitting!</p>
+<p>Nous pouvons voir que que les deux erreurs sont deux points qui sont de classe 1 mais prédits de classe 0 par le modèle.
+Même certains points du dataset d’entraînement ne sont pas tous bien classifier par le modèle (ceux du mauvais côté de la bordure de décision).
+On peut toujours adapter le nombre de voisins afin de réduire l’erreur mais il faut faire attention à l’overfitting !</p>
 </div>
 <div class="section" id="sources">
 <h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
@@ -957,11 +983,11 @@ plt.show()
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="09%20-%20Classification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="08%20-%20Compromis%20biais-variance.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Classification: K-nearest-neighbours</p>
+            <p class="prev-next-title">Compromis biais-variance</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="10%20-%20Clustering.html" title="next page">
