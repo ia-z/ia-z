@@ -1,5 +1,4 @@
 # IA-Z
-
 Cours & ressources pour l'IA.
 
 <p align="center">
@@ -23,7 +22,7 @@ IA-Z est conçue pour fournir des enseignements destinés à un public déjà se
 *	Possibilité d’ajouter des ressources externes à la fin de chaque cours pour approfondir les cours disponibles sur la plateforme.
 *	La plateforme web recense tous les éléments cités au-dessus
 *	La plateforme web a pour unique but d’être éducative.
-Elle ne véhicule donc ni promotion,  ni opinions.
+Elle ne véhicule donc ni promotion, ni opinions.
 
 ---
 
