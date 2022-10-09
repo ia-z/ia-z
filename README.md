@@ -8,6 +8,15 @@
   </a>
 </p>
 
+## Sommaire
+
+- [Presentation](#presentation)
+  - [Perimètre](#perimètre)
+- [Organisation](#organisation)
+- [Communauté](#communauté)
+- [Liens](#liens)
+- [Equipe](#equipe)
+
 ---
 
 ## Presentation
