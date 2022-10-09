@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: README
+root: docs/index.md
 parts:
   - caption: Apprentissage automatique
     chapters:
