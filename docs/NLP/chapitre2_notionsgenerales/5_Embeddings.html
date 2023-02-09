@@ -648,9 +648,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Une moto possède 2 roues et est un véhicule, nous lui attribuons le vecteur: [1, 0, 0, 1, 1]</p></li>
 <li><p>Enfin un humain ne possède pas de roue et n’est pas un véhicule, donc: [0, 0, 0, 0, 0]</p></li>
 </ul>
-<p align="center"> <b>Exemple d'embedding simpliste</b>
-<img src="https://user-images.githubusercontent.com/65224852/186540909-8b3257a5-4e3c-499d-a556-1f4308e43196.png">
-</p>
+<p style="text-align: center"><b>Exemple d'embedding simpliste</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/186540909-8b3257a5-4e3c-499d-a556-1f4308e43196.png" style="display=block; margin:auto">
 <p>C’est une manière de représenter les données cependant il en existe d’autres comme le sac de mots, par rapport aux phrases, que l’on a étudié dans le chapitre sur la modélisation statistique du langage.</p>
 <p>Ainsi la machine peut comparer les données et les interpréter, pour comparer deux embeddings nous utilisons une mesure de similarité.</p>
 <p>Il faut cependant avoir à l’esprit que les meilleurs algorithmes d’embedding ne fournissent pas des caractéristiques bien précises à analyser tel que le nombre de roues ou le sexe d’une personne, au lieu de cela c’est une combinaison de facteurs qui est utilisé et leur étude permet notamment de combattre les biais en machine learning dans le cadre du NLP.</p>
@@ -686,15 +685,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="word2vec">
 <h2>Word2Vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">¶</a></h2>
-<p align="center"> <i>Pour cette partie il est fortement recommandé d'avoir étudié les réseaux de neurones et les calculs sous-jacents tel que la backpropagation.
+<p style="text-align: center"><i>Pour cette partie il est fortement recommandé d'avoir étudié les réseaux de neurones et les calculs sous-jacents tel que la backpropagation.
 <p>Source de cette partie: <a class="reference external" href="https://arxiv.org/pdf/1411.2738.pdf">https://arxiv.org/pdf/1411.2738.pdf</a>.</i></p></p>
 <p>Word2Vec est une famille d’algorithmes ayant pour but de fournir des embeddings de grande qualité, nous étudierons ici deux algorithmes: le modèle skipgram et le modèle sac de mots continus (ou continuous bag of words).</p>
 <div class="section" id="modele-skipgram">
 <h3>Modèle: skipgram<a class="headerlink" href="#modele-skipgram" title="Permalink to this headline">¶</a></h3>
 <p>L’algorithme skipgram de Word2Vec prend en entrée un mot et à partir de ce mot reconstitue un contexte composé de T mots (T étant la taille du contexte visé), pour cela le modèle utilise un réseau de neurone feed-forward à une seule couche avec un <strong>Hierarchical Softmax</strong> afin d’obtenir une représentation vectorielle optimisée <em>(aussi nommé embedding)</em> du mot <span class="math notranslate nohighlight">\(w_n\)</span>.</p>
-<p align="center"> <b>Architecture Word2Vec: skipgram</b>
-<img src="https://user-images.githubusercontent.com/65224852/186547778-0844025a-9ebe-49c1-a43f-7539dc2228bf.png">
-</p>
+<p style="text-align: center"><b>Architecture Word2Vec: skipgram</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/186547778-0844025a-9ebe-49c1-a43f-7539dc2228bf.png" style="display=block; margin:auto">
 <p>L’objectif de l’entraînement est d’optimiser cette fonction:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}E &amp;= -log \, p(w_{n-T}, \cdots, w_{n+T}|w_n)
@@ -717,9 +715,8 @@ const thebe_selector_output = ".output, .cell_output"
 <h4>Hierarchical Softmax:<a class="headerlink" href="#hierarchical-softmax" title="Permalink to this headline">¶</a></h4>
 <p>Le Hierarchical Softmax est une méthode plus efficace pour calculer le softmax grâce à sa complexité <span class="math notranslate nohighlight">\(O(log(M))\)</span> tandis que le softmax a une complexité <span class="math notranslate nohighlight">\(O(M)\)</span>.</p>
 <p>Pour cela on considère le réseau de neurones comme un <strong>arbre binaire de Huffman</strong> <em>(possède strictement deux enfants par noeud)</em> où chaque feuille représente un mot du vocabulaire, il existe un unique chemin de la racine au mot et ce chemin est utilisé pour calculer la probabilité des mots.</p>
-<p align="center"> <b>Hierarchical Softmax: Arbre binaire de Huffman</b>
-<img src="https://user-images.githubusercontent.com/65224852/186721250-a73309b6-1ec8-4910-a557-29c6429ad4b3.png" width=600 height=300>
-</p>
+<p style="text-align: center"> <b>Hierarchical Softmax: Arbre binaire de Huffman</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/186721250-a73309b6-1ec8-4910-a557-29c6429ad4b3.png" width=600 height=300 style="display=block; margin:auto">
 <p>Où:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n(w, j)\)</span>: j-éme noeud du chemin au mot <span class="math notranslate nohighlight">\(w\)</span>.</p></li>
@@ -751,9 +748,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="modele-sac-de-mots-continus">
 <h3>Modèle: sac de mots continus<a class="headerlink" href="#modele-sac-de-mots-continus" title="Permalink to this headline">¶</a></h3>
 <p>Ce modèle a un fonctionnement opposé au modèle skipgram, il prend en entrée un contexte de <span class="math notranslate nohighlight">\(T\)</span> mots et donne la probabilité d’obtenir un mot spécifique pour ce contexte, pour cela le modèle utilise un réseau de neurone feed-forward à une seule couche afin d’obtenir une représentation vectorielle optimisée des mots du contexte <span class="math notranslate nohighlight">\((w_{n-T}, \cdots, w_{n+T})\)</span>.</p>
-<p align="center"> <b>Architecture Word2Vec: sac de mots continus</b>
-<img src="https://user-images.githubusercontent.com/65224852/186798004-27c63a1a-c868-4088-bc92-1c091db86dbb.png">
-</p>
+<p style="text-align: center"><b>Architecture Word2Vec: sac de mots continus</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/186798004-27c63a1a-c868-4088-bc92-1c091db86dbb.png" style="display=block; margin:auto">
 <p>L’objectif de l’entraînement est d’optimiser cette fonction:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}E &amp;= -log \, p(w_n | w_{n-T}, \cdots, w_{n+T})
@@ -860,7 +856,7 @@ Top 10 mots corrélés à &#39;jour&#39; - Skip Gram :  [(&#39;lendemain&#39;, 0
 </div>
 <div class="section" id="glove-global-vectors">
 <h2>GloVe: Global Vectors<a class="headerlink" href="#glove-global-vectors" title="Permalink to this headline">¶</a></h2>
-<p align="center"> <i>Source de cette partie: <a href="https://aclanthology.org/D14-1162.pdf">https://aclanthology.org/D14-1162.pdf</a></i></p>
+<p style="text-align: center"> <i>Source de cette partie: <a href="https://aclanthology.org/D14-1162.pdf">https://aclanthology.org/D14-1162.pdf</a></i></p>
 <p>A l’instar de Word2Vec, GloVe vise à fournir des embeddings de grande qualité à partir de la distribution de probabilité des mots dans un corpus donné.</p>
 <p>GloVe signifie <em>Global Vectors</em> puisque dans ce modèle les statistiques globales du corpus sont capturées directement par le modèle.</p>
 <p>La question est de savoir comment à partir de ces statistiques on peut obtenir du sens pour les mots sous forme de vecteur.</p>
@@ -874,9 +870,8 @@ Top 10 mots corrélés à &#39;jour&#39; - Skip Gram :  [(&#39;lendemain&#39;, 0
 <li><p><span class="math notranslate nohighlight">\(P_{i,j} = P(j|i) = \frac{X_{i,j}}{X_i}\)</span> la probabilité qu’un mot <span class="math notranslate nohighlight">\(j\)</span> apparaît dans contexte d’un mot <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
 </ul>
 <p>D’après ces notations et une série d’exemples basées sur des phases en thermodynamique <em>(glace, vapeur, solide…)</em> on observe le tableau suivant:</p>
-<p align="center"> <b>Tableau de probabilités de co-occurence</b>
-<img src="https://user-images.githubusercontent.com/65224852/188535001-079ccb85-4bc7-463c-895b-4910e979c217.png">
-</p>
+<p style="text-align: center"> <b>Tableau de probabilités de co-occurence</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/188535001-079ccb85-4bc7-463c-895b-4910e979c217.png" style="display=block; margin:auto">
 <p>Comme on pourrait s’y attendre: le mot <strong>glace</strong> apparaît plus fréquemment avec le mot <strong>solide</strong> que le mot <strong>gas</strong>, tandis que le mot <strong>vapeur</strong> apparaît plus fréquemment avec le mot <strong>gas</strong> qu’avec le mot <strong>solide</strong>, les deux mots apparaissent à part égale avec le mot <strong>eau</strong> et enfin le mot <strong>fashion</strong> n’apparaît presque jamais.</p>
 <p>Le ratio de probabilités de co-occurence est capable de distinguer des mots corrélés par rapport à des mots non corrélés.</p>
 <p>Ainsi un bon point de départ pour l’apprentissage de représentations vectorielles de mots devrait être le ratio des probabilités de co-occurence plutôt que les probabilités elle-même.</p>
@@ -1376,7 +1371,7 @@ Mots les plus similaires de early:
 </div>
 <div class="section" id="exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne">
 <h2>Exploration de topics: t-Distributed Stochastic Neighbor Embedding (t-SNE)<a class="headerlink" href="#exploration-de-topics-t-distributed-stochastic-neighbor-embedding-t-sne" title="Permalink to this headline">¶</a></h2>
-<p align="center"> <i>Source de cette partie: <a href="https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf</a></i></p>
+<p style="text-align: center"> <i>Source de cette partie: <a href="https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf</a></i></p>
 <p>t-SNE est un algorithme d’apprentissage non supervisé permettant d’analyser des données décrites dans des espaces à forte dimensionnalité pour les représenter dans des espaces à deux ou trois dimensions, cet algorithme facilite la visualisation de données.</p>
 <p>Plus précisément cet algorithme trouve des patterns dans les données basé sur la similarité des représentations vectorielles (embeddings): les données proches dans l’espace original ont une probabilité élevée d’avoir une représentation proche dans le nouvel espace, dans le cadre du NLP on appelle ces regroupements des <strong>topics</strong>.</p>
 <p>t-SNE calcule donc une mesure de similarité entre des paires d’instances (ici mots) dans un espace à forte dimensionnalité et à la fois dans un espace à faible dimensionnalité, qu’il essaie ensuite d’optimiser à l’aide d’une fonction de coût.</p>
@@ -1416,9 +1411,8 @@ Mots les plus similaires de early:
 <li><p><span class="math notranslate nohighlight">\(m = \beta\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma^2 = c^2\)</span></p></li>
 </ul>
-<p align="center"> <b>Représentation du Gaussian</b>
-<img src="https://user-images.githubusercontent.com/65224852/188928348-ee388eaa-9fbf-4043-b952-d04b9f415369.jpg">
-</p>
+<p style="text-align: center"> <b>Représentation du Gaussian</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/188928348-ee388eaa-9fbf-4043-b952-d04b9f415369.jpg" style="display=block; margin:auto">
 </div>
 <div class="section" id="divergence-de-kullback-leibler">
 <h3>Divergence de Kullback-Leibler:<a class="headerlink" href="#divergence-de-kullback-leibler" title="Permalink to this headline">¶</a></h3>

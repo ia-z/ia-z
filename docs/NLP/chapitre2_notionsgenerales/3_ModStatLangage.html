@@ -764,9 +764,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>L’idée derrière l’algorithme LDA est de considérer un document comme un ensemble de topics où chaque topic est caractérisé par sa distribution de mots.</p>
 <p>On entraîne alors l’algorithme à reproduire le document de départ à partir de paramètres que l’on optimise en fonction de la ressemblance du document généré avec l’original.</p>
-<p align="center"> <b>Structure de l'algorithme LDA</b>
-<img src="https://user-images.githubusercontent.com/65224852/169113151-17da4b26-222d-45ff-bfc2-00f7a7f88b28.png" width="480" height="483">
-</p>
+<p style="text-align: center"><b>Structure de l'algorithme LDA</b></p>
+<img src="https://user-images.githubusercontent.com/65224852/169113151-17da4b26-222d-45ff-bfc2-00f7a7f88b28.png" width="480" height="483" style="display=block; margin:auto">
 <p>Où:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\alpha = (\alpha_1, \cdots, \alpha_k)\)</span>: distribution de Dirichlet de mots pour l’ensemble des topics <em>(vecteur de réels symbolisant les paramètres de la distribution)</em></p></li>
@@ -795,9 +794,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><em>Une fonction de densité de probabilité d’une variable aléatoire continue, est une fonction dont la valeur à tout échantillon donné dans l’espace échantillon peut être interprété comme une probabilité relative que la valeur de la variable aléatoire soit proche de cet échantillon.</em></p>
 <p><em>En d’autres termes cela spécifie la probabilité que la variable aléatoire tombe dans une plage de valeurs particulière, en opposition à une valeur donnée.</em></p>
 <p>Prenons <span class="math notranslate nohighlight">\(K = 3\)</span>:</p>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/65224852/169143103-edc0d0c5-1603-40bf-a1e8-0a59b462fe12.jpg" width="562" height="450">
-</p>
+<img src="https://user-images.githubusercontent.com/65224852/169143103-edc0d0c5-1603-40bf-a1e8-0a59b462fe12.jpg" width="562" height="450" style="display=block; margin:auto">
 <p>On observe que:</p>
 <ul class="simple">
 <li><p>Lorsque <span class="math notranslate nohighlight">\(\alpha_k = 1.0\)</span> la répartition des valeurs des variables aléatoires est libre.</p></li>
@@ -805,9 +802,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Lorsque <span class="math notranslate nohighlight">\(\alpha_k \gt 1.0\)</span> la répartition des valeurs des variables aléatoires tend vers le milieu.</p></li>
 </ul>
 <p>Ainsi on peut voir une distribution de Dirichlet de topics pour l’ensemble des documents de la manière suivante (en faisant varier les paramètres <span class="math notranslate nohighlight">\(\alpha_k\)</span>):</p>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/65224852/169162474-2382c403-8660-46bb-88a7-e37e9aedbadd.png">
-</p>
+<img src="https://user-images.githubusercontent.com/65224852/169162474-2382c403-8660-46bb-88a7-e37e9aedbadd.png" style="display=block; margin:auto">
 </div>
 <div class="section" id="distribution-multinomiale">
 <h3>Distribution multinomiale:<a class="headerlink" href="#distribution-multinomiale" title="Permalink to this headline">¶</a></h3>
@@ -825,9 +820,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[(p_1, \cdots, p_k) \sim Dirichlet(\alpha_1, \cdots, \alpha_k)\]</div>
 <p>On peut voir une distribution multinomiale de mots par topics de la manière suivante:</p>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/65224852/169647026-f0affae5-d4bf-4adf-97e3-761447cda395.png" width="356" height="298">
-</p>
+<img src="https://user-images.githubusercontent.com/65224852/169647026-f0affae5-d4bf-4adf-97e3-761447cda395.png" width="356" height="298" style="display=block; margin:auto">
 </div>
 <div class="section" id="formule-complete">
 <h3>Formule complète:<a class="headerlink" href="#formule-complete" title="Permalink to this headline">¶</a></h3>
