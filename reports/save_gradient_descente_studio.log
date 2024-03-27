@@ -1,19 +1,19 @@
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
     return loop.run_until_complete(coro)
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
     return future.result()
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+  File "/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -40,14 +40,14 @@ Input [0;32mIn [8][0m, in [0;36m<cell line: 2>[0;34m()[0m
 [1;32m      3[0m plt[38;5;241m.[39mplot(age,  X[38;5;241m.[39mdot(Theta_init), [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m)
 [1;32m      4[0m plt[38;5;241m.[39mscatter(age,  Y)
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/matplotlib/pyplot.py:2757[0m, in [0;36mplot[0;34m(scalex, scaley, data, *args, **kwargs)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/matplotlib/pyplot.py:2757[0m, in [0;36mplot[0;34m(scalex, scaley, data, *args, **kwargs)[0m
 [1;32m   2755[0m [38;5;129m@_copy_docstring_and_deprecators[39m(Axes[38;5;241m.[39mplot)
 [1;32m   2756[0m [38;5;28;01mdef[39;00m [38;5;21mplot[39m([38;5;241m*[39margs, scalex[38;5;241m=[39m[38;5;28;01mTrue[39;00m, scaley[38;5;241m=[39m[38;5;28;01mTrue[39;00m, data[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
 [0;32m-> 2757[0m     [38;5;28;01mreturn[39;00m [43mgca[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mplot[49m[43m([49m
 [1;32m   2758[0m [43m        [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[43mscalex[49m[38;5;241;43m=[39;49m[43mscalex[49m[43m,[49m[43m [49m[43mscaley[49m[38;5;241;43m=[39;49m[43mscaley[49m[43m,[49m
 [1;32m   2759[0m [43m        [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m([49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mdata[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mdata[49m[43m}[49m[43m [49m[38;5;28;43;01mif[39;49;00m[43m [49m[43mdata[49m[43m [49m[38;5;129;43;01mis[39;49;00m[43m [49m[38;5;129;43;01mnot[39;49;00m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m [49m[38;5;28;43;01melse[39;49;00m[43m [49m[43m{[49m[43m}[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/matplotlib/axes/_axes.py:1632[0m, in [0;36mAxes.plot[0;34m(self, scalex, scaley, data, *args, **kwargs)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/matplotlib/axes/_axes.py:1632[0m, in [0;36mAxes.plot[0;34m(self, scalex, scaley, data, *args, **kwargs)[0m
 [1;32m   1390[0m [38;5;124;03m"""[39;00m
 [1;32m   1391[0m [38;5;124;03mPlot y versus x as lines and/or markers.[39;00m
 [1;32m   1392[0m 
@@ -59,19 +59,19 @@ File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages
 [1;32m   1633[0m [38;5;28;01mfor[39;00m line [38;5;129;01min[39;00m lines:
 [1;32m   1634[0m     [38;5;28mself[39m[38;5;241m.[39madd_line(line)
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/matplotlib/axes/_base.py:312[0m, in [0;36m_process_plot_var_args.__call__[0;34m(self, data, *args, **kwargs)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/matplotlib/axes/_base.py:312[0m, in [0;36m_process_plot_var_args.__call__[0;34m(self, data, *args, **kwargs)[0m
 [1;32m    310[0m     this [38;5;241m+[39m[38;5;241m=[39m args[[38;5;241m0[39m],
 [1;32m    311[0m     args [38;5;241m=[39m args[[38;5;241m1[39m:]
 [0;32m--> 312[0m [38;5;28;01myield from[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_plot_args[49m[43m([49m[43mthis[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/matplotlib/axes/_base.py:487[0m, in [0;36m_process_plot_var_args._plot_args[0;34m(self, tup, kwargs, return_kwargs)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/matplotlib/axes/_base.py:487[0m, in [0;36m_process_plot_var_args._plot_args[0;34m(self, tup, kwargs, return_kwargs)[0m
 [1;32m    484[0m         kw[prop_name] [38;5;241m=[39m val
 [1;32m    486[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(xy) [38;5;241m==[39m [38;5;241m2[39m:
 [0;32m--> 487[0m     x [38;5;241m=[39m [43m_check_1d[49m[43m([49m[43mxy[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m)[49m
 [1;32m    488[0m     y [38;5;241m=[39m _check_1d(xy[[38;5;241m1[39m])
 [1;32m    489[0m [38;5;28;01melse[39;00m:
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/matplotlib/cbook/__init__.py:1327[0m, in [0;36m_check_1d[0;34m(x)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/matplotlib/cbook/__init__.py:1327[0m, in [0;36m_check_1d[0;34m(x)[0m
 [1;32m   1321[0m [38;5;28;01mwith[39;00m warnings[38;5;241m.[39mcatch_warnings(record[38;5;241m=[39m[38;5;28;01mTrue[39;00m) [38;5;28;01mas[39;00m w:
 [1;32m   1322[0m     warnings[38;5;241m.[39mfilterwarnings(
 [1;32m   1323[0m         [38;5;124m"[39m[38;5;124malways[39m[38;5;124m"[39m,
@@ -82,12 +82,12 @@ File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages
 [1;32m   1329[0m     [38;5;66;03m# cast to a numpy array.[39;00m
 [1;32m   1330[0m     [38;5;28;01mif[39;00m [38;5;28mlen[39m(w) [38;5;241m>[39m [38;5;241m0[39m:
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pandas/core/series.py:1033[0m, in [0;36mSeries.__getitem__[0;34m(self, key)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/pandas/core/series.py:1033[0m, in [0;36mSeries.__getitem__[0;34m(self, key)[0m
 [1;32m   1030[0m     key [38;5;241m=[39m np[38;5;241m.[39masarray(key, dtype[38;5;241m=[39m[38;5;28mbool[39m)
 [1;32m   1031[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_get_values(key)
 [0;32m-> 1033[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_get_with[49m[43m([49m[43mkey[49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pandas/core/series.py:1048[0m, in [0;36mSeries._get_with[0;34m(self, key)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/pandas/core/series.py:1048[0m, in [0;36mSeries._get_with[0;34m(self, key)[0m
 [1;32m   1043[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
 [1;32m   1044[0m         [38;5;124m"[39m[38;5;124mIndexing a Series with DataFrame is not [39m[38;5;124m"[39m
 [1;32m   1045[0m         [38;5;124m"[39m[38;5;124msupported, use the appropriate DataFrame column[39m[38;5;124m"[39m
@@ -98,7 +98,7 @@ File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages
 [1;32m   1051[0m     [38;5;66;03m# e.g. scalars that aren't recognized by lib.is_scalar, GH#32684[39;00m
 [1;32m   1052[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mloc[key]
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pandas/core/series.py:1082[0m, in [0;36mSeries._get_values_tuple[0;34m(self, key)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/pandas/core/series.py:1082[0m, in [0;36mSeries._get_values_tuple[0;34m(self, key)[0m
 [1;32m   1077[0m [38;5;28;01mif[39;00m com[38;5;241m.[39many_none([38;5;241m*[39mkey):
 [1;32m   1078[0m     [38;5;66;03m# mpl compat if we look up e.g. ser[:, np.newaxis];[39;00m
 [1;32m   1079[0m     [38;5;66;03m#  see tests.series.timeseries.test_mpl_compat_hack[39;00m
@@ -108,7 +108,7 @@ File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages
 [1;32m   1083[0m     [38;5;28;01mreturn[39;00m result
 [1;32m   1085[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m([38;5;28mself[39m[38;5;241m.[39mindex, MultiIndex):
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/pandas/core/indexers/utils.py:343[0m, in [0;36mdisallow_ndim_indexing[0;34m(result)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/pandas/core/indexers/utils.py:343[0m, in [0;36mdisallow_ndim_indexing[0;34m(result)[0m
 [1;32m    335[0m [38;5;124;03m"""[39;00m
 [1;32m    336[0m [38;5;124;03mHelper function to disallow multi-dimensional indexing on 1D Series/Index.[39;00m
 [1;32m    337[0m 
